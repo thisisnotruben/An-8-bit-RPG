@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://kfgkpdj0exlx"]
+
+[ext_resource type="Script" uid="uid://d3e454g3ckra4" path="res://src/ui/dead/dead.gd" id="1_yd3q1"]
+
+[node name="dead" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yd3q1")
+
+[node name="header" type="Label" parent="."]
+layout_mode = 2
+
+[node name="start_menu" type="Button" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../checkpoint")
+
+[node name="checkpoint" type="Button" parent="."]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../start_menu")
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="focus_entered" from="start_menu" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="start_menu" to="." method="_on_start_menu_pressed"]
+[connection signal="focus_entered" from="checkpoint" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="checkpoint" to="." method="_on_checkpoint_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr2ovoap8nvfh"]
+
+[ext_resource type="Script" uid="uid://b48kh33n21c7x" path="res://src/ui/license/license.gd" id="1_aijje"]
+
+[node name="license" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aijje")
+
+[node name="snd" type="AudioStreamPlayer" parent="."]
+
+[node name="header" type="Label" parent="."]
+layout_mode = 2
+
+[node name="grid" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="text1" type="Label" parent="grid"]
+layout_mode = 2
+
+[node name="text2" type="Label" parent="grid"]
+layout_mode = 2
+
+[node name="redirect" type="Button" parent="."]
+layout_mode = 2
+focus_neighbor_top = NodePath("../back")
+text = "License link redirect"
+
+[node name="back" type="Button" parent="."]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../redirect")
+text = "Back"
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="focus_entered" from="redirect" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="redirect" to="." method="_on_redirect_pressed"]
+[connection signal="focus_entered" from="back" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

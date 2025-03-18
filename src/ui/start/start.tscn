@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://f3o1cwg8v5w5"]
+
+[ext_resource type="Script" uid="uid://rcy2dw7cdo62" path="res://src/ui/start/start.gd" id="1_c8jcb"]
+[ext_resource type="PackedScene" uid="uid://dmq3dmhygcbqv" path="res://src/ui/credits/credits.tscn" id="2_7n7wp"]
+[ext_resource type="PackedScene" uid="uid://cr2ovoap8nvfh" path="res://src/ui/license/license.tscn" id="3_yvppn"]
+[ext_resource type="PackedScene" uid="uid://bwl7xvxblhy6c" path="res://src/ui/popup/popup.tscn" id="4_hwtpo"]
+
+[node name="start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8jcb")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+
+[node name="snd" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_game" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_back" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_exit" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_popup" type="AudioStreamPlayer" parent="."]
+
+[node name="center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="panel" type="PanelContainer" parent="center"]
+layout_mode = 2
+
+[node name="margin" type="MarginContainer" parent="center/panel"]
+layout_mode = 2
+
+[node name="tabs" type="TabContainer" parent="center/panel/margin"]
+layout_mode = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="main" type="VBoxContainer" parent="center/panel/margin/tabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="start" type="Button" parent="center/panel/margin/tabs/main"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../exit")
+text = "Start"
+
+[node name="grid" type="GridContainer" parent="center/panel/margin/tabs/main"]
+layout_mode = 2
+columns = 2
+
+[node name="license" type="Button" parent="center/panel/margin/tabs/main/grid"]
+layout_mode = 2
+text = "License"
+
+[node name="credits" type="Button" parent="center/panel/margin/tabs/main/grid"]
+layout_mode = 2
+text = "Credits"
+
+[node name="exit" type="Button" parent="center/panel/margin/tabs/main"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../start")
+text = "Exit"
+
+[node name="license" parent="center/panel/margin/tabs" instance=ExtResource("3_yvppn")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="credits" parent="center/panel/margin/tabs" instance=ExtResource("2_7n7wp")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="popup" parent="center/panel/margin/tabs" instance=ExtResource("4_hwtpo")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[connection signal="draw" from="center/panel/margin/tabs/main" to="." method="_on_main_draw"]
+[connection signal="focus_entered" from="center/panel/margin/tabs/main/start" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="center/panel/margin/tabs/main/start" to="." method="_on_start_pressed"]
+[connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_license_pressed"]
+[connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_credits_pressed"]
+[connection signal="focus_entered" from="center/panel/margin/tabs/main/exit" to="." method="_on_focus_entered"]
+[connection signal="pressed" from="center/panel/margin/tabs/main/exit" to="." method="_on_exit_pressed"]
+[connection signal="back_pressed" from="center/panel/margin/tabs/license" to="." method="_on_back_pressed"]
+[connection signal="subcontrol_focused" from="center/panel/margin/tabs/license" to="." method="_on_focus_entered"]
+[connection signal="back_pressed" from="center/panel/margin/tabs/credits" to="." method="_on_back_pressed"]
+[connection signal="subcontrol_focused" from="center/panel/margin/tabs/credits" to="." method="_on_focus_entered"]
+[connection signal="subcontrol_focused" from="center/panel/margin/tabs/popup" to="." method="_on_focus_entered"]

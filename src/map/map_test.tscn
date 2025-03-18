@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk0u54d0t0epe"]
+
+[ext_resource type="PackedScene" uid="uid://b7245sty3xlv0" path="res://tiled/map/test..tscn" id="1_swity"]
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="2_e2rwa"]
+[ext_resource type="PackedScene" uid="uid://d0cdmiiyjhdjd" path="res://src/ui/game/game.tscn" id="3_ku3x6"]
+
+[node name="MapTest" type="Node2D"]
+
+[node name="test" parent="." instance=ExtResource("1_swity")]
+
+[node name="character" parent="." instance=ExtResource("2_e2rwa")]
+position = Vector2(53, 76)
+npc = false
+friendly = true
+
+[node name="menu_interface" type="CanvasLayer" parent="."]
+
+[node name="game" parent="menu_interface" node_paths=PackedStringArray("player") instance=ExtResource("3_ku3x6")]
+player = NodePath("../../character")

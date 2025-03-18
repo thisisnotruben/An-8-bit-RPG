@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://1krshwqbaymx"]
+
+[ext_resource type="Script" uid="uid://u2d6q0o5rsb" path="res://src/bullet/bullet.gd" id="1_8jhmp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7lrt"]
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_8jhmp")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="img" type="Sprite2D" parent="."]
+
+[node name="ray" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="snd" type="AudioStreamPlayer2D" parent="."]
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="coll" type="CollisionShape2D" parent="area"]
+shape = SubResource("CircleShape2D_s7lrt")
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
