@@ -34,4 +34,4 @@ func _on_checkpoint_pressed():
 
 func _on_focus_entered():
 	if play_focus_sfx:
-		emit_signal("subcontrol_focused")
+		subcontrol_focused.emit()

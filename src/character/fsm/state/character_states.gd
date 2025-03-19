@@ -1,7 +1,9 @@
 extends Node
 class_name CharacterStates
 
-enum Type{
+# commented with numbers due to anim_tree restrictions
+# if new spell created, add it here
+enum Type {
 	IDLE,    # 0
 	MOVE,    # 1
 	MELEE,   # 2
@@ -9,4 +11,5 @@ enum Type{
 	DEAD,    # 4
 	SPECIAL, # 5
 	HURT,    # 6
+	SPELL,   # 7
 }

@@ -13,7 +13,7 @@ func _ready():
 
 func physics_process(_delta: float):
 	if not nav_agent.is_target_reachable() or nav_agent.is_target_reached():
-		move.emit_signal("change_state", CharacterStates.Type.IDLE)
+		move.change_state.emit(CharacterStates.Type.IDLE)
 		return
 
 	next_point = nav_agent.get_next_path_position()
@@ -22,6 +22,7 @@ func physics_process(_delta: float):
 	if direction:
 		move.velocity = direction * move.speed
 
+	move.apply_animation(direction)
 	if move.character.global_position.distance_to( \
 	nav_agent.get_final_position()) <= nav_agent.target_desired_distance:
 		change_state.emit(CharacterStates.Type.IDLE)

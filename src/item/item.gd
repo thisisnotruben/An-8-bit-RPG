@@ -2,7 +2,11 @@ extends Node
 class_name Item
 
 enum Type {
-	HEALTH
+	HEALTH,
+	FORTIFY,
+	KEY,
+	WEAPON,
+	ARMOR,
 }
 
 @export var type := -1
@@ -16,6 +20,8 @@ func _on_area_body_entered(body: Node2D):
 				if body.health == body.health_max:
 					return
 				body.health += 1
+			Type.FORTIFY:
+				pass
 			_:
 				add_to_inventory(body)
 		$snd.play()

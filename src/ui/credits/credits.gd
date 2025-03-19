@@ -7,7 +7,7 @@ signal subcontrol_focused
 
 
 func _on_back_pressed():
-	emit_signal("back_pressed")
+	back_pressed.emit()
 
 func _on_draw():
 	play_focus_sfx = false
@@ -21,4 +21,4 @@ func _on_redirect_pressed():
 
 func _on_focus_entered():
 	if play_focus_sfx:
-		emit_signal("subcontrol_focused")
+		subcontrol_focused.emit()

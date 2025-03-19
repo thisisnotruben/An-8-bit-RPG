@@ -24,7 +24,7 @@ func _set_state(_state_type) -> bool:
 		_curr["state"].exit()
 	states[_state_type].enter()
 	_curr = {"state": states[_state_type], "type": _state_type}
-	emit_signal("state_changed", _state_type)
+	state_changed.emit(_state_type)
 	return true
 
 func _get_state():

@@ -13,10 +13,10 @@ func display(label: String, yes: String, no: String):
 	$hBox/no.text = "  %s  " % no
 
 func _on_yes_pressed():
-	emit_signal("popup_return", "yes")
+	popup_return.emit("yes")
 
 func _on_no_pressed():
-	emit_signal("popup_return","no")
+	popup_return.emit("no")
 
 func _on_draw():
 	play_focus_sfx = false
@@ -25,4 +25,4 @@ func _on_draw():
 
 func _on_focus_entered():
 	if play_focus_sfx:
-		emit_signal("subcontrol_focused")
+		subcontrol_focused.emit()

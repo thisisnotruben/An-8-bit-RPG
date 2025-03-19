@@ -55,15 +55,13 @@ signal died(_character)
 
 func _ready():
 	var fsm_init := {}
-	# TODO: getting states from special state will need
-	# modification
-	for _state in $fsm.get_children():
-		if _state.enabled:
-			fsm_init[_state.type] = [_state, _state.name]
+	$fsm.get_children() \
+		.filter(func(s): return s is CharacterState and s.enabled) \
+		.map(func(s): fsm_init[s.type] = s)
 	$fsm.init(fsm_init, {"character": self})
 	behavior.state = BehaviorStates.Type.REST
-	hit_scan_melee.target_position.y = melee_range
-	hit_scan_shoot.target_position.y = shoot_range
+	hit_scan_melee.target_position.x = melee_range
+	hit_scan_shoot.target_position.x = shoot_range
 	health = health_max
 	_set_npc(npc)
 
@@ -95,11 +93,12 @@ func _set_health(_health: int):
 	if health == 0:
 		fsm.state = CharacterStates.Type.DEAD
 		died.emit(self)
-		set_performance_process(true)
 		if connected_joy:
 			Input.start_joy_vibration(0, 0.0, 1.0, 1.0)
-	elif connected_joy and prev_health > health:
-		Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
+	elif prev_health > health:
+		fsm.state = CharacterStates.Type.HURT
+		if connected_joy:
+			Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 
 func set_hit_flags():
 	var hit_layer := character_hit_flag
@@ -121,7 +120,6 @@ func _set_npc(_npc: bool):
 	$nav_agent.avoidance_enabled = _npc
 	$cam.enabled = not _npc
 	if not npc:
-		set_performance_process(false)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_set_friendly(friendly)
 
@@ -140,26 +138,16 @@ func _set_friendly(_friendly: bool):
 
 func inventory_add(data: Dictionary):
 	if data["add"]:
-		if not inventory.has(data["type"]):
-			inventory.append(data["type"])
-			inventory_added.emit(data)
+		inventory.append(data)
+		inventory_added.emit(data)
 		if data["powerup"] != null:
 			powerups[data["type"]] = data["powerup"]
-#			TODO
-		#for objective in objective_map.objectives:
-			#match objective["type"]:
-				#ObjectiveMap.Type.COLLECT, ObjectiveMap.Type.KILL_COLLECT:
-					#if objective["name"] == data["type"]:
-						#objective["completed"] = true
 	else:
 		if inventory.has(data["type"]):
 			inventory.erase(data["type"])
 			inventory_added.emit(data)
 			if data["powerup"] != null:
 				powerups.erase(data["type"])
-
-func on_interacted(interacted_name: String):
-	pass
 
 func is_foe(_body: Node2D) -> bool:
 	return _body is Character and _body.fsm.state != CharacterStates.Type.DEAD \
@@ -204,11 +192,5 @@ func aggro(_body: Node2D) -> bool:
 	return false
 
 func move_to(pos: Vector3):
-	behavior.get_node("move_to").move_to_pos = pos
 	behavior.state = BehaviorStates.Type.MOVE_TO
-
-# util
-
-func set_performance_process(performance: bool):
-#	TODO
-	pass
+	behavior.get_node("move_to").move_to_pos = pos

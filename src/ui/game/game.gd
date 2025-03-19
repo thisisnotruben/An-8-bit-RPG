@@ -16,8 +16,8 @@ var tabs := {"main": 0, "license": 1,
 
 func _ready():
 	$center/panel/margin/tabs/dead.tabs = tabs
-	if player:
-		player.health_changed.connect(show_death_screen)
+	#if player: TODO
+		#player.health_changed.connect(show_death_screen)
 
 func _input(event: InputEvent):
 	if dead:
@@ -98,5 +98,5 @@ func _on_visibility_changed():
 			tab.current_tab = tabs["main"]
 			prev_tab = $center/panel/margin/tabs/main/resume_game
 
-func show_death_screen():
+func show_death_screen(isdead):
 	show()
