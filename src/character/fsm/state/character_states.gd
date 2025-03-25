@@ -12,4 +12,5 @@ enum Type {
 	SPECIAL, # 5
 	HURT,    # 6
 	SPELL,   # 7
+	JUMP,    # 8
 }

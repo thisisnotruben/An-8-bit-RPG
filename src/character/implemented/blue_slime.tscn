@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8207lbq8tngc"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_h3ras"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cle0k35s6rusn" path="res://resource/animation_state_machine/Blue_Slime_state_machine.tres" id="2_rbmk0"]
+[ext_resource type="Texture2D" uid="uid://bhfp0gs5iog6d" path="res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeIdle.png" id="3_d454a"]
+
+[node name="Blue_Slime" instance=ExtResource("1_h3ras")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_rbmk0")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0.103815, 0.206897)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_d454a")
+hframes = 8
+frame = 0
