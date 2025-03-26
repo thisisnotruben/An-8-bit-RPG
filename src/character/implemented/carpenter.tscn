@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4leet7yutmky"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_ynpue"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cumi6ntgjuxsb" path="res://resource/animation_state_machine/Carpenter_state_machine.tres" id="2_2u3nw"]
+[ext_resource type="Texture2D" uid="uid://3tajxjrgt68q" path="res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png" id="3_2u3nw"]
+
+[node name="Carpenter" instance=ExtResource("1_ynpue")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_2u3nw")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_2u3nw")
+frame = 52

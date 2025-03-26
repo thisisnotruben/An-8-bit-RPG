@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://fqcqpu6mlvj1"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_f15vc"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Wizard_state_machine.tres" id="2_jvvlx"]
+
+[node name="Wizard" instance=ExtResource("1_f15vc")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_jvvlx")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle_special/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwsqxad76j50m"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_jw0gy"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Skeleton_state_machine.tres" id="2_33dgd"]
+
+[node name="Skeleton" instance=ExtResource("1_jw0gy")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_33dgd")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

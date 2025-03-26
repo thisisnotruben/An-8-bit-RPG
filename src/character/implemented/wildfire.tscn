@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cds3ub26sbj5g"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_p7hek"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Wildfire_state_machine.tres" id="2_ee8uc"]
+
+[node name="Wildfire" instance=ExtResource("1_p7hek")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ee8uc")
+parameters/walk/blend_position = Vector2(0, 0)

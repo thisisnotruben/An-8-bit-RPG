@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=3]
+[gd_resource type="AnimationNodeStateMachine" load_steps=24 format=3 uid="uid://bgemtr50jb0wr"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c204r"]
 animation = &"Polar_Fox/die"
@@ -87,13 +87,17 @@ advance_expression = "fsm.state == 4"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_23bvf"]
 advance_mode = 2
-advance_expression = "fsm.state == 6"
+advance_expression = "fsm.state == 1"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_650j1"]
 advance_mode = 2
-advance_expression = "fsm.state == 0"
+advance_expression = "fsm.state == 6"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ookc"]
+advance_mode = 2
+advance_expression = "fsm.state == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eh1ci"]
 advance_mode = 2
 advance_expression = "fsm.state == 6"
 
@@ -106,4 +110,4 @@ states/idle/node = SubResource("AnimationNodeBlendSpace2D_suah3")
 states/idle/position = Vector2(384, 320)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_2ubqw")
 states/walk/position = Vector2(384, 384)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_b3vvj"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_7maqt"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_wamtl"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_23bvf"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_650j1"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_2ookc")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_b3vvj"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_7maqt"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_wamtl"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_23bvf"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_650j1"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_2ookc"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_eh1ci")]

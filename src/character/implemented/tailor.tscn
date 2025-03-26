@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3svyep25wwl4"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_t55p6"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Tailor_state_machine.tres" id="2_tj1a3"]
+
+[node name="Tailor" instance=ExtResource("1_t55p6")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_tj1a3")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

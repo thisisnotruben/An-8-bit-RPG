@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs1qug54ptxdt"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_tt8bw"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Hedgehog_state_machine.tres" id="2_ivbpg"]
+
+[node name="Hedgehog" instance=ExtResource("1_tt8bw")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ivbpg")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle_spike_in/blend_position = Vector2(0, 0)
+parameters/idle_spike_out/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

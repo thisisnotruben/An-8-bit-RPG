@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci0fcd3mmwow8"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_stxcp"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Ranger_state_machine.tres" id="2_ms3wo"]
+
+[node name="Ranger" instance=ExtResource("1_stxcp")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ms3wo")
+parameters/attack_diag/blend_position = Vector2(0, 0)
+parameters/attack_orth/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle_special/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

@@ -13,4 +13,5 @@ enum Type {
 	HURT,    # 6
 	SPELL,   # 7
 	JUMP,    # 8
+	WORK,    # 9
 }

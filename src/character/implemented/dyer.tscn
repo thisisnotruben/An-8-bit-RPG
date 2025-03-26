@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkkx2k88w4va"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_j7eoo"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Dyer_state_machine.tres" id="2_711py"]
+
+[node name="Dyer" instance=ExtResource("1_j7eoo")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_711py")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

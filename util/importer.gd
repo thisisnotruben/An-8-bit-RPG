@@ -761,7 +761,7 @@ var creatures := {
 			"time": 200
 		},
 		{
-			"name": "move",
+			"name": "walk",
 			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeJumpAttack.png",
 			"time": 200
 		},
@@ -788,7 +788,7 @@ var creatures := {
 			"time": 200
 		},
 		{
-			"name": "move",
+			"name": "walk",
 			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeJumpAttack.png",
 			"time": 200
 		},
@@ -815,7 +815,7 @@ var creatures := {
 			"time": 200
 		},
 		{
-			"name": "move",
+			"name": "walk",
 			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenJumpAttack.png",
 			"time": 200
 		},
@@ -842,7 +842,7 @@ var creatures := {
 			"time": 200
 		},
 		{
-			"name": "move",
+			"name": "walk",
 			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenJumpAttack.png",
 			"time": 200
 		},
@@ -1613,238 +1613,238 @@ var myraid_of_npc := {
 	"Alchemist": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png",
 			"time": 100
 		}
 	],
 	"Blacksmith": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWorking.png",
 			"time": 100
 		}
 	],
 	"Butcher": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWorking.png",
 			"time": 100
 		}
 	],
 	"Carpenter": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWorking.png",
 			"time": 100
 		}
 	],
 	"Cooker": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWorking.png",
 			"time": 100
 		}
 	],
 	"Dyer": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWorking.png",
 			"time": 100
 		}
 	],
 	"Furrier": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWorking.png",
 			"time": 100
 		}
 	],
 	"Jeweller": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWorking.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWorking.png",
 			"time": 100
 		}
 	],
 	"Tailor": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDie.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDmg.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorIdle.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorWalk.png",
+			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorWalk.png",
 			"time": 200
 		}
 	]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://7eu170phndey"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_virds"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Zombie_Minotaur_state_machine.tres" id="2_c6sul"]
+
+[node name="Zombie_Minotaur" instance=ExtResource("1_virds")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_c6sul")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

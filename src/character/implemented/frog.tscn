@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pme5lbpbu5r8"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_vlj86"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Frog_state_machine.tres" id="2_1chqi"]
+
+[node name="Frog" instance=ExtResource("1_vlj86")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_1chqi")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

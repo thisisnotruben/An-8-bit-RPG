@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmrwr70ui8f17"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_17vgi"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dy7xac4w06snn" path="res://resource/animation_state_machine/Blacksmith_state_machine.tres" id="2_d11f7"]
+[ext_resource type="Texture2D" uid="uid://bhpocuuv4iwnr" path="res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png" id="3_uc4l5"]
+
+[node name="Blacksmith" instance=ExtResource("1_17vgi")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_d11f7")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_uc4l5")
+frame = 48

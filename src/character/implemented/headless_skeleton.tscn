@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx3gjpyhsk2hh"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_bie3c"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Headless_Skeleton_state_machine.tres" id="2_5oqxn"]
+
+[node name="Headless_Skeleton" instance=ExtResource("1_bie3c")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_5oqxn")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

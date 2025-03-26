@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwe30ywneffag"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_0kwks"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Paladin_state_machine.tres" id="2_exr71"]
+
+[node name="Paladin" instance=ExtResource("1_0kwks")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_exr71")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle_end/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

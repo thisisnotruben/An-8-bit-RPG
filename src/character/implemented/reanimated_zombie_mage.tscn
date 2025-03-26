@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxvq0thcm3aad"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_i18op"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Reanimated_Zombie_Mage_state_machine.tres" id="2_ehkc1"]
+
+[node name="Reanimated_Zombie_Mage" instance=ExtResource("1_i18op")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ehkc1")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

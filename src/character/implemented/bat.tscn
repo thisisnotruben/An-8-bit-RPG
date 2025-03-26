@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://6iuwf4o4q3d8"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_c3fc6"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cep4o6sv8g5f0" path="res://resource/animation_state_machine/Bat_state_machine.tres" id="2_ujqg1"]
+[ext_resource type="Texture2D" uid="uid://dwulgmhl26ljp" path="res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatFlyIdle.png" id="3_qpt6h"]
+
+[node name="Bat" instance=ExtResource("1_c3fc6")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ujqg1")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/sleep/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_qpt6h")
+hframes = 2
+frame = 6

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmy10q3dmw23h"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_m5lrl"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Minotaur_state_machine.tres" id="2_ys575"]
+
+[node name="Minotaur" instance=ExtResource("1_m5lrl")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ys575")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

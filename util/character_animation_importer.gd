@@ -98,17 +98,18 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 		var transition := AnimationNodeStateMachineTransition.new()
 		match anim_name_type:
 			"idle":
-				_add_transition(state_machine, anim_name_type, "move", "fsm.state == 1")
+				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1")
 				_add_transition(state_machine, anim_name_type, "attack", "[2, 3].has(fsm.state)")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 				_add_transition(state_machine, anim_name_type, "jump", "fsm.state == 8")
+				_add_transition(state_machine, anim_name_type, "work", "fsm.state == 9")
 			"walk":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0")
 				_add_transition(state_machine, anim_name_type, "attack", "[2, 3].has(fsm.state)")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 			"attack":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0", true)
-				_add_transition(state_machine, anim_name_type, "move", "fsm.state == 1", true)
+				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1", true)
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 			"dmg":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0", true)

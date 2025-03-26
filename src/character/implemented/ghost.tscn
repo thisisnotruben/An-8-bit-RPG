@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3hab4b4mwidj"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_gd7qw"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Ghost_state_machine.tres" id="2_kfjoc"]
+
+[node name="Ghost" instance=ExtResource("1_gd7qw")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_kfjoc")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

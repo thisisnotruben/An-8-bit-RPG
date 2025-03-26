@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3]
+[gd_resource type="AnimationNodeStateMachine" load_steps=41 format=3 uid="uid://delry6pv0jfco"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ilk2"]
 animation = &"Warg/attack_down_right"
@@ -127,45 +127,54 @@ advance_mode = 2
 advance_expression = "fsm.state == 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_scrnm"]
-advance_mode = 2
-advance_expression = "fsm.state == 6"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2eej3"]
 switch_mode = 2
 advance_mode = 2
-advance_expression = "fsm.state == 0"
+advance_expression = "fsm.state == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2eej3"]
+advance_mode = 2
+advance_expression = "fsm.state == 6"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ahc7i"]
 switch_mode = 2
 advance_mode = 2
-advance_expression = "fsm.state == 4"
+advance_expression = "fsm.state == 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgm43"]
+switch_mode = 2
 advance_mode = 2
-advance_expression = "[2, 3].has(fsm.state)"
+advance_expression = "fsm.state == 4"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0yktv"]
 advance_mode = 2
-advance_expression = "fsm.state == 6"
+advance_expression = "fsm.state == 1"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n4qya"]
 advance_mode = 2
-advance_expression = "fsm.state == 8"
+advance_expression = "[2, 3].has(fsm.state)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hfpuv"]
+advance_mode = 2
+advance_expression = "fsm.state == 6"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajo5d"]
+advance_mode = 2
+advance_expression = "fsm.state == 8"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n5y2r"]
 switch_mode = 2
 advance_mode = 2
 advance_expression = "fsm.state == 0"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajo5d"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xfb7q"]
 advance_mode = 2
 advance_expression = "fsm.state == 0"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n5y2r"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdmlo"]
 advance_mode = 2
 advance_expression = "[2, 3].has(fsm.state)"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xfb7q"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqb5q"]
 advance_mode = 2
 advance_expression = "fsm.state == 6"
 
@@ -182,4 +191,4 @@ states/jump/node = SubResource("AnimationNodeBlendSpace2D_28xil")
 states/jump/position = Vector2(384, 448)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_f151v")
 states/walk/position = Vector2(384, 512)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vm1l0"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_6xykl"), "attack", "dmg", SubResource("AnimationNodeStateMachineTransition_scrnm"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_2eej3"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_ahc7i"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_pgm43"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_0yktv"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_n4qya"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_hfpuv"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ajo5d"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_n5y2r"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_xfb7q")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vm1l0"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_6xykl"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_scrnm"), "attack", "dmg", SubResource("AnimationNodeStateMachineTransition_2eej3"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_ahc7i"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_pgm43"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_0yktv"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_n4qya"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_hfpuv"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ajo5d"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_n5y2r"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_xfb7q"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_gdmlo"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_iqb5q")]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxp05unrw5kjd"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_nhvcq"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Fighter_state_machine.tres" id="2_xj3k5"]
+
+[node name="Fighter" instance=ExtResource("1_nhvcq")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_xj3k5")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle_special/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

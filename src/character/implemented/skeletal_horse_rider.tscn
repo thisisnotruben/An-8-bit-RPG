@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://87pyss5mukqs"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_fqswh"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://ddxynrlxdvntv" path="res://resource/animation_state_machine/Skeletal_Horse_Rider_state_machine.tres" id="2_mol1q"]
+
+[node name="Skeletal_Horse_Rider" instance=ExtResource("1_fqswh")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_mol1q")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

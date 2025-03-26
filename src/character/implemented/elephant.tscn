@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfj3j6lrc77jv"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_mlb6b"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Elephant_state_machine.tres" id="2_imbwj"]
+
+[node name="Elephant" instance=ExtResource("1_mlb6b")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_imbwj")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

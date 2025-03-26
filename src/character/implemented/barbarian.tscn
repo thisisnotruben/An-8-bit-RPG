@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlnxkjlb4dbm6"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_8mg8n"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Barbarian_state_machine.tres" id="2_i8hkr"]
+
+[node name="Barbarian" instance=ExtResource("1_8mg8n")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_i8hkr")
+parameters/Thunder_Blade_Attack/blend_position = Vector2(0, 0)
+parameters/battle_cry/blend_position = Vector2(0, 0)
+parameters/battle_cry_back_layer/blend_position = Vector2(0, 0)
+parameters/battle_cry_front_layer/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/guard_down/blend_position = Vector2(0, 0)
+parameters/guard_impact/blend_position = Vector2(0, 0)
+parameters/guard_up/blend_position = Vector2(0, 0)
+parameters/jump/blend_position = Vector2(0, 0)
+parameters/throw_things/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

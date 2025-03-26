@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://iy145sodn8a3"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6jnh7"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Pumpkin_Horror_state_machine.tres" id="2_ltowu"]
+
+[node name="Pumpkin_Horror" instance=ExtResource("1_6jnh7")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_ltowu")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

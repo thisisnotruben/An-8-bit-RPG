@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwmtp5wqhjtpv"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_n1xc2"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Platypus_state_machine.tres" id="2_7cmbj"]
+
+[node name="Platypus" instance=ExtResource("1_n1xc2")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_7cmbj")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)

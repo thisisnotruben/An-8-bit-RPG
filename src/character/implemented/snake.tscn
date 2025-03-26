@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl1a01niq44nb"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_r4qun"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Snake_state_machine.tres" id="2_p4k5n"]
+
+[node name="Snake" instance=ExtResource("1_r4qun")]
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("2_p4k5n")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
