@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_level_scene: PackedScene = null
+@export_file("*.tscn") var game_level_scene_path := ""
 
 var play_focus_sfx := false
 
@@ -27,9 +27,10 @@ func _on_focus_entered():
 
 func _on_start_pressed():
 	prev_tab = $center/panel/margin/tabs/main/start
+	prev_tab.release_focus()
 	$snd_game.play()
 	await $snd_game.finished
-	get_tree().change_scene_to_packed(game_level_scene)
+	get_tree().change_scene_to_file(game_level_scene_path)
 
 func _on_license_pressed():
 	$snd.play()

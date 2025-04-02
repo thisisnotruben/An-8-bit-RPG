@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://f3o1cwg8v5w5"]
+[gd_scene load_steps=11 format=3 uid="uid://f3o1cwg8v5w5"]
 
 [ext_resource type="Script" uid="uid://rcy2dw7cdo62" path="res://src/ui/start/start.gd" id="1_c8jcb"]
 [ext_resource type="PackedScene" uid="uid://dmq3dmhygcbqv" path="res://src/ui/credits/credits.tscn" id="2_7n7wp"]
+[ext_resource type="AudioStream" uid="uid://tnmfbgwk0b3x" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Switch Sound 6.wav" id="2_hwtpo"]
+[ext_resource type="AudioStream" uid="uid://cmssr5o6ie00u" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Hover Sound 4.wav" id="3_sviy3"]
 [ext_resource type="PackedScene" uid="uid://cr2ovoap8nvfh" path="res://src/ui/license/license.tscn" id="3_yvppn"]
+[ext_resource type="AudioStream" uid="uid://b4awnhtpma8lv" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Error Sound 4.wav" id="4_2xh50"]
 [ext_resource type="PackedScene" uid="uid://bwl7xvxblhy6c" path="res://src/ui/popup/popup.tscn" id="4_hwtpo"]
+[ext_resource type="AudioStream" uid="uid://d0s4s102qhaxo" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Pop-Up Sound 2.wav" id="4_sviy3"]
+[ext_resource type="AudioStream" uid="uid://c3n3qc7sy85jy" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Switch Sound 2.wav" id="5_0vd7s"]
+[ext_resource type="AudioStream" uid="uid://bs4cye3iogclo" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Transition Sound 1.wav" id="7_l2v5a"]
 
 [node name="start" type="Control"]
 layout_mode = 3
@@ -13,20 +19,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c8jcb")
+game_level_scene_path = "uid://bk0u54d0t0epe"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 
 [node name="snd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hwtpo")
 
 [node name="snd_nav" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sviy3")
 
 [node name="snd_game" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2xh50")
 
 [node name="snd_back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0vd7s")
 
 [node name="snd_exit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l2v5a")
 
 [node name="snd_popup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sviy3")
 
 [node name="center" type="CenterContainer" parent="."]
 layout_mode = 1

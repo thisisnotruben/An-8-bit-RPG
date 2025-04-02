@@ -13,16 +13,20 @@ script = ExtResource("1_x4j46")
 [node name="header" type="Label" parent="."]
 layout_mode = 2
 text = "Question?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="hBox" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="yes" type="Button" parent="hBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Yes"
 
 [node name="no" type="Button" parent="hBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "No"
 
 [connection signal="draw" from="." to="." method="_on_draw"]

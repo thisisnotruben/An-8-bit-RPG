@@ -1,7 +1,7 @@
 extends Control
 
 @export var player: Character = null
-@export var start_level_scene: PackedScene = null
+@export_file("*.tscn") var start_level_scene_path := ""
 
 var play_focus_sfx := false
 var dead := false
@@ -16,6 +16,7 @@ var tabs := {"main": 0, "license": 1,
 
 func _ready():
 	$center/panel/margin/tabs/dead.tabs = tabs
+	visibility_changed.connect(_on_visibility_changed)
 	#if player: TODO
 		#player.health_changed.connect(show_death_screen)
 
@@ -53,7 +54,7 @@ func _on_start_menu_pressed(main := true):
 		$center/panel/margin/tabs/popup/hBox/yes.release_focus()
 		await $snd_start.finished
 		get_tree().paused = false
-		get_tree().change_scene_to_packed(start_level_scene)
+		get_tree().change_scene_to_file(start_level_scene_path)
 	else:
 		$snd_back.play()
 		tab.current_tab = tabs["main"]

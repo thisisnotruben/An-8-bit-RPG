@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsoio2u5bfjel"]
+[gd_scene load_steps=11 format=3 uid="uid://bsoio2u5bfjel"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6dgb7"]
-[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/Cyclop_state_machine.tres" id="2_maotf"]
+[ext_resource type="AudioStream" uid="uid://de0ujchwm2a0p" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/06_Large_Humanoid_Idle_1.wav" id="2_2mufq"]
+[ext_resource type="AudioStream" uid="uid://dks0m0xgggf81" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/05_Large_Humanoid_Death.wav" id="2_6gmee"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://6x08pcjq3sfg" path="res://resource/animation_state_machine/Cyclop_state_machine.tres" id="2_maotf"]
+[ext_resource type="Texture2D" uid="uid://bhcjib2n0h21a" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopIdle.png" id="3_f7l3b"]
+[ext_resource type="AudioStream" uid="uid://iviip2thllgr" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/07_Large_Humanoid_Idle_2.wav" id="3_vw54x"]
+[ext_resource type="AudioStream" uid="uid://xpvjrw7ffouf" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/01_Large_Humanoid_Attack_1.wav" id="5_op4p6"]
+[ext_resource type="AudioStream" uid="uid://po5pmu7jekx6" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/02_Large_Humanoid_Attack_2.wav" id="6_3fal6"]
+[ext_resource type="AudioStream" uid="uid://dhgu6eg2r550q" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/03_Large_Humanoid_Damage_1.wav" id="7_1unf6"]
+[ext_resource type="AudioStream" uid="uid://crf3d5jo3gxve" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/04_Large_Humanoid_Damage_2.wav" id="8_ll1qm"]
 
 [node name="Cyclop" instance=ExtResource("1_6dgb7")]
 
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_2mufq"), ExtResource("3_vw54x")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_6gmee")])
+
+[node name="melee" parent="fsm" index="3"]
+melee_snd = Array[AudioStream]([ExtResource("5_op4p6"), ExtResource("6_3fal6")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("7_1unf6"), ExtResource("8_ll1qm")])
+
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_maotf")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(-0.0656064, 0.136986)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_f7l3b")
+frame = 27
