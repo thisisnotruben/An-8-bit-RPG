@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://binehtk3vq6gd"]
+
+[ext_resource type="Texture2D" uid="uid://c8oqj8kd0t2k1" path="res://asset/img/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Menus/Panels_And_Slots/Minifantasy_GuiPanelsAndSlotsOriginal.png" id="1_7cawf"]
+[ext_resource type="Texture2D" uid="uid://cyfxdwtjenr1o" path="res://asset/img/Minifantasy_UserInterface_v1.0/Minifantasy_Userinterface_Assets/Icons/Minifantasy_GuiIcons.png" id="2_xha1h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwiix"]
+atlas = ExtResource("1_7cawf")
+region = Rect2(562, 34, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv54w"]
+atlas = ExtResource("1_7cawf")
+region = Rect2(562, 114, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4fcd"]
+atlas = ExtResource("2_xha1h")
+region = Rect2(24, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu7d7"]
+atlas = SubResource("AtlasTexture_c4fcd")
+
+[node name="button" type="TextureButton"]
+custom_minimum_size = Vector2(60, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -580.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = SubResource("AtlasTexture_jwiix")
+texture_pressed = SubResource("AtlasTexture_mv54w")
+stretch_mode = 5
+
+[node name="center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="icon" type="TextureRect" parent="center"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_wu7d7")
+stretch_mode = 5

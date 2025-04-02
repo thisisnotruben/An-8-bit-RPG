@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://djlrlusexefjw"]
+
+[ext_resource type="PackedScene" uid="uid://d0cdmiiyjhdjd" path="res://src/ui/game/game.tscn" id="3_ku3x6"]
+[ext_resource type="PackedScene" uid="uid://bh6xdkw6tfr6a" path="res://src/character/implemented/centaur.tscn" id="3_lkndg"]
+[ext_resource type="PackedScene" uid="uid://bsoio2u5bfjel" path="res://src/character/implemented/cyclop.tscn" id="4_2gatg"]
+
+[node name="MapTest" type="Node2D"]
+
+[node name="menu_interface" type="CanvasLayer" parent="."]
+
+[node name="game" parent="menu_interface" instance=ExtResource("3_ku3x6")]
+
+[node name="Centaur" parent="." instance=ExtResource("3_lkndg")]
+position = Vector2(41, 49)
+npc = false
+friendly = true
+melee_range = 15.0
+
+[node name="Cyclop" parent="." instance=ExtResource("4_2gatg")]
+position = Vector2(110, 44)
+melee_range = 15.0

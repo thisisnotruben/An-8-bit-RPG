@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://1f2p5rqh3by1"]
+
+[ext_resource type="Script" uid="uid://cy8f1hn7im11u" path="res://src/ui/hud/hud.gd" id="1_jobw0"]
+[ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="2_cvkdw"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jobw0")
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vBox" type="VBoxContainer" parent="margin"]
+layout_mode = 2
+
+[node name="character_status" type="HBoxContainer" parent="margin/vBox"]
+layout_mode = 2
+
+[node name="player" type="HBoxContainer" parent="margin/vBox/character_status"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="target" type="HBoxContainer" parent="margin/vBox/character_status"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="padding" type="Control" parent="margin/vBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="hBox" type="HBoxContainer" parent="margin/vBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="shortcuts" type="HBoxContainer" parent="margin/vBox/hBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="button" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="button2" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="button3" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="button4" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="button5" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="button6" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="scrolls" type="VBoxContainer" parent="margin/vBox/hBox"]
+layout_mode = 2
+theme_override_constants/separation = -5
+alignment = 2
+
+[node name="inventory" parent="margin/vBox/hBox/scrolls" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+
+[node name="menu" parent="margin/vBox/hBox/scrolls" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
