@@ -23,7 +23,7 @@ func spawn_shot(args := {}):
 		node = args["character"]
 		from_character = node
 		node.snd_shoot.play()
-		damage = node.range_damage
+		damage = node.shoot_damage
 
 		var exceptions := []
 		if node.is_in_group("friendly"):

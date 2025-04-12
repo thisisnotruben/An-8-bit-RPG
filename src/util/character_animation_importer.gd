@@ -95,7 +95,6 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 
 	_add_transition(state_machine, "Start", "idle", "")
 	for anim_name_type in anim_name_templates:
-		var transition := AnimationNodeStateMachineTransition.new()
 		match anim_name_type:
 			"idle":
 				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1")
@@ -133,3 +132,12 @@ from: String, to: String, expression: String, at_end := false):
 			transition.switch_mode = AnimationNodeStateMachineTransition.SWITCH_MODE_AT_END
 		transition.advance_expression = expression
 		state_machine.add_transition(from, to, transition)
+
+func make_character_icon(file_path: String, character_name: String):
+	if not ResourceLoader.exists(file_path):
+		print("make_character_icon: [%s] doesn't exist." % file_path)
+		return
+
+	var image := Image.load_from_file(file_path)
+	image.crop(int(FRAME_SIZE.x), int(FRAME_SIZE.y))
+	image.save_png("res://tiled/tileset/character/%s.png" % character_name)

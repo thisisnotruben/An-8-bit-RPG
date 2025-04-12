@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci0fcd3mmwow8"]
+[gd_scene load_steps=4 format=3 uid="uid://ci0fcd3mmwow8"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_stxcp"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b5y52ajx3q4sp" path="res://resource/animation_state_machine/Ranger_state_machine.tres" id="2_ms3wo"]
+[ext_resource type="Texture2D" uid="uid://i6553m3s6ue1" path="res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Idle.png" id="3_ms3wo"]
 
 [node name="Ranger" instance=ExtResource("1_stxcp")]
 
@@ -10,6 +11,12 @@ tree_root = ExtResource("2_ms3wo")
 parameters/attack_diag/blend_position = Vector2(0, 0)
 parameters/attack_orth/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/idle_special/blend_position = Vector2(0, 0)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_ms3wo")
+offset = Vector2(0, -3)
+frame = 4

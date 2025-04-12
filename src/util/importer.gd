@@ -1,410 +1,410 @@
 extends Node
 
-var anim_importer = preload("res://util/character_animation_importer.gd").new()
+var anim_importer = preload("res://src/util/character_animation_importer.gd").new()
 
 var undead_creatures := {
 	"Ghost": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Idle_Fly.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Idle_Fly.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Idle_Fly.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Idle_Fly.png",
 			"time": 200
 		}
 	],
 	"Headless_Skeleton": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Idle_Activate_Deactivate.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Idle_Activate_Deactivate.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Walk.png",
 			"time": 200,
 		}
 	],
 	"Jumping_Skull": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Idle.png",
 			"time": 100
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Jump.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Jump.png",
 			"time": 200
 		}
 	],
 	"Reanimated_Skeleton_Archer": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Idle_Activation_Deactivation.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Idle_Activation_Deactivation.png",
 			"time": 200
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Walk.png",
 			"time": 200
 		}
 	],
 	"Reanimated_Skeleton_Mage": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Cast.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Cast.png",
 			"time": 200,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Idle_Activation_Deactivation.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Idle_Activation_Deactivation.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Walk.png",
 			"time": 200,
 		}
 	],
 	"Reanimated_Skeleton_Warrior": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Idle_Activation_Deactivation.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Idle_Activation_Deactivation.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Walk.png",
 			"time": 200,
 		}
 	],
 	"Reanimated_Zombie_Archer": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Idle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Walk.png",
 			"time": 200
 		}
 	],
 	"Reanimated_Zombie_Mage": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Cast.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Cast.png",
 			"time": 200,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Idle.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Walk.png",
 			"time": 200,
 		}
 	],
 	"Reanimated_Zombie_Warrior": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Idle.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Walk.png",
 			"time": 200,
 		}
 	],
 	"Skeletal_Horse": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Attack_horse.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Attack_horse.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Die_horse.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Die_horse.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Dmg_horse.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Dmg_horse.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Idle_Activation_Deactivation_horse.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Idle_Activation_Deactivation_horse.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Walk_horse.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Walk_horse.png",
 			"time": 200
 		}
 	],
 	"Skeletal_Horse_Rider": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Attack_rider.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Attack_rider.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Die_raider.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Die_raider.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Dmg_raider.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Dmg_raider.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Idle_Activation_Deactivation_raider.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Idle_Activation_Deactivation_raider.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Walk_raider.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Walk_raider.png",
 			"time": 200,
 		}
 	],
 	"Skeleton_Minotaur": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Die.png",
 			"time": 100,
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Dmg_layer 1.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Dmg_layer 1.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Idle_activate_deactivate.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Idle_activate_deactivate.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Walk_layer 2.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Walk_layer 2.png",
 			"time": 200,
 		}
 	],
 	"Zombie_Bear": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Die.png",
 			"time": 100,
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Idle.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Walk.png",
 			"time": 200,
 		}
 	],
 	"Zombie_Giant": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Die.png",
 			"time": 100,
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Dmg.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Dmg.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Idle.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Walk.png",
 			"time": 200,
 		}
 	],
 	"Zombie_Minotaur": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Attack.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Attack.png",
 			"time": 100,
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Die.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Die.png",
 			"time": 100,
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Dmg_flattened.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Dmg_flattened.png",
 			"time": 100,
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Idle.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Idle.png",
 			"time": 200,
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Walk.png",
+			"path": "res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Walk.png",
 			"time": 200,
 		}
 	]
@@ -415,516 +415,516 @@ var creatures := {
 	"Bat": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatFlyIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatFlyIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatFlyIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatFlyIdle.png",
 			"time": 200
 		},
 		{
 			"name": "sleep",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatSleep.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Bat/BatSleep.png",
 			"time": 100
 		}
 	],
 	"Warg": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Warg/WargWalk.png",
 			"time": 200
 		}
 	],
 	"Wolf": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfWalk.png",
 			"time": 200
 		}
 	],
 	"Centaur": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurWalk.png",
 			"time": 200
 		}
 	],
 	"Cyclop": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopWalk.png",
 			"time": 200
 		}
 	],
 	"Evil_Snowman": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanAttack.png",
 			"time": 100
 		},
 		{
 			"name": "spot",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanActivation.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanActivation.png",
 			"time": 100
 		},
 	],
 	"Minotaur": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurWalk.png",
 			"time": 200
 		}
 	],
 	"Pumpkin_Horror": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseIdleActivation.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseIdleActivation.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Pumpkin_Horror/PumpkinHorrorBaseWalk.png",
 			"time": 200
 		}
 	],
 	"Trasgo": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoAttack.png",
 			"time": 100
 		},
 		{
 			"name": "attack2",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoChargedAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoChargedAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoSpinDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoSpinDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Trasgo/TrasgoWalk.png",
 			"time": 200
 		}
 	],
 	"Troll": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Troll/TrollWalk.png",
 			"time": 200
 		}
 	],
 	"Yeti": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiIdle.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiJump.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Yeti/YetiWalk.png",
 			"time": 200
 		}
 	],
 	"Blue_Slime": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeJumpAttack.png",
 			"time": 200
 		},
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeJumpAttack.png",
 			"time": 200
 		}
 	],
 	"Blue_Mother_Slime": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeJumpAttack.png",
 			"time": 200
 		},
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeJumpAttack.png",
 			"time": 200
 		}
 	],
 	"Green_Mother_Slime": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenJumpAttack.png",
 			"time": 200
 		},
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Mother_Slime/MotherSlimeGreenJumpAttack.png",
 			"time": 200
 		}
 	],
 	"Green_Slime": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenJumpAttack.png",
 			"time": 200
 		},
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenJumpAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenJumpAttack.png",
 			"time": 200
 		}
 	],
 	"Skeleton": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Skeleton/SkeletonWalk.png",
 			"time": 200
 		}
 	],
 	"Wildfire": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireFly.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireFly.png",
 			"time": 200
 		}
 	],
 	"Zombie": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieAttack.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieDie.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieDmg.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieIdle.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieWalk.png",
+			"path": "res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Zombie/ZombieWalk.png",
 			"time": 200
 		}
 	]
@@ -934,189 +934,189 @@ var wildlife_aggressive := {
 	"Hyena": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaWalk.png",
 			"time": 100
 		},
 	],
 	"Lion": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionWalk.png",
 			"time": 100
 		},
 	],
 	"Lioness": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessWalk.png",
 			"time": 100
 		},
 	],
 	"Polar_Bear": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearWalk.png",
 			"time": 100
 		},
 	],
 	"Rhino": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoWalk.png",
 			"time": 100
 		},
 	],
 	"Snake": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeCrawling.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeCrawling.png",
 			"time": 100
 		},
 	],
 	"Tiger": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerAttack.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerWalk.png",
 			"time": 100
 		},
 	]
@@ -1127,482 +1127,482 @@ var wildelife_docile := {
 	"Badger": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerWalk.png",
 			"time": 100
 		}
 	],
 	"Camel": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelWalk.png",
 			"time": 100
 		}
 	],
 	"Cat": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatWalk.png",
 			"time": 100
 		}
 	],
 	"Dog": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogWalk.png",
 			"time": 100
 		}
 	],
 	"Elephant": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantWalk.png",
 			"time": 100
 		}
 	],
 	"Frog": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogWalk.png",
 			"time": 100
 		}
 	],
 	"GiantSnail": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle_in",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailInShell.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailInShell.png",
 			"time": 100
 		},
 		{
 			"name": "idle_out",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailOutShell.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailOutShell.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailCrawl.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailCrawl.png",
 			"time": 100
 		}
 	],
 	"Goat": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatWalk.png",
 			"time": 100
 		}
 	],
 	"Hedgehog": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle_spike_out",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesOut.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesOut.png",
 			"time": 100
 		},
 		{
 			"name": "idle_spike_in",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesIn.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesIn.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogWalk.png",
 			"time": 100
 		}
 	],
 	"Hippo": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoWalk.png",
 			"time": 100
 		}
 	],
 	"Horse": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseWalk.png",
 			"time": 100
 		}
 	],
 	"Kangaroo": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooHop.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooHop.png",
 			"time": 100
 		}
 	],
 	"Moose": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseWalk.png",
 			"time": 100
 		}
 	],
 	"Orange_Fox": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxWalk.png",
 			"time": 100
 		}
 	],
 	"Ostrich": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichWalk.png",
 			"time": 100
 		}
 	],
 	"Panda": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDmg.png",
 			"time": 100
 		},
 		{
 			"name": "sleep",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaSleep.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaSleep.png",
 			"time": 100
 		},
 		{
 			"name": "stand_up",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaStandUp.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaStandUp.png",
 			"time": 100
 		},
 		{
 			"name": "lay_down",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaLaydown.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaLaydown.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaWalk.png",
 			"time": 100
 		}
 	],
 	"Platypus": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusWalking.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusWalking.png",
 			"time": 100
 		}
 	],
 	"Polar_Fox": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxIdel.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxIdel.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxWalk.png",
 			"time": 100
 		}
 	],
 	"Skunk": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkWalk.png",
 			"time": 100
 		}
 	],
 	"Squirrel": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelWalk.png",
 			"time": 100
 		}
 	],
 	"Tortoise": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDie.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDmg.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseIdle.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseIdle.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseWalk.png",
+			"path": "res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseWalk.png",
 			"time": 100
 		}
 	]
@@ -1613,238 +1613,238 @@ var myraid_of_npc := {
 	"Alchemist": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png",
 			"time": 100
 		}
 	],
 	"Blacksmith": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWorking.png",
 			"time": 100
 		}
 	],
 	"Butcher": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWorking.png",
 			"time": 100
 		}
 	],
 	"Carpenter": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWorking.png",
 			"time": 100
 		}
 	],
 	"Cooker": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWorking.png",
 			"time": 100
 		}
 	],
 	"Dyer": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWorking.png",
 			"time": 100
 		}
 	],
 	"Furrier": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWorking.png",
 			"time": 100
 		}
 	],
 	"Jeweller": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWalk.png",
 			"time": 200
 		},
 		{
 			"name": "work",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWorking.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWorking.png",
 			"time": 100
 		}
 	],
 	"Tailor": [
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDie.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDmg.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorIdle.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorIdle.png",
 			"time": 200
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_AMyriadOfNPCs_v.1.0/npc/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorWalk.png",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorWalk.png",
 			"time": 200
 		}
 	]
@@ -1856,114 +1856,114 @@ var heros_1 := {
 	"Barbarian": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianAttack.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianDie.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianDmg.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianIdle.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianIdle.png",
 			"time": 100
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianJump.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianWalk.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/General_Animations/Minifantasy_TrueHeroesBarbarianWalk.png",
 			"time": 100
 		},
 		{
 			"name": "battle_cry",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCry.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCry.png",
 			"time": 100
 		},
 		{
 			"name": "battle_cry_back_layer",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCryEffectBackLayer.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCryEffectBackLayer.png",
 			"time": 100
 		},
 		{
 			"name": "battle_cry_front_layer",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCryEffectFrontLayer.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Battle_Cry/Minifantasy_TrueHeroesBarbarianBattleCryEffectFrontLayer.png",
 			"time": 100
 		},
 		{
 			"name": "guard_down",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockGuardDown.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockGuardDown.png",
 			"time": 100
 		},
 		{
 			"name": "guard_up",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockGuardUp.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockGuardUp.png",
 			"time": 100
 		},
 		{
 			"name": "guard_impact",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockImpact.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Guard/Minifantasy_TrueHeroesBarbarianBlockImpact.png",
 			"time": 100
 		},
 		{
 			"name": "throw_things",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Throw_Things/Minifantasy_TrueHeroesBarbarianThrowThings.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Throw_Things/Minifantasy_TrueHeroesBarbarianThrowThings.png",
 			"time": 100
 		},
 		{
 			"name": "Thunder_Blade_Attack",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Barbarian/Special_Animations/Thunder_Blade_Attack/Minifantasy_TrueHeroesBarbarianThunderBlade.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Barbarian/Special_Animations/Thunder_Blade_Attack/Minifantasy_TrueHeroesBarbarianThunderBlade.png",
 			"time": 100
 		}
 	],
 	"Druid":  [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidAttack.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidDie.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidDmg.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidIdle.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidIdle.png",
 			"time": 100
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidJump.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/General_Animations/Minifantasy_TrueHeroesDruidWalk.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/General_Animations/Minifantasy_TrueHeroesDruidWalk.png",
 			"time": 100
 		},
 		{
 			"name": "root_summon",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/Special_Animations/Root_Summoning/Minifantasy_TrueHeroesDruidRootSummoning.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/Special_Animations/Root_Summoning/Minifantasy_TrueHeroesDruidRootSummoning.png",
 			"time": 100
 		},
 		{
 			"name": "root_attack",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Druid/Special_Animations/Root_Summoning/Minifantasy_TrueHeroesDruidRootAttack.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/Special_Animations/Root_Summoning/Minifantasy_TrueHeroesDruidRootAttack.png",
 			"time": 100
 		}
 		# TODO: need shapeshifting animations
@@ -1971,32 +1971,32 @@ var heros_1 := {
 	"Rogue":  [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueAttack.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueDie.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueDmg.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueIdle.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueIdle.png",
 			"time": 100
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueJump.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_v1.0/Minifantasy_TrueHeroes_Assets/Rogue/General_Animations/Minifantasy_TrueHeroesRogueWalk.png",
+			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Rogue/General_Animations/Minifantasy_TrueHeroesRogueWalk.png",
 			"time": 100
 		}
 	],
@@ -2007,126 +2007,126 @@ var heros_2 := {
 	"Bard": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardAttack.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardDie.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardDie.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardDmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_end",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdleEnd.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdleEnd.png",
 			"time": 200
 		},
 		{
 			"name": "idle_start",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdleStart.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardIdleStart.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardJump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardWalk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Bard/General_Animations/BardWalk.png",
 			"time": 200
 		}
 	],
 	"Cleric": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericAttack.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericDie.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericDmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_end",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdleEnd.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdleEnd.png",
 			"time": 200
 		},
 		{
 			"name": "idle_start",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdleStart.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericIdleStart.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericJump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericWalk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Cleric/General_Animations/ClericWalk.png",
 			"time": 200
 		}
 	],
 	"Paladin": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinAttack.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinAttack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinDie.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinDie.png",
 			"time": 200
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinDmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinDmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_end",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdleEnd.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdleEnd.png",
 			"time": 200
 		},
 		{
 			"name": "idle_start",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdleStart.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinIdleStart.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinJump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinJump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinWalk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_II_v1.0/Minifantasy_True_Heroes_II_Assets/Paladin/General_Animations/PaladinWalk.png",
 			"time": 200
 		}
 	]
@@ -2137,116 +2137,116 @@ var heros_3 := {
 	"Fighter": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Attack.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Die.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Dmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Idle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Idle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_special",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Idle_Special.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Idle_Special.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Jump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Jump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_walk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_walk.png",
 			"time": 200
 		}
 	],
 	"Ranger": [
 		{
 			"name": "attack_orth",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_SingleShot_Orthogonal.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_SingleShot_Orthogonal.png",
 			"time": 100
 		},
 		{
 			"name": "attack_diag",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_SingleShot_Diagonal.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_SingleShot_Diagonal.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Die.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Dmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Idle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Idle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_special",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Idle_Special.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Idle_Special.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Jump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_Jump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_walk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Ranger/General_Animations/Ranger_walk.png",
 			"time": 200
 		}
 	],
 	"Wizard": [
 		{
 			"name": "attack",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Attack.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Attack.png",
 			"time": 100
 		},
 		{
 			"name": "die",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Die.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Die.png",
 			"time": 100
 		},
 		{
 			"name": "dmg",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Dmg.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Dmg.png",
 			"time": 100
 		},
 		{
 			"name": "idle",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Idle.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Idle.png",
 			"time": 200
 		},
 		{
 			"name": "idle_special",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Idle_Special.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Idle_Special.png",
 			"time": 200
 		},
 		{
 			"name": "jump",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Jump.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Jump.png",
 			"time": 100
 		},
 		{
 			"name": "walk",
-			"path": "res://img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Walk.png",
+			"path": "res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/General_Animations/Wizard_Walk.png",
 			"time": 200
 		}
 	]
@@ -2265,9 +2265,11 @@ var units := [
 
 
 func _ready():
+	pass
 	#get_unique_anim_type_names()
 	#make_import_library(true)
-	make_state_machines()
+	#make_state_machines()
+	#make_character_icons()
 
 func make_import_library(new_file:= false):
 	var dir_access := DirAccess.open("res://resource/animation/")
@@ -2297,3 +2299,16 @@ func get_unique_anim_type_names():
 			for anim_data in units[i][unit_name]:
 				unique_values[anim_data["name"]] = null
 	print(unique_values.keys())
+
+func make_character_icons():
+	for i in range(units.size()):
+		for unit_name in units[i]:
+			var idle_img_path := ""
+			for anim_data in units[i][unit_name]:
+				if anim_data["name"] == "idle":
+					idle_img_path = anim_data["path"]
+					break
+			if idle_img_path.is_empty():
+				print("make_character_icons: [%s] has no 'idle' anim." % unit_name)
+			else:
+				anim_importer.make_character_icon(idle_img_path, unit_name)

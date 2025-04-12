@@ -29,7 +29,7 @@ const WORLD_LAYER := 0b00000000_00000000_00000000_00000001
 @export_range(0.0, 64.0) var melee_range: float = 1.1
 
 @export_category("Shoot")
-@export_range(1, 10) var range_damage: int = 1
+@export_range(1, 10) var shoot_damage: int = 1
 @export_range(0.0, 64.0) var shoot_range: float = 12.0
 
 @export_category("Hit Flags")
