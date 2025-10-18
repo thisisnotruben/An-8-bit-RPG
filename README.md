@@ -1,4 +1,17 @@
-# TODO
+# An 8-Bit RPG
+A Gurk inspired wanderlust fantasy pixel art rpg game. 
+
+## Screenshots
+
+TODO
+
+## Tools used
+
+- [Godot 4.5.1](https://godotengine.org/)
+- [Tiled](https://www.mapeditor.org/)
+- [Aseprite](https://www.aseprite.org/)
+
+### TODO
 
 - Iterate through characters
 	- apply sfx
@@ -60,3 +73,16 @@ Audio done for:
 - orange fox
 - polar fox
 - wildfire
+
+### sound done
+- goat
+- horse
+- bat
+- cat
+- dog
+- frog
+- lion
+- lioness
+- elephant
+- hedgehog
+- wolf
