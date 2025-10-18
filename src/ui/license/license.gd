@@ -20,7 +20,7 @@ func _on_redirect_pressed():
 	$snd.play()
 	await $snd.finished
 #	TODO
-	OS.shell_open("https://github.com/thisisnotruben/Starship-Invasion/blob/main/LICENSE.md")
+	OS.shell_open("https://github.com/thisisnotruben/An-8-bit-RPG/blob/main/LICENSE.md")
 
 func _on_focus_entered():
 	if play_focus_sfx:
