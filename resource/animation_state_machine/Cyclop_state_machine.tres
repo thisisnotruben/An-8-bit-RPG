@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=41 format=3 uid="uid://6x08pcjq3sfg"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=41 format=3]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jinbw"]
 animation = &"Cyclop/attack_down_right"
@@ -180,16 +180,15 @@ advance_expression = "fsm.state == 6"
 
 [resource]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_l2ujp")
-states/attack/position = Vector2(714, 238)
+states/attack/position = Vector2(384, 256)
 states/die/node = SubResource("AnimationNodeAnimation_tj5vw")
-states/die/position = Vector2(513, 93)
+states/die/position = Vector2(384, 192)
 states/dmg/node = SubResource("AnimationNodeBlendSpace2D_t4nil")
-states/dmg/position = Vector2(513, 169)
+states/dmg/position = Vector2(384, 320)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_5vn1c")
-states/idle/position = Vector2(384, 243)
+states/idle/position = Vector2(384, 384)
 states/jump/node = SubResource("AnimationNodeBlendSpace2D_x370o")
-states/jump/position = Vector2(280, 380)
+states/jump/position = Vector2(384, 448)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_26kif")
-states/walk/position = Vector2(714, 372)
+states/walk/position = Vector2(384, 512)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_f7lb4"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_ebn2c"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_ep0ke"), "attack", "dmg", SubResource("AnimationNodeStateMachineTransition_uexxo"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_udu6x"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_03hkv"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_c3pqf"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_6qwc7"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_piwnp"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_56rxn"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_q0xum"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_n5lpk"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_xkein"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_lx33q")]
-graph_offset = Vector2(0, 168.96)

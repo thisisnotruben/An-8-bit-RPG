@@ -1,11 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://da5eun3u27lry"]
+[gd_scene load_steps=12 format=3 uid="uid://da5eun3u27lry"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_x5b32"]
+[ext_resource type="AudioStream" uid="uid://8j262l3kyucc" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Idle_1.wav" id="2_m31sy"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://3r6yad7apulh" path="res://resource/animation_state_machine/Lioness_state_machine.tres" id="2_t1tpc"]
+[ext_resource type="AudioStream" uid="uid://bdj6qd64vob22" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Idle_2.wav" id="3_s7rvg"]
+[ext_resource type="AudioStream" uid="uid://85dkh56ucuvj" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Lion/Lion_Walk_Loop.wav" id="4_piedg"]
+[ext_resource type="AudioStream" uid="uid://dr7nx4wow74ct" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Death.wav" id="4_s7rvg"]
+[ext_resource type="AudioStream" uid="uid://0oo0iw1yqmdw" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Attack_1.wav" id="5_ew4fx"]
+[ext_resource type="Texture2D" uid="uid://42qk0d7i47d4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessIdle.png" id="5_v6qh8"]
+[ext_resource type="AudioStream" uid="uid://undul5wilcua" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Attack_2.wav" id="6_7k600"]
+[ext_resource type="AudioStream" uid="uid://c16tj7wmanmqt" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Damage_1.wav" id="7_7sq3w"]
+[ext_resource type="AudioStream" uid="uid://c2sdryskkoaoa" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Tiger/Tiger_Damage_2.wav" id="8_piedg"]
 
 [node name="Lioness" instance=ExtResource("1_x5b32")]
 
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_m31sy"), ExtResource("3_s7rvg")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("4_piedg")])
+quips = Array[AudioStream]([ExtResource("2_m31sy"), ExtResource("3_s7rvg")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("4_s7rvg")])
+
+[node name="melee" parent="fsm" index="3"]
+quips = Array[AudioStream]([ExtResource("5_ew4fx"), ExtResource("6_7k600")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("7_7sq3w"), ExtResource("8_piedg")])
+
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_t1tpc")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("5_v6qh8")
+hframes = 12
+frame = 9

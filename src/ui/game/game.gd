@@ -1,17 +1,18 @@
 extends Control
 
+const tabs := {"main": 0, "license": 1,
+"credits": 2, "popup": 3, "daed": 4}
+
 @export var player: Character = null
 @export_file("*.tscn") var start_level_scene_path := ""
 
 var play_focus_sfx := false
 var dead := false
+var hovered_control: Control = null
 
 @onready var tab: TabContainer = $center/panel/margin/tabs
 @onready var popup: Control = $center/panel/margin/tabs/popup
 @onready var prev_tab: Control = $center/panel/margin/tabs/main/resume_game
-
-var tabs := {"main": 0, "license": 1,
-"credits": 2, "popup": 3, "daed": 4}
 
 
 func _ready():
@@ -31,14 +32,28 @@ func _input(event: InputEvent):
 			$snd_pause.play()
 		else:
 			$snd_resume.play()
-	elif event.is_action_pressed("ui_cancel") \
-	and [tabs["license"], tabs["credits"], tabs["popup"]] \
-	.has(tab.current_tab):
-		_on_back_pressed()
+	elif event.is_action_pressed("ui_cancel"):
+		match tab.current_tab:
+			tabs["license"], tabs["credits"]:
+				_on_back_pressed()
+			tabs["popup"]:
+				popup._on_no_pressed()
 
 func _on_focus_entered():
 	if play_focus_sfx:
 		$snd_nav.play()
+
+func _on_mouse_entered(source: Control):
+	if source != null:
+		hovered_control = source
+		source.grab_focus()
+		source.release_focus()
+
+func _on_mouse_exited():
+	if hovered_control != null:
+		play_focus_sfx = false
+		hovered_control.grab_focus()
+		play_focus_sfx = true
 
 func _on_resume_game_pressed():
 	$snd_resume.play()

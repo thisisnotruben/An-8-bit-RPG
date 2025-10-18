@@ -2,6 +2,7 @@ extends Node
 class_name Item
 
 enum Type {
+	NOT_SET,
 	HEALTH,
 	FORTIFY,
 	KEY,
@@ -9,8 +10,11 @@ enum Type {
 	ARMOR,
 }
 
-@export var type := -1
+@export var type := Type.NOT_SET
+@export var item_name := ""
+@export var blurb := ""
 @export var icon: Texture = null
+@export var worth: int = 0
 
 
 func _on_area_body_entered(body: Node2D):

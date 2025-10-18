@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0cdmiiyjhdjd"]
+[gd_scene load_steps=15 format=3 uid="uid://d0cdmiiyjhdjd"]
 
 [ext_resource type="Script" uid="uid://bdleug2vch613" path="res://src/ui/game/game.gd" id="1_n8ugx"]
 [ext_resource type="PackedScene" uid="uid://cr2ovoap8nvfh" path="res://src/ui/license/license.tscn" id="2_o3acu"]
@@ -13,10 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://f3o1cwg8v5w5" path="res://src/ui/start/start.tscn" id="6_t67ik"]
 [ext_resource type="AudioStream" uid="uid://bs4cye3iogclo" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Transition Sound 1.wav" id="7_rgo1i"]
 [ext_resource type="AudioStream" uid="uid://d0s4s102qhaxo" path="res://asset/snd/10043-Game-Mechanical-Interface-Sound-Effects-Pack/10043 - Game Mechanical Interface Sound Effects Pack/Game Interface Mechanical Pop-Up Sound 2.wav" id="7_y5rvc"]
+[ext_resource type="Texture2D" uid="uid://chgu5ijacoge" path="res://resource/texture_menu_bg.tres" id="9_ul2n1"]
 
 [node name="game" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +52,15 @@ stream = ExtResource("7_rgo1i")
 [node name="snd_popup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_y5rvc")
 
+[node name="colorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
 [node name="center" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -63,8 +72,20 @@ grow_vertical = 2
 [node name="panel" type="PanelContainer" parent="center"]
 layout_mode = 2
 
+[node name="nine_patch" type="NinePatchRect" parent="center/panel"]
+layout_mode = 2
+texture = ExtResource("9_ul2n1")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [node name="margin" type="MarginContainer" parent="center/panel"]
 layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
 
 [node name="tabs" type="TabContainer" parent="center/panel/margin"]
 layout_mode = 2
@@ -73,39 +94,66 @@ tabs_visible = false
 
 [node name="main" type="VBoxContainer" parent="center/panel/margin/tabs"]
 layout_mode = 2
+alignment = 1
 metadata/_tab_index = 0
 
 [node name="resume_game" type="Button" parent="center/panel/margin/tabs/main"]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../exit")
 text = "Resume"
 
 [node name="start_menu" type="Button" parent="center/panel/margin/tabs/main"]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Start Menu"
 
 [node name="grid" type="GridContainer" parent="center/panel/margin/tabs/main"]
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 2
 
 [node name="controls" type="Button" parent="center/panel/margin/tabs/main/grid"]
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Button_half"
 text = "Controls"
 
 [node name="settings" type="Button" parent="center/panel/margin/tabs/main/grid"]
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Button_half"
 text = "Settings"
 
 [node name="license" type="Button" parent="center/panel/margin/tabs/main/grid"]
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Button_half"
 text = "License"
 
 [node name="credits" type="Button" parent="center/panel/margin/tabs/main/grid"]
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Button_half"
 text = "Credits"
 
 [node name="exit" type="Button" parent="center/panel/margin/tabs/main"]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_neighbor_bottom = NodePath("../resume_game")
 text = "Exit Game"
 
@@ -134,20 +182,40 @@ metadata/_tab_index = 4
 
 [connection signal="draw" from="center/panel/margin/tabs/main" to="." method="_on_main_draw"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/resume_game" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/resume_game" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/resume_game" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="center/panel/margin/tabs/main/resume_game" to="." method="_on_resume_game_pressed"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/start_menu" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/start_menu" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/start_menu" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="center/panel/margin/tabs/main/start_menu" to="." method="_on_start_menu_pressed"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/controls" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/grid/controls" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/grid/controls" to="." method="_on_mouse_exited"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/settings" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/grid/settings" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/grid/settings" to="." method="_on_mouse_exited"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="center/panel/margin/tabs/main/grid/license" to="." method="_on_license_pressed"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="center/panel/margin/tabs/main/grid/credits" to="." method="_on_credits_pressed"]
 [connection signal="focus_entered" from="center/panel/margin/tabs/main/exit" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="center/panel/margin/tabs/main/exit" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="center/panel/margin/tabs/main/exit" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="center/panel/margin/tabs/main/exit" to="." method="_on_exit_pressed"]
 [connection signal="back_pressed" from="center/panel/margin/tabs/license" to="." method="_on_back_pressed"]
 [connection signal="subcontrol_focused" from="center/panel/margin/tabs/license" to="." method="_on_focus_entered"]
+[connection signal="subcontrol_mouse_entered" from="center/panel/margin/tabs/license" to="." method="_on_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="center/panel/margin/tabs/license" to="." method="_on_mouse_exited"]
 [connection signal="back_pressed" from="center/panel/margin/tabs/credits" to="." method="_on_back_pressed"]
 [connection signal="subcontrol_focused" from="center/panel/margin/tabs/credits" to="." method="_on_focus_entered"]
+[connection signal="subcontrol_mouse_entered" from="center/panel/margin/tabs/credits" to="." method="_on_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="center/panel/margin/tabs/credits" to="." method="_on_mouse_exited"]
 [connection signal="subcontrol_focused" from="center/panel/margin/tabs/popup" to="." method="_on_focus_entered"]
+[connection signal="subcontrol_mouse_entered" from="center/panel/margin/tabs/popup" to="." method="_on_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="center/panel/margin/tabs/popup" to="." method="_on_mouse_exited"]
 [connection signal="subcontrol_focused" from="center/panel/margin/tabs/dead" to="." method="_on_focus_entered"]

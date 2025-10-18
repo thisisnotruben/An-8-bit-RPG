@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs1qug54ptxdt"]
+[gd_scene load_steps=7 format=3 uid="uid://bs1qug54ptxdt"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_tt8bw"]
+[ext_resource type="AudioStream" uid="uid://ydym3pb6w4fa" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Hedgehog/Hedgehog_Death.wav" id="2_ckcbe"]
+[ext_resource type="AudioStream" uid="uid://bu5n30qc2tin7" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Small_Animal/Small_Animal_Loop.wav" id="2_g2bnn"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://sjtngnmrl1sd" path="res://resource/animation_state_machine/Hedgehog_state_machine.tres" id="2_ivbpg"]
+[ext_resource type="AudioStream" uid="uid://34euowdtxiiu" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Hedgehog/Hedgehog_Walk_Loop.wav" id="3_77lor"]
+[ext_resource type="AudioStream" uid="uid://djf1bc1ayeenm" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Small_Animal/Small_Animal_Damage.wav" id="3_ax03p"]
 
 [node name="Hedgehog" instance=ExtResource("1_tt8bw")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_g2bnn")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("3_77lor")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_ckcbe")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("3_ax03p")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_ivbpg")
@@ -11,3 +27,6 @@ parameters/dmg/blend_position = Vector2(0, 0)
 parameters/idle_spike_in/blend_position = Vector2(0, 0)
 parameters/idle_spike_out/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+frame = 0

@@ -1,11 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://p76av1n7w41n"]
+[gd_scene load_steps=7 format=3 uid="uid://p76av1n7w41n"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_c47lw"]
+[ext_resource type="AudioStream" uid="uid://4n6coxsq2av6" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Goat/Goat_1.wav" id="2_6eyvj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c7ddalris2jbp" path="res://resource/animation_state_machine/Goat_state_machine.tres" id="2_hobn2"]
+[ext_resource type="AudioStream" uid="uid://dwgunkmelo3ar" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Goat/Goat_2.wav" id="3_5l1wq"]
+[ext_resource type="AudioStream" uid="uid://cc1wmvyus2x56" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Goat/Goat_3.wav" id="4_51guv"]
+[ext_resource type="Texture2D" uid="uid://5irlwv718ib0" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatIdle.png" id="6_2wk33"]
 
 [node name="Goat" instance=ExtResource("1_c47lw")]
 
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_6eyvj"), ExtResource("3_5l1wq"), ExtResource("4_51guv")])
+
+[node name="move" parent="fsm" index="1"]
+quips = Array[AudioStream]([ExtResource("2_6eyvj"), ExtResource("3_5l1wq"), ExtResource("4_51guv")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_6eyvj"), ExtResource("3_5l1wq"), ExtResource("4_51guv")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("2_6eyvj"), ExtResource("3_5l1wq"), ExtResource("4_51guv")])
+
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_hobn2")
-parameters/dmg/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(-0.204666, 0.212766)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("6_2wk33")
+frame = 2

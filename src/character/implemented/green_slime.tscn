@@ -1,11 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://7ll6llwlw7ts"]
+[gd_scene load_steps=8 format=3 uid="uid://7ll6llwlw7ts"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_7w51o"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cjiifsbkhlwyr" path="res://resource/animation_state_machine/Green_Slime_state_machine.tres" id="2_2a2c7"]
+[ext_resource type="AudioStream" uid="uid://bk63v3b85phqt" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/03_Slime_idle.wav" id="2_avlu8"]
+[ext_resource type="AudioStream" uid="uid://deem8m0ynm5sg" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/04_Slime_jump.wav" id="3_cj5fn"]
+[ext_resource type="AudioStream" uid="uid://b3kx8fynibsoe" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/02_Slime_death.wav" id="4_vplp6"]
+[ext_resource type="AudioStream" uid="uid://b87u2wpyw5n8i" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Slime/01_Slime_damage.wav" id="5_rn2ma"]
+[ext_resource type="Texture2D" uid="uid://e2kvdq1wwdrk" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Green_Slime/SlimeGreenIdle.png" id="7_21dds"]
 
 [node name="Green_Slime" instance=ExtResource("1_7w51o")]
 
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_avlu8")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("3_cj5fn")])
+quips = Array[AudioStream]([ExtResource("2_avlu8")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("4_vplp6")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("5_rn2ma")])
+
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_2a2c7")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("7_21dds")
+hframes = 8
+frame = 2

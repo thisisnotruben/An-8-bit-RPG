@@ -39,7 +39,7 @@ func spawn_shot(args := {}):
 
 		node.add_sibling(self)
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if not hit:
 		if ray.is_colliding():
 			if anim.has_animation(anim_name):

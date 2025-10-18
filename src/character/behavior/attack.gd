@@ -2,6 +2,7 @@ extends BehaviorState
 
 @onready var melee_timer: Timer = $melee_cooldown
 @onready var shoot_timer: Timer = $shoot_cooldown
+@onready var spell_checker: SpellChecker = $spell_checker
 
 @export var nav_agent: NavigationAgent2D = null
 var melee_cooldown := false
@@ -23,7 +24,7 @@ func process(_delta: float):
 	character.hit_scan_melee.look_at(character.target.global_position)
 	character.hit_scan_shoot.look_at(character.target.global_position)
 	state = -1
-	spell_call = can_cast_spell()
+	spell_call = spell_checker.can_cast_spell()
 
 	# check if can cast spell
 	if spell_call[0]:
@@ -64,7 +65,3 @@ func _on_melee_cooldown_timeout():
 
 func _on_shoot_cooldown_timeout():
 	shoot_cooldown = false
-
-func can_cast_spell() -> Array:
-#	polymorphous method meant to be overridden
-	return [false, -1]

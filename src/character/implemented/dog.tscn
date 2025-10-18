@@ -1,11 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://gest24decuoo"]
+[gd_scene load_steps=15 format=3 uid="uid://gest24decuoo"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_fh54a"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bktxmi8rmkwdy" path="res://resource/animation_state_machine/Dog_state_machine.tres" id="2_88ffn"]
+[ext_resource type="AudioStream" uid="uid://bywmu536w4d87" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Death.wav" id="2_mhmm8"]
+[ext_resource type="AudioStream" uid="uid://cqedkad83wdan" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Bark_1.wav" id="2_ngb5l"]
+[ext_resource type="AudioStream" uid="uid://bbw2lj1127op2" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Bark_2.wav" id="3_dljtw"]
+[ext_resource type="AudioStream" uid="uid://g002k3f1m5a6" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Damage_1.wav" id="3_hwjf4"]
+[ext_resource type="AudioStream" uid="uid://db34kiqdl0m31" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Damage_2.wav" id="4_pvlnu"]
+[ext_resource type="AudioStream" uid="uid://xspd4ttdmfjt" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Bark_3.wav" id="4_t0v3w"]
+[ext_resource type="AudioStream" uid="uid://0q06cmph1wsi" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Idle_Growl_1.wav" id="5_lurqy"]
+[ext_resource type="AudioStream" uid="uid://dbyfqgh2vnhfv" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Idle_Growl_2.wav" id="6_f87ow"]
+[ext_resource type="Texture2D" uid="uid://oy86dfflhloy" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogIdle.png" id="6_t1tqc"]
+[ext_resource type="AudioStream" uid="uid://cvtmp7mkbibw0" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Idle_Loop.wav" id="7_27a1b"]
+[ext_resource type="AudioStream" uid="uid://bcbhuy34psee2" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Idle_Sniffing.wav" id="8_lfan5"]
+[ext_resource type="AudioStream" uid="uid://box1f85tkx22u" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Dog/Dog_Walk_Loop.wav" id="9_dljtw"]
 
 [node name="Dog" instance=ExtResource("1_fh54a")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_ngb5l"), ExtResource("3_dljtw"), ExtResource("4_t0v3w"), ExtResource("5_lurqy"), ExtResource("6_f87ow"), ExtResource("7_27a1b"), ExtResource("8_lfan5")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("9_dljtw")])
+quips = Array[AudioStream]([ExtResource("2_ngb5l"), ExtResource("3_dljtw"), ExtResource("4_t0v3w"), ExtResource("5_lurqy"), ExtResource("6_f87ow"), ExtResource("7_27a1b"), ExtResource("8_lfan5")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_mhmm8")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("3_hwjf4"), ExtResource("4_pvlnu")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_88ffn")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("6_t1tqc")
+hframes = 12
+frame = 0

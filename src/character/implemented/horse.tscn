@@ -1,11 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://dictecdvqt8sv"]
+[gd_scene load_steps=15 format=3 uid="uid://dictecdvqt8sv"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_n3y1n"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://5pyd4ae107yd" path="res://resource/animation_state_machine/Horse_state_machine.tres" id="2_03da1"]
+[ext_resource type="AudioStream" uid="uid://c2o6rqfgdawc5" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Neigh_1.wav" id="2_8oh8n"]
+[ext_resource type="AudioStream" uid="uid://cyqmdowoi1jvf" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Death.wav" id="2_qw6lt"]
+[ext_resource type="Texture2D" uid="uid://bqt3uvlb08lt1" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseIdle.png" id="3_03da1"]
+[ext_resource type="AudioStream" uid="uid://bm8gqy56ayakl" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Neigh_2.wav" id="3_7byhd"]
+[ext_resource type="AudioStream" uid="uid://dkkai2nnd5d13" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Neigh_3.wav" id="4_o75p6"]
+[ext_resource type="AudioStream" uid="uid://w1kym1fbsyot" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Snort_1.wav" id="5_i0s11"]
+[ext_resource type="AudioStream" uid="uid://7u8jchthhhvi" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Snort_2.wav" id="6_uw2ob"]
+[ext_resource type="AudioStream" uid="uid://ccebskrrkegm6" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Snort_3.wav" id="7_mb5ft"]
+[ext_resource type="AudioStream" uid="uid://xkkdcnowpdcn" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Snort_4.wav" id="8_nmuxj"]
+[ext_resource type="AudioStream" uid="uid://dgjckgaw84psl" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Gallop_1_Loop.wav" id="9_i0s11"]
+[ext_resource type="AudioStream" uid="uid://dltruyco35apm" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Gallop_2_Loop.wav" id="10_uw2ob"]
+[ext_resource type="AudioStream" uid="uid://dmk1r5vm7mjse" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Horse/Horse_Gallop_3_Loop.wav" id="11_mb5ft"]
 
 [node name="Horse" instance=ExtResource("1_n3y1n")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_8oh8n"), ExtResource("3_7byhd"), ExtResource("4_o75p6"), ExtResource("5_i0s11"), ExtResource("6_uw2ob"), ExtResource("7_mb5ft"), ExtResource("8_nmuxj")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("9_i0s11"), ExtResource("10_uw2ob"), ExtResource("11_mb5ft")])
+quips = Array[AudioStream]([ExtResource("9_i0s11"), ExtResource("10_uw2ob"), ExtResource("11_mb5ft"), ExtResource("2_8oh8n"), ExtResource("3_7byhd"), ExtResource("4_o75p6"), ExtResource("5_i0s11"), ExtResource("6_uw2ob"), ExtResource("7_mb5ft"), ExtResource("8_nmuxj")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_qw6lt")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("2_8oh8n"), ExtResource("3_7byhd"), ExtResource("4_o75p6"), ExtResource("5_i0s11"), ExtResource("6_uw2ob"), ExtResource("7_mb5ft"), ExtResource("8_nmuxj")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_03da1")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_03da1")
+hframes = 12
+frame = 3

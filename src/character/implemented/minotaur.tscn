@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmy10q3dmw23h"]
+[gd_scene load_steps=4 format=3 uid="uid://cmy10q3dmw23h"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_m5lrl"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://du3wyspvlnd7p" path="res://resource/animation_state_machine/Minotaur_state_machine.tres" id="2_ys575"]
+[ext_resource type="Texture2D" uid="uid://qosdgbxr3ip2" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Minotaur/MinotaurIdle.png" id="3_ys575"]
 
 [node name="Minotaur" instance=ExtResource("1_m5lrl")]
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_ys575")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("3_ys575")
+frame = 2

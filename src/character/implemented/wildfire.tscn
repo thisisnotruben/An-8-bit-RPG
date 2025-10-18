@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cds3ub26sbj5g"]
+[gd_scene load_steps=8 format=3 uid="uid://cds3ub26sbj5g"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_p7hek"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://lm33da83i767" path="res://resource/animation_state_machine/Wildfire_state_machine.tres" id="2_ee8uc"]
+[ext_resource type="AudioStream" uid="uid://3vullx0gofy2" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Wildfire/04_Wildfire_Idle_Loop.wav" id="2_tlgdd"]
+[ext_resource type="AudioStream" uid="uid://7rq4rmdkgd4r" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Wildfire/03_Wildfire_Fly_Loop.wav" id="3_hriql"]
+[ext_resource type="AudioStream" uid="uid://dpdi26seobj5w" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Wildfire/02_Wildfire_Death.wav" id="4_vyldc"]
+[ext_resource type="AudioStream" uid="uid://dd1f8tsu4njxw" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Monsters/Wildfire/01_Wildfire_Damage.wav" id="5_wo816"]
+[ext_resource type="Texture2D" uid="uid://cuqe0vwbxt0au" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Undead/Wildfire/WildfireIdle.png" id="7_ja05h"]
 
 [node name="Wildfire" instance=ExtResource("1_p7hek")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_tlgdd")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("3_hriql")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("4_vyldc")])
+
+[node name="melee" parent="fsm" index="3"]
+quips = Array[AudioStream]([ExtResource("5_wo816")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("5_wo816")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_ee8uc")
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("7_ja05h")
+hframes = 4
+vframes = 1
+frame = 2

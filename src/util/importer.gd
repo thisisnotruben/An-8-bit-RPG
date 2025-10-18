@@ -2252,6 +2252,94 @@ var heros_3 := {
 	]
 }
 
+var customs := {
+	"Orc_Green_Axe": [
+		{
+			"name": "die",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-dmg.png",
+			"time": 100
+		},
+		{
+			"name": "hit",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-hit.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-idle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-walk.png",
+			"time": 100
+		}
+	],
+	"Orc_Green_Bow": [
+		{
+			"name": "die",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-dmg.png",
+			"time": 100
+		},
+		{
+			"name": "hit",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-shot.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-idle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-walk.png",
+			"time": 100
+		}
+	],
+	"Orc_Green_Spear": [
+		{
+			"name": "die",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-dmg.png",
+			"time": 100
+		},
+		{
+			"name": "hit",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-hit.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-idle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-walk.png",
+			"time": 100
+		}
+	],
+}
+
+var exclusives := {
+
+}
+
 var units := [
 	undead_creatures,
 	creatures,
@@ -2261,14 +2349,15 @@ var units := [
 	heros_1,
 	heros_2,
 	heros_3,
+	customs,
+	exclusives,
 ]
 
 
 func _ready():
-	pass
 	#get_unique_anim_type_names()
-	#make_import_library(true)
-	#make_state_machines()
+	make_import_library(true)
+	make_state_machines()
 	#make_character_icons()
 
 func make_import_library(new_file:= false):

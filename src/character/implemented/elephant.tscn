@@ -1,11 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfj3j6lrc77jv"]
+[gd_scene load_steps=10 format=3 uid="uid://dfj3j6lrc77jv"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_mlb6b"]
+[ext_resource type="AudioStream" uid="uid://dxcy3phxa7eh7" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Death.wav" id="2_3ebk7"]
+[ext_resource type="AudioStream" uid="uid://dintu21xqvt7b" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Idle_1.wav" id="2_74vdh"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://g8u1yx35mayk" path="res://resource/animation_state_machine/Elephant_state_machine.tres" id="2_imbwj"]
+[ext_resource type="AudioStream" uid="uid://c4vim64i5blp4" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Idle_2.wav" id="3_3fg6d"]
+[ext_resource type="AudioStream" uid="uid://x8fj5r3w78pp" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Damage_1.wav" id="3_atdy4"]
+[ext_resource type="AudioStream" uid="uid://mv48kf2u34q3" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Walk_Loop.wav" id="4_3fg6d"]
+[ext_resource type="AudioStream" uid="uid://byks254ih1y4d" path="res://asset/snd/Leohpaz_ExoticAnimals_SFX/Elephant/Elephant_Damage_2.wav" id="4_74vdh"]
+[ext_resource type="Texture2D" uid="uid://wig32yiocnif" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantIdle.png" id="6_3fg6d"]
 
 [node name="Elephant" instance=ExtResource("1_mlb6b")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_74vdh"), ExtResource("3_3fg6d")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("4_3fg6d")])
+quips = Array[AudioStream]([ExtResource("2_74vdh"), ExtResource("3_3fg6d")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_3ebk7")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("3_atdy4"), ExtResource("4_74vdh")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_imbwj")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("6_3fg6d")
+hframes = 12
+frame = 10

@@ -1,11 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://pme5lbpbu5r8"]
+[gd_scene load_steps=7 format=3 uid="uid://pme5lbpbu5r8"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_vlj86"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dhqmsbahmymvt" path="res://resource/animation_state_machine/Frog_state_machine.tres" id="2_1chqi"]
+[ext_resource type="AudioStream" uid="uid://b4xr68m00fgfe" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Frog/Frog_Walk.wav" id="2_f5cli"]
+[ext_resource type="AudioStream" uid="uid://mh06cg3b3o0f" path="res://asset/snd/LEOHPAZ_OtherwordlyCreatures_SFX/SwampWitch/Frog_Die.wav" id="2_nohes"]
+[ext_resource type="AudioStream" uid="uid://bego275laquwn" path="res://asset/snd/LEOHPAZ_OtherwordlyCreatures_SFX/SwampWitch/Frog_Damage.wav" id="3_1ow1u"]
+[ext_resource type="Texture2D" uid="uid://08ycigq62k10" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogIdle.png" id="4_1ow1u"]
 
 [node name="Frog" instance=ExtResource("1_vlj86")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_f5cli")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("2_f5cli")])
+quips = Array[AudioStream]([ExtResource("2_nohes")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_nohes")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("3_1ow1u")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_1chqi")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("4_1ow1u")
+frame = 4

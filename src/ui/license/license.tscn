@@ -6,6 +6,8 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -31.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aijje")
@@ -26,17 +28,29 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="redirect" type="Button" parent="."]
+custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_neighbor_top = NodePath("../back")
+mouse_default_cursor_shape = 2
+theme_type_variation = &"Button_long"
 text = "License link redirect"
 
 [node name="back" type="Button" parent="."]
+custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 focus_neighbor_bottom = NodePath("../redirect")
 text = "Back"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="focus_entered" from="redirect" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="redirect" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="redirect" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="redirect" to="." method="_on_redirect_pressed"]
 [connection signal="focus_entered" from="back" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="back" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="back" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

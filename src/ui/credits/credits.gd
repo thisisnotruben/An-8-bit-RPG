@@ -4,6 +4,8 @@ var play_focus_sfx := false
 
 signal back_pressed
 signal subcontrol_focused
+signal subcontrol_mouse_entered(source)
+signal subcontrol_mouse_exited
 
 
 func _on_back_pressed():
@@ -17,8 +19,15 @@ func _on_draw():
 func _on_redirect_pressed():
 	$snd.play()
 	await $snd.finished
+#	TODO
 	OS.shell_open("https://github.com/thisisnotruben/Starship-Invasion")
 
 func _on_focus_entered():
 	if play_focus_sfx:
 		subcontrol_focused.emit()
+
+func _on_mouse_entered(source: Control):
+	subcontrol_mouse_entered.emit(source)
+
+func _on_mouse_exited():
+	subcontrol_mouse_exited.emit()

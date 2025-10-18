@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=34 format=3 uid="uid://dx4u14ectwcej"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=34 format=3]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5uc2n"]
 animation = &"Blue_Slime/attack_down_right"
@@ -148,13 +148,13 @@ advance_expression = "fsm.state == 6"
 
 [resource]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_j3671")
-states/attack/position = Vector2(806, 440)
+states/attack/position = Vector2(384, 448)
 states/die/node = SubResource("AnimationNodeAnimation_xmb8e")
-states/die/position = Vector2(388, 45)
+states/die/position = Vector2(384, 192)
 states/dmg/node = SubResource("AnimationNodeBlendSpace2D_ncedx")
-states/dmg/position = Vector2(586, 112)
+states/dmg/position = Vector2(384, 256)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_jj0g3")
-states/idle/position = Vector2(277, 208)
+states/idle/position = Vector2(384, 320)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_cgux8")
-states/walk/position = Vector2(344, 391)
+states/walk/position = Vector2(384, 384)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1joub"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_iqsdq"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_mu70s"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_fv78r"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_51wjm"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_dyarg"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ael7d"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_3swbw"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_gc0h4"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_b38er"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_ykqam"), "attack", "dmg", SubResource("AnimationNodeStateMachineTransition_by7rg")]

@@ -3,7 +3,7 @@ extends Node
 const FRAME_SIZE := Vector2(32.0, 32.0)
 const FRAME_DIRECTION_SEQ := ["down_right", "down_left", "right_up", "left_up"]
 const FACING := [Vector2(0.1, 0.2), Vector2(-0.2, 0.2), Vector2(0.1, -0.2), Vector2(-0.2, -0.2)]
-const LOOPABLE_ANIM := ["move", "idle"]
+const LOOPABLE_ANIM := ["move", "idle", "walk"]
 
 
 func import_anim_file(file_path: String, anim_base_name: String,

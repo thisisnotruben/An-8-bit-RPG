@@ -517,5 +517,44 @@
    <wangtile tileid="1993" wangid="1,1,0,0,0,0,0,1"/>
    <wangtile tileid="1994" wangid="0,0,0,0,0,0,0,1"/>
   </wangset>
+  <wangset name="grass-dry-dirt" type="mixed" tile="-1">
+   <wangcolor name="" color="#ff0000" tile="-1" probability="1"/>
+   <wangtile tileid="1520" wangid="1,1,1,1,1,1,1,1"/>
+   <wangtile tileid="1521" wangid="1,1,1,1,1,1,1,1"/>
+   <wangtile tileid="1522" wangid="1,1,1,1,1,1,1,1"/>
+   <wangtile tileid="1523" wangid="0,0,0,1,0,0,0,0"/>
+   <wangtile tileid="1524" wangid="0,0,0,1,1,1,0,0"/>
+   <wangtile tileid="1525" wangid="0,0,0,0,0,1,0,0"/>
+   <wangtile tileid="1592" wangid="0,1,1,1,0,0,0,0"/>
+   <wangtile tileid="1593" wangid="1,1,1,1,1,1,1,1"/>
+   <wangtile tileid="1594" wangid="0,0,0,0,0,1,1,1"/>
+   <wangtile tileid="1661" wangid="0,1,0,0,0,0,0,0"/>
+   <wangtile tileid="1662" wangid="1,1,0,0,0,0,0,1"/>
+   <wangtile tileid="1663" wangid="0,0,0,0,0,0,0,1"/>
+   <wangtile tileid="1730" wangid="0,1,1,1,1,1,0,0"/>
+   <wangtile tileid="1731" wangid="0,0,0,1,1,1,1,1"/>
+   <wangtile tileid="1732" wangid="0,1,0,0,0,1,0,0"/>
+   <wangtile tileid="1799" wangid="1,1,1,1,0,0,0,1"/>
+   <wangtile tileid="1800" wangid="1,1,0,0,0,1,1,1"/>
+   <wangtile tileid="1801" wangid="0,0,0,1,0,0,0,1"/>
+  </wangset>
+  <wangset name="grass-dry-dirt-path" type="edge" tile="-1">
+   <wangcolor name="" color="#ff0000" tile="-1" probability="1"/>
+   <wangtile tileid="1589" wangid="0,0,1,0,0,0,0,0"/>
+   <wangtile tileid="1590" wangid="0,0,1,0,0,0,1,0"/>
+   <wangtile tileid="1591" wangid="0,0,0,0,0,0,1,0"/>
+   <wangtile tileid="1657" wangid="0,0,0,0,1,0,0,0"/>
+   <wangtile tileid="1658" wangid="0,0,1,0,1,0,0,0"/>
+   <wangtile tileid="1659" wangid="0,0,1,0,1,0,1,0"/>
+   <wangtile tileid="1660" wangid="0,0,0,0,1,0,1,0"/>
+   <wangtile tileid="1726" wangid="1,0,0,0,1,0,0,0"/>
+   <wangtile tileid="1727" wangid="1,0,1,0,1,0,0,0"/>
+   <wangtile tileid="1728" wangid="1,0,1,0,1,0,1,0"/>
+   <wangtile tileid="1729" wangid="1,0,0,0,1,0,1,0"/>
+   <wangtile tileid="1795" wangid="1,0,0,0,0,0,0,0"/>
+   <wangtile tileid="1796" wangid="1,0,1,0,0,0,0,0"/>
+   <wangtile tileid="1797" wangid="1,0,1,0,0,0,1,0"/>
+   <wangtile tileid="1798" wangid="1,0,0,0,0,0,1,0"/>
+  </wangset>
  </wangsets>
 </tileset>

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl16mwa5130l4"]
+
+[ext_resource type="PackedScene" uid="uid://duahdlh0x8w3r" path="res://tiled/map/zone1.tmx" id="1_abhg3"]
+[ext_resource type="PackedScene" uid="uid://p76av1n7w41n" path="res://src/character/implemented/goat.tscn" id="2_svlb3"]
+[ext_resource type="PackedScene" uid="uid://d0cdmiiyjhdjd" path="res://src/ui/game/game.tscn" id="3_jh433"]
+[ext_resource type="PackedScene" uid="uid://1f2p5rqh3by1" path="res://src/ui/hud/hud.tscn" id="4_7py1t"]
+
+[node name="zone1" instance=ExtResource("1_abhg3")]
+y_sort_enabled = true
+scale = Vector2(5, 5)
+
+[node name="ground" parent="." index="0"]
+y_sort_enabled = true
+
+[node name="ground_deco" parent="ground" index="1"]
+y_sort_enabled = true
+
+[node name="building" parent="." index="2"]
+y_sort_enabled = true
+
+[node name="character" parent="." index="4"]
+y_sort_enabled = true
+
+[node name="Goat" parent="character" index="0" instance=ExtResource("2_svlb3")]
+position = Vector2(190.4, 687.8)
+npc = false
+friendly = true
+
+[node name="Horse" parent="character" index="4"]
+position = Vector2(930.6, 128.6)
+
+[node name="Horse2" parent="character" index="5"]
+position = Vector2(1341.4, 246.2)
+
+[node name="prop" parent="." index="5"]
+y_sort_enabled = true
+
+[node name="tree2" parent="prop" index="1"]
+position = Vector2(1499.6, 192.2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+
+[node name="Hud" parent="CanvasLayer" index="0" node_paths=PackedStringArray("player") instance=ExtResource("4_7py1t")]
+player = NodePath("../../character/Goat")
+
+[node name="game" parent="CanvasLayer" index="1" node_paths=PackedStringArray("player") instance=ExtResource("3_jh433")]
+visible = false
+player = NodePath("../../character/Goat")

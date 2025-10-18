@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1o2wwaabw03w"]
+
+[ext_resource type="Script" uid="uid://31o3de6habg0" path="res://src/ui/hud/hud_item_list.gd" id="1_ibift"]
+[ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="1_pqwcr"]
+
+[node name="interact_item_list" type="GridContainer"]
+columns = 2
+script = ExtResource("1_ibift")
+metadata/_tab_index = 0
+
+[node name="vBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="label" type="Label" parent="vBox"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="vBox"]
+layout_mode = 2
+columns = 4
+
+[node name="slot1" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot2" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot3" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot4" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot5" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot6" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot7" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot8" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot9" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot10" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot11" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot12" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot13" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot14" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot15" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="slot16" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+layout_mode = 2
+
+[node name="vBox_item_detail" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="header" type="HBoxContainer" parent="vBox_item_detail"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="vBox_item_detail/header"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="name" type="Label" parent="vBox_item_detail/header"]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="vBox_item_detail"]
+layout_mode = 2
+text = "Item Blurb"
+
+[node name="action" type="HBoxContainer" parent="vBox_item_detail"]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="use" type="Button" parent="vBox_item_detail/action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_right = NodePath("../drop")
+theme_type_variation = &"Button_half"
+text = "Use"
+
+[node name="drop" type="Button" parent="vBox_item_detail/action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../use")
+theme_type_variation = &"Button_half"
+text = "Drop"
+
+[connection signal="draw" from="." to="." method="_on_draw"]

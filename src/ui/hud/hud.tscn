@@ -1,9 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://1f2p5rqh3by1"]
+[gd_scene load_steps=25 format=3 uid="uid://1f2p5rqh3by1"]
 
 [ext_resource type="Script" uid="uid://cy8f1hn7im11u" path="res://src/ui/hud/hud.gd" id="1_jobw0"]
+[ext_resource type="Texture2D" uid="uid://cq3qhh24avnxl" path="res://resource/texture_icon_bag.tres" id="2_1ilyr"]
+[ext_resource type="Texture2D" uid="uid://10vvbptjp22t" path="res://resource/texture_hud_health_big.tres" id="2_bpdxj"]
+[ext_resource type="Texture2D" uid="uid://bpegc3tf8oack" path="res://resource/texture_hud_bg.tres" id="2_cio14"]
 [ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="2_cvkdw"]
+[ext_resource type="Texture2D" uid="uid://qhcqcsejf0gq" path="res://resource/texture_icon_arm_flex.tres" id="3_0lyew"]
+[ext_resource type="Texture2D" uid="uid://dvjiiqkjqshfd" path="res://resource/texture_icon_box.tres" id="3_v4dvs"]
+[ext_resource type="Texture2D" uid="uid://dvhl8a1qyhu16" path="res://resource/texture_hud_small_stat_bg.tres" id="4_076te"]
+[ext_resource type="Texture2D" uid="uid://dl8b8smwpoj7u" path="res://resource/texture_hud_big_stat_bg.tres" id="4_ariom"]
+[ext_resource type="Texture2D" uid="uid://en6rwc615h1w" path="res://resource/texture_icon_scroll.tres" id="4_v4dvs"]
+[ext_resource type="Texture2D" uid="uid://bvnmw61y4i75m" path="res://resource/texture_icon_wizard_staff.tres" id="6_s8lle"]
+[ext_resource type="Texture2D" uid="uid://dqtorkiwoue72" path="res://resource/texture_icon_book_open.tres" id="8_0lyew"]
+[ext_resource type="Texture2D" uid="uid://gjq68tae4qcb" path="res://resource/texture_hud_mana_small.tres" id="9_qtkbr"]
+[ext_resource type="Texture2D" uid="uid://d3oess553edn3" path="res://resource/texture_hud_ability_small.tres" id="9_raafm"]
+[ext_resource type="PackedScene" uid="uid://b1o2wwaabw03w" path="res://src/ui/hud/hud_item_list.tscn" id="11_4u0hr"]
+[ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="11_d5ccl"]
 
-[node name="Hud" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t2k2"]
+atlas = ExtResource("11_d5ccl")
+region = Rect2(1220, 1156, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa7i1"]
+atlas = ExtResource("11_d5ccl")
+region = Rect2(1284, 1156, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lyew"]
+atlas = ExtResource("2_bpdxj")
+region = Rect2(0, 0, 128, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4dvs"]
+atlas = ExtResource("9_raafm")
+region = Rect2(0, 0, 64, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raafm"]
+atlas = ExtResource("9_qtkbr")
+region = Rect2(0, 0, 64, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u0hr"]
+atlas = ExtResource("2_bpdxj")
+region = Rect2(0, 0, 128, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ccl"]
+atlas = ExtResource("9_raafm")
+region = Rect2(0, 0, 64, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ilyr"]
+atlas = ExtResource("9_qtkbr")
+region = Rect2(0, 0, 64, 0)
+
+[node name="hud" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +57,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jobw0")
+inventory_icon = ExtResource("2_1ilyr")
+merchant_icon = ExtResource("3_v4dvs")
+trainer_icon = ExtResource("3_0lyew")
+dialogue_icon = ExtResource("4_v4dvs")
+many_hats_icon = ExtResource("6_s8lle")
 
-[node name="margin" type="MarginContainer" parent="."]
+[node name="bg_margin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,59 +71,308 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vBox" type="VBoxContainer" parent="margin"]
+[node name="vBox" type="VBoxContainer" parent="bg_margin"]
 layout_mode = 2
 
-[node name="character_status" type="HBoxContainer" parent="margin/vBox"]
+[node name="center" type="CenterContainer" parent="bg_margin/vBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="panel" type="PanelContainer" parent="bg_margin/vBox/center"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/center/panel"]
+layout_mode = 2
+texture = ExtResource("2_cio14")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="content_margin" type="MarginContainer" parent="bg_margin/vBox/center/panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
+
+[node name="tabs" type="TabContainer" parent="bg_margin/vBox/center/panel/content_margin"]
+layout_mode = 2
+current_tab = 2
+
+[node name="inventory" parent="bg_margin/vBox/center/panel/content_margin/tabs" instance=ExtResource("11_4u0hr")]
+visible = false
 layout_mode = 2
 
-[node name="player" type="HBoxContainer" parent="margin/vBox/character_status"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="drop" parent="bg_margin/vBox/center/panel/content_margin/tabs/inventory/vBox_item_detail/action" index="1"]
+focus_neighbor_top = NodePath("../../../../../../exit_margin/exit")
+focus_neighbor_right = NodePath("../../../../../../exit_margin/exit")
 
-[node name="target" type="HBoxContainer" parent="margin/vBox/character_status"]
+[node name="spell_book" parent="bg_margin/vBox/center/panel/content_margin/tabs" instance=ExtResource("11_4u0hr")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
+metadata/_tab_index = 1
 
-[node name="padding" type="Control" parent="margin/vBox"]
+[node name="description" parent="bg_margin/vBox/center/panel/content_margin/tabs/spell_book/vBox_item_detail" index="1"]
+text = "Spell Blurb"
+
+[node name="drop" parent="bg_margin/vBox/center/panel/content_margin/tabs/spell_book/vBox_item_detail/action" index="1"]
+focus_neighbor_top = NodePath("../../../../../../exit_margin/exit")
+focus_neighbor_right = NodePath("../../../../../../exit_margin/exit")
+
+[node name="dialogue" type="VBoxContainer" parent="bg_margin/vBox/center/panel/content_margin/tabs"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="vBox_header" type="HBoxContainer" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue"]
+layout_mode = 2
+alignment = 1
+
+[node name="icon" type="TextureRect" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/vBox_header"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="name" type="Label" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/vBox_header"]
+layout_mode = 2
+text = "Target Name"
+horizontal_alignment = 1
+
+[node name="scroll" type="ScrollContainer" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue"]
+custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="hBox" type="HBoxContainer" parent="margin/vBox"]
+[node name="dialogue" type="Label" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/scroll"]
+custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
-alignment = 1
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="shortcuts" type="HBoxContainer" parent="margin/vBox/hBox"]
+[node name="action" type="HBoxContainer" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="button" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="button2" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="button3" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="button4" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="button5" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="button6" parent="margin/vBox/hBox/shortcuts" instance=ExtResource("2_cvkdw")]
-layout_mode = 2
-
-[node name="scrolls" type="VBoxContainer" parent="margin/vBox/hBox"]
-layout_mode = 2
-theme_override_constants/separation = -5
 alignment = 2
 
-[node name="inventory" parent="margin/vBox/hBox/scrolls" instance=ExtResource("2_cvkdw")]
+[node name="accept" type="Button" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_right = NodePath("../decline")
+theme_type_variation = &"Button_half"
+text = "Accept"
+
+[node name="decline" type="Button" parent="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../accept")
+focus_neighbor_top = NodePath("../../../../../exit_margin/exit")
+focus_neighbor_right = NodePath("../../../../../exit_margin/exit")
+theme_type_variation = &"Button_half"
+text = "Decline"
+
+[node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/center/panel"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = -19
+theme_override_constants/margin_right = -4
+
+[node name="exit" type="TextureButton" parent="bg_margin/vBox/center/panel/exit_margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = SubResource("AtlasTexture_5t2k2")
+texture_pressed = SubResource("AtlasTexture_sa7i1")
+stretch_mode = 3
+
+[node name="action_bar" type="PanelContainer" parent="bg_margin/vBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/action_bar"]
+layout_mode = 2
+texture = ExtResource("2_cio14")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="margin" type="MarginContainer" parent="bg_margin/vBox/action_bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 106
+theme_override_constants/margin_bottom = 16
+
+[node name="hBox" type="HBoxContainer" parent="bg_margin/vBox/action_bar/margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="slot2" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="slot3" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="slot4" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="slot5" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="slot6" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="inventory_spellBook" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+
+[node name="icon" parent="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook" index="0"]
+texture = ExtResource("2_1ilyr")
+
+[node name="menu" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+layout_mode = 2
+focus_mode = 0
+item_icon = ExtResource("8_0lyew")
+
+[node name="icon" parent="bg_margin/vBox/action_bar/margin/hBox/menu" index="0"]
+texture = ExtResource("8_0lyew")
+
+[node name="target_status_bar" type="PanelContainer" parent="bg_margin"]
+custom_minimum_size = Vector2(0, 92)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/target_status_bar"]
+layout_mode = 2
+texture = ExtResource("2_cio14")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="margin" type="MarginContainer" parent="bg_margin/target_status_bar"]
+layout_mode = 2
+theme_override_constants/margin_left = 106
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="bg_margin/target_status_bar/margin"]
 layout_mode = 2
 
-[node name="menu" parent="margin/vBox/hBox/scrolls" instance=ExtResource("2_cvkdw")]
+[node name="slot" parent="bg_margin/target_status_bar/margin/HBoxContainer" instance=ExtResource("2_cvkdw")]
 layout_mode = 2
+focus_mode = 0
+
+[node name="icon" parent="bg_margin/target_status_bar/margin/HBoxContainer/slot" index="0"]
+texture = ExtResource("6_s8lle")
+
+[node name="label" type="Label" parent="bg_margin/target_status_bar/margin/HBoxContainer"]
+layout_mode = 2
+text = "Npc Name"
+
+[node name="status_margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="player_health" type="TextureProgressBar" parent="status_margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_ariom")
+texture_progress = SubResource("AtlasTexture_0lyew")
+metadata/_edit_group_ = true
+
+[node name="ability" type="TextureProgressBar" parent="status_margin/player_health"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 56.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_076te")
+texture_progress = SubResource("AtlasTexture_v4dvs")
+
+[node name="mana" type="TextureProgressBar" parent="status_margin/player_health"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -36.0
+offset_right = 72.0
+offset_bottom = 28.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_076te")
+texture_progress = SubResource("AtlasTexture_raafm")
+
+[node name="target_health" type="TextureProgressBar" parent="status_margin"]
+layout_mode = 2
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_ariom")
+texture_progress = SubResource("AtlasTexture_4u0hr")
+metadata/_edit_group_ = true
+
+[node name="ability" type="TextureProgressBar" parent="status_margin/target_health"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = -8.0
+offset_right = 156.0
+offset_bottom = 56.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_076te")
+texture_progress = SubResource("AtlasTexture_d5ccl")
+
+[node name="mana" type="TextureProgressBar" parent="status_margin/target_health"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -36.0
+offset_right = 108.0
+offset_bottom = 28.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("4_076te")
+texture_progress = SubResource("AtlasTexture_1ilyr")
+
+[connection signal="pressed" from="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/action/accept" to="." method="_on_dialogue_accept_pressed"]
+[connection signal="pressed" from="bg_margin/vBox/center/panel/content_margin/tabs/dialogue/action/decline" to="." method="_on_dialogue_decline_pressed"]
+[connection signal="pressed" from="bg_margin/vBox/center/panel/exit_margin/exit" to="." method="_on_interact_panel_exit_pressed"]
+[connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook" to="." method="_on_inventory_spell_book_pressed"]
+[connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/menu" to="." method="_on_menu_pressed"]
+
+[editable path="bg_margin/vBox/center/panel/content_margin/tabs/inventory"]
+[editable path="bg_margin/vBox/center/panel/content_margin/tabs/spell_book"]
+[editable path="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook"]
+[editable path="bg_margin/vBox/action_bar/margin/hBox/menu"]
+[editable path="bg_margin/target_status_bar/margin/HBoxContainer/slot"]

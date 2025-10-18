@@ -1,11 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://vgifoa1qmx7u"]
+[gd_scene load_steps=10 format=3 uid="uid://vgifoa1qmx7u"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_ch4cq"]
+[ext_resource type="AudioStream" uid="uid://b28wwgamrfr7b" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Idle_1.wav" id="2_kcm4y"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bgemtr50jb0wr" path="res://resource/animation_state_machine/Polar_Fox_state_machine.tres" id="2_sd5p3"]
+[ext_resource type="AudioStream" uid="uid://cbgff4j035bch" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Idle_2.wav" id="3_f6m4u"]
+[ext_resource type="AudioStream" uid="uid://duuhnn68bftv0" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Fox_Walk.wav" id="4_vpuiq"]
+[ext_resource type="AudioStream" uid="uid://c4vuiil3j24ks" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Death.wav" id="5_4jed4"]
+[ext_resource type="AudioStream" uid="uid://boec54ec5thei" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Damage_1.wav" id="6_paf00"]
+[ext_resource type="AudioStream" uid="uid://dll52kt6umprn" path="res://asset/snd/LEOHPAZ_ForestAnimals_SFX_Pack/Fox/Fox_Damage_2.wav" id="7_c0aej"]
+[ext_resource type="Texture2D" uid="uid://beotglkir7ihc" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxIdel.png" id="9_ep1jr"]
 
 [node name="Polar_Fox" instance=ExtResource("1_ch4cq")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_kcm4y"), ExtResource("3_f6m4u")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("4_vpuiq")])
+quips = Array[AudioStream]([ExtResource("2_kcm4y"), ExtResource("3_f6m4u")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("5_4jed4")])
+
+[node name="melee" parent="fsm" index="3"]
+quips = Array[AudioStream]([ExtResource("6_paf00"), ExtResource("7_c0aej")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("6_paf00"), ExtResource("7_c0aej")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_sd5p3")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("9_ep1jr")
+frame = 4

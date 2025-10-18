@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.2" name="character" tilewidth="32" tileheight="32" tilecount="75" columns="0">
+<tileset version="1.10" tiledversion="1.11.2" name="character" tilewidth="32" tileheight="32" tilecount="78" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/skeleton.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Skeleton.png" width="32" height="32"/>
  </tile>
  <tile id="1">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/skeleton_minotaur.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Skeleton_Minotaur.png" width="32" height="32"/>
  </tile>
  <tile id="2">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/skunk.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Skunk.png" width="32" height="32"/>
  </tile>
  <tile id="3">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/snake.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Snake.png" width="32" height="32"/>
  </tile>
@@ -231,7 +247,13 @@
  </tile>
  <tile id="38">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="godot_node_type" value="instance"/>
+   <property name="res_path" type="file" value="../../../src/character/implemented/minotaur.tscn"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/elephant.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Elephant.png" width="32" height="32"/>
  </tile>
@@ -291,7 +313,11 @@
  </tile>
  <tile id="48">
   <properties>
-   <property name="type" type="class" propertytype="Character"/>
+   <property name="type" type="class" propertytype="Character">
+    <properties>
+     <property name="res_path" type="file" value="../../../src/character/implemented/horse.tscn"/>
+    </properties>
+   </property>
   </properties>
   <image source="Horse.png" width="32" height="32"/>
  </tile>
@@ -450,5 +476,14 @@
    <property name="type" type="class" propertytype="Character"/>
   </properties>
   <image source="Skeletal_Horse_Rider.png" width="32" height="32"/>
+ </tile>
+ <tile id="75">
+  <image source="Orc_Green_Axe.png" width="32" height="32"/>
+ </tile>
+ <tile id="76">
+  <image source="Orc_Green_Bow.png" width="32" height="32"/>
+ </tile>
+ <tile id="77">
+  <image source="Orc_Green_Spear.png" width="32" height="32"/>
  </tile>
 </tileset>

@@ -1,12 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://1c45uame07l2"]
+[gd_scene load_steps=16 format=3 uid="uid://1c45uame07l2"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_06gpj"]
+[ext_resource type="AudioStream" uid="uid://wqs1u4682lqw" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/07_Wolf_death.wav" id="2_63xds"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://c0ojomcc0l2bb" path="res://resource/animation_state_machine/Wolf_state_machine.tres" id="2_e85d7"]
+[ext_resource type="AudioStream" uid="uid://0dy5478msddm" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/05_Wolf_growl_1.wav" id="2_sia5q"]
+[ext_resource type="AudioStream" uid="uid://dr3wjrrtg0qcw" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/06_Wolf_growl_2.wav" id="3_t7q6x"]
+[ext_resource type="AudioStream" uid="uid://dl5dolpkwp1j" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/01_Wolf_attack_1a.wav" id="3_vfjlg"]
+[ext_resource type="AudioStream" uid="uid://dmogsql7l68q2" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/02_Wolf_attack_1b.wav" id="4_vf0c1"]
+[ext_resource type="AudioStream" uid="uid://cfjqojts6djao" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/10_Wolf_walk_loop_1.wav" id="4_y56ir"]
+[ext_resource type="AudioStream" uid="uid://bwodgat82r15p" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/11_Wolf_walk_loop_2_raw.wav" id="5_0ebky"]
+[ext_resource type="AudioStream" uid="uid://d13coivh4bq0" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/03_Wolf_attack_2a.wav" id="5_j1dm2"]
+[ext_resource type="AudioStream" uid="uid://caa5itchw04bx" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/04_Wolf_attack_2b.wav" id="6_sia5q"]
+[ext_resource type="AudioStream" uid="uid://c3tcmcsji6308" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/12_Wolf_walk_loop3_raw.wav" id="6_yo7cq"]
+[ext_resource type="AudioStream" uid="uid://2mm6na0m4pei" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/08_Wolf_damage_1.wav" id="7_vf0c1"]
+[ext_resource type="AudioStream" uid="uid://c2kgprjotcwru" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Beasts/Wolf/09_Wolf_damage_2.wav" id="8_j1dm2"]
+[ext_resource type="Texture2D" uid="uid://7frep6in7emj" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Beasts/Wolf/WolfIdle.png" id="8_t7q6x"]
 
 [node name="Wolf" instance=ExtResource("1_06gpj")]
 
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_sia5q"), ExtResource("3_t7q6x")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("4_y56ir"), ExtResource("5_0ebky"), ExtResource("6_yo7cq")])
+quips = Array[AudioStream]([ExtResource("2_sia5q"), ExtResource("3_t7q6x")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_63xds")])
+
+[node name="melee" parent="fsm" index="3"]
+melee_snd = Array[AudioStream]([ExtResource("3_vfjlg"), ExtResource("4_vf0c1"), ExtResource("5_j1dm2"), ExtResource("6_sia5q")])
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("7_vf0c1"), ExtResource("8_j1dm2")])
+
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_e85d7")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="4"]
+texture = ExtResource("8_t7q6x")
+hframes = 12
+frame = 7

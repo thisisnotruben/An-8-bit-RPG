@@ -1,17 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2lgjrthxq3g7"]
+[gd_scene load_steps=10 format=3 uid="uid://c2lgjrthxq3g7"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_sutht"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://o1500p8jsfiq" path="res://resource/animation_state_machine/Cat_state_machine.tres" id="2_4funs"]
+[ext_resource type="AudioStream" uid="uid://dw025t0huwsi6" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Idle_Meow_1.wav" id="2_6dfs8"]
+[ext_resource type="AudioStream" uid="uid://vsfcbe4u3u3e" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Death.wav" id="2_fwlh4"]
+[ext_resource type="AudioStream" uid="uid://bdkjokbmqjeu5" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Idle_Meow_2.wav" id="3_4u54m"]
 [ext_resource type="Texture2D" uid="uid://c0fe8lkn4wr0l" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatIdle.png" id="3_fwlh4"]
+[ext_resource type="AudioStream" uid="uid://83okt2tryn26" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Idle_Purr_1.wav" id="4_ek72h"]
+[ext_resource type="AudioStream" uid="uid://bidge6rvnumiw" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Idle_Purr_2.wav" id="5_3rbkt"]
+[ext_resource type="AudioStream" uid="uid://wietqmra2av4" path="res://asset/snd/LEOHPAZ_DomesticAnimals_SFX/Cat/Cat_Walk_Loop.wav" id="6_4u54m"]
 
 [node name="Cat" instance=ExtResource("1_sutht")]
+
+[node name="idle" parent="fsm" index="0"]
+quips = Array[AudioStream]([ExtResource("2_6dfs8"), ExtResource("3_4u54m"), ExtResource("4_ek72h"), ExtResource("5_3rbkt")])
+
+[node name="move" parent="fsm" index="1"]
+snd_move_audio = Array[AudioStream]([ExtResource("6_4u54m")])
+quips = Array[AudioStream]([ExtResource("2_6dfs8"), ExtResource("3_4u54m"), ExtResource("4_ek72h"), ExtResource("5_3rbkt")])
+
+[node name="dead" parent="fsm" index="2"]
+quips = Array[AudioStream]([ExtResource("2_fwlh4")])
+
+[node name="melee" parent="fsm" index="3"]
+enabled = false
+
+[node name="hurt" parent="fsm" index="5"]
+quips = Array[AudioStream]([ExtResource("2_6dfs8"), ExtResource("3_4u54m"), ExtResource("4_ek72h"), ExtResource("5_3rbkt")])
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("2_4funs")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="img" parent="." index="4"]
 texture = ExtResource("3_fwlh4")
 hframes = 4
-frame = 13
+frame = 2

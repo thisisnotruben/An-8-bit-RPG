@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
+enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 const WORLD_LAYER := 0b00000000_00000000_00000000_00000001
 
 @onready var fsm: Fsm = $fsm
@@ -20,7 +21,13 @@ const WORLD_LAYER := 0b00000000_00000000_00000000_00000001
 @onready var hit_scan_melee: RayCast2D = $hit_melee_cast
 @onready var camera: Camera2D = $cam
 
+@export_category("Descriptors")
+@export var character_name := ""
+@export var character_roles: Array[CharaterSideRoles] = []
+
 @export_range(1, 10) var health_max: int = 2
+@export_range(1, 10) var mana_max: int = 2
+@export_range(1, 10) var ability_max: int = 2
 @export var npc = true: set = _set_npc
 @export var friendly := false: set = _set_friendly
 
@@ -46,11 +53,15 @@ var powerups := {}
 
 @export var target: Character = null
 var health: int : set = _set_health
+var mana: int : set = _set_mana
+var ability: int : set = _set_ability
 
-signal health_changed(_health)
+signal health_changed(_health, _max_health)
+signal mana_changed(_mana, _max_mana)
+signal ability_changed(_ability, _max_ability)
 signal inventory_added(_item)
-signal show_objective(_show, blurb)
 signal died(_character)
+signal set_player_move_hud_menu_pause(is_hud_panel_visible)
 
 
 func _ready():
@@ -60,8 +71,6 @@ func _ready():
 		.map(func(s): fsm_init[s.type] = s)
 	$fsm.init(fsm_init, {"character": self})
 	behavior.state = BehaviorStates.Type.REST
-	hit_scan_melee.target_position.x = melee_range
-	hit_scan_shoot.target_position.x = shoot_range
 	health = health_max
 	_set_npc(npc)
 
@@ -89,7 +98,7 @@ func _set_health(_health: int):
 	health = clampi(_health, 0, health_max)
 	var connected_joy := not npc and Input.is_joy_known(0)
 	if health >= 0 and fsm.state != CharacterStates.Type.DEAD:
-		health_changed.emit(health)
+		health_changed.emit(health, health_max)
 	if health == 0:
 		fsm.state = CharacterStates.Type.DEAD
 		died.emit(self)
@@ -99,6 +108,12 @@ func _set_health(_health: int):
 		fsm.state = CharacterStates.Type.HURT
 		if connected_joy:
 			Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
+
+func _set_mana(_mana: int):
+	print_debug("TODO: _set_mana")
+
+func _set_ability(_ability: int):
+	print_debug("TODO: _set_ability")
 
 func set_hit_flags():
 	var hit_layer := character_hit_flag
@@ -111,16 +126,18 @@ func set_hit_flags():
 	hit_scan += foe_hit_flag if friendly else friendly_hit_flag
 	if not friendly:
 		hit_scan += player_hit_flag
+
 	$hit_melee_cast.set_deferred("collision_mask", hit_scan)
+	$hit_melee_cast.set_deferred("target_position.x", melee_range)
+
 	$hit_shoot_cast.set_deferred("collision_mask", hit_scan)
+	$hit_shoot_cast.set_deferred("target_position.x", shoot_range)
 
 func _set_npc(_npc: bool):
 	npc = _npc
 	add_to_group("npc" if _npc else "player")
 	$nav_agent.avoidance_enabled = _npc
 	$cam.enabled = not _npc
-	if not npc:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_set_friendly(friendly)
 
 func _set_friendly(_friendly: bool):

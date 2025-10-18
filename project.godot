@@ -12,16 +12,23 @@ config_version=5
 
 config/name="An 8 bit RPG"
 run/main_scene="uid://f3o1cwg8v5w5"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+cursor="*res://src/ui/cursor.gd"
 
 [display]
 
-window/size/viewport_width=950
-window/size/viewport_height=540
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=3
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/ruben/OneDrive/Pictures/godot/zone_1.avi"
 
 [editor_plugins]
 
@@ -29,8 +36,9 @@ enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
 
 [gui]
 
+theme/default_font_antialiasing=0
 theme/custom="uid://bw2nrah0lihoa"
-theme/custom_font="uid://dfmoea7g5b6jv"
+theme/custom_font="uid://dyevtvog0wxut"
 
 [input]
 
