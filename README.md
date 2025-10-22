@@ -1,5 +1,5 @@
 # An 8-Bit RPG
-A Gurk inspired wanderlust fantasy pixel art rpg game. 
+A Gurk inspired wanderlust fantasy pixel art rpg game.
 
 ## Screenshots
 
@@ -19,9 +19,6 @@ TODO
 	- make sure animation names in tree are in fsm "move" code for direction
 	- come up with stats for chracters
 		- maybe modulate color for different characters?
-- GUI
-	- make HUD
-		- come up how the GUI looks and fix the look
 - Tilesets to make
 	- desolate desert
 	- dungeon

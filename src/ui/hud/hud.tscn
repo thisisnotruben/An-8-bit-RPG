@@ -1,19 +1,19 @@
 [gd_scene load_steps=25 format=3 uid="uid://1f2p5rqh3by1"]
 
 [ext_resource type="Script" uid="uid://cy8f1hn7im11u" path="res://src/ui/hud/hud.gd" id="1_jobw0"]
-[ext_resource type="Texture2D" uid="uid://cq3qhh24avnxl" path="res://resource/texture_icon_bag.tres" id="2_1ilyr"]
-[ext_resource type="Texture2D" uid="uid://10vvbptjp22t" path="res://resource/texture_hud_health_big.tres" id="2_bpdxj"]
-[ext_resource type="Texture2D" uid="uid://bpegc3tf8oack" path="res://resource/texture_hud_bg.tres" id="2_cio14"]
+[ext_resource type="Texture2D" uid="uid://cq3qhh24avnxl" path="res://resource/texture/texture_icon_bag.tres" id="2_1ilyr"]
+[ext_resource type="Texture2D" uid="uid://10vvbptjp22t" path="res://resource/texture/texture_hud_health_big.tres" id="2_bpdxj"]
+[ext_resource type="Texture2D" uid="uid://bpegc3tf8oack" path="res://resource/texture/texture_hud_bg.tres" id="2_cio14"]
 [ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="2_cvkdw"]
-[ext_resource type="Texture2D" uid="uid://qhcqcsejf0gq" path="res://resource/texture_icon_arm_flex.tres" id="3_0lyew"]
-[ext_resource type="Texture2D" uid="uid://dvjiiqkjqshfd" path="res://resource/texture_icon_box.tres" id="3_v4dvs"]
-[ext_resource type="Texture2D" uid="uid://dvhl8a1qyhu16" path="res://resource/texture_hud_small_stat_bg.tres" id="4_076te"]
-[ext_resource type="Texture2D" uid="uid://dl8b8smwpoj7u" path="res://resource/texture_hud_big_stat_bg.tres" id="4_ariom"]
-[ext_resource type="Texture2D" uid="uid://en6rwc615h1w" path="res://resource/texture_icon_scroll.tres" id="4_v4dvs"]
-[ext_resource type="Texture2D" uid="uid://bvnmw61y4i75m" path="res://resource/texture_icon_wizard_staff.tres" id="6_s8lle"]
-[ext_resource type="Texture2D" uid="uid://dqtorkiwoue72" path="res://resource/texture_icon_book_open.tres" id="8_0lyew"]
-[ext_resource type="Texture2D" uid="uid://gjq68tae4qcb" path="res://resource/texture_hud_mana_small.tres" id="9_qtkbr"]
-[ext_resource type="Texture2D" uid="uid://d3oess553edn3" path="res://resource/texture_hud_ability_small.tres" id="9_raafm"]
+[ext_resource type="Texture2D" uid="uid://qhcqcsejf0gq" path="res://resource/texture/texture_icon_arm_flex.tres" id="3_0lyew"]
+[ext_resource type="Texture2D" uid="uid://dvjiiqkjqshfd" path="res://resource/texture/texture_icon_box.tres" id="3_v4dvs"]
+[ext_resource type="Texture2D" uid="uid://dvhl8a1qyhu16" path="res://resource/texture/texture_hud_small_stat_bg.tres" id="4_076te"]
+[ext_resource type="Texture2D" uid="uid://dl8b8smwpoj7u" path="res://resource/texture/texture_hud_big_stat_bg.tres" id="4_ariom"]
+[ext_resource type="Texture2D" uid="uid://en6rwc615h1w" path="res://resource/texture/texture_icon_scroll.tres" id="4_v4dvs"]
+[ext_resource type="Texture2D" uid="uid://bvnmw61y4i75m" path="res://resource/texture/texture_icon_wizard_staff.tres" id="6_s8lle"]
+[ext_resource type="Texture2D" uid="uid://dqtorkiwoue72" path="res://resource/texture/texture_icon_book_open.tres" id="8_0lyew"]
+[ext_resource type="Texture2D" uid="uid://gjq68tae4qcb" path="res://resource/texture/texture_hud_mana_small.tres" id="9_qtkbr"]
+[ext_resource type="Texture2D" uid="uid://d3oess553edn3" path="res://resource/texture/texture_hud_ability_small.tres" id="9_raafm"]
 [ext_resource type="PackedScene" uid="uid://b1o2wwaabw03w" path="res://src/ui/hud/hud_item_list.tscn" id="11_4u0hr"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="11_d5ccl"]
 
@@ -214,29 +214,35 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
-[node name="slot2" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot2" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
-[node name="slot3" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot3" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
-[node name="slot4" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot4" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
-[node name="slot5" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot5" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
-[node name="slot6" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="slot6" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
+quick_slot = true
 
 [node name="inventory_spellBook" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
 layout_mode = 2

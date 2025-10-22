@@ -3,11 +3,11 @@ class_name GameCursor
 
 enum Cursor {DEFAULT, HAND, ATTACK, DIALOGUE, BAG}
 
-const arrow := preload("res://resource/texture_ui_cursor_arrow.tres")
-const pointing_hand := preload("res://resource/texture_ui_cursor_pointing_hand.tres")
-const attack := preload("res://resource/texture_ui_cursor_attack.tres")
-const dialogue := preload("res://resource/texture_ui_cursor_dialogue.tres")
-const bag := preload("res://resource/texture_ui_cursor_bag.tres")
+const arrow := preload("res://resource/texture/texture_ui_cursor_arrow.tres")
+const pointing_hand := preload("res://resource/texture/texture_ui_cursor_pointing_hand.tres")
+const attack := preload("res://resource/texture/texture_ui_cursor_attack.tres")
+const dialogue := preload("res://resource/texture/texture_ui_cursor_dialogue.tres")
+const bag := preload("res://resource/texture/texture_ui_cursor_bag.tres")
 
 const map := {
 	Cursor.DEFAULT: arrow,

@@ -1,7 +1,7 @@
 extends Control
 
-const tabs := {"main": 0, "license": 1,
-"credits": 2, "popup": 3, "daed": 4}
+const tabs := {"main": 0, "license": 1, "credits": 2,
+"popup": 3, "daed": 4, "save_load": 5,}
 
 @export var player: Character = null
 @export_file("*.tscn") var start_level_scene_path := ""
@@ -18,8 +18,8 @@ var hovered_control: Control = null
 func _ready():
 	$center/panel/margin/tabs/dead.tabs = tabs
 	visibility_changed.connect(_on_visibility_changed)
-	#if player: TODO
-		#player.health_changed.connect(show_death_screen)
+	if player != null:
+		player.died.connect(show_death_screen)
 
 func _input(event: InputEvent):
 	if dead:
@@ -34,7 +34,7 @@ func _input(event: InputEvent):
 			$snd_resume.play()
 	elif event.is_action_pressed("ui_cancel"):
 		match tab.current_tab:
-			tabs["license"], tabs["credits"]:
+			tabs["license"], tabs["credits"], tabs["save_load"]:
 				_on_back_pressed()
 			tabs["popup"]:
 				popup._on_no_pressed()
@@ -59,7 +59,7 @@ func _on_resume_game_pressed():
 	$snd_resume.play()
 	hide()
 
-func _on_start_menu_pressed(main := true):
+func _on_start_menu_pressed():
 	$snd_popup.play()
 	popup.display("Go to Start Menu?", "Go", "Stay")
 	prev_tab = $center/panel/margin/tabs/main/start_menu
@@ -73,6 +73,18 @@ func _on_start_menu_pressed(main := true):
 	else:
 		$snd_back.play()
 		tab.current_tab = tabs["main"]
+
+func _on_save_pressed():
+	$snd.play()
+	prev_tab = $center/panel/margin/tabs/main/grid/save
+	tab.get_child(tabs["save_load"]).type = GameUISaveLoad.Type.Save
+	tab.current_tab = tabs["save_load"]
+
+func _on_load_pressed():
+	$snd.play()
+	prev_tab = $center/panel/margin/tabs/main/grid/load
+	tab.get_child(tabs["save_load"]).type = GameUISaveLoad.Type.Load
+	tab.current_tab = tabs["save_load"]
 
 func _on_license_pressed():
 	$snd.play()
@@ -114,5 +126,6 @@ func _on_visibility_changed():
 			tab.current_tab = tabs["main"]
 			prev_tab = $center/panel/margin/tabs/main/resume_game
 
-func show_death_screen(isdead):
+func show_death_screen():
+	tab.current_tab = tabs["daed"]
 	show()

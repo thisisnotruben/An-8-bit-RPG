@@ -25,6 +25,9 @@ extends Control
 @onready var target_health_node: Control = $status_margin/target_health
 @onready var target_status_bar: Control = $bg_margin/target_status_bar
 
+@onready var inventory: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/tabs/inventory
+@onready var spellbook: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/tabs/spell_book
+
 @onready var tab: TabContainer = $bg_margin/vBox/center/panel/content_margin/tabs
 const tabs := {"inventory": 0, "spell_book": 1, "dialogue": 2}
 
@@ -40,6 +43,12 @@ func _ready():
 		player.health_changed.connect(_on_set_player_health)
 		player.mana_changed.connect(_on_set_player_mana)
 		player.ability_changed.connect(_on_set_player_ability)
+		player.inventory_added.connect(inventory.add_item)
+		player.spell_added.connect(spellbook.add_item)
+		player.is_inventory_full = inventory.is_full
+		player.is_spellbook_full = spellbook.is_full
+		inventory.player = player
+		spellbook.player = player
 
 func _on_set_target(value: Character):
 	if target != null and value != target:

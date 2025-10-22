@@ -263,6 +263,15 @@ libraries = {
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../anim_player")
 
+[node name="health_regen" type="Timer" parent="."]
+autostart = true
+
+[node name="mana_regen" type="Timer" parent="."]
+autostart = true
+
+[node name="ability_regen" type="Timer" parent="."]
+autostart = true
+
 [node name="img" type="Sprite2D" parent="."]
 hframes = 16
 vframes = 4
@@ -308,6 +317,9 @@ shape = SubResource("CircleShape2D_2pcmc")
 [connection signal="animation_finished" from="anim_tree" to="fsm/melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/shoot" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/hurt" method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="health_regen" to="." method="_on_health_regen_timeout"]
+[connection signal="timeout" from="mana_regen" to="." method="_on_mana_regen_timeout"]
+[connection signal="timeout" from="ability_regen" to="." method="_on_ability_regen_timeout"]
 [connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_velocity_computed"]
 [connection signal="area_entered" from="sight" to="." method="_on_sight_area_entered"]
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]

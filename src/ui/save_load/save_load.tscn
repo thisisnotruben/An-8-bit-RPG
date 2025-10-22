@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://diatmsxlx2mkb"]
+
+[ext_resource type="Script" uid="uid://c1kkhqx75cwa8" path="res://src/ui/save_load/save_load.gd" id="1_xrkk1"]
+
+[node name="save_load" type="VBoxContainer"]
+offset_right = 392.0
+offset_bottom = 306.0
+script = ExtResource("1_xrkk1")
+
+[node name="header" type="Label" parent="."]
+layout_mode = 2
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Button1" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 1"
+flat = true
+
+[node name="Button2" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 6"
+flat = true
+
+[node name="Button3" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 2"
+flat = true
+
+[node name="Button4" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 7"
+flat = true
+
+[node name="Button5" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 3"
+flat = true
+
+[node name="Button6" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 8"
+flat = true
+
+[node name="Button7" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 4"
+flat = true
+
+[node name="Button8" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 9"
+flat = true
+
+[node name="Button9" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 5"
+flat = true
+
+[node name="Button10" type="Button" parent="grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"button_save_load_entry"
+text = "Game 10"
+flat = true
+
+[node name="hBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="load_save" type="Button" parent="hBox"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+text = "Load Game"
+
+[node name="back" type="Button" parent="hBox"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+text = "Back"
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="focus_entered" from="hBox/load_save" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="hBox/load_save" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="hBox/load_save" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="hBox/load_save" to="." method="_on_load_save_pressed"]
+[connection signal="focus_entered" from="hBox/back" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="hBox/back" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="hBox/back" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="hBox/back" to="." method="_on_back_pressed"]

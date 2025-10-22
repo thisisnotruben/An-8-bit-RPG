@@ -8,6 +8,8 @@ columns = 2
 script = ExtResource("1_ibift")
 metadata/_tab_index = 0
 
+[node name="snd" type="AudioStreamPlayer" parent="."]
+
 [node name="vBox" type="VBoxContainer" parent="."]
 layout_mode = 2
 
@@ -108,3 +110,5 @@ theme_type_variation = &"Button_half"
 text = "Drop"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="pressed" from="vBox_item_detail/action/use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="vBox_item_detail/action/drop" to="." method="_on_drop_pressed"]
