@@ -16,7 +16,6 @@ var hovered_control: Control = null
 
 
 func _ready():
-	$center/panel/margin/tabs/dead.tabs = tabs
 	visibility_changed.connect(_on_visibility_changed)
 	if player != null:
 		player.died.connect(show_death_screen)

@@ -15,6 +15,10 @@ var play_focus_sfx := false
 var focused_slot: HudButton = null
 var player: Character = null : set = _on_set_player
 
+signal subcontrol_focused
+signal subcontrol_mouse_entered(source)
+signal subcontrol_mouse_exited
+
 
 func _ready():
 	var quick_slots := get_tree().get_nodes_in_group("quick_slot")
@@ -24,6 +28,16 @@ func _ready():
 		slot.on_cooldown_started.connect(_on_check_cooldown)
 		for quick_slot in quick_slots:
 			slot.on_cooldown_started.connect(quick_slot.check_cooldown)
+
+func _on_focus_entered():
+	if play_focus_sfx:
+		subcontrol_focused.emit()
+
+func _on_mouse_entered(source: Control):
+	subcontrol_mouse_entered.emit(source)
+
+func _on_mouse_exited():
+	subcontrol_mouse_exited.emit()
 
 func _on_slot_focus_entered(slot: HudButton):
 	if play_focus_sfx:

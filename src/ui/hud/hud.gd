@@ -1,5 +1,8 @@
 extends Control
 
+var play_focus_sfx := false
+var hovered_control: Control = null
+
 @export var player: Character = null
 @export var target: Character = null : set = _on_set_target
 
@@ -7,6 +10,7 @@ extends Control
 @export var merchant_icon: Texture = null
 @export var trainer_icon: Texture = null
 @export var dialogue_icon: Texture = null
+@export var objective_tracker_icon: Texture = null
 @export var many_hats_icon: Texture = null
 @export var target_status_name_padding: int = 2
 
@@ -33,7 +37,7 @@ const tabs := {"inventory": 0, "spell_book": 1, "dialogue": 2}
 
 
 func _ready():
-	var tab_order := [inventory_icon, trainer_icon, dialogue_icon]
+	var tab_order := [inventory_icon, trainer_icon, dialogue_icon, objective_tracker_icon]
 	for i in tab_order.size():
 		tab.set_tab_icon(i, tab_order[i])
 		tab.set_tab_title(i, "")
@@ -126,8 +130,18 @@ func _on_menu_pressed():
 func _on_interact_panel_exit_pressed():
 	interact_panel.hide()
 
-func _on_dialogue_accept_pressed():
-	print("TODO: _on_dialogue_accept_pressed")
+func _on_subcontrol_focused():
+	if play_focus_sfx:
+		$snd_nav.play()
 
-func _on_dialogue_decline_pressed():
-	print("TODO: _on_dialogue_decline_pressed")
+func _on_subcontrol_mouse_entered(source: Control):
+	if source != null:
+		hovered_control = source
+		source.grab_focus()
+		source.release_focus()
+
+func _on_subcontrol_mouse_exited():
+	if hovered_control != null:
+		play_focus_sfx = false
+		hovered_control.grab_focus()
+		play_focus_sfx = true

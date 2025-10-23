@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bw2nrah0lihoa"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bw2nrah0lihoa"]
 
 [ext_resource type="StyleBox" uid="uid://beehw7brq2fy4" path="res://resource/theme/new_style_box_empty.tres" id="1_0n7r7"]
 [ext_resource type="StyleBox" uid="uid://co7f43bwlll15" path="res://resource/theme/ui_style_box_button.tres" id="2_5o72f"]
@@ -7,6 +7,9 @@
 [ext_resource type="StyleBox" uid="uid://caruifi78h6c5" path="res://resource/theme/ui_style_box_button_half.tres" id="4_i6o8a"]
 [ext_resource type="StyleBox" uid="uid://dsw5jmmj0fyhe" path="res://resource/theme/ui_style_box_button_long.tres" id="6_7djdk"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="7_2c4ig"]
+[ext_resource type="StyleBox" uid="uid://kruuc6rfubrx" path="res://resource/theme/ui_style_box_scrollbar_grabber.tres" id="8_0n5tj"]
+[ext_resource type="StyleBox" uid="uid://cno267gjx5c10" path="res://resource/theme/ui_style_box_scrollbar.tres" id="8_jrahy"]
+[ext_resource type="StyleBox" uid="uid://3papaycojfqv" path="res://resource/theme/ui_style_box_scrollbar_grabber_highlight.tres" id="9_6dyk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o72f"]
 atlas = ExtResource("2_tvgo0")
@@ -62,5 +65,10 @@ TabContainer/styles/tab_selected = ExtResource("1_0n7r7")
 TabContainer/styles/tab_unselected = ExtResource("1_0n7r7")
 TabContainer/styles/tabbar_background = ExtResource("1_0n7r7")
 VBoxContainer/constants/separation = 8
+VScrollBar/styles/grabber = ExtResource("8_0n5tj")
+VScrollBar/styles/grabber_highlight = ExtResource("9_6dyk0")
+VScrollBar/styles/grabber_pressed = ExtResource("9_6dyk0")
+VScrollBar/styles/scroll = ExtResource("8_jrahy")
+VScrollBar/styles/scroll_focus = ExtResource("8_jrahy")
 button_save_load_entry/base_type = &"Button"
 button_save_load_entry/colors/font_color = Color(0.5686275, 0.53333336, 0.29411766, 1)

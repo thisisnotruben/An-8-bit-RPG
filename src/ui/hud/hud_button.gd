@@ -11,14 +11,11 @@ const drag_item := preload("res://src/ui/hud/hud_drag_icon.tscn")
 @export var item_icon: Texture = null: set = _on_set_icon
 @export var quick_slot := false
 var item_type := ItemDB.Type.INVALID: set = _on_set_item
-var tween := get_tree().create_tween().bind_node(self)
 var is_cooling_down := false
+var tween: Tween = null
 
 signal on_cooldown_started(_item_type: ItemDB.Type)
 
-
-func _ready():
-	tween.finished.connect(_on_tween_finished)
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if quick_slot and item_type != ItemDB.Type.INVALID:
@@ -42,6 +39,7 @@ func _on_pressed():
 func _on_tween_finished():
 	is_cooling_down = false
 	disabled = false
+	tween = null
 	color_rect.hide()
 
 func _on_focus_entered():
@@ -58,18 +56,26 @@ func use():
 			if data.cooldown > 0:
 				is_cooling_down = true
 				disabled = true
+
+				tween = get_tree().create_tween()
+				tween.finished.connect(_on_tween_finished)
 				tween.tween_method(set_cooldown_text, data.cooldown, 0, data.cooldown)
-				on_cooldown_started.emit(item_type)
 				color_rect.show()
+				on_cooldown_started.emit(item_type)
+
 				var timer := get_tree().create_timer(data.cooldown, false, true)
 				player.current_uses.set(item_type, timer)
 				await timer.timeout
 				player.current_uses.erase(item_type)
 
 func check_cooldown(value: ItemDB.Type):
-	if item_type != ItemDB.Type.INVALID and item_type == value:
+	if not is_cooling_down and item_type != ItemDB.Type.INVALID and item_type == value:
+		is_cooling_down = true
 		disabled = true
+
 		var cooldown_sec := ItemDB.get_item_type_data(value).cooldown
+		tween = get_tree().create_tween()
+		tween.finished.connect(_on_tween_finished)
 		tween.tween_method(set_cooldown_text, cooldown_sec, 0, cooldown_sec)
 		color_rect.show()
 
@@ -84,7 +90,8 @@ func _on_set_icon(value: Texture):
 func clear():
 	item_type = ItemDB.Type.INVALID
 	label.text = ""
-	tween.stop()
+	if tween != null and tween is Tween:
+		tween.stop()
 	_on_tween_finished()
 
 func set_cooldown_text(value: int):

@@ -110,5 +110,11 @@ theme_type_variation = &"Button_half"
 text = "Drop"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="focus_entered" from="vBox_item_detail/action/use" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="vBox_item_detail/action/use" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="vBox_item_detail/action/use" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="vBox_item_detail/action/use" to="." method="_on_use_pressed"]
+[connection signal="focus_entered" from="vBox_item_detail/action/drop" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="vBox_item_detail/action/drop" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="vBox_item_detail/action/drop" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="vBox_item_detail/action/drop" to="." method="_on_drop_pressed"]

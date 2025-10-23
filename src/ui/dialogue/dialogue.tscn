@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3wg72c6hhswn"]
+
+[ext_resource type="Script" uid="uid://7esktxssttwf" path="res://src/ui/dialogue/dialogue.gd" id="1_5u4pr"]
+
+[node name="dialogue" type="VBoxContainer"]
+script = ExtResource("1_5u4pr")
+metadata/_tab_index = 2
+
+[node name="vBox_header" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="icon" type="TextureRect" parent="vBox_header"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="name" type="Label" parent="vBox_header"]
+layout_mode = 2
+text = "Target Name"
+horizontal_alignment = 1
+
+[node name="scroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(640, 240)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dialogue" type="Label" parent="scroll"]
+custom_minimum_size = Vector2(640, 240)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="action" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="accept" type="Button" parent="action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_right = NodePath("../decline")
+theme_type_variation = &"Button_half"
+text = "Accept"
+
+[node name="decline" type="Button" parent="action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../accept")
+focus_neighbor_top = NodePath("../../../../../exit_margin/exit")
+focus_neighbor_right = NodePath("../../../../../exit_margin/exit")
+theme_type_variation = &"Button_half"
+text = "Decline"
+
+[connection signal="focus_entered" from="action/accept" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="action/accept" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="action/accept" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="action/accept" to="." method="_on_accept_pressed"]
+[connection signal="focus_entered" from="action/decline" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="action/decline" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="action/decline" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="action/decline" to="." method="_on_decline_pressed"]
