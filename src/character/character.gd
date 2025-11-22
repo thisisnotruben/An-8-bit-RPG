@@ -68,6 +68,7 @@ var current_uses: Dictionary[ItemDB.Type, SceneTreeTimer] = {}
 
 @export_category("Optional Misc")
 @export var target: Character = null
+@export var gold: int = 0
 
 signal health_changed(_health, _max_health)
 signal mana_changed(_mana, _max_mana)
@@ -268,3 +269,44 @@ func aggro(_body: Node2D) -> bool:
 func move_to(pos: Vector3):
 	behavior.get_node("move_to").move_to_pos = pos
 	behavior.state = BehaviorStates.Type.MOVE_TO
+
+func serialize() -> Dictionary:
+	var payload := {
+		"health": health,
+		"mana": mana,
+		"ability": ability,
+		"gold": gold,
+		"inventory": inventory,
+		"spells": spells,
+		"current_uses": {},
+		"global_position": [global_position.x, global_position.y]
+	}
+	for item_type in current_uses:
+		payload["current_uses"][item_type] = current_uses[item_type].time_left
+	return payload
+
+func deserialize(payload: Dictionary):
+	for data in payload:
+		match data:
+			"health":
+				health = int(payload[data])
+			"mana":
+				mana = int(payload[data])
+			"ability":
+				ability = int(payload[data])
+			"gold":
+				gold = int(payload[data])
+			"inventory":
+				inventory = payload[data]
+				for item_type in payload[data]:
+					inventory_add({"type": item_type, "add": true, "spell": false})
+			"spells":
+				spells = payload[data]
+				for spell_type in payload[data]:
+					inventory_add({"type": spell_type, "add": true, "spell": true})
+			"current_uses":
+				for item_type in payload[data]:
+					ItemDB.get_item_type_data(item_type).use_enter(payload[data][item_type])
+			"global_position":
+				global_position.x = payload[data][0]
+				global_position.y = payload[data][1]

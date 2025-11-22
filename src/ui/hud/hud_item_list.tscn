@@ -8,7 +8,11 @@ columns = 2
 script = ExtResource("1_ibift")
 metadata/_tab_index = 0
 
-[node name="snd" type="AudioStreamPlayer" parent="."]
+[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_drop" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_learn" type="AudioStreamPlayer" parent="."]
 
 [node name="vBox" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -96,6 +100,7 @@ size_flags_vertical = 10
 alignment = 1
 
 [node name="use" type="Button" parent="vBox_item_detail/action"]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 focus_neighbor_right = NodePath("../drop")
@@ -103,11 +108,19 @@ theme_type_variation = &"Button_half"
 text = "Use"
 
 [node name="drop" type="Button" parent="vBox_item_detail/action"]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../use")
 theme_type_variation = &"Button_half"
 text = "Drop"
+
+[node name="learn" type="Button" parent="vBox_item_detail/action"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+focus_neighbor_left = NodePath("../use")
+theme_type_variation = &"Button_half"
+text = "Learn"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="focus_entered" from="vBox_item_detail/action/use" to="." method="_on_focus_entered"]

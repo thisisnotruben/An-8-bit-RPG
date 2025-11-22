@@ -85,7 +85,7 @@ _data = {
 &"unfocus": SubResource("Animation_c3b4i")
 }
 
-[node name="slot" type="Button"]
+[node name="slot" type="Button" groups=["serializable"]]
 custom_minimum_size = Vector2(60, 60)
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,6 +99,8 @@ size_flags_vertical = 8
 icon = ExtResource("1_jlos1")
 flat = true
 script = ExtResource("1_7cawf")
+
+[node name="snd" type="AudioStreamPlayer" parent="."]
 
 [node name="icon" type="TextureRect" parent="."]
 layout_mode = 1

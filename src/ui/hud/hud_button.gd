@@ -1,6 +1,8 @@
 extends Button
 class_name HudButton
 
+enum Type{ PLAYER, MERCHANT }
+
 const drag_item := preload("res://src/ui/hud/hud_drag_icon.tscn")
 
 @onready var label: Label = $margin_label/label
@@ -10,6 +12,7 @@ const drag_item := preload("res://src/ui/hud/hud_drag_icon.tscn")
 @export var player: Character = null
 @export var item_icon: Texture = null: set = _on_set_icon
 @export var quick_slot := false
+@export var type := Type.PLAYER: set = _on_set_type
 var item_type := ItemDB.Type.INVALID: set = _on_set_item
 var is_cooling_down := false
 var tween: Tween = null
@@ -53,31 +56,22 @@ func use():
 		var data := ItemDB.get_item_type_data(item_type)
 		if data.use:
 			data.use_enter()
-			if data.cooldown > 0:
-				is_cooling_down = true
-				disabled = true
-
-				tween = get_tree().create_tween()
-				tween.finished.connect(_on_tween_finished)
-				tween.tween_method(set_cooldown_text, data.cooldown, 0, data.cooldown)
-				color_rect.show()
+			if data.cooldown > 0.0:
+				_start_tween(data.cooldown)
 				on_cooldown_started.emit(item_type)
 
-				var timer := get_tree().create_timer(data.cooldown, false, true)
-				player.current_uses.set(item_type, timer)
-				await timer.timeout
-				player.current_uses.erase(item_type)
-
 func check_cooldown(value: ItemDB.Type):
-	if not is_cooling_down and item_type != ItemDB.Type.INVALID and item_type == value:
-		is_cooling_down = true
-		disabled = true
+	if type == Type.PLAYER and not is_cooling_down \
+	and item_type != ItemDB.Type.INVALID and item_type == value:
+		_start_tween(ItemDB.get_item_type_data(value).cooldown)
 
-		var cooldown_sec := ItemDB.get_item_type_data(value).cooldown
-		tween = get_tree().create_tween()
-		tween.finished.connect(_on_tween_finished)
-		tween.tween_method(set_cooldown_text, cooldown_sec, 0, cooldown_sec)
-		color_rect.show()
+func _start_tween(tween_time_sec: float):
+	is_cooling_down = true
+	disabled = true
+	tween = get_tree().create_tween()
+	tween.finished.connect(_on_tween_finished)
+	tween.tween_method(set_cooldown_text, tween_time_sec, 0, tween_time_sec)
+	color_rect.show()
 
 func _on_set_item(value: ItemDB.Type):
 	item_type = value
@@ -86,6 +80,17 @@ func _on_set_item(value: ItemDB.Type):
 
 func _on_set_icon(value: Texture):
 	$icon.texture = value
+
+func _on_set_type(value: Type):
+	type = value
+	if value == Type.MERCHANT:
+		remove_from_group("serializable")
+		pressed.disconnect(_on_pressed)
+	else:
+		if not is_in_group("serializable"):
+			add_to_group("serializable")
+		if not pressed.is_connected(_on_pressed):
+			pressed.connect(_on_pressed)
 
 func clear():
 	item_type = ItemDB.Type.INVALID
@@ -96,3 +101,12 @@ func clear():
 
 func set_cooldown_text(value: int):
 	label.text = str(value)
+
+func serialize() -> Dictionary:
+	return { "time_left": player.current_uses[item_type].time_left \
+		if player.current_uses.has(item_type) else -1.0 } \
+	if is_cooling_down else {}
+
+func deserialize(payload: Dictionary):
+	if payload.has("time_left") and payload["time_left"] > 0.0:
+		_start_tween(payload["time_left"])

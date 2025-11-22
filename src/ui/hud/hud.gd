@@ -29,20 +29,30 @@ var hovered_control: Control = null
 @onready var target_health_node: Control = $status_margin/target_health
 @onready var target_status_bar: Control = $bg_margin/target_status_bar
 
-@onready var inventory: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/tabs/inventory
-@onready var spellbook: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/tabs/spell_book
+@onready var inventory: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/player/inventory
+@onready var spellbook: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/player/spell_book
+@onready var trainer: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/npc/trainer
 
-@onready var tab: TabContainer = $bg_margin/vBox/center/panel/content_margin/tabs
-const tabs := {"inventory": 0, "spell_book": 1, "dialogue": 2}
+@onready var tab_master: TabContainer = $bg_margin/vBox/center/panel/content_margin/master
+@onready var tab_player: TabContainer = $bg_margin/vBox/center/panel/content_margin/master/player
+@onready var tab_npc: TabContainer = $bg_margin/vBox/center/panel/content_margin/master/npc
+const tabs_master := {"player": 0, "npc": 1}
+const tabs_npc := {"dialogue": 0, "trainer": 1, "merchant": 2}
 
 
 func _ready():
-	var tab_order := [inventory_icon, trainer_icon, dialogue_icon, objective_tracker_icon]
+	var tab_order := [inventory_icon, trainer_icon, objective_tracker_icon]
 	for i in tab_order.size():
-		tab.set_tab_icon(i, tab_order[i])
-		tab.set_tab_title(i, "")
+		tab_player.set_tab_icon(i, tab_order[i])
+		tab_player.set_tab_title(i, "")
+	tab_order = [dialogue_icon, trainer_icon, merchant_icon]
+	for i in tab_order.size():
+		tab_npc.set_tab_icon(i, tab_order[i])
+		tab_npc.set_tab_title(i, "")
+
 	target_status_bar.visibility_changed.connect(func(): \
 		target_health_node.visible = target_status_bar.visible)
+
 	if player != null:
 		player.health_changed.connect(_on_set_player_health)
 		player.mana_changed.connect(_on_set_player_mana)
@@ -53,6 +63,7 @@ func _ready():
 		player.is_spellbook_full = spellbook.is_full
 		inventory.player = player
 		spellbook.player = player
+		trainer.player = player
 
 func _on_set_target(value: Character):
 	if target != null and value != target:
@@ -68,16 +79,36 @@ func _on_set_target(value: Character):
 		target_slot.visible = show_slot
 		target_name_label.text = value.character_name if show_slot \
 		else " ".repeat(target_status_name_padding) + value.character_name
+
 		if show_slot:
-			if value.character_roles.size() == 1:
+			tab_master.current_tab = tabs_master["npc"]
+			var is_one_role := value.character_roles.size() == 1
+			tab_npc.tabs_visible = not is_one_role
+
+			if is_one_role:
+				var npc_view := ""
 				match value.character_roles[0]:
 					Character.CharaterSideRoles.MERCHANT:
 						target_slot.item_icon = merchant_icon
+						npc_view = "merchant"
 					Character.CharaterSideRoles.TRAINER:
 						target_slot.item_icon = trainer_icon
+						npc_view = "trainer"
 					Character.CharaterSideRoles.DIALOGUE:
 						target_slot.item_icon = dialogue_icon
+						npc_view = "dialogue"
+				if not npc_view.is_empty():
+					tab_npc.current_tab = tabs_npc[npc_view]
+
 			else:
+				var role_map := { # mapped against 'tab_npc' index
+					Character.CharaterSideRoles.DIALOGUE: 0,
+					Character.CharaterSideRoles.TRAINER: 1,
+					Character.CharaterSideRoles.MERCHANT: 2
+				}
+				for role in role_map:
+					tab_npc.get_tab_bar().set_tab_hidden(role_map[role],
+						not value.character_roles.has(role))
 				target_slot.item_icon = many_hats_icon
 
 		_on_set_target_health(value.health, value.health_max)
@@ -117,6 +148,7 @@ func _get_pct(value: int, value_max: int) -> int:
 
 func _on_inventory_spell_book_pressed():
 	var is_hud_panel_visible := not interact_panel.visible
+	tab_master.current_tab = tabs_master["player"]
 	interact_panel.visible = is_hud_panel_visible
 	if player != null:
 		player.set_player_move_hud_menu_pause.emit(is_hud_panel_visible)

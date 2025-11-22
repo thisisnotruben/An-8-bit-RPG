@@ -44,5 +44,5 @@ func _on_area_body_entered(body: Node2D):
 		queue_free()
 
 func add_to_inventory(character: Character, add := true) -> bool:
-	return character.inventory_add({"type": type, "add": add, \
-		"character": character, "spell": category == ItemDB.Category.SPELL})
+	return character.inventory_add({"type": type, "add": add,
+		"spell": category == ItemDB.Category.SPELL})

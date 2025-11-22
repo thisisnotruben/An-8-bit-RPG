@@ -1,0 +1,212 @@
+[gd_scene load_steps=3 format=3 uid="uid://y36i1xrawve"]
+
+[ext_resource type="Script" uid="uid://cvihkvx32st8v" path="res://src/ui/merchant/merchant.gd" id="1_2ohtt"]
+[ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="1_du176"]
+
+[node name="merchant" type="HBoxContainer"]
+script = ExtResource("1_2ohtt")
+
+[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_sell" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_buy" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_inventory_full" type="AudioStreamPlayer" parent="."]
+
+[node name="snd_cant_afford" type="AudioStreamPlayer" parent="."]
+
+[node name="player" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="header" type="Label" parent="player"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="player"]
+layout_mode = 2
+columns = 4
+
+[node name="slot1" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot2" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot3" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot4" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot5" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot6" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot7" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot8" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot9" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot10" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot11" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot12" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot13" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot14" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot15" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot16" parent="player/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="player_item_detail" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="header" type="HBoxContainer" parent="player_item_detail"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="player_item_detail/header"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="name" type="Label" parent="player_item_detail/header"]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="player_item_detail"]
+layout_mode = 2
+text = "Item Blurb"
+
+[node name="worth" type="Label" parent="player_item_detail"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "+ 00"
+vertical_alignment = 1
+
+[node name="sell" type="Button" parent="player_item_detail"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_type_variation = &"button_half_sell"
+text = "Sell"
+
+[node name="merchant_item_detail" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="header" type="HBoxContainer" parent="merchant_item_detail"]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="merchant_item_detail/header"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="name" type="Label" parent="merchant_item_detail/header"]
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="description" type="Label" parent="merchant_item_detail"]
+layout_mode = 2
+text = "Item Blurb"
+
+[node name="worth" type="Label" parent="merchant_item_detail"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "- 00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="buy" type="Button" parent="merchant_item_detail"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_type_variation = &"button_half_buy"
+text = "Buy"
+
+[node name="merchant" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="header" type="Label" parent="merchant"]
+layout_mode = 2
+text = "Merchant"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="grid" type="GridContainer" parent="merchant"]
+layout_mode = 2
+columns = 4
+
+[node name="slot1" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot2" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot3" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot4" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot5" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot6" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot7" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot8" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot9" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot10" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot11" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot12" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot13" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot14" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot15" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[node name="slot16" parent="merchant/grid" instance=ExtResource("1_du176")]
+layout_mode = 2
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="focus_entered" from="player_item_detail/sell" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="player_item_detail/sell" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="player_item_detail/sell" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="player_item_detail/sell" to="." method="_on_sell_pressed"]
+[connection signal="focus_entered" from="merchant_item_detail/buy" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="merchant_item_detail/buy" to="." method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="merchant_item_detail/buy" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="merchant_item_detail/buy" to="." method="_on_buy_pressed"]

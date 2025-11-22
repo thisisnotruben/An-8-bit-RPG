@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bw2nrah0lihoa"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bw2nrah0lihoa"]
 
 [ext_resource type="StyleBox" uid="uid://beehw7brq2fy4" path="res://resource/theme/new_style_box_empty.tres" id="1_0n7r7"]
 [ext_resource type="StyleBox" uid="uid://co7f43bwlll15" path="res://resource/theme/ui_style_box_button.tres" id="2_5o72f"]
@@ -9,7 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="7_2c4ig"]
 [ext_resource type="StyleBox" uid="uid://kruuc6rfubrx" path="res://resource/theme/ui_style_box_scrollbar_grabber.tres" id="8_0n5tj"]
 [ext_resource type="StyleBox" uid="uid://cno267gjx5c10" path="res://resource/theme/ui_style_box_scrollbar.tres" id="8_jrahy"]
+[ext_resource type="Texture2D" uid="uid://dvth0hknixxf3" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_Outline4x.png" id="8_umm11"]
 [ext_resource type="StyleBox" uid="uid://3papaycojfqv" path="res://resource/theme/ui_style_box_scrollbar_grabber_highlight.tres" id="9_6dyk0"]
+[ext_resource type="StyleBox" uid="uid://bw0qoh5haggy4" path="res://resource/theme/ui_style_box_button_half_buy.tres" id="11_g52xf"]
+[ext_resource type="StyleBox" uid="uid://dtjjooy6w0eje" path="res://resource/theme/ui_style_box_button_half_buy_pressed.tres" id="12_ku6mq"]
+[ext_resource type="StyleBox" uid="uid://uqplafupkm8s" path="res://resource/theme/ui_style_box_button_half_sell.tres" id="13_c4ewu"]
+[ext_resource type="StyleBox" uid="uid://b0v0jthfrm1r1" path="res://resource/theme/ui_style_box_button_half_sell_pressed.tres" id="14_umm11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o72f"]
 atlas = ExtResource("2_tvgo0")
@@ -24,6 +29,30 @@ region = Rect2(4480, 1920, 320, 64)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb006"]
 texture = SubResource("AtlasTexture_l4xdx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7447n"]
+atlas = ExtResource("8_umm11")
+region = Rect2(448, 640, 192, 192)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_coi51"]
+texture = SubResource("AtlasTexture_7447n")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dyk0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
 
 [resource]
 Button/colors/font_color = Color(0.105882, 0.105882, 0.105882, 1)
@@ -49,6 +78,12 @@ Button_long/base_type = &"Button"
 Button_long/styles/hover = ExtResource("6_7djdk")
 Button_long/styles/normal = ExtResource("6_7djdk")
 Button_long/styles/pressed = SubResource("StyleBoxTexture_eb006")
+FoldableContainer/styles/focus = ExtResource("1_0n7r7")
+FoldableContainer/styles/panel = SubResource("StyleBoxTexture_coi51")
+FoldableContainer/styles/title_collapsed_hover_panel = ExtResource("1_0n7r7")
+FoldableContainer/styles/title_collapsed_panel = ExtResource("1_0n7r7")
+FoldableContainer/styles/title_hover_panel = ExtResource("1_0n7r7")
+FoldableContainer/styles/title_panel = ExtResource("1_0n7r7")
 HBoxContainer/constants/separation = 8
 Label/colors/font_color = Color(0.85098, 0.85098, 0.85098, 1)
 Label/font_sizes/font_size = 24
@@ -70,5 +105,18 @@ VScrollBar/styles/grabber_highlight = ExtResource("9_6dyk0")
 VScrollBar/styles/grabber_pressed = ExtResource("9_6dyk0")
 VScrollBar/styles/scroll = ExtResource("8_jrahy")
 VScrollBar/styles/scroll_focus = ExtResource("8_jrahy")
+button_half_buy/base_type = &"Button"
+button_half_buy/styles/hover = ExtResource("11_g52xf")
+button_half_buy/styles/normal = ExtResource("11_g52xf")
+button_half_buy/styles/pressed = ExtResource("12_ku6mq")
+button_half_sell/base_type = &"Button"
+button_half_sell/styles/hover = ExtResource("13_c4ewu")
+button_half_sell/styles/normal = ExtResource("13_c4ewu")
+button_half_sell/styles/pressed = ExtResource("14_umm11")
 button_save_load_entry/base_type = &"Button"
 button_save_load_entry/colors/font_color = Color(0.5686275, 0.53333336, 0.29411766, 1)
+button_save_load_entry/styles/disabled = SubResource("StyleBoxFlat_6dyk0")
+button_save_load_entry/styles/focus = SubResource("StyleBoxFlat_6dyk0")
+button_save_load_entry/styles/hover = SubResource("StyleBoxFlat_6dyk0")
+button_save_load_entry/styles/normal = SubResource("StyleBoxFlat_6dyk0")
+button_save_load_entry/styles/pressed = SubResource("StyleBoxFlat_6dyk0")
