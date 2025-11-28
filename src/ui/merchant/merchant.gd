@@ -14,7 +14,6 @@ extends HBoxContainer
 @onready var merchant_item_blurb: Label = $merchant_item_detail/description
 @onready var merchant_item_worth: Label = $merchant_item_detail/worth
 @onready var merchant_item_slots: Array[Node] = $merchant/grid.get_children()
-@onready var buy_bttn: BaseButton = $merchant_item_detail/sell
 
 var play_focus_sfx := false
 var player_focused_slot: HudButton = null
@@ -85,7 +84,6 @@ func clear(is_player: bool):
 		merchant_item_name.text = ""
 		merchant_item_blurb.text = ""
 		merchant_item_worth.text = ""
-		buy_bttn.hide()
 
 func _on_sell_pressed():
 	$snd_sell.play()

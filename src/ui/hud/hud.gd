@@ -14,7 +14,7 @@ var hovered_control: Control = null
 @export var many_hats_icon: Texture = null
 @export var target_status_name_padding: int = 2
 
-@onready var interact_panel: Control = $bg_margin/vBox/center/panel
+@onready var interact_panel: Control = $bg_margin/vBox/panel
 
 @onready var player_health: AtlasTexture = $status_margin/player_health.get("texture_progress")
 @onready var player_mana: AtlasTexture = $status_margin/player_health/mana.get("texture_progress")
@@ -29,13 +29,13 @@ var hovered_control: Control = null
 @onready var target_health_node: Control = $status_margin/target_health
 @onready var target_status_bar: Control = $bg_margin/target_status_bar
 
-@onready var inventory: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/player/inventory
-@onready var spellbook: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/player/spell_book
-@onready var trainer: UIItemHandler = $bg_margin/vBox/center/panel/content_margin/master/npc/trainer
+@onready var inventory: UIItemHandler = $bg_margin/vBox/panel/content_margin/master/player/inventory
+@onready var spellbook: UIItemHandler = $bg_margin/vBox/panel/content_margin/master/player/spell_book
+@onready var trainer: UIItemHandler = $bg_margin/vBox/panel/content_margin/master/npc/trainer
 
-@onready var tab_master: TabContainer = $bg_margin/vBox/center/panel/content_margin/master
-@onready var tab_player: TabContainer = $bg_margin/vBox/center/panel/content_margin/master/player
-@onready var tab_npc: TabContainer = $bg_margin/vBox/center/panel/content_margin/master/npc
+@onready var tab_master: TabContainer = $bg_margin/vBox/panel/content_margin/master
+@onready var tab_player: TabContainer = $bg_margin/vBox/panel/content_margin/master/player
+@onready var tab_npc: TabContainer = $bg_margin/vBox/panel/content_margin/master/npc
 const tabs_master := {"player": 0, "npc": 1}
 const tabs_npc := {"dialogue": 0, "trainer": 1, "merchant": 2}
 

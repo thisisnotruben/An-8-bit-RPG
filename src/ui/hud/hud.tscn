@@ -64,6 +64,7 @@ inventory_icon = ExtResource("2_1ilyr")
 merchant_icon = ExtResource("3_v4dvs")
 trainer_icon = ExtResource("3_0lyew")
 dialogue_icon = ExtResource("4_v4dvs")
+objective_tracker_icon = ExtResource("4_v4dvs")
 many_hats_icon = ExtResource("6_s8lle")
 
 [node name="snd_nav" type="AudioStreamPlayer" parent="."]
@@ -78,18 +79,14 @@ grow_vertical = 2
 
 [node name="vBox" type="VBoxContainer" parent="bg_margin"]
 layout_mode = 2
+alignment = 2
 
-[node name="center" type="CenterContainer" parent="bg_margin/vBox"]
+[node name="panel" type="PanelContainer" parent="bg_margin/vBox"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 3
+size_flags_vertical = 2
 
-[node name="panel" type="PanelContainer" parent="bg_margin/vBox/center"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/center/panel"]
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/panel"]
 layout_mode = 2
 texture = ExtResource("2_cio14")
 patch_margin_left = 32
@@ -99,75 +96,78 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="content_margin" type="MarginContainer" parent="bg_margin/vBox/center/panel"]
+[node name="content_margin" type="MarginContainer" parent="bg_margin/vBox/panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_right = 48
 
-[node name="master" type="TabContainer" parent="bg_margin/vBox/center/panel/content_margin"]
+[node name="master" type="TabContainer" parent="bg_margin/vBox/panel/content_margin"]
 layout_mode = 2
+theme_type_variation = &"tabbar_inverted"
 current_tab = 0
 tabs_visible = false
 
-[node name="player" type="TabContainer" parent="bg_margin/vBox/center/panel/content_margin/master"]
+[node name="player" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master"]
 layout_mode = 2
-current_tab = 2
+theme_type_variation = &"tabbar_inverted"
+tab_alignment = 2
+current_tab = 0
 metadata/_tab_index = 0
 
-[node name="inventory" parent="bg_margin/vBox/center/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
-visible = false
+[node name="inventory" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
 layout_mode = 2
 
-[node name="drop" parent="bg_margin/vBox/center/panel/content_margin/master/player/inventory/vBox_item_detail/action" index="1"]
+[node name="drop" parent="bg_margin/vBox/panel/content_margin/master/player/inventory/vBox_item_detail/action" index="1"]
 focus_neighbor_top = NodePath("../../../../../../../exit_margin/exit")
 focus_neighbor_right = NodePath("../../../../../../../exit_margin/exit")
 
-[node name="spell_book" parent="bg_margin/vBox/center/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
+[node name="spell_book" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="description" parent="bg_margin/vBox/center/panel/content_margin/master/player/spell_book/vBox_item_detail" index="1"]
+[node name="description" parent="bg_margin/vBox/panel/content_margin/master/player/spell_book/vBox_item_detail" index="1"]
 text = "Spell Blurb"
 
-[node name="drop" parent="bg_margin/vBox/center/panel/content_margin/master/player/spell_book/vBox_item_detail/action" index="1"]
+[node name="drop" parent="bg_margin/vBox/panel/content_margin/master/player/spell_book/vBox_item_detail/action" index="1"]
 focus_neighbor_top = NodePath("../../../../../../../exit_margin/exit")
 focus_neighbor_right = NodePath("../../../../../../../exit_margin/exit")
 
-[node name="ojective_tracker" parent="bg_margin/vBox/center/panel/content_margin/master/player" instance=ExtResource("10_5t2k2")]
+[node name="ojective_tracker" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("10_5t2k2")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="npc" type="TabContainer" parent="bg_margin/vBox/center/panel/content_margin/master"]
+[node name="npc" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master"]
 visible = false
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 metadata/_tab_index = 1
 
-[node name="dialogue" parent="bg_margin/vBox/center/panel/content_margin/master/npc" instance=ExtResource("9_2406e")]
+[node name="dialogue" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("9_2406e")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="trainer" parent="bg_margin/vBox/center/panel/content_margin/master/npc" instance=ExtResource("11_4u0hr")]
+[node name="trainer" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("11_4u0hr")]
 visible = false
 layout_mode = 2
 type = 1
 metadata/_tab_index = 1
 
-[node name="merchant" parent="bg_margin/vBox/center/panel/content_margin/master/npc" instance=ExtResource("11_sa7i1")]
+[node name="merchant" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("11_sa7i1")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/center/panel"]
+[node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/panel"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_top = -19
 theme_override_constants/margin_right = -4
 
-[node name="exit" type="TextureButton" parent="bg_margin/vBox/center/panel/exit_margin"]
+[node name="exit" type="TextureButton" parent="bg_margin/vBox/panel/exit_margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -194,12 +194,12 @@ axis_stretch_vertical = 2
 layout_mode = 2
 theme_override_constants/margin_left = 34
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 106
+theme_override_constants/margin_right = 108
 theme_override_constants/margin_bottom = 16
 
 [node name="hBox" type="HBoxContainer" parent="bg_margin/vBox/action_bar/margin"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
@@ -265,7 +265,7 @@ axis_stretch_vertical = 2
 
 [node name="margin" type="MarginContainer" parent="bg_margin/target_status_bar"]
 layout_mode = 2
-theme_override_constants/margin_left = 106
+theme_override_constants/margin_left = 112
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 16
@@ -359,31 +359,31 @@ value = 100.0
 texture_under = ExtResource("4_076te")
 texture_progress = SubResource("AtlasTexture_1ilyr")
 
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_entered"]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_mouse_entered"]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_entered"]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="close_panel" from="bg_margin/vBox/center/panel/content_margin/master/npc/dialogue" to="." method="_on_inventory_spell_book_pressed"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_entered"]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_mouse_entered" flags=18]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/center/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/center/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_mouse_entered" flags=18]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/center/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="pressed" from="bg_margin/vBox/center/panel/exit_margin/exit" to="." method="_on_interact_panel_exit_pressed"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/player/spell_book" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="close_panel" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_inventory_spell_book_pressed"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_entered"]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_mouse_entered" flags=18]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_focused"]
+[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_mouse_entered" flags=18]
+[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_mouse_exited"]
+[connection signal="pressed" from="bg_margin/vBox/panel/exit_margin/exit" to="." method="_on_interact_panel_exit_pressed"]
 [connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook" to="." method="_on_inventory_spell_book_pressed"]
 [connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/menu" to="." method="_on_menu_pressed"]
 
-[editable path="bg_margin/vBox/center/panel/content_margin/master/player/inventory"]
-[editable path="bg_margin/vBox/center/panel/content_margin/master/player/spell_book"]
+[editable path="bg_margin/vBox/panel/content_margin/master/player/inventory"]
+[editable path="bg_margin/vBox/panel/content_margin/master/player/spell_book"]
 [editable path="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook"]
 [editable path="bg_margin/vBox/action_bar/margin/hBox/menu"]
 [editable path="bg_margin/target_status_bar/margin/HBoxContainer/slot"]

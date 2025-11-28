@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://bspsovoya25qh" path="res://src/ui/objective_tracker/quest_entry.gd" id="1_x1pi8"]
 
 [node name="quest_entry" type="FoldableContainer"]
+offset_left = 4.0
+offset_top = 28.0
+offset_right = 692.0
+offset_bottom = 475.0
 title = "Quest Title"
 script = ExtResource("1_x1pi8")
 
 [node name="margin" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
@@ -17,44 +21,42 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 current_tab = 0
 
-[node name="Quest Started" type="ScrollContainer" parent="margin/tabs"]
+[node name="Started" type="ScrollContainer" parent="margin/tabs"]
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="blurb" type="Label" parent="margin/tabs/Quest Started"]
+[node name="blurb" type="Label" parent="margin/tabs/Started"]
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Quest Active" type="ScrollContainer" parent="margin/tabs"]
+[node name="Active" type="ScrollContainer" parent="margin/tabs"]
 visible = false
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="blurb" type="Label" parent="margin/tabs/Quest Active"]
+[node name="blurb" type="Label" parent="margin/tabs/Active"]
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Quest Completed" type="ScrollContainer" parent="margin/tabs"]
+[node name="Completed" type="ScrollContainer" parent="margin/tabs"]
 visible = false
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="blurb" type="Label" parent="margin/tabs/Quest Completed"]
+[node name="blurb" type="Label" parent="margin/tabs/Completed"]
 custom_minimum_size = Vector2(640, 240)
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
-[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="folding_changed" from="." to="." method="_on_folding_changed"]
+[connection signal="draw" from="." to="." method="_on_draw"]

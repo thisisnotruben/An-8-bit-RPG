@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://ti3i4mfnkray" path="res://src/ui/objective_tracker/ojective_tracker.gd" id="1_85hut"]
 [ext_resource type="PackedScene" uid="uid://d0ndwgbbr3qcw" path="res://src/ui/objective_tracker/quest_entry.tscn" id="2_wepkx"]
 
-[node name="ojective_tracker" type="TabContainer"]
+[node name="ojective_tracker" type="Control"]
 custom_minimum_size = Vector2(720, 400)
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -12,41 +13,55 @@ offset_right = -560.0
 offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
 script = ExtResource("1_85hut")
 
-[node name="Active" type="ScrollContainer" parent="."]
+[node name="tabs" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(720, 448)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -55.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"tabbar_inverted"
+current_tab = 0
+
+[node name="Active" type="ScrollContainer" parent="tabs"]
 layout_mode = 2
 follow_focus = true
 metadata/_tab_index = 0
 
-[node name="vBox" type="VBoxContainer" parent="Active"]
+[node name="vBox" type="VBoxContainer" parent="tabs/Active"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 4
 
-[node name="quest_entry" parent="Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-folded = true
-
-[node name="quest_entry2" parent="Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-folded = true
-
-[node name="quest_entry3" parent="Active/vBox" instance=ExtResource("2_wepkx")]
+[node name="quest_entry" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
 layout_mode = 2
 
-[node name="quest_entry4" parent="Active/vBox" instance=ExtResource("2_wepkx")]
+[node name="quest_entry2" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
 layout_mode = 2
 
-[node name="quest_entry5" parent="Active/vBox" instance=ExtResource("2_wepkx")]
+[node name="quest_entry3" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
 layout_mode = 2
 
-[node name="Completed" type="ScrollContainer" parent="."]
+[node name="quest_entry4" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
+layout_mode = 2
+
+[node name="quest_entry5" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
+layout_mode = 2
+
+[node name="Completed" type="ScrollContainer" parent="tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="vBox" type="VBoxContainer" parent="Completed"]
+[node name="vBox" type="VBoxContainer" parent="tabs/Completed"]
 layout_mode = 2
 size_flags_horizontal = 3
 

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c1kkhqx75cwa8" path="res://src/ui/save_load/save_load.gd" id="1_xrkk1"]
 
 [node name="save_load" type="VBoxContainer"]
-offset_right = 392.0
-offset_bottom = 306.0
+offset_right = 580.0
+offset_bottom = 346.0
 script = ExtResource("1_xrkk1")
 
 [node name="header" type="Label" parent="."]
@@ -13,79 +13,89 @@ text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="grid" type="GridContainer" parent="."]
+[node name="hBox2" type="HBoxContainer" parent="."]
 layout_mode = 2
+alignment = 1
+
+[node name="slots" type="GridContainer" parent="hBox2"]
+layout_mode = 2
+size_flags_horizontal = 3
 columns = 2
 
-[node name="Button1" type="Button" parent="grid"]
+[node name="Button1" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 1"
 flat = true
 
-[node name="Button2" type="Button" parent="grid"]
+[node name="Button2" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 6"
 flat = true
 
-[node name="Button3" type="Button" parent="grid"]
+[node name="Button3" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 2"
 flat = true
 
-[node name="Button4" type="Button" parent="grid"]
+[node name="Button4" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 7"
 flat = true
 
-[node name="Button5" type="Button" parent="grid"]
+[node name="Button5" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 3"
 flat = true
 
-[node name="Button6" type="Button" parent="grid"]
+[node name="Button6" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 8"
 flat = true
 
-[node name="Button7" type="Button" parent="grid"]
+[node name="Button7" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 4"
 flat = true
 
-[node name="Button8" type="Button" parent="grid"]
+[node name="Button8" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 9"
 flat = true
 
-[node name="Button9" type="Button" parent="grid"]
+[node name="Button9" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 5"
 flat = true
 
-[node name="Button10" type="Button" parent="grid"]
+[node name="Button10" type="Button" parent="hBox2/slots"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"button_save_load_entry"
 text = "Game 10"
 flat = true
+
+[node name="slot_save_image" type="TextureRect" parent="hBox2"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5
 
 [node name="hBox" type="HBoxContainer" parent="."]
 layout_mode = 2

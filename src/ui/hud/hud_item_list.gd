@@ -13,7 +13,6 @@ const item_scene := preload("res://src/item/item.tscn")
 @onready var item_blurb: Label = $vBox_item_detail/description
 @onready var use_bttn: BaseButton = $vBox_item_detail/action/use
 @onready var drop_bttn: BaseButton = $vBox_item_detail/action/drop
-@onready var buy_sell_bttn: BaseButton = $vBox_item_detail/action/buy_sell
 @onready var learn_bttn: BaseButton = $vBox_item_detail/action/learn
 
 @onready var slots: Array[Node] = $vBox/grid.get_children()

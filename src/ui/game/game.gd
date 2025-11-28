@@ -13,6 +13,7 @@ var hovered_control: Control = null
 @onready var tab: TabContainer = $center/panel/margin/tabs
 @onready var popup: Control = $center/panel/margin/tabs/popup
 @onready var prev_tab: Control = $center/panel/margin/tabs/main/resume_game
+@onready var save_load: GameUISaveLoad = $center/panel/margin/tabs/save_load
 
 
 func _ready():
@@ -26,6 +27,9 @@ func _input(event: InputEvent):
 
 	if event.is_action_pressed("ui_cancel") \
 	and tab.current_tab == tabs["main"]:
+		if not visible:
+			await RenderingServer.frame_post_draw
+			save_load.screenshot = get_viewport().get_texture()
 		visible = not visible
 		if visible:
 			$snd_pause.play()

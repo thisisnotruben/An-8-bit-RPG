@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bw2nrah0lihoa"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://bw2nrah0lihoa"]
 
 [ext_resource type="StyleBox" uid="uid://beehw7brq2fy4" path="res://resource/theme/new_style_box_empty.tres" id="1_0n7r7"]
 [ext_resource type="StyleBox" uid="uid://co7f43bwlll15" path="res://resource/theme/ui_style_box_button.tres" id="2_5o72f"]
@@ -8,13 +8,21 @@
 [ext_resource type="StyleBox" uid="uid://dsw5jmmj0fyhe" path="res://resource/theme/ui_style_box_button_long.tres" id="6_7djdk"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="7_2c4ig"]
 [ext_resource type="StyleBox" uid="uid://kruuc6rfubrx" path="res://resource/theme/ui_style_box_scrollbar_grabber.tres" id="8_0n5tj"]
+[ext_resource type="Texture2D" uid="uid://ctt83rn84hkqk" path="res://resource/texture/texture_ui_radio_button_pressed.tres" id="8_h3j6d"]
 [ext_resource type="StyleBox" uid="uid://cno267gjx5c10" path="res://resource/theme/ui_style_box_scrollbar.tres" id="8_jrahy"]
-[ext_resource type="Texture2D" uid="uid://dvth0hknixxf3" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_Outline4x.png" id="8_umm11"]
 [ext_resource type="StyleBox" uid="uid://3papaycojfqv" path="res://resource/theme/ui_style_box_scrollbar_grabber_highlight.tres" id="9_6dyk0"]
+[ext_resource type="Texture2D" uid="uid://mx0acxy0bmv7" path="res://resource/texture/texture_ui_radio_button.tres" id="9_17eja"]
+[ext_resource type="StyleBox" uid="uid://bfk3u45d6v5q1" path="res://resource/theme/ui_style_box_checkbox_bg.tres" id="10_coi51"]
 [ext_resource type="StyleBox" uid="uid://bw0qoh5haggy4" path="res://resource/theme/ui_style_box_button_half_buy.tres" id="11_g52xf"]
+[ext_resource type="StyleBox" uid="uid://cxuk14ysbd045" path="res://resource/theme/ui_style_box_foldeable_container_bg_content.tres" id="11_hcw77"]
+[ext_resource type="StyleBox" uid="uid://clk6qnbkbr2xn" path="res://resource/theme/ui_style_box_foldeable_container_bg_header.tres" id="12_5mjc0"]
 [ext_resource type="StyleBox" uid="uid://dtjjooy6w0eje" path="res://resource/theme/ui_style_box_button_half_buy_pressed.tres" id="12_ku6mq"]
 [ext_resource type="StyleBox" uid="uid://uqplafupkm8s" path="res://resource/theme/ui_style_box_button_half_sell.tres" id="13_c4ewu"]
+[ext_resource type="StyleBox" uid="uid://br036d7rp5q33" path="res://resource/theme/ui_style_box_tabar_tab_normal.tres" id="13_h3j6d"]
+[ext_resource type="StyleBox" uid="uid://cj2qlnuoulidg" path="res://resource/theme/ui_style_box_tabar_tab_unselected.tres" id="14_17eja"]
 [ext_resource type="StyleBox" uid="uid://b0v0jthfrm1r1" path="res://resource/theme/ui_style_box_button_half_sell_pressed.tres" id="14_umm11"]
+[ext_resource type="StyleBox" uid="uid://cwdslgoa81di8" path="res://resource/theme/ui_style_box_tabar_tab_unselected_hover.tres" id="22_n1orb"]
+[ext_resource type="StyleBox" uid="uid://cs58bv1omyumw" path="res://resource/theme/ui_style_box_tabar_tab_selected_hover.tres" id="23_t5dii"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o72f"]
 atlas = ExtResource("2_tvgo0")
@@ -29,17 +37,6 @@ region = Rect2(4480, 1920, 320, 64)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb006"]
 texture = SubResource("AtlasTexture_l4xdx")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7447n"]
-atlas = ExtResource("8_umm11")
-region = Rect2(448, 640, 192, 192)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_coi51"]
-texture = SubResource("AtlasTexture_7447n")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dyk0"]
 content_margin_left = 4.0
@@ -78,12 +75,27 @@ Button_long/base_type = &"Button"
 Button_long/styles/hover = ExtResource("6_7djdk")
 Button_long/styles/normal = ExtResource("6_7djdk")
 Button_long/styles/pressed = SubResource("StyleBoxTexture_eb006")
+CheckBox/icons/checked = ExtResource("8_h3j6d")
+CheckBox/icons/radio_checked = ExtResource("8_h3j6d")
+CheckBox/icons/radio_unchecked = ExtResource("9_17eja")
+CheckBox/icons/unchecked = ExtResource("9_17eja")
+CheckBox/styles/focus = ExtResource("10_coi51")
+CheckBox/styles/hover = ExtResource("10_coi51")
+CheckBox/styles/hover_pressed = ExtResource("10_coi51")
+CheckBox/styles/normal = ExtResource("10_coi51")
+CheckBox/styles/pressed = ExtResource("10_coi51")
+FoldableContainer/colors/collapsed_font_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+FoldableContainer/colors/font_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+FoldableContainer/colors/font_outline_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+FoldableContainer/colors/hover_font_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+FoldableContainer/icons/expanded_arrow = ExtResource("8_h3j6d")
+FoldableContainer/icons/folded_arrow = ExtResource("9_17eja")
 FoldableContainer/styles/focus = ExtResource("1_0n7r7")
-FoldableContainer/styles/panel = SubResource("StyleBoxTexture_coi51")
-FoldableContainer/styles/title_collapsed_hover_panel = ExtResource("1_0n7r7")
-FoldableContainer/styles/title_collapsed_panel = ExtResource("1_0n7r7")
-FoldableContainer/styles/title_hover_panel = ExtResource("1_0n7r7")
-FoldableContainer/styles/title_panel = ExtResource("1_0n7r7")
+FoldableContainer/styles/panel = ExtResource("11_hcw77")
+FoldableContainer/styles/title_collapsed_hover_panel = ExtResource("10_coi51")
+FoldableContainer/styles/title_collapsed_panel = ExtResource("10_coi51")
+FoldableContainer/styles/title_hover_panel = ExtResource("12_5mjc0")
+FoldableContainer/styles/title_panel = ExtResource("12_5mjc0")
 HBoxContainer/constants/separation = 8
 Label/colors/font_color = Color(0.85098, 0.85098, 0.85098, 1)
 Label/font_sizes/font_size = 24
@@ -92,12 +104,18 @@ MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32
 MarginContainer/constants/margin_top = 32
 PanelContainer/styles/panel = ExtResource("1_0n7r7")
+TabContainer/colors/drop_mark_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+TabContainer/colors/font_hovered_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+TabContainer/colors/font_selected_color = Color(0.8509804, 0.8509804, 0.8509804, 1)
+TabContainer/colors/font_unselected_color = Color(0.105882354, 0.105882354, 0.105882354, 1)
+TabContainer/constants/icon_separation = 4
+TabContainer/constants/tab_separation = 4
 TabContainer/styles/panel = ExtResource("1_0n7r7")
-TabContainer/styles/tab_disabled = ExtResource("1_0n7r7")
-TabContainer/styles/tab_focus = ExtResource("1_0n7r7")
-TabContainer/styles/tab_hovered = ExtResource("1_0n7r7")
-TabContainer/styles/tab_selected = ExtResource("1_0n7r7")
-TabContainer/styles/tab_unselected = ExtResource("1_0n7r7")
+TabContainer/styles/tab_disabled = ExtResource("14_17eja")
+TabContainer/styles/tab_focus = ExtResource("13_h3j6d")
+TabContainer/styles/tab_hovered = ExtResource("23_t5dii")
+TabContainer/styles/tab_selected = ExtResource("13_h3j6d")
+TabContainer/styles/tab_unselected = ExtResource("14_17eja")
 TabContainer/styles/tabbar_background = ExtResource("1_0n7r7")
 VBoxContainer/constants/separation = 8
 VScrollBar/styles/grabber = ExtResource("8_0n5tj")
@@ -113,6 +131,12 @@ button_half_sell/base_type = &"Button"
 button_half_sell/styles/hover = ExtResource("13_c4ewu")
 button_half_sell/styles/normal = ExtResource("13_c4ewu")
 button_half_sell/styles/pressed = ExtResource("14_umm11")
+button_hud/base_type = &"Button"
+button_hud/styles/focus = ExtResource("14_17eja")
+button_hud/styles/hover = ExtResource("22_n1orb")
+button_hud/styles/hover_pressed = ExtResource("23_t5dii")
+button_hud/styles/normal = ExtResource("13_h3j6d")
+button_hud/styles/pressed = ExtResource("14_17eja")
 button_save_load_entry/base_type = &"Button"
 button_save_load_entry/colors/font_color = Color(0.5686275, 0.53333336, 0.29411766, 1)
 button_save_load_entry/styles/disabled = SubResource("StyleBoxFlat_6dyk0")
@@ -120,3 +144,9 @@ button_save_load_entry/styles/focus = SubResource("StyleBoxFlat_6dyk0")
 button_save_load_entry/styles/hover = SubResource("StyleBoxFlat_6dyk0")
 button_save_load_entry/styles/normal = SubResource("StyleBoxFlat_6dyk0")
 button_save_load_entry/styles/pressed = SubResource("StyleBoxFlat_6dyk0")
+tabbar_inverted/base_type = &"TabContainer"
+tabbar_inverted/styles/tab_disabled = ExtResource("13_h3j6d")
+tabbar_inverted/styles/tab_focus = ExtResource("14_17eja")
+tabbar_inverted/styles/tab_hovered = ExtResource("22_n1orb")
+tabbar_inverted/styles/tab_selected = ExtResource("14_17eja")
+tabbar_inverted/styles/tab_unselected = ExtResource("13_h3j6d")

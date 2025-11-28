@@ -1,4 +1,4 @@
-extends TabContainer
+extends Control
 
 var quest_entry_scene := preload("res://src/ui/objective_tracker/quest_entry.tscn")
 
@@ -9,6 +9,8 @@ signal subcontrol_focused
 signal subcontrol_mouse_entered(source)
 signal subcontrol_mouse_exited
 
+@onready var tab_bar: TabBar = $tabs.get_tab_bar()
+@onready var tab_size_x: float = $tabs.custom_minimum_size.x / 2.0
 var tabs := {"active": 0, "completed": 1}
 
 
@@ -23,6 +25,8 @@ func _on_mouse_exited():
 	subcontrol_mouse_exited.emit()
 
 func _on_draw():
+	tab_bar.size.x = tab_size_x
+	tab_bar.position.x = 0.0
 	if last_focused_entry != null:
 		play_focus_sfx = false
 		last_focused_entry.grab_focus()
