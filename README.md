@@ -19,16 +19,6 @@ TODO
 	- make sure animation names in tree are in fsm "move" code for direction
 	- come up with stats for chracters
 		- maybe modulate color for different characters?
-- Tilesets to make
-	- desolate desert
-	- dungeon
-	- farm
-	- forgotten plains
-	- towns 1
-	- castles and strongholds
-	- raided village
-	- ships and docks
-	- builders
 - Icons I need to make for Tiled Map Editor for character creation
 	- make_character_icons: [Evil_Snowman] has no 'idle' anim.
 	- make_character_icons: [GiantSnail] has no 'idle' anim.
@@ -40,13 +30,9 @@ TODO
 - download all patreon exclusives which include characters
 	- import them for Godot usage
 
-## Plan
-1. Create templated buildings (in TODO)
-	- So that you can get started on the map
-2. Create a vision of the map on how you want to make it
-	- Involves creating a storyline
-		- from that storyline, you'll know which npc's you'll need
-3. Create the npc's for the game
+### Bugs
+
+- when hud is open player still moves when what is desired is to lock movement
 
 ## Audio
 

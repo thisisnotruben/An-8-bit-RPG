@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhmxl4k6x4iw4"]
+[gd_scene load_steps=2 format=3 uid="uid://dhmxl4k6x4iw4"]
 
 [ext_resource type="Script" uid="uid://ti3i4mfnkray" path="res://src/ui/objective_tracker/ojective_tracker.gd" id="1_85hut"]
-[ext_resource type="PackedScene" uid="uid://d0ndwgbbr3qcw" path="res://src/ui/objective_tracker/quest_entry.tscn" id="2_wepkx"]
 
 [node name="ojective_tracker" type="Control"]
 custom_minimum_size = Vector2(720, 400)
@@ -40,21 +39,6 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
-
-[node name="quest_entry" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-
-[node name="quest_entry2" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-
-[node name="quest_entry3" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-
-[node name="quest_entry4" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
-
-[node name="quest_entry5" parent="tabs/Active/vBox" instance=ExtResource("2_wepkx")]
-layout_mode = 2
 
 [node name="Completed" type="ScrollContainer" parent="tabs"]
 visible = false

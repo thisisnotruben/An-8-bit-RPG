@@ -2,6 +2,9 @@
 <tileset version="1.10" tiledversion="1.11.2" name="exclusive_extended_Minifantasy_SacrificeAltar_extended" tilewidth="32" tileheight="32" tilecount="56" columns="8">
  <image source="../../asset/img/exclusives/Addons/Dungeon/Sacrifice_Altars/Sacrifice_Candels/Minifantasy_SacrificeCandels_skulls.png" width="256" height="224"/>
  <tile id="0">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="13" y="15" width="5" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="0" duration="250"/>
    <frame tileid="1" duration="250"/>
@@ -14,6 +17,9 @@
   </animation>
  </tile>
  <tile id="8">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="14" y="15" width="5" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="8" duration="250"/>
    <frame tileid="9" duration="250"/>
@@ -26,6 +32,9 @@
   </animation>
  </tile>
  <tile id="16">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="9" y="14" width="14" height="5"/>
+  </objectgroup>
   <animation>
    <frame tileid="16" duration="250"/>
    <frame tileid="17" duration="250"/>
@@ -38,6 +47,9 @@
   </animation>
  </tile>
  <tile id="24">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="15" y="17" width="3" height="2"/>
+  </objectgroup>
   <animation>
    <frame tileid="24" duration="250"/>
    <frame tileid="25" duration="250"/>
@@ -50,6 +62,9 @@
   </animation>
  </tile>
  <tile id="32">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="15" y="17" width="3" height="2"/>
+  </objectgroup>
   <animation>
    <frame tileid="32" duration="250"/>
    <frame tileid="33" duration="250"/>
@@ -62,6 +77,9 @@
   </animation>
  </tile>
  <tile id="40">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="15" y="17" width="3" height="2"/>
+  </objectgroup>
   <animation>
    <frame tileid="40" duration="250"/>
    <frame tileid="41" duration="250"/>
@@ -74,6 +92,9 @@
   </animation>
  </tile>
  <tile id="48">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="15" y="17" width="3" height="2"/>
+  </objectgroup>
   <animation>
    <frame tileid="48" duration="250"/>
    <frame tileid="49" duration="250"/>

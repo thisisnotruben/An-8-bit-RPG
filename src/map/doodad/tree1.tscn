@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://wt1he0sscbh7"]
+
+[ext_resource type="Texture2D" uid="uid://d16cllyulawgy" path="res://asset/img/Minifantasy_ForgottenPlains_v3.5_Commercial_Version/Minifantasy_ForgottenPlains_Assets/props/Minifantasy_ForgottenPlainsPropsShadows.png" id="1_dx7pm"]
+[ext_resource type="Texture2D" uid="uid://b53264iejbc4n" path="res://asset/img/exclusives/Addons/Farm/Frutal_Trees/tree1.png" id="2_vxfx3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edgg8"]
+atlas = ExtResource("1_dx7pm")
+region = Rect2(144, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iawuw"]
+radius = 3.0
+
+[node name="tree" type="StaticBody2D"]
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(-6, 4)
+texture = SubResource("AtlasTexture_edgg8")
+centered = false
+offset = Vector2(1, -32)
+
+[node name="tree" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxfx3")
+centered = false
+offset = Vector2(1, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17, -3)
+shape = SubResource("CircleShape2D_iawuw")

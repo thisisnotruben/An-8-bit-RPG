@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_htyfs"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bh80k8hdjd02q" path="res://resource/animation_state_machine/Alchemist_state_machine.tres" id="2_342vb"]
-[ext_resource type="Texture2D" uid="uid://81xe1vyiuc0l" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png" id="3_7n70o"]
+[ext_resource type="Texture2D" uid="uid://dqbcl8wx6bece" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png" id="3_7n70o"]
 
 [node name="Alchemist" instance=ExtResource("1_htyfs")]
 
@@ -12,8 +12,6 @@ parameters/dmg/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0.0949423, 0.199528)
 parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="img" parent="." index="4"]
+[node name="img" parent="." index="7"]
 texture = ExtResource("3_7n70o")
-hframes = 11
-vframes = 1
 frame = 0

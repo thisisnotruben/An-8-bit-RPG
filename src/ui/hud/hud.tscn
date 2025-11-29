@@ -82,6 +82,7 @@ layout_mode = 2
 alignment = 2
 
 [node name="panel" type="PanelContainer" parent="bg_margin/vBox"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
@@ -248,6 +249,7 @@ item_icon = ExtResource("8_0lyew")
 texture = ExtResource("8_0lyew")
 
 [node name="target_status_bar" type="PanelContainer" parent="bg_margin"]
+visible = false
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -330,6 +332,7 @@ texture_under = ExtResource("4_076te")
 texture_progress = SubResource("AtlasTexture_raafm")
 
 [node name="target_health" type="TextureProgressBar" parent="status_margin"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 value = 100.0

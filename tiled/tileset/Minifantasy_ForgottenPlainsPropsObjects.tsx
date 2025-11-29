@@ -43,10 +43,16 @@
  <tile id="13">
   <image source="../../asset/img/Minifantasy_ForgottenPlains_v3.5_Commercial_Version/Minifantasy_ForgottenPlains_Assets/props/tall_grass3.png" width="16" height="24"/>
  </tile>
- <tile id="14">
+ <tile id="14" type="Instance">
+  <properties>
+   <property name="res_path" type="file" value="res://src/map/doodad/tree1.tscn"/>
+  </properties>
   <image source="../../asset/img/Minifantasy_ForgottenPlains_v3.5_Commercial_Version/Minifantasy_ForgottenPlains_Assets/props/tree1.png" width="32" height="32"/>
  </tile>
- <tile id="15">
+ <tile id="15" type="Instance">
+  <properties>
+   <property name="res_path" type="file" value="res://src/map/doodad/tree2.tscn"/>
+  </properties>
   <image source="../../asset/img/Minifantasy_ForgottenPlains_v3.5_Commercial_Version/Minifantasy_ForgottenPlains_Assets/props/tree2.png" width="32" height="32"/>
  </tile>
 </tileset>

@@ -264,7 +264,7 @@ func handle_tiles(tiles: Array):
 			# Tile with its own image -> separate atlas source
 			_current_atlas_source = TileSetAtlasSource.new()
 			var added_source_id = _tileset.add_source(_current_atlas_source, get_special_property(tile, GODOT_ATLAS_ID_PROPERTY))
-			register_atlas_source(added_source_id, 1, tile_id, Vector2i.ZERO)
+			register_atlas_source(added_source_id, 1, tile_id, _tile_offset)
 
 			var texture_path = tile["image"]
 			var ext = texture_path.get_extension().to_lower()
@@ -302,15 +302,15 @@ func handle_tiles(tiles: Array):
 				#Error occurred
 				continue
 
-		if _tile_size.x != _map_tile_size.x or _tile_size.y != _map_tile_size.y:
-			var diff_x = _tile_size.x - _map_tile_size.x
-			if diff_x % 2 != 0:
-				diff_x -= 1
-			var diff_y = _tile_size.y - _map_tile_size.y
-			if diff_y % 2 != 0:
-				diff_y += 1
-			@warning_ignore("integer_division")
-			current_tile.texture_origin = Vector2i(-diff_x/2, diff_y/2) - _tile_offset
+			if _tile_size.x != _map_tile_size.x or _tile_size.y != _map_tile_size.y:
+				var diff_x = _tile_size.x - _map_tile_size.x
+				if diff_x % 2 != 0:
+					diff_x -= 1
+				var diff_y = _tile_size.y - _map_tile_size.y
+				if diff_y % 2 != 0:
+					diff_y += 1
+				@warning_ignore("integer_division")
+				current_tile.texture_origin = Vector2i(-diff_x/2, diff_y/2) - _tile_offset
 				
 		if tile.has("probability"):
 			current_tile.probability = tile["probability"]
@@ -396,13 +396,13 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 	var objects = object_group["objects"] as Array
 	for obj in objects:
 		if obj.has("point") and obj["point"]:
-			# print_rich("[color="+WARNING_COLOR+"] -- 'Point' has currently no corresponding tileset element in Godot 4. -> Skipped[/color]")
+			# print_rich("[color="+WARNING_COLOR+"] -- 'Point' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
 			# CommonUtils.warning_count += 1
-			break
+			continue
 		if obj.has("ellipse") and obj["ellipse"]:
-			# print_rich("[color="+WARNING_COLOR+"] -- 'Ellipse' has currently no corresponding tileset element in Godot 4. -> Skipped[/color]")
+			# print_rich("[color="+WARNING_COLOR+"] -- 'Ellipse' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
 			# CommonUtils.warning_count += 1
-			break
+			continue
 
 		if _ct != null:
 			_ct.merge_custom_properties(obj, "object")
@@ -470,7 +470,11 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 			var occ_p = OccluderPolygon2D.new()
 			occ_p.polygon = polygon
 			ensure_layer_existing(layer_type.OCCLUSION, occ)
-			current_tile.set_occluder(occ, occ_p)
+			if Engine.get_version_info()["hex"] >= 0x040400:
+				current_tile.set_occluder_polygons_count(occ, 1)
+				current_tile.set_occluder_polygon(occ, 0, occ_p)
+			else:
+				current_tile.set_occluder(occ, occ_p)
 
 		var phys = get_special_property(obj, "physics_layer")
 		# If no property is specified assume collision (i.e. default)
@@ -636,6 +640,12 @@ func handle_tileset_properties(properties: Array):
 			layer_index = int(name.substr(14))
 			ensure_layer_existing(layer_type.OCCLUSION, layer_index)
 			_tileset.set_occlusion_layer_sdf_collision(layer_index, val.to_lower() == "true")
+		elif name.to_lower() == "uv_clipping" and type == "bool":
+			_tileset.uv_clipping = val.to_lower() == "true"
+		elif name.to_lower() == "resource_local_to_scene" and type == "bool":
+			_tileset.resource_local_to_scene = val.to_lower() == "true"
+		elif name.to_lower() == "resource_name" and type == "string":
+			_tileset.resource_name = val
 		elif name.to_lower() != GODOT_ATLAS_ID_PROPERTY:
 			_tileset.set_meta(name, CommonUtils.get_right_typed_value(type, val))
 

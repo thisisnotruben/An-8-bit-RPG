@@ -8,14 +8,15 @@ const VERSION := "1.0"
 const SERIALIZE_GROUP := "serializable"
 const DEFAULT_SLOT_NAME := "Game %d"
 
-@onready var slots: GridContainer = $hBox2/slots
-@onready var slot_save_image: TextureRect = $hBox2/slot_save_image
+@onready var slots: Control = $hBox/scroll/vBox
+@onready var slot_save_image: TextureRect = $hBox/texture
 
 @export var type := Type.Load: set = _on_set_type
 var play_focus_sfx := false
 var slot_idx_selected: int = -1
 var screenshot: ViewportTexture = null
 var screenshots: Array[Texture] = []
+var prev_toggled: CheckBox = null
 
 signal back_pressed
 signal subcontrol_focused
@@ -30,6 +31,7 @@ func _ready():
 	for bttn in slots.get_children():
 		bttn.text = DEFAULT_SLOT_NAME % (bttn.get_index() + 1)
 		bttn.pressed.connect(_on_slot_pressed.bind(bttn.get_index()))
+		bttn.toggled.connect(_on_slot_toggled.bind(bttn))
 		bttn.mouse_entered.connect(_on_mouse_entered.bind(bttn))
 		bttn.mouse_exited.connect(_on_mouse_exited)
 		bttn.focus_entered.connect(_on_focus_entered)
@@ -43,7 +45,7 @@ func _on_back_pressed():
 
 func _on_draw():
 	play_focus_sfx = false
-	$hBox/back.grab_focus()
+	$hBox2/back.grab_focus()
 	play_focus_sfx = true
 
 func _on_focus_entered():
@@ -57,8 +59,15 @@ func _on_mouse_exited():
 	subcontrol_mouse_exited.emit()
 
 func _on_slot_pressed(idx: int):
+	prev_toggled = slots.get_child(idx)
 	slot_idx_selected = idx
 	slot_save_image.texture = screenshots[idx]
+
+func _on_slot_toggled(toggled_on: bool, source: CheckBox):
+	if prev_toggled == null:
+		prev_toggled = source
+	elif toggled_on and source != prev_toggled:
+		prev_toggled.button_pressed = false
 
 func _on_load_save_pressed():
 	if slot_idx_selected != -1:
@@ -69,13 +78,14 @@ func _on_load_save_pressed():
 			_save_game(slot_idx_selected, payload)
 
 func _on_set_type(value: Type):
+	type = value
 	var header_text := ""
 	if value == Type.Load:
 		header_text = "Load Game"
 	elif value == Type.Save:
 		header_text = "Save Game"
 	$header.text = header_text
-	$hBox/load_save.text = header_text
+	$hBox2/load_save.text = header_text
 
 func _get_save_load_file_data() -> Dictionary:
 	if FileAccess.file_exists(GAME_DATA_PATH):

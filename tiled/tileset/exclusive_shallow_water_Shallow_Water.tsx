@@ -74,24 +74,38 @@
   </animation>
  </tile>
  <tile id="106">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="4" width="5" height="1"/>
+   <object id="3" x="3" y="5" width="1" height="3"/>
+  </objectgroup>
   <animation>
    <frame tileid="106" duration="1000"/>
    <frame tileid="112" duration="1000"/>
   </animation>
  </tile>
  <tile id="107">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="4" width="8" height="1"/>
+  </objectgroup>
   <animation>
    <frame tileid="107" duration="1000"/>
    <frame tileid="113" duration="1000"/>
   </animation>
  </tile>
  <tile id="108">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="4" y="4" width="1" height="4"/>
+   <object id="2" x="0" y="4" width="4" height="1"/>
+  </objectgroup>
   <animation>
    <frame tileid="108" duration="1000"/>
    <frame tileid="114" duration="1000"/>
   </animation>
  </tile>
  <tile id="119">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="0" width="1" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="119" duration="1000"/>
    <frame tileid="125" duration="1000"/>
@@ -104,60 +118,94 @@
   </animation>
  </tile>
  <tile id="121">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="4" y="0" width="1" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="121" duration="1000"/>
    <frame tileid="127" duration="1000"/>
   </animation>
  </tile>
  <tile id="132">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="0" width="1" height="6"/>
+   <object id="2" x="4" y="5" width="4" height="1"/>
+  </objectgroup>
   <animation>
    <frame tileid="132" duration="1000"/>
    <frame tileid="138" duration="1000"/>
   </animation>
  </tile>
  <tile id="133">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="5" width="8" height="1"/>
+  </objectgroup>
   <animation>
    <frame tileid="133" duration="1000"/>
    <frame tileid="139" duration="1000"/>
   </animation>
  </tile>
  <tile id="134">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="5" width="5" height="1"/>
+   <object id="2" x="4" y="0" width="1" height="5"/>
+  </objectgroup>
   <animation>
    <frame tileid="134" duration="1000"/>
    <frame tileid="140" duration="1000"/>
   </animation>
  </tile>
  <tile id="145">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="2" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="145" duration="1000"/>
    <frame tileid="151" duration="1000"/>
   </animation>
  </tile>
  <tile id="146">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="6" y="0" width="2" height="5"/>
+  </objectgroup>
   <animation>
    <frame tileid="146" duration="1000"/>
    <frame tileid="152" duration="1000"/>
   </animation>
  </tile>
  <tile id="147">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="2" height="4"/>
+   <object id="2" x="6" y="5" width="2" height="3"/>
+  </objectgroup>
   <animation>
    <frame tileid="147" duration="1000"/>
    <frame tileid="153" duration="1000"/>
   </animation>
  </tile>
  <tile id="158">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="5" width="2" height="3"/>
+  </objectgroup>
   <animation>
    <frame tileid="158" duration="1000"/>
    <frame tileid="164" duration="1000"/>
   </animation>
  </tile>
  <tile id="159">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="6" y="5" width="2" height="3"/>
+  </objectgroup>
   <animation>
    <frame tileid="159" duration="1000"/>
    <frame tileid="165" duration="1000"/>
   </animation>
  </tile>
  <tile id="160">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="5" width="2" height="3"/>
+   <object id="2" x="6" y="0" width="2" height="5"/>
+  </objectgroup>
   <animation>
    <frame tileid="160" duration="1000"/>
    <frame tileid="166" duration="1000"/>
@@ -242,168 +290,252 @@
   </animation>
  </tile>
  <tile id="288">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="4" width="5" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="288" duration="1000"/>
    <frame tileid="294" duration="1000"/>
   </animation>
  </tile>
  <tile id="289">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="4" width="8" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="289" duration="1000"/>
    <frame tileid="295" duration="1000"/>
   </animation>
  </tile>
  <tile id="290">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="4" width="6" height="4"/>
+  </objectgroup>
   <animation>
    <frame tileid="290" duration="1000"/>
    <frame tileid="296" duration="1000"/>
   </animation>
  </tile>
  <tile id="301">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="2" y="0" width="6" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="301" duration="1000"/>
    <frame tileid="307" duration="1000"/>
   </animation>
  </tile>
  <tile id="302">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="302" duration="1000"/>
    <frame tileid="308" duration="1000"/>
   </animation>
  </tile>
  <tile id="303">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="5" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="303" duration="1000"/>
    <frame tileid="309" duration="1000"/>
   </animation>
  </tile>
  <tile id="314">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="2" y="0" width="6" height="6"/>
+  </objectgroup>
   <animation>
    <frame tileid="314" duration="1000"/>
    <frame tileid="320" duration="1000"/>
   </animation>
  </tile>
  <tile id="315">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="7"/>
+  </objectgroup>
   <animation>
    <frame tileid="315" duration="1000"/>
    <frame tileid="321" duration="1000"/>
   </animation>
  </tile>
  <tile id="316">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="6" height="7"/>
+  </objectgroup>
   <animation>
    <frame tileid="316" duration="1000"/>
    <frame tileid="322" duration="1000"/>
   </animation>
  </tile>
  <tile id="327">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="327" duration="1000"/>
    <frame tileid="333" duration="1000"/>
   </animation>
  </tile>
  <tile id="328">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="328" duration="1000"/>
    <frame tileid="334" duration="1000"/>
   </animation>
  </tile>
  <tile id="329">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="329" duration="1000"/>
    <frame tileid="335" duration="1000"/>
   </animation>
  </tile>
  <tile id="340">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="340" duration="1000"/>
    <frame tileid="346" duration="1000"/>
   </animation>
  </tile>
  <tile id="341">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="341" duration="1000"/>
    <frame tileid="347" duration="1000"/>
   </animation>
  </tile>
  <tile id="342">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="342" duration="1000"/>
    <frame tileid="348" duration="1000"/>
   </animation>
  </tile>
  <tile id="379">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="379" duration="1000"/>
    <frame tileid="385" duration="1000"/>
   </animation>
  </tile>
  <tile id="380">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="380" duration="1000"/>
    <frame tileid="386" duration="1000"/>
   </animation>
  </tile>
  <tile id="381">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="381" duration="1000"/>
    <frame tileid="387" duration="1000"/>
   </animation>
  </tile>
  <tile id="392">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="392" duration="1000"/>
    <frame tileid="398" duration="1000"/>
   </animation>
  </tile>
  <tile id="393">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="393" duration="1000"/>
    <frame tileid="399" duration="1000"/>
   </animation>
  </tile>
  <tile id="394">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="394" duration="1000"/>
    <frame tileid="400" duration="1000"/>
   </animation>
  </tile>
  <tile id="405">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="405" duration="1000"/>
    <frame tileid="411" duration="1000"/>
   </animation>
  </tile>
  <tile id="406">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="406" duration="1000"/>
    <frame tileid="412" duration="1000"/>
   </animation>
  </tile>
  <tile id="407">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="407" duration="1000"/>
    <frame tileid="413" duration="1000"/>
   </animation>
  </tile>
  <tile id="418">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="418" duration="1000"/>
    <frame tileid="424" duration="1000"/>
   </animation>
  </tile>
  <tile id="419">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="419" duration="1000"/>
    <frame tileid="425" duration="1000"/>
   </animation>
  </tile>
  <tile id="431">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="431" duration="1000"/>
    <frame tileid="437" duration="1000"/>
   </animation>
  </tile>
  <tile id="432">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="432" duration="1000"/>
    <frame tileid="438" duration="1000"/>
@@ -464,36 +596,55 @@
   </animation>
  </tile>
  <tile id="509">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+   <object id="2" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="509" duration="1000"/>
    <frame tileid="515" duration="1000"/>
   </animation>
  </tile>
  <tile id="510">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="510" duration="1000"/>
    <frame tileid="516" duration="1000"/>
   </animation>
  </tile>
  <tile id="511">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="511" duration="1000"/>
    <frame tileid="517" duration="1000"/>
   </animation>
  </tile>
  <tile id="522">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="522" duration="1000"/>
    <frame tileid="528" duration="1000"/>
   </animation>
  </tile>
  <tile id="523">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="523" duration="1000"/>
    <frame tileid="529" duration="1000"/>
   </animation>
  </tile>
  <tile id="524">
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="8" height="8"/>
+  </objectgroup>
   <animation>
    <frame tileid="524" duration="1000"/>
    <frame tileid="530" duration="1000"/>
