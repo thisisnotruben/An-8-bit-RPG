@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddif6516hv2ol"]
+
+[ext_resource type="PackedScene" uid="uid://dy3ajnqal53hk" path="res://src/map/doodad/tree11.tscn" id="1_3x25n"]
+[ext_resource type="Texture2D" uid="uid://cyj166c5w1p8x" path="res://asset/img/Minifantasy_Ancient_Forests/Minifantasy_Ancient_Forests_Assets/Dark Forest/Props/Props_shadows.png" id="2_cbicj"]
+[ext_resource type="Texture2D" uid="uid://7ugjggrho0db" path="res://asset/img/Minifantasy_Ancient_Forests/Minifantasy_Ancient_Forests_Assets/Dark Forest/Props/tree2.png" id="3_8rear"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf44i"]
+atlas = ExtResource("2_cbicj")
+region = Rect2(48, 64, 48, 32)
+
+[node name="tree" instance=ExtResource("1_3x25n")]
+
+[node name="shadow" parent="." index="0"]
+texture = SubResource("AtlasTexture_bf44i")
+offset = Vector2(6, -28)
+
+[node name="tree" parent="." index="1"]
+texture = ExtResource("3_8rear")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(26, -7)

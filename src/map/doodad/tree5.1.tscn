@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx8g8t6xsdgvu"]
+
+[ext_resource type="PackedScene" uid="uid://wt1he0sscbh7" path="res://src/map/doodad/tree1.tscn" id="1_a3jos"]
+[ext_resource type="Texture2D" uid="uid://buml44e88c33n" path="res://asset/img/Minifantasy_Plants_&_Foliage_v1.0/Minifantasy_Plants_&_Foliage_Assets/Plains_And_Forests/_Shadow.png" id="2_dqoyj"]
+[ext_resource type="Texture2D" uid="uid://crlrae6em8kmn" path="res://asset/img/Minifantasy_Plants_&_Foliage_v1.0/Minifantasy_Plants_&_Foliage_Assets/Plains_And_Forests/tree5.png" id="2_pe51t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56623"]
+atlas = ExtResource("2_dqoyj")
+region = Rect2(304, 240, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pe51t"]
+radius = 5.0990195
+
+[node name="tree" instance=ExtResource("1_a3jos")]
+
+[node name="shadow" parent="." index="0"]
+texture = SubResource("AtlasTexture_56623")
+offset = Vector2(2, -22)
+
+[node name="tree" parent="." index="1"]
+texture = ExtResource("2_pe51t")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(18, -7)
+shape = SubResource("CircleShape2D_pe51t")

@@ -16,7 +16,10 @@
  <tile id="3">
   <image source="../../asset/img/Minifantasy_Plants_&amp;_Foliage_v1.0/Minifantasy_Plants_&amp;_Foliage_Assets/Plains_And_Forests/tree4.png" width="48" height="48"/>
  </tile>
- <tile id="4">
+ <tile id="4" type="Instance">
+  <properties>
+   <property name="res_path" type="file" value="res://src/map/doodad/tree5.1.tscn"/>
+  </properties>
   <image source="../../asset/img/Minifantasy_Plants_&amp;_Foliage_v1.0/Minifantasy_Plants_&amp;_Foliage_Assets/Plains_And_Forests/tree5.png" width="32" height="32"/>
  </tile>
  <tile id="5" type="Instance">

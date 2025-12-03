@@ -3,5 +3,8 @@
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../../asset/img/Minifantasy_Farm_v3.0/Minifantasy_Farm_Assets/Props/hay_stack1.png" width="33" height="23"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="1" y="11" width="31" height="9"/>
+  </objectgroup>
  </tile>
 </tileset>

@@ -24,15 +24,13 @@ TODO
 	- make_character_icons: [GiantSnail] has no 'idle' anim.
 	- make_character_icons: [Hedgehog] has no 'idle' anim.
 	- make_character_icons: [Panda] has no 'idle' anim.
-- Make templated buildings for villages
-	- find out how you're going to implement the buildings in respect to y-sort
-- Make templated characters for orcs, goblins, etc...
-- download all patreon exclusives which include characters
-	- import them for Godot usage
 
 ### Bugs
 
-- when hud is open player still moves when what is desired is to lock movement
+- when hud is open player still moves when what is desired is to lock movement.
+- fix fire animation, what godot and tiled show is different.
+- tiled 'Docks' tileset, I cannot find the file to add collisions, maybe it's embedded?
+- 'Tiled' tile collisions don't work on tile objects, fix that.
 
 ## Audio
 

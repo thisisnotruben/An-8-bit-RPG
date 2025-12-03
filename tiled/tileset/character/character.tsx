@@ -71,7 +71,7 @@
   </properties>
   <image source="Tiger.png" width="32" height="32"/>
  </tile>
- <tile id="7" type="instance">
+ <tile id="7" type="Instance">
   <properties>
    <property name="type" type="class" propertytype="Character">
     <properties>

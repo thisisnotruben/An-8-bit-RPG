@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy3ajnqal53hk"]
+
+[ext_resource type="PackedScene" uid="uid://wt1he0sscbh7" path="res://src/map/doodad/tree1.tscn" id="1_m56c8"]
+[ext_resource type="Texture2D" uid="uid://d1m52ffb0n78x" path="res://asset/img/Minifantasy_Ancient_Forests/Minifantasy_Ancient_Forests_Assets/Dark Forest/Props/tree11.png" id="2_bejt4"]
+[ext_resource type="Texture2D" uid="uid://cyj166c5w1p8x" path="res://asset/img/Minifantasy_Ancient_Forests/Minifantasy_Ancient_Forests_Assets/Dark Forest/Props/Props_shadows.png" id="2_worvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22a21"]
+atlas = ExtResource("2_worvv")
+region = Rect2(16, 144, 32, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_worvv"]
+radius = 5.0
+
+[node name="tree" instance=ExtResource("1_m56c8")]
+
+[node name="shadow" parent="." index="0"]
+texture = SubResource("AtlasTexture_22a21")
+offset = Vector2(14, -19)
+
+[node name="tree" parent="." index="1"]
+texture = ExtResource("2_bejt4")
+offset = Vector2(1, -48)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(26, -6)
+shape = SubResource("CircleShape2D_worvv")

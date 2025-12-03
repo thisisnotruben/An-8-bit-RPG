@@ -9,38 +9,17 @@
 y_sort_enabled = true
 scale = Vector2(5, 5)
 
-[node name="ground" parent="." index="0"]
-y_sort_enabled = true
-
-[node name="ground_deco" parent="ground" index="1"]
-y_sort_enabled = true
-
-[node name="building" parent="." index="2"]
-y_sort_enabled = true
-
-[node name="building_turret" parent="building" index="5"]
-position = Vector2(36.6, -55.199997)
-
-[node name="character" parent="." index="4"]
-y_sort_enabled = true
-
-[node name="prop" parent="." index="5"]
-y_sort_enabled = true
-
-[node name="tree2" parent="prop" index="1"]
-position = Vector2(1499.6, 192.2)
-
 [node name="Goat" parent="prop" index="705" instance=ExtResource("2_svlb3")]
-position = Vector2(1323.6, 874)
+position = Vector2(386.8, 132.79999)
 scale = Vector2(0.99999994, 0.99999994)
 npc = false
 friendly = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="canvasLayer" type="CanvasLayer" parent="." index="8"]
 
-[node name="Hud" parent="CanvasLayer" index="0" node_paths=PackedStringArray("player") instance=ExtResource("4_7py1t")]
+[node name="Hud" parent="canvasLayer" index="0" node_paths=PackedStringArray("player") instance=ExtResource("4_7py1t")]
 player = NodePath("../../prop/Goat")
 
-[node name="game" parent="CanvasLayer" index="1" node_paths=PackedStringArray("player") instance=ExtResource("3_jh433")]
+[node name="game" parent="canvasLayer" index="1" node_paths=PackedStringArray("player") instance=ExtResource("3_jh433")]
 visible = false
 player = NodePath("../../prop/Goat")
