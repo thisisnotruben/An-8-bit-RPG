@@ -1,6 +1,6 @@
 extends Node
 
-var anim_importer = preload("res://src/util/character_animation_importer.gd").new()
+var anim_importer: Importer= preload("res://src/util/character_animation_importer.gd").new()
 
 var undead_creatures := {
 	"Ghost": [
@@ -1966,7 +1966,6 @@ var heros_1 := {
 			"path": "res://asset/img/Minifantasy_TrueHeroes_v1.0/Druid/Special_Animations/Root_Summoning/Minifantasy_TrueHeroesDruidRootAttack.png",
 			"time": 100
 		}
-		# TODO: need shapeshifting animations
 	],
 	"Rogue":  [
 		{
@@ -2337,7 +2336,939 @@ var customs := {
 }
 
 var exclusives := {
+	"Air_Elemental": [
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Air_Elemental/AirElementalIdle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Air_Elemental/AirElementalWalk.png",
+			"time": 200
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Air_Elemental/AirElementalDmg.png",
+			"time": 100
+		},
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Air_Elemental/AirElementalAttackOrthogonal.png",
+			"time": 100
+		}
+	],
+	"Ancient_Troll": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollDmg.png",
+			"time": 100
+		},
+		{
+			"name": "eat",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollEat.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Ancient_Troll/Minifantasy_AncientTrollWalk.png",
+			"time": 100
+		}
+	],
+	"Ape_1": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_Attack.png",
+			"time": 100
+		},
+		{
+			"name": "chest_hit",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_ChestHits.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_Idle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_1/Ape_Walk.png",
+			"time": 100
+		}
+	],
+	"Ape_2": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_Attack2.png",
+			"time": 100
+		},
+		{
+			"name": "chest_hit",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_ChestHits2.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_Die2.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_Dmg2.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_Idle2.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Ape/Ape_2/Ape_Walk2.png",
+			"time": 100
+		}
+	],
+	"Armored_Warrior": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorAttack.png",
+			"time": 100
+		},
+		{
+			"name": "charging",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorCharging.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Armored_Warrior/Minifantasy_ArmoredWarriorWalk.png",
+			"time": 100
+		}
+	],
+	"Beholder": [
+		{
+			"name": "attack_360",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_Beholder360Attack.png",
+			"time": 100
+		},
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_BeholderAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_BeholderDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_BeholderDmg.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_BeholderFly.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Beholder/Minifantasy_BeholderIdle.png",
+			"time": 100
+		}
+	],
+	"Diablo": [
+		{
+			"name": "attack_2",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloAttack2Orthogonal.png",
+			"time": 100
+		},
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloDie.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloIdle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Diablo/DiabloWalk.png",
+			"time": 200
+		}
+	],
+	"Dire_Bear": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearIdle.png",
+			"time": 100
+		},
+		{
+			"name": "sleep",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearSleep.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Dire_Bear/Minifantasy_BearWalk.png",
+			"time": 100
+		}
+	],
+	"Dragon": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonAttackContinuous.png",
+			"time": 100
+		},
+		{
+			"name": "attack_start",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonAttackStart.png",
+			"time": 100
+		},
+		{
+			"name": "attack_end",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonAttackEnd.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Dragon/DragonWalk.png",
+			"time": 100
+		}
+	],
+	"Dragon_Hatchling": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Dragon_Hatchling/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Dragon_Hatchling/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Dragon_Hatchling/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Dragon_Hatchling/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Dragon_Hatchling/Walk.png",
+			"time": 200
+		}
+	],
+	"Dwarven_Marksman": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "reload",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Reload.png",
+			"time": 200
+		},
+		{
+			"name": "set_trap",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Set_Trap.png",
+			"time": 200
+		},
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Shot_Orthogonal.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Dwarven_Marksman/Walk.png",
+			"time": 200
+		}
+	],
+	"Farmer": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerDmg.png",
+			"time": 100
+		},
+		{
+			"name": "hoe",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerHoe.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerWalk2.png",
+			"time": 100
+		},
+		{
+			"name": "watering",
+			"path": "res://asset/img/exclusives/Creatures/Farmer/Minifantasy_FarmerWateringCan2.png",
+			"time": 100
+		}
+	],
+	"Giant_Spider": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderIdle.png",
+			"time": 100
+		},
+		{
+			"name": "shoot",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderShotWebOrthogonal.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Giant_Spider/Minifantasy_GiantSpiderWalk.png",
+			"time": 100
+		}
+	],
+	"Griffin": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "fly",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Fly.png",
+			"time": 200
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "landing",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Landing.png",
+			"time": 200
+		},
+		{
+			"name": "take_off",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Take_Off.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Griffin/Walk.png",
+			"time": 200
+		}
+	],
+	"Grim_Reaper": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Grim_Reaper/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Grim_Reaper/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Grim_Reaper/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Grim_Reaper/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Grim_Reaper/Walk.png",
+			"time": 200
+		}
+	],
+	"Headless_Horseman": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Headless_Horseman/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Headless_Horseman/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Headless_Horseman/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Headless_Horseman/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Headless_Horseman/Walk.png",
+			"time": 200
+		}
+	],
+	"Insect_Swarm": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Insect_Swarm/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Insect_Swarm/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Insect_Swarm/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Insect_Swarm/Fly_Orthogonal.png",
+			"time": 200
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Insect_Swarm/Idle.png",
+			"time": 200
+		}
+	],
+	"King": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/King/Minifantasy_kingAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/King/Minifantasy_kingDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/King/Minifantasy_kingDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/King/Minifantasy_kingIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/King/Minifantasy_kingWalk.png",
+			"time": 100
+		}
+	],
+	"King_Skeleton": [
+		{
+			"name": "deactivate",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonActivationDeactivation.png",
+			"time": 100
+		},
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/King_Skeleton/Minifantasy_KingSkeletonWalk.png",
+			"time": 100
+		}
+	],
+	"Lich": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Lich/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Lich/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Lich/Fly.png",
+			"time": 200
+		},
+		{
+			"name": "cast_ice_claws",
+			"path": "res://asset/img/exclusives/Creatures/Lich/Spellcast_ice_claws.png",
+			"time": 200
+		},
+		{
+			"name": "cast_reanimation",
+			"path": "res://asset/img/exclusives/Creatures/Lich/Spellcast_reanimation.png",
+			"time": 200
+		}
+	],
+	"Merchant": [
+		{
+			"name": "stall_idle",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchanStalltIdle.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantIdle.png",
+			"time": 100
+		},
+		{
+			"name": "stall_pack_back",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantStallPackBack.png",
+			"time": 100
+		},
+		{
+			"name": "stall_setup",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantStallSetup.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantWalk.png",
+			"time": 100
+		}
+	],
+	"Mouse": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Mouse/MouseDie.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Mouse/MouseIdle.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Mouse/MouseWalk.png",
+			"time": 100
+		}
+	],
+	"Mushroom_people": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Mushroom_people/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Mushroom_people/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Mushroom_people/Idle.png",
+			"time": 100
+		}
+	],
+	"Naga": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Naga/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Naga/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Naga/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Naga/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Naga/Walk.png",
+			"time": 200
+		}
+	],
+	"Necromancer": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Necromancer/Necromancer_Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Necromancer/Necromancer_Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Necromancer/Necromancer_Idle.png",
+			"time": 200
+		},
+		{
+			"name": "spellcast",
+			"path": "res://asset/img/exclusives/Creatures/Necromancer/Necromancer_Spellcast.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Necromancer/Necromancer_Walk.png",
+			"time": 200
+		}
+	],
+	"Orc_Knight": [
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Orc_Knight/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Orc_Knight/Dmg.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Orc_Knight/Gallop.png",
+			"time": 200
+		}
+	],
+	"Human_Town_Guard": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Attack_human.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Die_human.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Dmg_human.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Idle_human.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Walk_human.png",
+			"time": 200
+		}
+	],
+	"Orc_Town_Guard": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Orc Town Guard/Guards_Attack_orc.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Orc Town Guard/Guards_Die_orc.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Orc Town Guard/Guards_Dmg_orc.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Orc Town Guard/Guards_Idle_orc.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Orc Town Guard/Guards_Walk_orc.png",
+			"time": 200
+		}
+	],
+	"Dwarf_Town_Guard": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Dwarf Town Guard/Guards_Attack_dwarf.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Dwarf Town Guard/Guards_Die_dwarf.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Dwarf Town Guard/Guards_Dmg_dwarf.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Dwarf Town Guard/Guards_Idle_dwarf.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Town_Guards/Dwarf Town Guard/Guards_Walk_dwarf.png",
+			"time": 200
+		}
+	],
+	"Undead_Knight": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Undead_Knight/Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Undead_Knight/Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Undead_Knight/Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Undead_Knight/Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Undead_Knight/Walk.png",
+			"time": 200
+		}
+	],
+	"Wise_Orc": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Wise_Orc/WiseOrc_Attack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Wise_Orc/WiseOrc_Die.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Wise_Orc/WiseOrc_Dmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Wise_Orc/WiseOrc_Idle.png",
+			"time": 200
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Wise_Orc/WiseOrc_Walk.png",
+			"time": 200
+		}
+	],
+	"Wraith": [
+		{
+			"name": "attack",
+			"path": "res://asset/img/exclusives/Creatures/Wraith/Minifantasy_WraithAttack.png",
+			"time": 100
+		},
+		{
+			"name": "die",
+			"path": "res://asset/img/exclusives/Creatures/Wraith/Minifantasy_WraithDie.png",
+			"time": 100
+		},
+		{
+			"name": "dmg",
+			"path": "res://asset/img/exclusives/Creatures/Wraith/Minifantasy_WraithDmg.png",
+			"time": 100
+		},
+		{
+			"name": "idle",
+			"path": "res://asset/img/exclusives/Creatures/Wraith/Minifantasy_WraithFloating.png",
+			"time": 100
+		},
+		{
+			"name": "walk",
+			"path": "res://asset/img/exclusives/Creatures/Wraith/Minifantasy_WraithFloating.png",
+			"time": 100
+		}
+	]
+}
 
+var diff_size := {
+	"Dragon": Vector2(64.0, 64.0),
 }
 
 var units := [
@@ -2355,10 +3286,10 @@ var units := [
 
 
 func _ready():
-	#get_unique_anim_type_names()
+	get_unique_anim_type_names()
 	make_import_library(true)
 	make_state_machines()
-	#make_character_icons()
+	make_character_icons()
 
 func make_import_library(new_file:= false):
 	var dir_access := DirAccess.open("res://resource/animation/")
@@ -2368,7 +3299,8 @@ func make_import_library(new_file:= false):
 				dir_access.remove("%s.tres" % unit_name)
 			for anim_data in units[i][unit_name]:
 				anim_importer.import_anim_file(anim_data["path"],
-					unit_name, anim_data["name"], anim_data["time"])
+					unit_name, anim_data["name"], anim_data["time"],
+						diff_size.get(unit_name, anim_importer.FRAME_SIZE))
 
 func make_state_machines(exlude_unit:= []):
 	for i in range(units.size()):
@@ -2400,4 +3332,5 @@ func make_character_icons():
 			if idle_img_path.is_empty():
 				print("make_character_icons: [%s] has no 'idle' anim." % unit_name)
 			else:
-				anim_importer.make_character_icon(idle_img_path, unit_name)
+				anim_importer.make_character_icon(idle_img_path, unit_name,
+					diff_size.get(unit_name, anim_importer.FRAME_SIZE))

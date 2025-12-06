@@ -1,7 +1,7 @@
 extends Control
 
 const tabs := {"main": 0, "license": 1, "credits": 2,
-"popup": 3, "daed": 4, "save_load": 5,}
+"popup": 3, "dead": 4, "save_load": 5,}
 
 @export var player: Character = null
 @export_file("*.tscn") var start_level_scene_path := ""
@@ -130,5 +130,6 @@ func _on_visibility_changed():
 			prev_tab = $center/panel/margin/tabs/main/resume_game
 
 func show_death_screen():
-	tab.current_tab = tabs["daed"]
+	await get_tree().create_timer(2.5).timeout
+	tab.current_tab = tabs["dead"]
 	show()

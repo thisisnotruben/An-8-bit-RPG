@@ -1,4 +1,5 @@
 extends Node
+class_name Importer
 
 const FRAME_SIZE := Vector2(32.0, 32.0)
 const FRAME_DIRECTION_SEQ := ["down_right", "down_left", "right_up", "left_up"]
@@ -7,27 +8,27 @@ const LOOPABLE_ANIM := ["move", "idle", "walk"]
 
 
 func import_anim_file(file_path: String, anim_base_name: String,
-anim_name: String,  frame_length_mili: int):
+anim_name: String,  frame_length_mili: int, frame_size := FRAME_SIZE):
 	var resource_file_path := "res://resource/animation/%s.tres" % anim_base_name
 	var anim_library := AnimationLibrary.new()
 	if ResourceLoader.exists(resource_file_path):
 		anim_library = ResourceLoader.load(resource_file_path)
 
 	var texture: Texture2D = load(file_path)
-	var v_frames := texture.get_height() / FRAME_SIZE.y
+	var v_frames := texture.get_height() / frame_size.y
 
 	for i in range(v_frames):
 		anim_library.add_animation(
 			"%s_%s" % [anim_name, FRAME_DIRECTION_SEQ[i]] if v_frames > 1 else anim_name,
-			create_anim(file_path, frame_length_mili, i, anim_name))
+			create_anim(file_path, frame_length_mili, i, anim_name, frame_size))
 
 	ResourceSaver.save(anim_library, resource_file_path)
 
 func create_anim(file_path: String, frame_length_mili: int,
-frame_seq: int, anim_name: String) -> Animation:
+frame_seq: int, anim_name: String, frame_size: Vector2) -> Animation:
 	var animation := Animation.new()
 	var texture: Texture2D = load(file_path)
-	var frames := texture.get_size() / FRAME_SIZE
+	var frames := texture.get_size() / frame_size
 	animation.length = float(frame_length_mili) * float(frames.x) * 0.001
 	if LOOPABLE_ANIM.has(anim_name):
 		animation.loop_mode = Animation.LOOP_LINEAR
@@ -99,24 +100,31 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 			"idle":
 				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1")
 				_add_transition(state_machine, anim_name_type, "attack", "[2, 3].has(fsm.state)")
+				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 				_add_transition(state_machine, anim_name_type, "jump", "fsm.state == 8")
 				_add_transition(state_machine, anim_name_type, "work", "fsm.state == 9")
 			"walk":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0")
 				_add_transition(state_machine, anim_name_type, "attack", "[2, 3].has(fsm.state)")
+				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 			"attack":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0", true)
 				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1", true)
+				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 			"dmg":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0", true)
+				_add_transition(state_machine, anim_name_type, "walk", "fsm.state == 1", true)
+				_add_transition(state_machine, anim_name_type, "attack", "[2, 3].has(fsm.state)", true)
 				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4", true)
 			"jump":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0", true)
+				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4")
 			"move":
 				_add_transition(state_machine, anim_name_type, "idle", "fsm.state == 0")
+				_add_transition(state_machine, anim_name_type, "die", "fsm.state == 4")
 				_add_transition(state_machine, anim_name_type, "dmg", "fsm.state == 6")
 
 	ResourceSaver.save(state_machine, \
@@ -133,11 +141,11 @@ from: String, to: String, expression: String, at_end := false):
 		transition.advance_expression = expression
 		state_machine.add_transition(from, to, transition)
 
-func make_character_icon(file_path: String, character_name: String):
+func make_character_icon(file_path: String, character_name: String, frame_size := FRAME_SIZE):
 	if not ResourceLoader.exists(file_path):
 		print("make_character_icon: [%s] doesn't exist." % file_path)
 		return
 
 	var image := Image.load_from_file(file_path)
-	image.crop(int(FRAME_SIZE.x), int(FRAME_SIZE.y))
+	image.crop(int(frame_size.x), int(frame_size.y))
 	image.save_png("res://tiled/tileset/character/%s.png" % character_name)

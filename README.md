@@ -27,10 +27,6 @@ TODO
 
 ### Bugs
 
-- when hud is open player still moves when what is desired is to lock movement.
-- fix fire animation, what godot and tiled show is different.
-- tiled 'Docks' tileset, I cannot find the file to add collisions, maybe it's embedded?
-- 'Tiled' tile collisions don't work on tile objects, fix that.
 
 ## Audio
 

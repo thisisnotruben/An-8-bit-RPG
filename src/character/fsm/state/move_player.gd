@@ -4,8 +4,7 @@ extends IState
 
 
 func physics_process(delta: float):
-	var input_dir := Input.get_vector("move_left", "move_right",
-		"move_up", "move_down")
+	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := input_dir.normalized()
 	if direction:
 		move.velocity = direction * move.speed

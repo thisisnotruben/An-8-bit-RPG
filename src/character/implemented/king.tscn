@@ -1,0 +1,191 @@
+[gd_scene load_steps=86 format=3 uid="uid://bju5ofn1h1g8c"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_nqner"]
+[ext_resource type="AnimationLibrary" uid="uid://xq7hdp5jpflu" path="res://resource/animation/Alchemist.tres" id="2_x50wg"]
+[ext_resource type="AnimationLibrary" uid="uid://r2c2o4jpfj2p" path="res://resource/animation/Badger.tres" id="3_01ffu"]
+[ext_resource type="AnimationLibrary" uid="uid://burp6bw42d43m" path="res://resource/animation/Barbarian.tres" id="4_bl22a"]
+[ext_resource type="AnimationLibrary" uid="uid://dee6gpa8wwklx" path="res://resource/animation/Bard.tres" id="5_s8fgj"]
+[ext_resource type="AnimationLibrary" uid="uid://c3slpf4xl6s7c" path="res://resource/animation/Bat.tres" id="6_nhkul"]
+[ext_resource type="AnimationLibrary" uid="uid://bth38nhb4w2gf" path="res://resource/animation/Blacksmith.tres" id="7_ewhb2"]
+[ext_resource type="AnimationLibrary" uid="uid://ch8d6euv6j324" path="res://resource/animation/Blue_Mother_Slime.tres" id="8_gwaoc"]
+[ext_resource type="AnimationLibrary" uid="uid://5asqsn2vhdup" path="res://resource/animation/Blue_Slime.tres" id="9_a8v55"]
+[ext_resource type="AnimationLibrary" uid="uid://wjxp71nh5pwa" path="res://resource/animation/Butcher.tres" id="10_bp332"]
+[ext_resource type="AnimationLibrary" uid="uid://c8a1wp7582ak2" path="res://resource/animation/Camel.tres" id="11_emxv5"]
+[ext_resource type="AnimationLibrary" uid="uid://bvwtjpt33ops3" path="res://resource/animation/Carpenter.tres" id="12_kqr1t"]
+[ext_resource type="AnimationLibrary" uid="uid://ctq1juqpcsveh" path="res://resource/animation/Cat.tres" id="13_rxboj"]
+[ext_resource type="AnimationLibrary" uid="uid://ccbewocsmf0s4" path="res://resource/animation/Centaur.tres" id="14_daq6e"]
+[ext_resource type="AnimationLibrary" uid="uid://3e3echfpnjjh" path="res://resource/animation/Cleric.tres" id="15_unwuh"]
+[ext_resource type="AnimationLibrary" uid="uid://dsh3b08mqft2n" path="res://resource/animation/Cooker.tres" id="16_8gg0y"]
+[ext_resource type="AnimationLibrary" uid="uid://1tka0pjlx8om" path="res://resource/animation/Cyclop.tres" id="17_toncv"]
+[ext_resource type="AnimationLibrary" uid="uid://drv22ppkblrdg" path="res://resource/animation/Dog.tres" id="18_tx5ws"]
+[ext_resource type="AnimationLibrary" uid="uid://csaft1bw0w1x2" path="res://resource/animation/Druid.tres" id="19_vlmx3"]
+[ext_resource type="AnimationLibrary" uid="uid://c6pmwaoqgfs5b" path="res://resource/animation/Dyer.tres" id="20_u2ylp"]
+[ext_resource type="AnimationLibrary" uid="uid://dy8c78fqclxot" path="res://resource/animation/Elephant.tres" id="21_xrb4f"]
+[ext_resource type="AnimationLibrary" uid="uid://bksvuuophikiq" path="res://resource/animation/Evil_Snowman.tres" id="22_tuyca"]
+[ext_resource type="AnimationLibrary" uid="uid://cdi3vfaddnjht" path="res://resource/animation/Fighter.tres" id="23_k27io"]
+[ext_resource type="AnimationLibrary" uid="uid://bwkbiyfxefnem" path="res://resource/animation/Frog.tres" id="24_18ccq"]
+[ext_resource type="AnimationLibrary" uid="uid://bl3wp4ya7wpdt" path="res://resource/animation/Furrier.tres" id="25_c8e7l"]
+[ext_resource type="AnimationLibrary" uid="uid://boy3bmimavie3" path="res://resource/animation/Ghost.tres" id="26_1oel5"]
+[ext_resource type="AnimationLibrary" uid="uid://bcgq1jxvn5rhp" path="res://resource/animation/GiantSnail.tres" id="27_vtcao"]
+[ext_resource type="AnimationLibrary" uid="uid://cggh857smetl6" path="res://resource/animation/Goat.tres" id="28_sn68a"]
+[ext_resource type="AnimationLibrary" uid="uid://cea4261ndgy6q" path="res://resource/animation/Green_Mother_Slime.tres" id="29_e6277"]
+[ext_resource type="AnimationLibrary" uid="uid://bmg5p6i0pr23" path="res://resource/animation/Green_Slime.tres" id="30_t0tsa"]
+[ext_resource type="AnimationLibrary" uid="uid://v4krgbohg860" path="res://resource/animation/Headless_Skeleton.tres" id="31_c4n7y"]
+[ext_resource type="AnimationLibrary" uid="uid://b8bnqdf0isxy0" path="res://resource/animation/Hedgehog.tres" id="32_phg5j"]
+[ext_resource type="AnimationLibrary" uid="uid://hi75y5sqnhyr" path="res://resource/animation/Hippo.tres" id="33_lhtva"]
+[ext_resource type="AnimationLibrary" uid="uid://bq3tqusa456nr" path="res://resource/animation/Horse.tres" id="34_c0iuj"]
+[ext_resource type="AnimationLibrary" uid="uid://bt3kv7u4bsyeh" path="res://resource/animation/Hyena.tres" id="35_1ei0q"]
+[ext_resource type="AnimationLibrary" uid="uid://75yh2w1wag3a" path="res://resource/animation/Jeweller.tres" id="36_jrsp7"]
+[ext_resource type="AnimationLibrary" uid="uid://c5ar5urcoxtrv" path="res://resource/animation/Jumping_Skull.tres" id="37_30qwa"]
+[ext_resource type="AnimationLibrary" uid="uid://bivtr08furu61" path="res://resource/animation/Kangaroo.tres" id="38_0hyqf"]
+[ext_resource type="AnimationLibrary" path="res://resource/animation/King.tres" id="39_g2p48"]
+[ext_resource type="AnimationLibrary" uid="uid://dfv5kknya25q4" path="res://resource/animation/Lion.tres" id="40_1k2fl"]
+[ext_resource type="AnimationLibrary" uid="uid://3g86c6soapkb" path="res://resource/animation/Lioness.tres" id="41_j2vik"]
+[ext_resource type="AnimationLibrary" uid="uid://cshmmfal6uvc6" path="res://resource/animation/Minotaur.tres" id="42_iokcq"]
+[ext_resource type="AnimationLibrary" uid="uid://c38sxbwkh4p5k" path="res://resource/animation/Moose.tres" id="43_sl664"]
+[ext_resource type="AnimationLibrary" uid="uid://cihev1yiqsx4y" path="res://resource/animation/Orange_Fox.tres" id="44_o4mw1"]
+[ext_resource type="AnimationLibrary" uid="uid://hsuvjn8mxkyg" path="res://resource/animation/Ostrich.tres" id="45_65hmq"]
+[ext_resource type="AnimationLibrary" uid="uid://cnri6xsx68tnr" path="res://resource/animation/Paladin.tres" id="46_kxatg"]
+[ext_resource type="AnimationLibrary" uid="uid://yaryfiprjstm" path="res://resource/animation/Panda.tres" id="47_lwjs5"]
+[ext_resource type="AnimationLibrary" uid="uid://bxgimkgmmueg6" path="res://resource/animation/Platypus.tres" id="48_b53dp"]
+[ext_resource type="AnimationLibrary" uid="uid://blj7fwq0v6wvd" path="res://resource/animation/Polar_Bear.tres" id="49_5gwfw"]
+[ext_resource type="AnimationLibrary" uid="uid://wh1wqa4mqx0g" path="res://resource/animation/Polar_Fox.tres" id="50_adua6"]
+[ext_resource type="AnimationLibrary" uid="uid://bihmof7htm6vf" path="res://resource/animation/Pumpkin_Horror.tres" id="51_nnqrh"]
+[ext_resource type="AnimationLibrary" uid="uid://b1mnrwlsauvs3" path="res://resource/animation/Ranger.tres" id="52_fnys0"]
+[ext_resource type="AnimationLibrary" uid="uid://bd2uwasq11hn2" path="res://resource/animation/Reanimated_Skeleton_Archer.tres" id="53_b0y7a"]
+[ext_resource type="AnimationLibrary" uid="uid://dpc71tse0fv0a" path="res://resource/animation/Reanimated_Skeleton_Mage.tres" id="54_g551e"]
+[ext_resource type="AnimationLibrary" uid="uid://dqis7xl6iatw1" path="res://resource/animation/Reanimated_Skeleton_Warrior.tres" id="55_cg1cr"]
+[ext_resource type="AnimationLibrary" uid="uid://i0881xx3ibwe" path="res://resource/animation/Reanimated_Zombie_Archer.tres" id="56_ietov"]
+[ext_resource type="AnimationLibrary" uid="uid://o4rr5nsusf14" path="res://resource/animation/Reanimated_Zombie_Mage.tres" id="57_ttvdh"]
+[ext_resource type="AnimationLibrary" uid="uid://dkq1dnksh1cyf" path="res://resource/animation/Reanimated_Zombie_Warrior.tres" id="58_5cga7"]
+[ext_resource type="AnimationLibrary" uid="uid://drpvlpo5ym40r" path="res://resource/animation/Rhino.tres" id="59_mdauh"]
+[ext_resource type="AnimationLibrary" uid="uid://cosy1vwq5v4rg" path="res://resource/animation/Rogue.tres" id="60_r7sut"]
+[ext_resource type="AnimationLibrary" uid="uid://c81ixrcf6mfv6" path="res://resource/animation/Skeletal_Horse.tres" id="61_evbaa"]
+[ext_resource type="AnimationLibrary" uid="uid://cjmxu0f5hgmlv" path="res://resource/animation/Skeletal_Horse_Rider.tres" id="62_170sd"]
+[ext_resource type="AnimationLibrary" uid="uid://cqadcml22esxt" path="res://resource/animation/Skeleton.tres" id="63_aglda"]
+[ext_resource type="AnimationLibrary" uid="uid://dsj8wiyqgfw61" path="res://resource/animation/Skeleton_Minotaur.tres" id="64_a4mdu"]
+[ext_resource type="AnimationLibrary" uid="uid://bfj1uh8u6dhlx" path="res://resource/animation/Skunk.tres" id="65_yfvu6"]
+[ext_resource type="AnimationLibrary" uid="uid://cd73dvf1cg3a5" path="res://resource/animation/Snake.tres" id="66_1xn4w"]
+[ext_resource type="AnimationLibrary" uid="uid://c77f88a4xu2vv" path="res://resource/animation/Squirrel.tres" id="67_bv0fl"]
+[ext_resource type="AnimationLibrary" uid="uid://b07ocom16a1jc" path="res://resource/animation/Tailor.tres" id="68_m2iq7"]
+[ext_resource type="AnimationLibrary" uid="uid://b3u7ifnwge7n6" path="res://resource/animation/Tiger.tres" id="69_b7ey4"]
+[ext_resource type="AnimationLibrary" uid="uid://l6oje1vdp02l" path="res://resource/animation/Tortoise.tres" id="70_edtmv"]
+[ext_resource type="AnimationLibrary" uid="uid://bevxbmkstgsij" path="res://resource/animation/Trasgo.tres" id="71_44lh2"]
+[ext_resource type="AnimationLibrary" uid="uid://c376jsqa52myp" path="res://resource/animation/Troll.tres" id="72_b1lhg"]
+[ext_resource type="AnimationLibrary" uid="uid://dmtcskya6mg7h" path="res://resource/animation/Warg.tres" id="73_kncny"]
+[ext_resource type="AnimationLibrary" uid="uid://8eavs3dsk3rm" path="res://resource/animation/Wildfire.tres" id="74_iv2kn"]
+[ext_resource type="AnimationLibrary" uid="uid://wk2ulvehpjnj" path="res://resource/animation/Wizard.tres" id="75_iw7nk"]
+[ext_resource type="AnimationLibrary" uid="uid://bknves0g428qg" path="res://resource/animation/Wolf.tres" id="76_mpajt"]
+[ext_resource type="AnimationLibrary" uid="uid://dh08r1sn7qiak" path="res://resource/animation/Yeti.tres" id="77_8exwu"]
+[ext_resource type="AnimationLibrary" uid="uid://cvfiecmnnfmie" path="res://resource/animation/Zombie.tres" id="78_cm4nm"]
+[ext_resource type="AnimationLibrary" uid="uid://djb4fw8ipg6gd" path="res://resource/animation/Zombie_Bear.tres" id="79_n748s"]
+[ext_resource type="AnimationLibrary" uid="uid://bpj72umknfmwj" path="res://resource/animation/Zombie_Giant.tres" id="80_7s7ab"]
+[ext_resource type="AnimationLibrary" uid="uid://dj3fcwkb1od3k" path="res://resource/animation/Zombie_Minotaur.tres" id="81_00c2k"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/animation_state_machine/King_state_machine.tres" id="82_yx2jm"]
+[ext_resource type="Texture2D" uid="uid://dsahv14xw737n" path="res://asset/img/exclusives/Creatures/King/Minifantasy_kingIdle.png" id="83_jm6uy"]
+
+[sub_resource type="Animation" id="Animation_ve5jm"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8cpw0"]
+_data = {
+&"RESET": SubResource("Animation_ve5jm")
+}
+
+[node name="King" instance=ExtResource("1_nqner")]
+
+[node name="anim_player" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_8cpw0"),
+&"Alchemist": ExtResource("2_x50wg"),
+&"Badger": ExtResource("3_01ffu"),
+&"Barbarian": ExtResource("4_bl22a"),
+&"Bard": ExtResource("5_s8fgj"),
+&"Bat": ExtResource("6_nhkul"),
+&"Blacksmith": ExtResource("7_ewhb2"),
+&"Blue_Mother_Slime": ExtResource("8_gwaoc"),
+&"Blue_Slime": ExtResource("9_a8v55"),
+&"Butcher": ExtResource("10_bp332"),
+&"Camel": ExtResource("11_emxv5"),
+&"Carpenter": ExtResource("12_kqr1t"),
+&"Cat": ExtResource("13_rxboj"),
+&"Centaur": ExtResource("14_daq6e"),
+&"Cleric": ExtResource("15_unwuh"),
+&"Cooker": ExtResource("16_8gg0y"),
+&"Cyclop": ExtResource("17_toncv"),
+&"Dog": ExtResource("18_tx5ws"),
+&"Druid": ExtResource("19_vlmx3"),
+&"Dyer": ExtResource("20_u2ylp"),
+&"Elephant": ExtResource("21_xrb4f"),
+&"Evil_Snowman": ExtResource("22_tuyca"),
+&"Fighter": ExtResource("23_k27io"),
+&"Frog": ExtResource("24_18ccq"),
+&"Furrier": ExtResource("25_c8e7l"),
+&"Ghost": ExtResource("26_1oel5"),
+&"GiantSnail": ExtResource("27_vtcao"),
+&"Goat": ExtResource("28_sn68a"),
+&"Green_Mother_Slime": ExtResource("29_e6277"),
+&"Green_Slime": ExtResource("30_t0tsa"),
+&"Headless_Skeleton": ExtResource("31_c4n7y"),
+&"Hedgehog": ExtResource("32_phg5j"),
+&"Hippo": ExtResource("33_lhtva"),
+&"Horse": ExtResource("34_c0iuj"),
+&"Hyena": ExtResource("35_1ei0q"),
+&"Jeweller": ExtResource("36_jrsp7"),
+&"Jumping_Skull": ExtResource("37_30qwa"),
+&"Kangaroo": ExtResource("38_0hyqf"),
+&"King": ExtResource("39_g2p48"),
+&"Lion": ExtResource("40_1k2fl"),
+&"Lioness": ExtResource("41_j2vik"),
+&"Minotaur": ExtResource("42_iokcq"),
+&"Moose": ExtResource("43_sl664"),
+&"Orange_Fox": ExtResource("44_o4mw1"),
+&"Ostrich": ExtResource("45_65hmq"),
+&"Paladin": ExtResource("46_kxatg"),
+&"Panda": ExtResource("47_lwjs5"),
+&"Platypus": ExtResource("48_b53dp"),
+&"Polar_Bear": ExtResource("49_5gwfw"),
+&"Polar_Fox": ExtResource("50_adua6"),
+&"Pumpkin_Horror": ExtResource("51_nnqrh"),
+&"Ranger": ExtResource("52_fnys0"),
+&"Reanimated_Skeleton_Archer": ExtResource("53_b0y7a"),
+&"Reanimated_Skeleton_Mage": ExtResource("54_g551e"),
+&"Reanimated_Skeleton_Warrior": ExtResource("55_cg1cr"),
+&"Reanimated_Zombie_Archer": ExtResource("56_ietov"),
+&"Reanimated_Zombie_Mage": ExtResource("57_ttvdh"),
+&"Reanimated_Zombie_Warrior": ExtResource("58_5cga7"),
+&"Rhino": ExtResource("59_mdauh"),
+&"Rogue": ExtResource("60_r7sut"),
+&"Skeletal_Horse": ExtResource("61_evbaa"),
+&"Skeletal_Horse_Rider": ExtResource("62_170sd"),
+&"Skeleton": ExtResource("63_aglda"),
+&"Skeleton_Minotaur": ExtResource("64_a4mdu"),
+&"Skunk": ExtResource("65_yfvu6"),
+&"Snake": ExtResource("66_1xn4w"),
+&"Squirrel": ExtResource("67_bv0fl"),
+&"Tailor": ExtResource("68_m2iq7"),
+&"Tiger": ExtResource("69_b7ey4"),
+&"Tortoise": ExtResource("70_edtmv"),
+&"Trasgo": ExtResource("71_44lh2"),
+&"Troll": ExtResource("72_b1lhg"),
+&"Warg": ExtResource("73_kncny"),
+&"Wildfire": ExtResource("74_iv2kn"),
+&"Wizard": ExtResource("75_iw7nk"),
+&"Wolf": ExtResource("76_mpajt"),
+&"Yeti": ExtResource("77_8exwu"),
+&"Zombie": ExtResource("78_cm4nm"),
+&"Zombie_Bear": ExtResource("79_n748s"),
+&"Zombie_Giant": ExtResource("80_7s7ab"),
+&"Zombie_Minotaur": ExtResource("81_00c2k")
+}
+
+[node name="anim_tree" parent="." index="3"]
+tree_root = ExtResource("82_yx2jm")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="7"]
+texture = ExtResource("83_jm6uy")
+frame = 8

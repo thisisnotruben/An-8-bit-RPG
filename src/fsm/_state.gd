@@ -8,6 +8,7 @@ class_name IState
 
 var active: bool = false
 
+@warning_ignore("unused_signal")
 signal change_state(_state)
 
 

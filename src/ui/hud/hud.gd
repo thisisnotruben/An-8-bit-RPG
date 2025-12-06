@@ -1,4 +1,5 @@
 extends Control
+class_name HUD
 
 var play_focus_sfx := false
 var hovered_control: Control = null
@@ -19,6 +20,9 @@ var hovered_control: Control = null
 @onready var player_health: AtlasTexture = $status_margin/player_health.get("texture_progress")
 @onready var player_mana: AtlasTexture = $status_margin/player_health/mana.get("texture_progress")
 @onready var player_ability: AtlasTexture = $status_margin/player_health/ability.get("texture_progress")
+
+@onready var target_mana_ctrl: Control = $status_margin/target_health/mana
+@onready var target_ability_ctrl: Control =  $status_margin/target_health/ability
 
 @onready var target_health: AtlasTexture = $status_margin/target_health.get("texture_progress")
 @onready var target_mana: AtlasTexture = $status_margin/target_health/mana.get("texture_progress")
@@ -50,8 +54,8 @@ func _ready():
 		tab_npc.set_tab_icon(i, tab_order[i])
 		tab_npc.set_tab_title(i, "")
 
-	target_status_bar.visibility_changed.connect(func(): \
-		target_health_node.visible = target_status_bar.visible)
+	target_health_node.visibility_changed.connect(func(): \
+		target_status_bar.visible = target_health_node.visible)
 
 	if player != null:
 		player.health_changed.connect(_on_set_player_health)
@@ -66,17 +70,25 @@ func _ready():
 		trainer.player = player
 
 func _on_set_target(value: Character):
-	if target != null and value != target:
-		value.health_changed.disconnect(_on_set_target_health)
-		value.mana_changed.disconnect(_on_set_target_mana)
-		value.ability_changed.disconnect(_on_set_target_ability)
+	if target != null:
+		target.health_changed.disconnect(_on_set_target_health)
+		target.mana_changed.disconnect(_on_set_target_mana)
+		target.ability_changed.disconnect(_on_set_target_ability)
+		target.died.disconnect(_on_set_target)
+	if target == value or value == null \
+	or value.fsm.state == CharacterStates.Type.DEAD:
+		target = null
+		target_health_node.hide()
+		return
 
 	target = value
-	target_status_bar.visible = value != null
+	target_health_node.show()
+
 	if value != null:
 
 		var show_slot := not value.character_roles.is_empty()
 		target_slot.visible = show_slot
+		target_status_bar.visible = not value.character_name.is_empty()
 		target_name_label.text = value.character_name if show_slot \
 		else " ".repeat(target_status_name_padding) + value.character_name
 
@@ -111,6 +123,9 @@ func _on_set_target(value: Character):
 						not value.character_roles.has(role))
 				target_slot.item_icon = many_hats_icon
 
+		target_mana_ctrl.visible = value.mana_max > 0
+		target_ability_ctrl.visible = value.ability_max > 0
+
 		_on_set_target_health(value.health, value.health_max)
 		_on_set_target_mana(value.mana, value.mana_max)
 		_on_set_target_ability(value.ability, value.ability_max)
@@ -118,40 +133,35 @@ func _on_set_target(value: Character):
 		value.health_changed.connect(_on_set_target_health)
 		value.mana_changed.connect(_on_set_target_mana)
 		value.ability_changed.connect(_on_set_target_ability)
+		value.died.connect(_on_set_target.bind(null))
 
 func _on_set_target_health(value: int, value_max: int):
-	target_health.region.position.x = \
-		_get_pct(value, value_max) * int(target_health.region.size.x)
+	_update_status_ui(target_health, value, value_max)
 
 func _on_set_target_mana(value: int, value_max: int):
-	target_mana.region.position.x = \
-		_get_pct(value, value_max) * int(target_mana.region.size.x)
+	_update_status_ui(target_mana, value, value_max)
 
 func _on_set_target_ability(value: int, value_max: int):
-	target_ability.region.position.x = \
-		_get_pct(value, value_max) * int(target_ability.region.size.x)
+	_update_status_ui(target_ability, value, value_max)
 
 func _on_set_player_health(value: int, value_max: int):
-	player_health.region.position.x = \
-		_get_pct(value, value_max) * int(player_health.region.size.x)
+	_update_status_ui(player_health, value, value_max)
 
 func _on_set_player_mana(value: int, value_max: int):
-	player_mana.region.position.x = \
-		_get_pct(value, value_max) * int(player_mana.region.size.x)
+	_update_status_ui(player_mana, value, value_max)
 
 func _on_set_player_ability(value: int, value_max: int):
-	player_ability.region.position.x = \
-		_get_pct(value, value_max) * int(player_ability.region.size.x)
+	_update_status_ui(player_ability, value, value_max)
 
-func _get_pct(value: int, value_max: int) -> int:
-	return ceili(float(value) / float(value_max) * 10.0)
+func _update_status_ui(atlas_texture: AtlasTexture, value: int, value_max: int):
+	atlas_texture.region.position.x = snappedi(
+			float(value_max - value) / float(value_max) * atlas_texture.atlas.get_width(),
+			int(atlas_texture.region.size.x))
 
 func _on_inventory_spell_book_pressed():
 	var is_hud_panel_visible := not interact_panel.visible
 	tab_master.current_tab = tabs_master["player"]
 	interact_panel.visible = is_hud_panel_visible
-	if player != null:
-		player.set_player_move_hud_menu_pause.emit(is_hud_panel_visible)
 
 func _on_menu_pressed():
 	var cancel_event = InputEventAction.new()
@@ -177,3 +187,12 @@ func _on_subcontrol_mouse_exited():
 		play_focus_sfx = false
 		hovered_control.grab_focus()
 		play_focus_sfx = true
+
+func _on_interact_panel_visibility_changed():
+	if player != null:
+		if interact_panel.visible:
+			player.set_player_move_hud_menu_pause.emit(true)
+			player.can_input = false
+		else:
+			player.set_player_move_hud_menu_pause.emit(false)
+			player.can_input = true

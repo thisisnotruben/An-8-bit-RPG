@@ -12,7 +12,6 @@ func enter():
 	switch_type_status = SwitchTypeStatus.ACTIVE
 	super.enter()
 	play_quip()
-	await get_tree().create_timer(0.5).timeout
 	if active:
 		var hit_scan := character.hit_scan_melee.get_collider()
 		if character.is_foe(hit_scan):

@@ -4,7 +4,7 @@ class_name Character
 enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 const WORLD_LAYER := 0b00000000_00000000_00000000_00000001
 
-@onready var fsm: Fsm = $fsm
+@onready var fsm: FsmCharacter = $fsm
 @onready var behavior: Fsm = $fsm_behavior.init({
 	BehaviorStates.Type.REST: $fsm_behavior/rest,
 	BehaviorStates.Type.ATTACK: $fsm_behavior/attack,
@@ -54,7 +54,7 @@ var ability: int : set = _set_ability
 @export_category("Combat Stats")
 @export_subgroup("Melee")
 @export_range(1, 10) var melee_damage: int = 1
-@export_range(0.0, 64.0) var melee_range: float = 1.1
+@export_range(0.0, 64.0) var melee_range: float = 16.0
 @export_subgroup("Shoot")
 @export_range(1, 10) var shoot_damage: int = 1
 @export_range(0.0, 64.0) var shoot_range: float = 12.0
@@ -69,17 +69,21 @@ var current_uses: Dictionary[ItemDB.Type, SceneTreeTimer] = {}
 @export_category("Optional Misc")
 @export var target: Character = null
 @export var gold: int = 0
+var can_input := true # used if player has hud open
+var is_interacting := false
 
 signal health_changed(_health, _max_health)
 signal mana_changed(_mana, _max_mana)
 signal ability_changed(_ability, _max_ability)
-signal died(_character)
+signal died
+signal on_selected(character: Character)
 
 signal inventory_added(_item)
 signal spell_added(_spell)
 var is_inventory_full := func(): return true
 var is_spellbook_full := func(): return true
 
+@warning_ignore("unused_signal")
 signal set_player_move_hud_menu_pause(is_hud_panel_visible)
 
 
@@ -91,7 +95,8 @@ func _ready():
 	$fsm.init(fsm_init, {"character": self})
 	behavior.state = BehaviorStates.Type.REST
 	health = health_max
-	_set_npc(npc)
+	mana = mana_max
+	ability = ability_max
 
 func _on_nav_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
@@ -105,7 +110,7 @@ func _physics_process(delta: float):
 func _process(delta: float):
 	if npc:
 		behavior.process(delta)
-	else:
+	elif can_input:
 		_handle_input()
 	fsm.process(delta)
 
@@ -114,24 +119,27 @@ func _input(event: InputEvent):
 
 func _set_health_regen(value: float):
 	$health_regen.wait_time = value
-	$health_regen.start()
+	if $health_regen.is_inside_tree():
+		$health_regen.start()
 
 func _set_mana_regen(value: float):
 	$mana_regen.wait_time = value
-	$mana_regen.start()
+	if $mana_regen.is_inside_tree():
+		$mana_regen.start()
 
 func _set_ability_regen(value: float):
 	$ability_regen.wait_time = value
-	$ability_regen.start()
+	if $ability_regen.is_inside_tree():
+		$ability_regen.start()
 
 func _on_health_regen_timeout():
-	_set_health(health_regen)
+	_set_health(health + health_regen)
 
 func _on_mana_regen_timeout():
-	_set_mana(mana_regen)
+	_set_mana(mana + mana_regen)
 
 func _on_ability_regen_timeout():
-	_set_ability(ability_regen)
+	_set_ability(ability + ability_regen)
 
 func _set_health(_health: int):
 	var prev_health := health
@@ -144,7 +152,7 @@ func _set_health(_health: int):
 		health_regen_timer.stop()
 		mana_regen_timer.stop()
 		ability_regen_timer.stop()
-		died.emit(self)
+		died.emit()
 		if connected_joy:
 			Input.start_joy_vibration(0, 0.0, 1.0, 1.0)
 	elif prev_health > health:
@@ -177,10 +185,10 @@ func set_hit_flags():
 		hit_scan += player_hit_flag
 
 	$hit_melee_cast.set_deferred("collision_mask", hit_scan)
-	$hit_melee_cast.set_deferred("target_position.x", melee_range)
+	$hit_melee_cast.set_deferred("target_position", Vector2(melee_range, 0.0))
 
 	$hit_shoot_cast.set_deferred("collision_mask", hit_scan)
-	$hit_shoot_cast.set_deferred("target_position.x", shoot_range)
+	$hit_shoot_cast.set_deferred("target_position", Vector2(shoot_range, 0.0))
 
 func _set_npc(_npc: bool):
 	npc = _npc
@@ -231,17 +239,24 @@ func is_foe(_body: Node2D) -> bool:
 # player behavior
 
 func _handle_input():
+	hit_scan_melee.look_at(get_global_mouse_position())
+	hit_scan_shoot.look_at(get_global_mouse_position())
+
 	var state := CharacterStates.Type.IDLE
-	if Input.get_vector("move_left", "move_right",
-	"move_up", "move_down").length() > 0.0:
+	if Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0.0:
 		state = CharacterStates.Type.MOVE
 	elif Input.is_action_just_pressed("attack"):
-		if fsm.can_melee():
+		if can_hit():
 			state = CharacterStates.Type.MELEE
-		elif fsm.can_shoot():
+		elif can_shoot():
 			state = CharacterStates.Type.SHOOT
 	fsm.state = state
 
+func can_hit() -> bool:
+	return fsm.can_melee() and is_foe(hit_scan_melee.get_collider())
+
+func can_shoot() -> bool:
+	return fsm.can_shoot() and is_foe(hit_scan_shoot.get_collider())
 # npc behavior
 
 func _on_sight_body_entered(_body: Node2D):
@@ -310,3 +325,6 @@ func deserialize(payload: Dictionary):
 			"global_position":
 				global_position.x = payload[data][0]
 				global_position.y = payload[data][1]
+
+func _on_select_bttn_pressed():
+	on_selected.emit(self)

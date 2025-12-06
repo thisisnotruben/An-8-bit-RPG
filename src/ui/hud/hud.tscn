@@ -44,11 +44,11 @@ region = Rect2(0, 0, 64, 0)
 atlas = ExtResource("2_bpdxj")
 region = Rect2(0, 0, 128, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5ccl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2hmd"]
 atlas = ExtResource("9_raafm")
 region = Rect2(0, 0, 64, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ilyr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2kha"]
 atlas = ExtResource("9_qtkbr")
 region = Rect2(0, 0, 64, 0)
 
@@ -59,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_jobw0")
 inventory_icon = ExtResource("2_1ilyr")
 merchant_icon = ExtResource("3_v4dvs")
@@ -349,7 +350,7 @@ offset_bottom = 56.0
 mouse_filter = 2
 value = 100.0
 texture_under = ExtResource("4_076te")
-texture_progress = SubResource("AtlasTexture_d5ccl")
+texture_progress = SubResource("AtlasTexture_i2hmd")
 
 [node name="mana" type="TextureProgressBar" parent="status_margin/target_health"]
 layout_mode = 0
@@ -360,8 +361,9 @@ offset_bottom = 28.0
 mouse_filter = 2
 value = 100.0
 texture_under = ExtResource("4_076te")
-texture_progress = SubResource("AtlasTexture_1ilyr")
+texture_progress = SubResource("AtlasTexture_g2kha")
 
+[connection signal="visibility_changed" from="bg_margin/vBox/panel" to="." method="_on_interact_panel_visibility_changed"]
 [connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_focused"]
 [connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_entered"]
 [connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/player/inventory" to="." method="_on_subcontrol_mouse_exited"]
