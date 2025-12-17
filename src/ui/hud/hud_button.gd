@@ -13,15 +13,15 @@ const drag_item := preload("res://src/ui/hud/hud_drag_icon.tscn")
 @export var item_icon: Texture = null: set = _on_set_icon
 @export var quick_slot := false
 @export var type := Type.PLAYER: set = _on_set_type
-var item_type := ItemDB.Type.INVALID: set = _on_set_item
+var item_type := Item.Type.INVALID: set = _on_set_item
 var is_cooling_down := false
 var tween: Tween = null
 
-signal on_cooldown_started(_item_type: ItemDB.Type)
+signal on_cooldown_started(_item_type: Item.Type)
 
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	if quick_slot and item_type != ItemDB.Type.INVALID:
+	if quick_slot and item_type != Item.Type.INVALID:
 		set_drag_preview(drag_item.instantiate().init(item_icon))
 		return { "item_type": item_type, "slot": self, }
 	return { }
@@ -31,7 +31,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 func _drop_data(_at_position: Vector2, data: Variant):
 	if quick_slot:
-		if item_type != ItemDB.Type.INVALID:
+		if item_type != Item.Type.INVALID:
 			data["slot"].clear()
 			data["slot"]._on_set_item(item_type)
 		_on_set_item(data["item_type"])
@@ -52,18 +52,20 @@ func _on_focus_exited():
 	anim.play("unfocus")
 
 func use():
-	if item_type != ItemDB.Type.INVALID:
-		var data := ItemDB.get_item_type_data(item_type)
-		if data.use:
-			data.use_enter()
-			if data.cooldown > 0.0:
-				_start_tween(data.cooldown)
+	if item_type != Item.Type.INVALID:
+		var item := ItemDB.get_item_type_data(item_type)
+		if item.behavior:
+			player.spawn_item_behavior(item.behavior)
+			if item.behavior_cooldown > 0.0:
+				_start_tween(item.behavior_cooldown)
 				on_cooldown_started.emit(item_type)
 
-func check_cooldown(value: ItemDB.Type):
+func check_cooldown(value: Item.Type):
 	if type == Type.PLAYER and not is_cooling_down \
-	and item_type != ItemDB.Type.INVALID and item_type == value:
-		_start_tween(ItemDB.get_item_type_data(value).cooldown)
+	and item_type != Item.Type.INVALID and item_type == value:
+		var item := ItemDB.get_item_type_data(value)
+		if item.behavior and item.behavior_cooldown > 0.0:
+			_start_tween(item.behavior_cooldown)
 
 func _start_tween(tween_time_sec: float):
 	is_cooling_down = true
@@ -73,9 +75,9 @@ func _start_tween(tween_time_sec: float):
 	tween.tween_method(set_cooldown_text, tween_time_sec, 0, tween_time_sec)
 	color_rect.show()
 
-func _on_set_item(value: ItemDB.Type):
+func _on_set_item(value: Item.Type):
 	item_type = value
-	if item_type != ItemDB.Type.INVALID:
+	if item_type != Item.Type.INVALID:
 		_on_set_icon(ItemDB.get_item_type_data(value).icon)
 
 func _on_set_icon(value: Texture):
@@ -93,9 +95,9 @@ func _on_set_type(value: Type):
 			pressed.connect(_on_pressed)
 
 func clear():
-	item_type = ItemDB.Type.INVALID
+	item_type = Item.Type.INVALID
 	label.text = ""
-	if tween != null and tween is Tween:
+	if is_instance_valid(tween) and tween is Tween:
 		tween.stop()
 	_on_tween_finished()
 
@@ -103,9 +105,11 @@ func set_cooldown_text(value: int):
 	label.text = str(value)
 
 func serialize() -> Dictionary:
-	return { "time_left": player.current_uses[item_type].time_left \
-		if player.current_uses.has(item_type) else -1.0 } \
-	if is_cooling_down else {}
+	return {}
+	# TODO
+	#return { "time_left": player.current_uses[item_type].time_left \
+		#if player.current_uses.has(item_type) else -1.0 } \
+	#if is_cooling_down else {}
 
 func deserialize(payload: Dictionary):
 	if payload.has("time_left") and payload["time_left"] > 0.0:

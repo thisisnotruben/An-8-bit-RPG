@@ -57,10 +57,10 @@ func _ready():
 	target_health_node.visibility_changed.connect(func(): \
 		target_status_bar.visible = target_health_node.visible)
 
-	if player != null:
-		player.health_changed.connect(_on_set_player_health)
-		player.mana_changed.connect(_on_set_player_mana)
-		player.ability_changed.connect(_on_set_player_ability)
+	if player:
+		player.health.changed.connect(_on_set_player_health)
+		player.mana.changed.connect(_on_set_player_mana)
+		player.ability.changed.connect(_on_set_player_ability)
 		player.inventory_added.connect(inventory.add_item)
 		player.spell_added.connect(spellbook.add_item)
 		player.is_inventory_full = inventory.is_full
@@ -70,10 +70,10 @@ func _ready():
 		trainer.player = player
 
 func _on_set_target(value: Character):
-	if target != null:
-		target.health_changed.disconnect(_on_set_target_health)
-		target.mana_changed.disconnect(_on_set_target_mana)
-		target.ability_changed.disconnect(_on_set_target_ability)
+	if target:
+		target.health.changed.disconnect(_on_set_target_health)
+		target.mana.changed.disconnect(_on_set_target_mana)
+		target.ability.changed.disconnect(_on_set_target_ability)
 		target.died.disconnect(_on_set_target)
 	if target == value or value == null \
 	or value.fsm.state == CharacterStates.Type.DEAD:
@@ -84,7 +84,7 @@ func _on_set_target(value: Character):
 	target = value
 	target_health_node.show()
 
-	if value != null:
+	if value:
 
 		var show_slot := not value.character_roles.is_empty()
 		target_slot.visible = show_slot
@@ -123,34 +123,34 @@ func _on_set_target(value: Character):
 						not value.character_roles.has(role))
 				target_slot.item_icon = many_hats_icon
 
-		target_mana_ctrl.visible = value.mana_max > 0
-		target_ability_ctrl.visible = value.ability_max > 0
+		target_mana_ctrl.visible = value.mana.max_value > 0
+		target_ability_ctrl.visible = value.ability.max_value > 0
 
-		_on_set_target_health(value.health, value.health_max)
-		_on_set_target_mana(value.mana, value.mana_max)
-		_on_set_target_ability(value.ability, value.ability_max)
+		_on_set_target_health(value.health.current, value.health.max_value, 0)
+		_on_set_target_mana(value.mana.current, value.mana.max_value, 0)
+		_on_set_target_ability(value.ability.current, value.ability.max_value, 0)
 
-		value.health_changed.connect(_on_set_target_health)
-		value.mana_changed.connect(_on_set_target_mana)
-		value.ability_changed.connect(_on_set_target_ability)
+		value.health.changed.connect(_on_set_target_health)
+		value.mana.changed.connect(_on_set_target_mana)
+		value.ability.changed.connect(_on_set_target_ability)
 		value.died.connect(_on_set_target.bind(null))
 
-func _on_set_target_health(value: int, value_max: int):
+func _on_set_target_health(value: int, value_max: int, _old: int):
 	_update_status_ui(target_health, value, value_max)
 
-func _on_set_target_mana(value: int, value_max: int):
+func _on_set_target_mana(value: int, value_max: int, _old: int):
 	_update_status_ui(target_mana, value, value_max)
 
-func _on_set_target_ability(value: int, value_max: int):
+func _on_set_target_ability(value: int, value_max: int, _old: int):
 	_update_status_ui(target_ability, value, value_max)
 
-func _on_set_player_health(value: int, value_max: int):
+func _on_set_player_health(value: int, value_max: int, _old: int):
 	_update_status_ui(player_health, value, value_max)
 
-func _on_set_player_mana(value: int, value_max: int):
+func _on_set_player_mana(value: int, value_max: int, _old: int):
 	_update_status_ui(player_mana, value, value_max)
 
-func _on_set_player_ability(value: int, value_max: int):
+func _on_set_player_ability(value: int, value_max: int, _old: int):
 	_update_status_ui(player_ability, value, value_max)
 
 func _update_status_ui(atlas_texture: AtlasTexture, value: int, value_max: int):
@@ -177,22 +177,23 @@ func _on_subcontrol_focused():
 		$snd_nav.play()
 
 func _on_subcontrol_mouse_entered(source: Control):
-	if source != null:
+	if source:
 		hovered_control = source
 		source.grab_focus()
 		source.release_focus()
 
 func _on_subcontrol_mouse_exited():
-	if hovered_control != null:
+	if hovered_control:
 		play_focus_sfx = false
 		hovered_control.grab_focus()
 		play_focus_sfx = true
 
 func _on_interact_panel_visibility_changed():
-	if player != null:
+	if player:
 		if interact_panel.visible:
 			player.set_player_move_hud_menu_pause.emit(true)
-			player.can_input = false
+			player.behavior.active = false
 		else:
 			player.set_player_move_hud_menu_pause.emit(false)
-			player.can_input = true
+			player.behavior.active = true
+		player.fsm.state = CharacterStates.Type.IDLE

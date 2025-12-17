@@ -9,6 +9,8 @@ func enter():
 	super.enter()
 	play_quip()
 	switch_type_status = SwitchTypeStatus.ACTIVE
+	if not character.npc and Input.is_joy_known(0):
+		Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
 
 func _on_animation_tree_animation_finished(_anim_name: StringName):
 	if active:

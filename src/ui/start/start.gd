@@ -28,13 +28,13 @@ func _on_focus_entered():
 		$snd_nav.play()
 
 func _on_mouse_entered(source: Control):
-	if source != null:
+	if source:
 		hovered_control = source
 		source.grab_focus()
 		source.release_focus()
 
 func _on_mouse_exited():
-	if hovered_control != null:
+	if hovered_control:
 		play_focus_sfx = false
 		hovered_control.grab_focus()
 		play_focus_sfx = true

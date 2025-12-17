@@ -1,8 +1,8 @@
-[gd_scene load_steps=101 format=3 uid="uid://batngdfpuvufm"]
+[gd_scene load_steps=103 format=3 uid="uid://batngdfpuvufm"]
 
-[ext_resource type="Script" uid="uid://dhwxukmxuqfm8" path="res://src/character/character.gd" id="1_aakvx"]
+[ext_resource type="Script" uid="uid://dhwxukmxuqfm8" path="res://src/character/character.gd" id="1_dmj6x"]
 [ext_resource type="Script" uid="uid://bei1wwsixdmk4" path="res://src/character/fsm/fsm_character.gd" id="2_6mb4q"]
-[ext_resource type="Script" uid="uid://cy3054qggro0q" path="res://src/fsm/_fsm.gd" id="2_frm2c"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/stats_character.tres" id="3_gtk46"]
 [ext_resource type="Script" uid="uid://bvbgyajrvqql4" path="res://src/character/fsm/state/idle.gd" id="3_k8eue"]
 [ext_resource type="Script" uid="uid://dt4jnar8yx6id" path="res://src/character/fsm/state/move_npc.gd" id="4_fi36g"]
 [ext_resource type="Script" uid="uid://c4fkfl7f2uyuk" path="res://src/character/fsm/state/move.gd" id="4_m366t"]
@@ -11,11 +11,10 @@
 [ext_resource type="Script" uid="uid://cjflggqw8u031" path="res://src/character/fsm/state/move_player.gd" id="6_8cpw0"]
 [ext_resource type="Script" uid="uid://cirvakft87x8y" path="res://src/character/fsm/state/shoot.gd" id="6_56uj1"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
-[ext_resource type="Script" uid="uid://bx1jq2ldeko8j" path="res://src/character/behavior/rest.gd" id="11_6hfyb"]
-[ext_resource type="Script" uid="uid://bu6jpd5jlcvgh" path="res://src/character/behavior/attack.gd" id="12_7l6p6"]
-[ext_resource type="Script" uid="uid://b8nc2aejkl0m6" path="res://src/character/behavior/move_to.gd" id="13_7wjtf"]
-[ext_resource type="Script" uid="uid://2xdphmvnbcsq" path="res://src/character/behavior/spell_checker.gd" id="14_0bc5t"]
+[ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="12_fcqus"]
+[ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
 [ext_resource type="AnimationLibrary" uid="uid://xq7hdp5jpflu" path="res://resource/animation/Alchemist.tres" id="16_0melp"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://resource/limbo_ai_trees/behavior_character_player.tres" id="16_248u0"]
 [ext_resource type="AnimationLibrary" uid="uid://r2c2o4jpfj2p" path="res://resource/animation/Badger.tres" id="17_0ekrb"]
 [ext_resource type="AnimationLibrary" uid="uid://burp6bw42d43m" path="res://resource/animation/Barbarian.tres" id="18_32hfe"]
 [ext_resource type="AnimationLibrary" uid="uid://dee6gpa8wwklx" path="res://resource/animation/Bard.tres" id="19_dmj6x"]
@@ -23,7 +22,9 @@
 [ext_resource type="AnimationLibrary" uid="uid://bth38nhb4w2gf" path="res://resource/animation/Blacksmith.tres" id="21_0bjdw"]
 [ext_resource type="AnimationLibrary" uid="uid://ch8d6euv6j324" path="res://resource/animation/Blue_Mother_Slime.tres" id="22_x15fd"]
 [ext_resource type="AnimationLibrary" uid="uid://5asqsn2vhdup" path="res://resource/animation/Blue_Slime.tres" id="23_gtk46"]
+[ext_resource type="PackedScene" uid="uid://dkpcprd1cr4eg" path="res://src/character/component/stat_regen.tscn" id="24_0bjdw"]
 [ext_resource type="AnimationLibrary" uid="uid://wjxp71nh5pwa" path="res://resource/animation/Butcher.tres" id="24_880r3"]
+[ext_resource type="PackedScene" uid="uid://cscse0mnpcree" path="res://src/character/component/stat_component.tscn" id="25_880r3"]
 [ext_resource type="AnimationLibrary" uid="uid://c8a1wp7582ak2" path="res://resource/animation/Camel.tres" id="25_ytjbd"]
 [ext_resource type="AnimationLibrary" uid="uid://bvwtjpt33ops3" path="res://resource/animation/Carpenter.tres" id="26_ppwiq"]
 [ext_resource type="AnimationLibrary" uid="uid://ctq1juqpcsveh" path="res://resource/animation/Cat.tres" id="27_o072j"]
@@ -96,6 +97,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://dj3fcwkb1od3k" path="res://resource/animation/Zombie_Minotaur.tres" id="94_6j1g2"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_248u0"]
+
 [sub_resource type="Animation" id="Animation_ve5jm"]
 length = 0.001
 
@@ -117,8 +120,9 @@ region = Rect2(1360, 208, 6, 8)
 
 [node name="character" type="CharacterBody2D" groups=["character", "serializable"]]
 collision_layer = 2
-collision_mask = 35
-script = ExtResource("1_aakvx")
+collision_mask = 3
+script = ExtResource("1_dmj6x")
+stats = ExtResource("3_gtk46")
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("2_6mb4q")
@@ -144,6 +148,7 @@ script = ExtResource("6_8cpw0")
 
 [node name="dead" type="Node" parent="fsm"]
 script = ExtResource("4_tntuy")
+item_scene = ExtResource("12_fcqus")
 
 [node name="melee" type="Node" parent="fsm" node_paths=PackedStringArray("snd")]
 script = ExtResource("5_tntuy")
@@ -151,35 +156,32 @@ snd = NodePath("../../snd_melee")
 
 [node name="shoot" type="Node" parent="fsm"]
 script = ExtResource("6_56uj1")
+bullet_scene = ExtResource("14_imcyw")
 enabled = false
 
 [node name="hurt" type="Node" parent="fsm"]
 script = ExtResource("10_38jpj")
 
-[node name="fsm_behavior" type="Node" parent="."]
-script = ExtResource("2_frm2c")
+[node name="behavior" type="BTPlayer" parent="."]
+behavior_tree = ExtResource("16_248u0")
+blackboard_plan = SubResource("BlackboardPlan_248u0")
 
-[node name="rest" type="Node" parent="fsm_behavior"]
-script = ExtResource("11_6hfyb")
+[node name="item_behaviors" type="Node" parent="."]
 
-[node name="attack" type="Node" parent="fsm_behavior" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("12_7l6p6")
-nav_agent = NodePath("../../nav_agent")
+[node name="health" parent="." instance=ExtResource("25_880r3")]
 
-[node name="spell_checker" type="Node" parent="fsm_behavior/attack"]
-script = ExtResource("14_0bc5t")
+[node name="mana" parent="." instance=ExtResource("25_880r3")]
 
-[node name="shoot_cooldown" type="Timer" parent="fsm_behavior/attack"]
-wait_time = 1.5
-one_shot = true
+[node name="ability" parent="." instance=ExtResource("25_880r3")]
 
-[node name="melee_cooldown" type="Timer" parent="fsm_behavior/attack"]
-wait_time = 1.5
-one_shot = true
+[node name="health_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+stat_component = NodePath("../health")
 
-[node name="move_to" type="Node" parent="fsm_behavior" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("13_7wjtf")
-nav_agent = NodePath("../../nav_agent")
+[node name="mana_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+stat_component = NodePath("../mana")
+
+[node name="ability_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+stat_component = NodePath("../ability")
 
 [node name="anim_player" type="AnimationPlayer" parent="."]
 libraries = {
@@ -269,15 +271,6 @@ libraries = {
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../anim_player")
 
-[node name="health_regen" type="Timer" parent="."]
-autostart = true
-
-[node name="mana_regen" type="Timer" parent="."]
-autostart = true
-
-[node name="ability_regen" type="Timer" parent="."]
-autostart = true
-
 [node name="img" type="Sprite2D" parent="."]
 offset = Vector2(0, -3)
 hframes = 16
@@ -302,7 +295,7 @@ target_position = Vector2(32, 0)
 collision_mask = 2
 
 [node name="hit_melee_cast" type="RayCast2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 target_position = Vector2(8, 0)
 collision_mask = 2
 
@@ -325,16 +318,11 @@ position = Vector2(-3, -8)
 texture_normal = SubResource("AtlasTexture_jdd1s")
 
 [connection signal="timeout" from="fsm/idle/quip_timer" to="fsm/idle" method="_on_quip_timer_timeout"]
-[connection signal="timeout" from="fsm_behavior/attack/shoot_cooldown" to="fsm_behavior/attack" method="_on_shoot_cooldown_timeout"]
-[connection signal="timeout" from="fsm_behavior/attack/melee_cooldown" to="fsm_behavior/attack" method="_on_melee_cooldown_timeout"]
+[connection signal="changed" from="health" to="." method="_on_health_changed"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/dead" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/shoot" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/hurt" method="_on_animation_tree_animation_finished"]
-[connection signal="timeout" from="health_regen" to="." method="_on_health_regen_timeout"]
-[connection signal="timeout" from="mana_regen" to="." method="_on_mana_regen_timeout"]
-[connection signal="timeout" from="ability_regen" to="." method="_on_ability_regen_timeout"]
 [connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_velocity_computed"]
-[connection signal="area_entered" from="sight" to="." method="_on_sight_area_entered"]
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
 [connection signal="pressed" from="select_bttn" to="." method="_on_select_bttn_pressed"]

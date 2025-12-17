@@ -88,14 +88,14 @@ func set_custom_data_prefix(value: String):
 func create_from_dictionary_array(tileSets: Array):
 	for tile_set in tileSets:
 		var tile_set_dict = tile_set
-	
+
 		if tile_set.has("source"):
 			var source_file: String = tile_set["source"]
- 
+
 			# Catch the AutoMap Rules tileset (is Tiled internal)
 			if source_file.begins_with(":/automap"):
 				continue # This is no error skip it
- 
+
 			var tiled_file_content = DataLoader.get_tiled_file_content(source_file, _base_path_map)
 			if tiled_file_content == null:
 				printerr("ERROR: Tileset file '" + source_file + "' not found. -> Continuing but result may be unusable")
@@ -103,19 +103,19 @@ func create_from_dictionary_array(tileSets: Array):
 				continue
 
 			_base_path_tileset = _base_path_map.path_join(source_file).get_base_dir()
- 
+
 			tile_set_dict = preload("DictionaryBuilder.gd").new().get_dictionary(tiled_file_content, source_file)
 			if tile_set_dict != null and tile_set.has("firstgid"):
 				tile_set_dict["firstgid"] = tile_set["firstgid"]
-	
+
 		# Possible error condition
 		if tile_set_dict == null:
 			CommonUtils.error_count += 1
 			continue
-	
+
 		create_or_append(tile_set_dict)
 		_append = true
-   
+
 	return _tileset
 
 
@@ -125,7 +125,7 @@ func get_registered_atlas_sources():
 
 func get_registered_object_groups():
 	return _object_groups
-	
+
 
 func create_or_append(tile_set: Dictionary):
 	# Catch the AutoMap Rules tileset (is Tiled internal)
@@ -185,7 +185,7 @@ func create_or_append(tile_set: Dictionary):
 		_current_atlas_source.texture = texture
 		_columns = _current_atlas_source.texture.get_width() / _tile_size.x
 		_tile_count = _columns * _current_atlas_source.texture.get_height() / _tile_size.y
-		
+
 		register_atlas_source(added_source_id, _tile_count, -1, _tile_offset)
 		var atlas_grid_size = _current_atlas_source.get_atlas_grid_size()
 		_current_max_x = atlas_grid_size.x - 1
@@ -201,7 +201,7 @@ func create_or_append(tile_set: Dictionary):
 
 	if _ct != null:
 		_ct.merge_custom_properties(tile_set, "tileset")
-		
+
 	if tile_set.has("properties"):
 		handle_tileset_properties(tile_set["properties"])
 
@@ -218,7 +218,7 @@ func register_atlas_source(source_id: int, num_tiles: int, assigned_tile_id: int
 	atlas_source_item["objectAlignment"] = _object_alignment
 	atlas_source_item["firstGid"] = _current_first_gid
 	_atlas_sources.push_back(atlas_source_item)
-	
+
 
 func register_object_group(tile_id: int, object_group: Dictionary):
 	if _object_groups == null:
@@ -311,7 +311,10 @@ func handle_tiles(tiles: Array):
 					diff_y += 1
 				@warning_ignore("integer_division")
 				current_tile.texture_origin = Vector2i(-diff_x/2, diff_y/2) - _tile_offset
-				
+
+		if _tile_offset != Vector2i.ZERO and current_tile.texture_origin == Vector2i.ZERO:
+			current_tile.texture_origin -= _tile_offset
+
 		if tile.has("probability"):
 			current_tile.probability = tile["probability"]
 		if tile.has("animation"):
@@ -324,10 +327,10 @@ func handle_tiles(tiles: Array):
 
 		if _ct != null:
 			_ct.merge_custom_properties(tile, "tile")
-		
+
 		if tile.has("properties"):
 			handle_tile_properties(tile["properties"], current_tile)
-	
+
 
 func handle_animation(frames: Array, tile_id: int) -> void:
 	var frame_count: int = 0
@@ -391,7 +394,7 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 	_object_groups_counter += 1
 	register_object_group(_object_groups_counter, object_group)
 	current_tile.set_custom_data(CUSTOM_DATA_INTERNAL, _object_groups_counter)
-	
+
 	var polygon_indices = {}
 	var objects = object_group["objects"] as Array
 	for obj in objects:
@@ -403,10 +406,14 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 			# print_rich("[color="+WARNING_COLOR+"] -- 'Ellipse' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
 			# CommonUtils.warning_count += 1
 			continue
+		if obj.has("capsule") and obj["capsule"]:
+			# print_rich("[color="+WARNING_COLOR+"] -- 'Capsule' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
+			# CommonUtils.warning_count += 1
+			continue
 
 		if _ct != null:
 			_ct.merge_custom_properties(obj, "object")
-		
+
 		var object_base_coords = Vector2(obj["x"], obj["y"])
 		object_base_coords = transpose_coords(object_base_coords.x, object_base_coords.y)
 		object_base_coords -= Vector2(current_tile.texture_origin)
@@ -664,7 +671,7 @@ func ensure_layer_existing(tp: layer_type, layer: int):
 			while _occlusion_layer_counter < layer:
 				_tileset.add_occlusion_layer()
 				_occlusion_layer_counter += 1
-	
+
 
 func handle_wangsets_old_mapping(wangsets):
 	_tileset.add_terrain_set()

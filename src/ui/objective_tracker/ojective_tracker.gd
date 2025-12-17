@@ -27,7 +27,7 @@ func _on_mouse_exited():
 func _on_draw():
 	tab_bar.size.x = tab_size_x
 	tab_bar.position.x = 0.0
-	if last_focused_entry != null:
+	if last_focused_entry:
 		play_focus_sfx = false
 		last_focused_entry.grab_focus()
 		play_focus_sfx = true
@@ -35,12 +35,12 @@ func _on_draw():
 func _on_quest_entry_focused(quest_entry: Control):
 	last_focused_entry = quest_entry
 
-func add_entry(quest_data: QuestDB.QuestData):
+func add_entry(quest_data: QuestData):
 	var filter_view := ""
 	match quest_data.status:
-		QuestDB.QuestStatus.ACTIVE:
+		QuestData.QuestStatus.ACTIVE:
 			filter_view = "active"
-		QuestDB.QuestStatus.COMPLETED:
+		QuestData.QuestStatus.COMPLETED:
 			filter_view = "completed"
 			var active_view: Control = get_child(tabs["active"]).get_child(0)
 			for i in active_view.get_child_count():

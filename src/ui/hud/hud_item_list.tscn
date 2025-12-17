@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1o2wwaabw03w"]
+[gd_scene load_steps=4 format=3 uid="uid://b1o2wwaabw03w"]
 
 [ext_resource type="Script" uid="uid://31o3de6habg0" path="res://src/ui/hud/hud_item_list.gd" id="1_ibift"]
 [ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="1_pqwcr"]
+[ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="2_l26dj"]
 
 [node name="interact_item_list" type="GridContainer"]
 columns = 2
 script = ExtResource("1_ibift")
+item_scene = ExtResource("2_l26dj")
 metadata/_tab_index = 0
 
 [node name="snd_nav" type="AudioStreamPlayer" parent="."]

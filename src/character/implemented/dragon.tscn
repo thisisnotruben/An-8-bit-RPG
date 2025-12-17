@@ -82,7 +82,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://bpj72umknfmwj" path="res://resource/animation/Zombie_Giant.tres" id="80_puj6t"]
 [ext_resource type="AnimationLibrary" uid="uid://dj3fcwkb1od3k" path="res://resource/animation/Zombie_Minotaur.tres" id="81_japdb"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b5wuwwdif0apj" path="res://resource/animation_state_machine/Dragon_state_machine.tres" id="82_pc603"]
-[ext_resource type="Texture2D" uid="uid://c6e4gv7082sr0" path="res://asset/img/exclusives/Creatures/Dragon/DragonIdle.png" id="83_5jwjk"]
+[ext_resource type="Texture2D" uid="uid://5han2bdlksdv" path="res://asset/img/exclusives/Creatures/Dragon/DragonAttackStart.png" id="83_hvlnk"]
 
 [sub_resource type="Animation" id="Animation_ve5jm"]
 length = 0.001
@@ -93,6 +93,9 @@ _data = {
 }
 
 [node name="Dragon" instance=ExtResource("1_k1pk6")]
+
+[node name="BeehaveTree" parent="." index="1" node_paths=PackedStringArray("blackboard")]
+blackboard = NodePath("@Node@44133")
 
 [node name="anim_player" parent="." index="2"]
 libraries = {
@@ -181,17 +184,18 @@ libraries = {
 
 [node name="anim_tree" parent="." index="3"]
 tree_root = ExtResource("82_pc603")
+parameters/`/blend_position = Vector2(0, 0)
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/attack_end/blend_position = Vector2(0, 0)
 parameters/attack_start/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
-parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="img" parent="." index="7"]
-texture = ExtResource("83_5jwjk")
+texture = ExtResource("83_hvlnk")
 offset = Vector2(0, -10)
-frame = 14
+hframes = 3
+frame = 2
 
 [node name="body" parent="." index="8"]
 position = Vector2(0, -8)

@@ -2,329 +2,230 @@ extends CharacterBody2D
 class_name Character
 
 enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
-const WORLD_LAYER := 0b00000000_00000000_00000000_00000001
 
-@onready var fsm: FsmCharacter = $fsm
-@onready var behavior: Fsm = $fsm_behavior.init({
-	BehaviorStates.Type.REST: $fsm_behavior/rest,
-	BehaviorStates.Type.ATTACK: $fsm_behavior/attack,
-	BehaviorStates.Type.MOVE_TO: $fsm_behavior/move_to}
-	, {"character": self})
 @onready var anim: AnimationPlayer = $anim_player
 @onready var anim_tree: AnimationTree = $anim_tree
+@onready var nav_agent: NavigationAgent2D = $nav_agent
 @onready var img: Sprite2D = $img
-@onready var body: CollisionShape2D = $body
 @onready var snd: AudioStreamPlayer2D = $snd
 @onready var snd_shoot: AudioStreamPlayer2D = $snd_shoot
 @onready var snd_melee: AudioStreamPlayer2D = $snd_melee
 @onready var hit_scan_shoot: RayCast2D = $hit_shoot_cast
 @onready var hit_scan_melee: RayCast2D = $hit_melee_cast
-@onready var health_regen_timer: Timer = $health_regen
-@onready var mana_regen_timer: Timer = $mana_regen
-@onready var ability_regen_timer: Timer = $ability_regen
+@onready var item_behaviors: Node = $item_behaviors
 
-@export_category("Descriptors")
+@onready var fsm: FsmCharacter = $fsm
+var state: int:
+	set(value):
+		fsm.state = value
+	get:
+		return fsm.state
+
+@onready var behavior: BTPlayer = $behavior
+@onready var health: StatComponent = $health
+@onready var health_regen: StatRegenComponent = $health_regen
+@onready var mana: StatComponent = $mana
+@onready var mana_regen: StatRegenComponent = $mana_regen
+@onready var ability: StatComponent = $ability
+@onready var ability_regen: StatRegenComponent = $ability_regen
+
 @export var character_name := ""
 @export var character_roles: Array[CharaterSideRoles] = []
-@export var npc = true: set = _set_npc
-@export var friendly := false: set = _set_friendly
-@export_subgroup("Hit Flags")
-@export_flags_3d_physics var character_hit_flag := 0b00000000_00000000_00000000_00000010
-@export_flags_3d_physics var friendly_hit_flag := 0b00000000_00000000_00000000_00000100
-@export_flags_3d_physics var foe_hit_flag := 0b00000000_00000000_00000000_00001000
-@export_flags_3d_physics var player_hit_flag := 0b00000000_00000000_00000000_00010000
+@export var npc_behavior_tree: BehaviorTree = preload("res://resource/limbo_ai_trees/behavior_character_default.tres")
 
-@export_category("Vitals")
-@export_subgroup("health")
-@export_range(1, 10) var health_max: int = 2
-var health: int : set = _set_health
-@export_range(1.0, 90.0, 0.1) var health_regen_sec: float = 30.0: set = _set_health_regen
-@export_range(1, 10) var health_regen: int = 1
-@export_subgroup("mana")
-@export_range(1, 10) var mana_max: int = 2
-var mana: int : set = _set_mana
-@export_range(1.0, 90.0, 0.1) var mana_regen_sec: float = 30.0: set = _set_mana_regen
-@export_range(1, 10) var mana_regen: int = 1
-@export_subgroup("ability")
-@export_range(1, 10) var ability_max: int = 2
-var ability: int : set = _set_ability
-@export_range(1.0, 90.0, 0.1) var ability_regen_sec: float = 30.0: set = _set_ability_regen
-@export_range(1, 10) var ability_regen: int = 1
+@export var game_hit_flags: GameHitFlags = preload("res://resource/character/hit_flags.tres"):
+	set(value):
+		game_hit_flags = value
+		if not is_node_ready():
+			await ready
+		value.set_flags(self)
 
-@export_category("Combat Stats")
-@export_subgroup("Melee")
-@export_range(1, 10) var melee_damage: int = 1
-@export_range(0.0, 64.0) var melee_range: float = 16.0
-@export_subgroup("Shoot")
-@export_range(1, 10) var shoot_damage: int = 1
-@export_range(0.0, 64.0) var shoot_range: float = 12.0
+@export var npc := true:
+	set(value):
+		npc = value
+		if not is_node_ready():
+			await ready
 
-@export_category("Items")
-@export var inventory: Array[ItemDB.Type] = []
-@export var spells: Array[ItemDB.Type] = []
-# int [0 - 100 range] (drop percent)
-@export var drops: Dictionary[int, ItemDB.Type] = {}
-var current_uses: Dictionary[ItemDB.Type, SceneTreeTimer] = {}
+		nav_agent.avoidance_enabled = value
+		$cam.enabled = not value
+		game_hit_flags.set_flags(self)
+		if value:
+			behavior.behavior_tree = npc_behavior_tree
+		else:
+			behavior.behavior_tree = preload("res://resource/limbo_ai_trees/behavior_character_player.tres")
+		behavior.blackboard.set_var("character_var", self)
+		behavior.blackboard.set_var("health_var", health.current)
+		behavior.blackboard.bind_var_to_property("health_var", health, "current")
 
-@export_category("Optional Misc")
+@export var friendly: bool:
+	set(value):
+		friendly = value
+		if  not is_node_ready():
+			await ready
+		game_hit_flags.set_flags(self)
+
+@export var stats: CharacterStats:
+	set(value):
+		stats = value
+		if not is_node_ready():
+			await ready
+		if value:
+			value.set_stats(self)
+
+@export var inventory: Array[Item.Type] = []
+@export var spells: Array[Item.Type] = []
+@export var drops: Dictionary[int, Item.Type] = {} # int [0 - 100 range] (drop percent)
+
 @export var target: Character = null
-@export var gold: int = 0
-var can_input := true # used if player has hud open
-var is_interacting := false
+@export var gold: int:
+	set(value):
+		gold = maxi(value, 0)
 
-signal health_changed(_health, _max_health)
-signal mana_changed(_mana, _max_mana)
-signal ability_changed(_ability, _max_ability)
-signal died
-signal on_selected(character: Character)
-
-signal inventory_added(_item)
-signal spell_added(_spell)
 var is_inventory_full := func(): return true
 var is_spellbook_full := func(): return true
 
 @warning_ignore("unused_signal")
+signal died
+@warning_ignore("unused_signal")
 signal set_player_move_hud_menu_pause(is_hud_panel_visible)
+signal on_selected(character: Character)
+signal inventory_added(_item)
+signal spell_added(_spell)
 
 
 func _ready():
 	var fsm_init := {}
-	$fsm.get_children() \
+	fsm.get_children() \
 		.filter(func(s): return s is CharacterState and s.enabled) \
 		.map(func(s): fsm_init[s.type] = s)
-	$fsm.init(fsm_init, {"character": self})
-	behavior.state = BehaviorStates.Type.REST
-	health = health_max
-	mana = mana_max
-	ability = ability_max
-
-func _on_nav_velocity_computed(safe_velocity: Vector2):
-	velocity = safe_velocity
+	fsm.init(fsm_init, {"character": self})
 
 func _physics_process(delta: float):
-	if npc:
-		behavior.physics_process(delta)
 	fsm.physics_process(delta)
 	move_and_slide()
 
 func _process(delta: float):
-	if npc:
-		behavior.process(delta)
-	elif can_input:
-		_handle_input()
 	fsm.process(delta)
+	_set_player_input_vars()
 
 func _input(event: InputEvent):
 	fsm.input(event)
 
-func _set_health_regen(value: float):
-	$health_regen.wait_time = value
-	if $health_regen.is_inside_tree():
-		$health_regen.start()
+func _on_nav_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
 
-func _set_mana_regen(value: float):
-	$mana_regen.wait_time = value
-	if $mana_regen.is_inside_tree():
-		$mana_regen.start()
+func _on_select_bttn_pressed():
+	on_selected.emit(self)
 
-func _set_ability_regen(value: float):
-	$ability_regen.wait_time = value
-	if $ability_regen.is_inside_tree():
-		$ability_regen.start()
+func _on_health_changed(current: int, _max: int, old_value: int):
+	behavior.blackboard.set_var("hurt_var", current < old_value)
 
-func _on_health_regen_timeout():
-	_set_health(health + health_regen)
+func _on_sight_body_entered(other_npc: Node2D):
+	if is_foe(other_npc):
+		aggro(other_npc)
+	elif target:
+		other_npc.aggro(target)
 
-func _on_mana_regen_timeout():
-	_set_mana(mana + mana_regen)
+func inventory_modify(item_type: BaseItem.Type, add: bool) -> bool:
+	var item: Item = ItemDB.get_item_type_data(item_type)
+	var result := true
 
-func _on_ability_regen_timeout():
-	_set_ability(ability + ability_regen)
-
-func _set_health(_health: int):
-	var prev_health := health
-	health = clampi(_health, 0, health_max)
-	var connected_joy := not npc and Input.is_joy_known(0)
-	if health >= 0 and fsm.state != CharacterStates.Type.DEAD:
-		health_changed.emit(health, health_max)
-	if health == 0:
-		fsm.state = CharacterStates.Type.DEAD
-		health_regen_timer.stop()
-		mana_regen_timer.stop()
-		ability_regen_timer.stop()
-		died.emit()
-		if connected_joy:
-			Input.start_joy_vibration(0, 0.0, 1.0, 1.0)
-	elif prev_health > health:
-		fsm.state = CharacterStates.Type.HURT
-		if connected_joy:
-			Input.start_joy_vibration(0, 1.0, 0.0, 0.5)
-
-func _set_mana(_mana: int):
-	var prev_mana := mana
-	mana = clampi(_mana, 0, mana_max)
-	if prev_mana != mana:
-		mana_changed.emit(mana, mana_max)
-
-func _set_ability(_ability: int):
-	var prev_ability := ability
-	ability = clampi(_ability, 0, ability_max)
-	if prev_ability != ability:
-		ability_changed.emit(ability, mana_max)
-
-func set_hit_flags():
-	var hit_layer := character_hit_flag
-	hit_layer += friendly_hit_flag if friendly else foe_hit_flag
-	if not npc:
-		hit_layer += player_hit_flag
-	set_deferred("collision_layer", hit_layer)
-
-	var hit_scan := WORLD_LAYER
-	hit_scan += foe_hit_flag if friendly else friendly_hit_flag
-	if not friendly:
-		hit_scan += player_hit_flag
-
-	$hit_melee_cast.set_deferred("collision_mask", hit_scan)
-	$hit_melee_cast.set_deferred("target_position", Vector2(melee_range, 0.0))
-
-	$hit_shoot_cast.set_deferred("collision_mask", hit_scan)
-	$hit_shoot_cast.set_deferred("target_position", Vector2(shoot_range, 0.0))
-
-func _set_npc(_npc: bool):
-	npc = _npc
-	add_to_group("npc" if _npc else "player")
-	$nav_agent.avoidance_enabled = _npc
-	$cam.enabled = not _npc
-	_set_friendly(friendly)
-
-func _set_friendly(_friendly: bool):
-	friendly = _friendly
-	set_hit_flags.call_deferred()
-	if npc:
-		if _friendly:
-			remove_from_group("foe")
-			add_to_group("friendly")
+	if item.category == BaseItem.Category.SPELL:
+		if add and not is_spellbook_full.call():
+			spells.append(item_type)
+		elif not add and spells.has(item_type):
+			spells.erase(item_type)
 		else:
-			remove_from_group("friendly")
-			add_to_group("foe")
+			result = false
+	elif add and not is_inventory_full.call():
+		inventory.append(item_type)
+	elif not add and inventory.has(item_type):
+		inventory.erase(item_type)
 	else:
-		add_to_group("friendly")
+		result = false
 
-func inventory_add(data: Dictionary) -> bool:
-	if data["add"]:
-		if data["spell"]:
-			if not is_spellbook_full.call():
-				spells.append(data)
-				spell_added.emit(data)
-				return true
-		elif not is_inventory_full.call():
-			inventory.append(data)
-			inventory_added.emit(data)
-			return true
-		return false
-	else:
-		if data["spell"]:
-			if spells.has(data["type"]):
-				spells.erase(data["type"])
-				spell_added.emit(data)
-		elif inventory.has(data["type"]):
-			inventory.erase(data["type"])
-			inventory_added.emit(data)
-		return true
+	if result:
+		if item.category == BaseItem.Category.SPELL:
+			spell_added.emit(item_type, add)
+		else:
+			inventory_added.emit(item_type, add)
+		spawn_item_behavior(item.behavior)
+	return result
+
+func spawn_item_behavior(behavior_tree: BehaviorTree):
+	if behavior_tree:
+		var item_behavior: ItemBehavior = preload("res://src/item/item_behavior.tscn").instantiate()
+		item_behavior.set_behavior_res(behavior_tree, self)
+		item_behaviors.add_child(item_behavior)
+
+func _set_player_input_vars():
+	if npc:
+		return
+
+	var input_state := "idle"
+	if Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0.0:
+		input_state = "move"
+	elif Input.is_action_just_pressed("attack"):
+		input_state = "attack"
+	behavior.blackboard.set_var("input_state_var", input_state)
 
 func is_foe(_body: Node2D) -> bool:
-	return _body is Character and _body.fsm.state != CharacterStates.Type.DEAD \
-	and (_body.friendly != friendly or (not _body.npc and not friendly))
-
-# player behavior
-
-func _handle_input():
-	hit_scan_melee.look_at(get_global_mouse_position())
-	hit_scan_shoot.look_at(get_global_mouse_position())
-
-	var state := CharacterStates.Type.IDLE
-	if Input.get_vector("move_left", "move_right", "move_up", "move_down").length() > 0.0:
-		state = CharacterStates.Type.MOVE
-	elif Input.is_action_just_pressed("attack"):
-		if can_hit():
-			state = CharacterStates.Type.MELEE
-		elif can_shoot():
-			state = CharacterStates.Type.SHOOT
-	fsm.state = state
-
-func can_hit() -> bool:
-	return fsm.can_melee() and is_foe(hit_scan_melee.get_collider())
-
-func can_shoot() -> bool:
-	return fsm.can_shoot() and is_foe(hit_scan_shoot.get_collider())
-# npc behavior
-
-func _on_sight_body_entered(_body: Node2D):
-	if not aggro(_body) \
-	and behavior.state == BehaviorStates.Type.ATTACK \
-	and _body.target == null:
-		_body.aggro(target)
-
-func _on_sight_area_entered(area: Node3D):
-	if npc and target == null and area.owner is Bullet \
-	and area.owner.from_character != null:
-		aggro(area.owner.from_character)
+	return _body is Character and _body.friendly != friendly \
+	and _body.fsm.state != CharacterStates.Type.DEAD
 
 func aggro(_body: Node2D) -> bool:
-	if npc and is_foe(_body):
+	if npc and not target and is_foe(_body):
 		target = _body
-		behavior.state = BehaviorStates.Type.ATTACK
-		$sight.get_overlapping_bodies() \
-			.filter(func(b): return \
-				b != self and not is_foe(b) and b.target == null) \
-			.map(func(c): c.aggro(target))
+		for other_body in $sight.get_overlapping_bodies():
+			if other_body != self and not is_foe(other_body) and not other_body.target:
+				(other_body as Character).aggro(target)
 		return true
 	return false
 
-func move_to(pos: Vector3):
-	behavior.get_node("move_to").move_to_pos = pos
-	behavior.state = BehaviorStates.Type.MOVE_TO
+func notify_projectile_incoming(projectile: Projectile):
+	behavior.blackboard.set_var("incoming_projectile_var", projectile)
 
+#region serialization
 func serialize() -> Dictionary:
 	var payload := {
-		"health": health,
-		"mana": mana,
-		"ability": ability,
+		"health": health.current,
+		"mana": mana.current,
+		"ability": ability.current,
 		"gold": gold,
 		"inventory": inventory,
 		"spells": spells,
-		"current_uses": {},
+		#"current_uses": {},
 		"global_position": [global_position.x, global_position.y]
 	}
-	for item_type in current_uses:
-		payload["current_uses"][item_type] = current_uses[item_type].time_left
+	# TODO
+	#for item_type: ItemBehavior in item_behaviors.get_children():
+		#payload["current_uses"][item_type] = item_type.current_cooldown
 	return payload
 
 func deserialize(payload: Dictionary):
 	for data in payload:
 		match data:
 			"health":
-				health = int(payload[data])
+				health.current = int(payload[data])
 			"mana":
-				mana = int(payload[data])
+				mana.current = int(payload[data])
 			"ability":
-				ability = int(payload[data])
+				ability.current = int(payload[data])
 			"gold":
 				gold = int(payload[data])
 			"inventory":
 				inventory = payload[data]
 				for item_type in payload[data]:
-					inventory_add({"type": item_type, "add": true, "spell": false})
+					inventory_modify(item_type, true)
 			"spells":
 				spells = payload[data]
 				for spell_type in payload[data]:
-					inventory_add({"type": spell_type, "add": true, "spell": true})
-			"current_uses":
-				for item_type in payload[data]:
-					ItemDB.get_item_type_data(item_type).use_enter(payload[data][item_type])
+					inventory_modify(spell_type, true)
+			#"current_uses":
+				#for item_type in payload[data]:
+					#pass # TODO
+					#ItemDB.get_item_type_data(item_type).use_enter(payload[data][item_type])
 			"global_position":
 				global_position.x = payload[data][0]
 				global_position.y = payload[data][1]
-
-func _on_select_bttn_pressed():
-	on_selected.emit(self)
+#endregion

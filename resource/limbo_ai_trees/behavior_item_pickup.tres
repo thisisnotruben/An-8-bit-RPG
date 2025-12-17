@@ -1,0 +1,67 @@
+[gd_resource type="BehaviorTree" load_steps=16 format=3 uid="uid://dw1s7i5ek6pwl"]
+
+[ext_resource type="Script" uid="uid://bxs0xvu353iim" path="res://resource/limbo_ai_trees/tasks/item/vital_pickup.gd" id="1_24c0a"]
+[ext_resource type="Script" uid="uid://usoeisilx3kd" path="res://resource/limbo_ai_trees/tasks/item/add_to_inventory.gd" id="2_cilun"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_lrk17"]
+var/is_vital_pickup_var/name = &"is_vital_pickup_var"
+var/is_vital_pickup_var/type = 1
+var/is_vital_pickup_var/value = false
+var/is_vital_pickup_var/hint = 0
+var/is_vital_pickup_var/hint_string = ""
+var/character_var/name = &"character_var"
+var/character_var/type = 24
+var/character_var/hint = 0
+var/character_var/hint_string = ""
+var/item_type_var/name = &"item_type_var"
+var/item_type_var/type = 2
+var/item_type_var/value = 0
+var/item_type_var/hint = 0
+var/item_type_var/hint_string = ""
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_cilun"]
+variable = &"is_vital_pickup_var"
+
+[sub_resource type="BTAction" id="BTAction_cilun"]
+script = ExtResource("1_24c0a")
+
+[sub_resource type="BBNode" id="BBNode_68665"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_g8q4f"]
+node = SubResource("BBNode_68665")
+method = &"delete"
+
+[sub_resource type="BTSequence" id="BTSequence_68665"]
+children = [SubResource("BTCheckTrigger_cilun"), SubResource("BTAction_cilun"), SubResource("BTCallMethod_g8q4f")]
+
+[sub_resource type="BBVariant" id="BBVariant_cilun"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_68665"]
+variable = &"is_vital_pickup_var"
+value = SubResource("BBVariant_cilun")
+
+[sub_resource type="BTAction" id="BTAction_68665"]
+script = ExtResource("2_cilun")
+
+[sub_resource type="BBNode" id="BBNode_cilun"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_68665"]
+node = SubResource("BBNode_cilun")
+method = &"delete"
+
+[sub_resource type="BTSequence" id="BTSequence_cilun"]
+children = [SubResource("BTCheckVar_68665"), SubResource("BTAction_68665"), SubResource("BTCallMethod_68665")]
+
+[sub_resource type="BTSelector" id="BTSelector_lrk17"]
+children = [SubResource("BTSequence_68665"), SubResource("BTSequence_cilun")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_lrk17")
+root_task = SubResource("BTSelector_lrk17")

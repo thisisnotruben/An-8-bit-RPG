@@ -8,7 +8,7 @@ var direction := Vector2.ZERO
 
 
 func _ready():
-	if nav_agent != null:
+	if nav_agent:
 		nav_agent.max_speed = move.speed
 
 func physics_process(_delta: float):

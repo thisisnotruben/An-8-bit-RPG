@@ -1,0 +1,179 @@
+[gd_resource type="BehaviorTree" load_steps=50 format=3 uid="uid://bn3ar0pqvknrx"]
+
+[ext_resource type="BlackboardPlan" uid="uid://dakrpekxvoqk2" path="res://resource/limbo_ai_trees/blackboardplan_character_default.tres" id="1_d0u25"]
+[ext_resource type="Script" uid="uid://x6mbdg432n2j" path="res://resource/limbo_ai_trees/tasks/character/has_valid_target.gd" id="1_vq5k3"]
+[ext_resource type="Script" uid="uid://co5w3xhfch4nk" path="res://resource/limbo_ai_trees/tasks/character/look_at_target.gd" id="2_d0u25"]
+[ext_resource type="Script" uid="uid://b652b1io2x5nu" path="res://resource/limbo_ai_trees/tasks/character/can_melee.gd" id="3_5mncy"]
+[ext_resource type="Script" uid="uid://bvtr4c8q8kc0v" path="res://resource/limbo_ai_trees/tasks/character/can_shoot.gd" id="4_gmnh2"]
+[ext_resource type="Script" uid="uid://c5vqpe3n85mpq" path="res://resource/limbo_ai_trees/tasks/character/can_move_to_target.gd" id="5_624cc"]
+
+[sub_resource type="BBVariant" id="BBVariant_41ik1"]
+type = 2
+saved_value = 0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_vmj8q"]
+variable = &"health_var"
+value = SubResource("BBVariant_41ik1")
+
+[sub_resource type="BBVariant" id="BBVariant_fcqus"]
+type = 2
+saved_value = 4
+resource_name = "4"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_41ik1"]
+property = &"state"
+value = SubResource("BBVariant_fcqus")
+
+[sub_resource type="BTSequence" id="BTSequence_vmj8q"]
+custom_name = "dead"
+children = [SubResource("BTCheckVar_vmj8q"), SubResource("BTSetAgentProperty_41ik1")]
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_ppwiq"]
+variable = &"hurt_var"
+
+[sub_resource type="BTCooldown" id="BTCooldown_fcqus"]
+duration = 1.0
+children = [SubResource("BTCheckTrigger_ppwiq")]
+
+[sub_resource type="BBVariant" id="BBVariant_ppwiq"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetVar" id="BTSetVar_o072j"]
+variable = &"hurt_var"
+value = SubResource("BBVariant_ppwiq")
+
+[sub_resource type="BBVariant" id="BBVariant_vmj8q"]
+type = 2
+saved_value = 6
+resource_name = "6"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_037yu"]
+property = &"state"
+value = SubResource("BBVariant_vmj8q")
+
+[sub_resource type="BTSequence" id="BTSequence_pdq4m"]
+custom_name = "hurt"
+children = [SubResource("BTCooldown_fcqus"), SubResource("BTSetVar_o072j"), SubResource("BTSetAgentProperty_037yu")]
+
+[sub_resource type="BTCondition" id="BTCondition_41ik1"]
+script = ExtResource("1_vq5k3")
+
+[sub_resource type="BTInvert" id="BTInvert_vmj8q"]
+children = [SubResource("BTCondition_41ik1")]
+
+[sub_resource type="BBVariant" id="BBVariant_037yu"]
+type = 2
+saved_value = 0
+resource_name = "0"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_pdq4m"]
+property = &"state"
+value = SubResource("BBVariant_037yu")
+
+[sub_resource type="BTSequence" id="BTSequence_41ik1"]
+custom_name = "rest"
+children = [SubResource("BTInvert_vmj8q"), SubResource("BTSetAgentProperty_pdq4m")]
+
+[sub_resource type="BTCondition" id="BTCondition_vmj8q"]
+script = ExtResource("1_vq5k3")
+
+[sub_resource type="BTAction" id="BTAction_vmj8q"]
+script = ExtResource("2_d0u25")
+
+[sub_resource type="BTCondition" id="BTCondition_jbruh"]
+script = ExtResource("3_5mncy")
+
+[sub_resource type="BTInvert" id="BTInvert_1455u"]
+children = [SubResource("BTCondition_jbruh")]
+
+[sub_resource type="BTCondition" id="BTCondition_2ko0t"]
+script = ExtResource("4_gmnh2")
+
+[sub_resource type="BTInvert" id="BTInvert_qkaqj"]
+children = [SubResource("BTCondition_2ko0t")]
+
+[sub_resource type="BTCondition" id="BTCondition_781ol"]
+script = ExtResource("5_624cc")
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_jbruh"]
+time_limit = 6.0
+children = [SubResource("BTCondition_781ol")]
+
+[sub_resource type="BBVariant" id="BBVariant_781ol"]
+type = 2
+saved_value = 1
+resource_name = "1"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_jbruh"]
+property = &"state"
+value = SubResource("BBVariant_781ol")
+
+[sub_resource type="BTSequence" id="BTSequence_781ol"]
+custom_name = "pursuit"
+children = [SubResource("BTInvert_1455u"), SubResource("BTInvert_qkaqj"), SubResource("BTTimeLimit_jbruh"), SubResource("BTSetAgentProperty_jbruh")]
+
+[sub_resource type="BTCondition" id="BTCondition_pdq4m"]
+script = ExtResource("3_5mncy")
+
+[sub_resource type="BBVariant" id="BBVariant_1455u"]
+type = 2
+saved_value = 2
+resource_name = "2"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_2ko0t"]
+property = &"state"
+value = SubResource("BBVariant_1455u")
+
+[sub_resource type="BTCooldown" id="BTCooldown_pdq4m"]
+duration = 1.5
+children = [SubResource("BTSetAgentProperty_2ko0t")]
+
+[sub_resource type="BTSequence" id="BTSequence_jbruh"]
+custom_name = "melee"
+children = [SubResource("BTCondition_pdq4m"), SubResource("BTCooldown_pdq4m")]
+
+[sub_resource type="BTCondition" id="BTCondition_037yu"]
+script = ExtResource("4_gmnh2")
+
+[sub_resource type="BBVariant" id="BBVariant_qkaqj"]
+type = 2
+saved_value = 3
+resource_name = "3"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_ud4bo"]
+property = &"state"
+value = SubResource("BBVariant_qkaqj")
+
+[sub_resource type="BTCooldown" id="BTCooldown_vmj8q"]
+duration = 1.5
+children = [SubResource("BTSetAgentProperty_ud4bo")]
+
+[sub_resource type="BTSequence" id="BTSequence_1455u"]
+custom_name = "shoot"
+children = [SubResource("BTCondition_037yu"), SubResource("BTCooldown_vmj8q")]
+
+[sub_resource type="BBVariant" id="BBVariant_pdq4m"]
+type = 2
+saved_value = 0
+resource_name = "0"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_781ol"]
+property = &"state"
+value = SubResource("BBVariant_pdq4m")
+
+[sub_resource type="BTSelector" id="BTSelector_2ko0t"]
+children = [SubResource("BTSequence_781ol"), SubResource("BTSequence_jbruh"), SubResource("BTSequence_1455u"), SubResource("BTSetAgentProperty_781ol")]
+
+[sub_resource type="BTSequence" id="BTSequence_qkaqj"]
+custom_name = "attack"
+children = [SubResource("BTCondition_vmj8q"), SubResource("BTAction_vmj8q"), SubResource("BTSelector_2ko0t")]
+
+[sub_resource type="BTSelector" id="BTSelector_037yu"]
+children = [SubResource("BTSequence_vmj8q"), SubResource("BTSequence_pdq4m"), SubResource("BTSequence_41ik1"), SubResource("BTSequence_qkaqj")]
+
+[resource]
+blackboard_plan = ExtResource("1_d0u25")
+root_task = SubResource("BTSelector_037yu")

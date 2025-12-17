@@ -11,7 +11,20 @@ const DEFAULT_SLOT_NAME := "Game %d"
 @onready var slots: Control = $hBox/scroll/vBox
 @onready var slot_save_image: TextureRect = $hBox/texture
 
-@export var type := Type.Load: set = _on_set_type
+@export var type := Type.Load:
+	set(value):
+		if not is_node_ready():
+			await ready
+
+		type = value
+		var header_text := ""
+		if value == Type.Load:
+			header_text = "Load Game"
+		elif value == Type.Save:
+			header_text = "Save Game"
+		$header.text = header_text
+		$hBox2/load_save.text = header_text
+
 var play_focus_sfx := false
 var slot_idx_selected: int = -1
 var screenshot: ViewportTexture = null
@@ -77,16 +90,6 @@ func _on_load_save_pressed():
 		elif type == Type.Save:
 			_save_game(slot_idx_selected, payload)
 
-func _on_set_type(value: Type):
-	type = value
-	var header_text := ""
-	if value == Type.Load:
-		header_text = "Load Game"
-	elif value == Type.Save:
-		header_text = "Save Game"
-	$header.text = header_text
-	$hBox2/load_save.text = header_text
-
 func _get_save_load_file_data() -> Dictionary:
 	if FileAccess.file_exists(GAME_DATA_PATH):
 		var file := FileAccess.open(GAME_DATA_PATH, FileAccess.READ)
@@ -108,16 +111,10 @@ func _load_game_screenshot(idx: int) -> ImageTexture:
 func _load_game(idx: int, payload: Dictionary, preloaded := false):
 	for header in payload:
 		match header:
-			"slot":
-				if not payload[header].has(idx):
-					continue
-
+			"slot" when not payload[header].has(idx):
 				for dserializable_type in payload[header][idx]:
 					match dserializable_type:
-						"character", "item_slot":
-							if preloaded:
-								continue
-
+						"character", "item_slot" when not preloaded:
 							for node_path in payload[header][idx][dserializable_type]:
 								if has_node(node_path):
 									get_node(node_path).deserialize(payload[header][idx][dserializable_type][node_path])
@@ -164,6 +161,6 @@ func _save_game(idx: int, master_payload: Dictionary):
 	var file = FileAccess.open(GAME_DATA_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(master_payload, "\t"))
 
-	if screenshot != null:
+	if screenshot:
 		screenshot.get_image().save_png(SCREENSHOT_PATH % idx)
 		screenshots[idx] = screenshot

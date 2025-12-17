@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcvw6o2fi5j6n"]
+
+[ext_resource type="Script" uid="uid://clplowqy2o2l2" path="res://src/item/item_behavior.gd" id="1_bdr1m"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8gw0q"]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_ubi6i"]
+blackboard_plan = SubResource("BlackboardPlan_8gw0q")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ubi6i"]
+
+[node name="item_behavior" type="Node" groups=["serializable"]]
+script = ExtResource("1_bdr1m")
+
+[node name="behavior" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_ubi6i")
+update_mode = 2
+blackboard_plan = SubResource("BlackboardPlan_ubi6i")
+
+[connection signal="updated" from="behavior" to="." method="_on_behavior_updated"]

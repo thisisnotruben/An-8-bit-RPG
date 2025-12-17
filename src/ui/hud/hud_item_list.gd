@@ -3,7 +3,7 @@ class_name UIItemHandler
 
 enum Type { PLAYER, MERCHANT }
 
-const item_scene := preload("res://src/item/item.tscn")
+@export var item_scene: PackedScene
 
 @onready var snd_nav: AudioStreamPlayer = $snd_nav
 @onready var snd_drop: AudioStreamPlayer = $snd_drop
@@ -17,10 +17,14 @@ const item_scene := preload("res://src/item/item.tscn")
 
 @onready var slots: Array[Node] = $vBox/grid.get_children()
 
+@export var type := Type.PLAYER
 var play_focus_sfx := false
 var focused_slot: HudButton = null
-var player: Character = null : set = _on_set_player
-@export var type := Type.PLAYER
+var player: Character:
+	set(value):
+		player = value
+		if type == Type.PLAYER:
+			slots.map(func(s): s.player = value)
 
 signal subcontrol_focused
 signal subcontrol_mouse_entered(source)
@@ -62,8 +66,8 @@ func _on_draw():
 	slots[0].grab_focus()
 	play_focus_sfx = true
 
-func display(item_type: ItemDB.Type, is_cooling_down: bool):
-	if item_type != ItemDB.Type.INVALID:
+func display(item_type: Item.Type, is_cooling_down: bool):
+	if item_type != Item.Type.INVALID:
 		var data := ItemDB.get_item_type_data(item_type)
 		item_icon.texture = data.icon
 		item_name.text = data.item_name
@@ -71,7 +75,7 @@ func display(item_type: ItemDB.Type, is_cooling_down: bool):
 
 		var is_player_view := type == Type.PLAYER
 		use_bttn.visible = is_player_view and data.use and not is_cooling_down
-		drop_bttn.visible = is_player_view and data.drop
+		drop_bttn.visible = is_player_view and data.can_drop
 		learn_bttn.visible = not is_player_view
 
 func clear():
@@ -83,11 +87,11 @@ func clear():
 	learn_bttn.hide()
 
 func is_full() -> bool:
-	return slots.filter(func(s): return s.item_type != ItemDB.Type.INVALID).is_empty()
+	return slots.filter(func(s): return s.item_type != Item.Type.INVALID).is_empty()
 
 func add_item(data: Dictionary) -> bool:
 	if data["add"]:
-		var useable_slots = slots.filter(func(s): return s.item_type != ItemDB.Type.INVALID)
+		var useable_slots = slots.filter(func(s): return s.item_type != Item.Type.INVALID)
 		if useable_slots.is_empty():
 			return false
 		useable_slots[0].item_type = data["type"]
@@ -98,18 +102,18 @@ func add_item(data: Dictionary) -> bool:
 				break
 	return true
 
-func _on_check_cooldown(item_type: ItemDB.Type):
+func _on_check_cooldown(item_type: Item.Type):
 	for slot in slots:
-		if slot.item_type != ItemDB.Type.INVALID and not slot.is_cooling_down:
+		if slot.item_type != Item.Type.INVALID and not slot.is_cooling_down:
 			slot.check_cooldown(item_type)
 
 func _on_use_pressed():
 	focused_slot.use()
 
 func _on_drop_pressed():
-	if player != null:
+	if player:
 		snd_drop.play()
-		var item: Item = item_scene.instantiate().init({"type": focused_slot.item_type})
+		var item: ItemPickup = item_scene.instantiate().init(focused_slot.item_type)
 		player.add_sibling(item)
 		item.global_position = player.global_position
 	focused_slot.clear()
@@ -117,10 +121,5 @@ func _on_drop_pressed():
 
 func _on_learn_pressed():
 	snd_learn.play()
-	player.inventory_add({"type": focused_slot.item_type, "add": true, "spell": true})
+	player.inventory_modify(focused_slot.item_type, true)
 	player.gold -= ItemDB.get_item_type_data(focused_slot.item_type).worth
-
-func _on_set_player(value: Character):
-	player = value
-	if type == Type.PLAYER:
-		slots.map(func(s): s.player = value)

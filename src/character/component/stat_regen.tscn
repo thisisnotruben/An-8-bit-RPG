@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkpcprd1cr4eg"]
+
+[ext_resource type="Script" uid="uid://0t4kuhn2tdwq" path="res://src/character/component/stat_regen.gd" id="1_akfgm"]
+
+[node name="stat_regen" type="Node"]
+script = ExtResource("1_akfgm")
+
+[node name="timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

@@ -42,11 +42,11 @@ func _on_complete_pressed():
 	_check_quests()
 
 func _check_quests():
-	if player != null and player.target != null:
+	if player and player.target:
 		QuestDB.check_quests({"search_key": player.target.get_path()})
 
 func display():
-	if player != null and player.target != null:
+	if player and player.target:
 		var data := QuestDB.get_data({"search_key": player.target.get_path()})
 		if data == null:
 			return
@@ -54,9 +54,10 @@ func display():
 		header.text = data.quest_name
 		header_icon.texture = player.target.img.texture
 
-		var is_quest_started := not data.active and not data.completed
-		var is_quest_active := data.active and not data.completed
-		var is_quest_delievered := not data.active and data.completed
+		var is_quest_started := data.status == QuestData.QuestStatus.NOT_STARTED
+		var is_quest_active := data.status == QuestData.QuestStatus.ACTIVE
+		var is_quest_delievered := data.status == QuestData.QuestStatus.COMPLETED
+
 
 		accept_bttn.visible = is_quest_started
 		decline_bttn.visible = is_quest_started
@@ -64,9 +65,9 @@ func display():
 
 		var text := ""
 		if is_quest_started:
-			text = data.quest_start_blurb
+			text = data.start_blurb
 		elif is_quest_active:
-			text = data.quest_active_blurb
+			text = data.active_blurb
 		elif is_quest_delievered:
-			text = data.quest_delivered_blurb
+			text = data.delivered_blurb
 		blurb.text = text

@@ -18,15 +18,14 @@ var hovered_control: Control = null
 
 func _ready():
 	visibility_changed.connect(_on_visibility_changed)
-	if player != null:
+	if player:
 		player.died.connect(show_death_screen)
 
 func _input(event: InputEvent):
 	if dead:
 		return
 
-	if event.is_action_pressed("ui_cancel") \
-	and tab.current_tab == tabs["main"]:
+	if event.is_action_pressed("ui_cancel") and tab.current_tab == tabs["main"]:
 		if not visible:
 			await RenderingServer.frame_post_draw
 			save_load.screenshot = get_viewport().get_texture()
@@ -47,13 +46,13 @@ func _on_focus_entered():
 		$snd_nav.play()
 
 func _on_mouse_entered(source: Control):
-	if source != null:
+	if source:
 		hovered_control = source
 		source.grab_focus()
 		source.release_focus()
 
 func _on_mouse_exited():
-	if hovered_control != null:
+	if hovered_control:
 		play_focus_sfx = false
 		hovered_control.grab_focus()
 		play_focus_sfx = true
@@ -123,7 +122,7 @@ func _on_main_draw():
 	play_focus_sfx = true
 
 func _on_visibility_changed():
-	if not dead and is_inside_tree() and get_tree() != null:
+	if not dead and is_inside_tree() and get_tree():
 		get_tree().paused = visible
 		if not visible:
 			tab.current_tab = tabs["main"]

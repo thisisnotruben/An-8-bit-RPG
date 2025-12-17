@@ -9,11 +9,16 @@ class_name Move
 @onready var npc_move: IState = $npc
 
 @export_range(0.0, 200.0) var speed: float = 16.0
-var velocity := Vector2.ZERO: set = _set_velocity, get = _get_velocity
+
+var velocity: Vector2:
+	set(value):
+		character.velocity = value
+	get:
+		return character.velocity
 
 
 func _ready():
-	if snd_move != null:
+	if snd_move:
 		snd_move.finished.connect(play_snd_move)
 
 func _init():
@@ -48,13 +53,6 @@ func apply_animation(input_dir: Vector2):
 		["attack", "idle", "idle_start", "walk", "hurt"].filter(func(s): \
 			return character.anim_tree.get(a_t % s) != null) \
 			.map(func(s): character.anim_tree[a_t % s] = anim_direction)
-
-# util
-func _set_velocity(_velocity: Vector2):
-	character.velocity = _velocity
-
-func _get_velocity() -> Vector2:
-	return character.velocity
 
 func play_snd_move():
 	if active and not snd_move_audio.is_empty():
