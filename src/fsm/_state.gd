@@ -1,14 +1,13 @@
-extends Node
-class_name IState
+class_name IState extends Node
 
-@export_category("Performance Flags")
+@export_category('Performance Flags')
 @export var need_physics_process := false
 @export var need_process := false
 @export var need_input_process := false
 
 var active: bool = false
 
-@warning_ignore("unused_signal")
+@warning_ignore('unused_signal')
 signal change_state(_state)
 
 

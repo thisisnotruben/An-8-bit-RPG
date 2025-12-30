@@ -1,0 +1,94 @@
+[gd_resource type="BehaviorTree" load_steps=27 format=3 uid="uid://dpbyi0n7xie4a"]
+
+[ext_resource type="Script" uid="uid://lv57wgn4gihn" path="res://resource/limbo_ai_trees/tasks/use_attribute.gd" id="1_hvq46"]
+[ext_resource type="AudioStream" uid="uid://cwvoig24kcd47" path="res://asset/snd/LEOHPAZ_Elemental_Creatures_SFX/LEOHPAZ_Elemental_Creatures_SFX/Fire_Elemental/Fireball_LOOP.wav" id="2_goldu"]
+[ext_resource type="AudioStream" uid="uid://cof2qj2l7jnsp" path="res://asset/snd/50_RPG_Battle_Magic_SFX/07_Fireball_01.wav" id="2_odrcc"]
+[ext_resource type="AudioStream" uid="uid://bx5hqlqlo2rx0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/08_Fireball_02.wav" id="3_bm8co"]
+[ext_resource type="AudioStream" uid="uid://bsdy3vcxekdn0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/09_Fireball_03.wav" id="4_a5yla"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_nuhgx"]
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_odrcc"]
+variable = &"on_hit_var"
+
+[sub_resource type="BTInvert" id="BTInvert_bm8co"]
+children = [SubResource("BTCheckTrigger_odrcc")]
+
+[sub_resource type="BBVariant" id="BBVariant_v83f7"]
+type = 24
+saved_value = ExtResource("2_goldu")
+resource_name = "<AudioStreamWAV#-9223323566051365154>"
+
+[sub_resource type="BBNode" id="BBNode_77okj"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_odrcc"]
+node = SubResource("BBNode_77okj")
+method = &"play_sound"
+args = Array[BBVariant]([SubResource("BBVariant_v83f7")])
+
+[sub_resource type="BTSequence" id="BTSequence_a5yla"]
+custom_name = "Play fire loop sound"
+children = [SubResource("BTInvert_bm8co"), SubResource("BTCallMethod_odrcc")]
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_o5bop"]
+variable = &"on_hit_var"
+
+[sub_resource type="BTAction" id="BTAction_xjdvm"]
+script = ExtResource("1_hvq46")
+
+[sub_resource type="BTCooldown" id="BTCooldown_w4mdy"]
+duration = 2.0
+children = [SubResource("BTAction_xjdvm")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_hvq46"]
+times = 4
+children = [SubResource("BTCooldown_w4mdy")]
+
+[sub_resource type="BBVariant" id="BBVariant_goldu"]
+type = 24
+saved_value = ExtResource("2_odrcc")
+resource_name = "<AudioStreamWAV#-9223333600940462185>"
+
+[sub_resource type="BBVariant" id="BBVariant_77okj"]
+type = 24
+saved_value = ExtResource("3_bm8co")
+resource_name = "<AudioStreamWAV#-9223327229188706607>"
+
+[sub_resource type="BBVariant" id="BBVariant_odrcc"]
+type = 24
+saved_value = ExtResource("4_a5yla")
+resource_name = "<AudioStreamWAV#-9223326932349423884>"
+
+[sub_resource type="BBNode" id="BBNode_goldu"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_v83f7"]
+node = SubResource("BBNode_goldu")
+method = &"play_sound"
+args = Array[BBVariant]([SubResource("BBVariant_goldu"), SubResource("BBVariant_77okj"), SubResource("BBVariant_odrcc")])
+
+[sub_resource type="BTCooldown" id="BTCooldown_odrcc"]
+duration = 2.0
+children = [SubResource("BTCallMethod_v83f7")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_bm8co"]
+times = 4
+children = [SubResource("BTCooldown_odrcc")]
+
+[sub_resource type="BTParallel" id="BTParallel_odrcc"]
+children = [SubResource("BTRepeat_hvq46"), SubResource("BTRepeat_bm8co")]
+
+[sub_resource type="BTSequence" id="BTSequence_odrcc"]
+custom_name = "On hit"
+children = [SubResource("BTCheckTrigger_o5bop"), SubResource("BTParallel_odrcc")]
+
+[sub_resource type="BTSelector" id="BTSelector_3elne"]
+custom_name = "Fireball"
+children = [SubResource("BTSequence_a5yla"), SubResource("BTSequence_odrcc")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_nuhgx")
+root_task = SubResource("BTSelector_3elne")

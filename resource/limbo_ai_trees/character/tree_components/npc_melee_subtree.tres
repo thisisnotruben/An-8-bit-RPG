@@ -1,0 +1,30 @@
+[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://rv6sfw6jquv4"]
+
+[ext_resource type="Script" uid="uid://b652b1io2x5nu" path="res://resource/limbo_ai_trees/tasks/character/can_melee.gd" id="1_yy7ym"]
+[ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://resource/limbo_ai_trees/tasks/character/play_audio.gd" id="2_t222r"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="2_wfv7t"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_yy7ym"]
+
+[sub_resource type="BTCondition" id="BTCondition_gu88r"]
+script = ExtResource("1_yy7ym")
+
+[sub_resource type="BTAction" id="BTAction_yvohc"]
+script = ExtResource("2_wfv7t")
+state = 2
+
+[sub_resource type="BTCooldown" id="BTCooldown_4jhpq"]
+duration = 1.5
+children = [SubResource("BTAction_yvohc")]
+
+[sub_resource type="BTAction" id="BTAction_1mkh7"]
+script = ExtResource("2_t222r")
+audio_lib_type = 2
+
+[sub_resource type="BTSequence" id="BTSequence_owxtt"]
+custom_name = "Melee"
+children = [SubResource("BTCondition_gu88r"), SubResource("BTCooldown_4jhpq"), SubResource("BTAction_1mkh7")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_yy7ym")
+root_task = SubResource("BTSequence_owxtt")

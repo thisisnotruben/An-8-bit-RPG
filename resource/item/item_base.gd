@@ -1,5 +1,4 @@
-extends Resource
-class_name BaseItem
+class_name BaseItem extends Resource
 
 enum Category {
 	NOT_SET, # 0
@@ -14,10 +13,13 @@ enum Category {
 }
 enum Type {
 	INVALID,
+	STUN,
+	FIREBALL,
+	CHARGE,
 }
 
 @export var icon: Texture
 @export var type := Type.INVALID
 @export var category := Category.NOT_SET
 @export var behavior: BehaviorTree
-@export var behavior_cooldown := 0.0
+@export var cooldown := 0.0

@@ -1,0 +1,31 @@
+[gd_resource type="BehaviorTree" load_steps=11 format=3 uid="uid://cggfbykhjdvtl"]
+
+[ext_resource type="Script" uid="uid://x6mbdg432n2j" path="res://resource/limbo_ai_trees/tasks/character/has_valid_target.gd" id="1_0c6sq"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="2_03xba"]
+[ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://resource/limbo_ai_trees/tasks/character/play_audio.gd" id="2_7i06x"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_0c6sq"]
+
+[sub_resource type="BTCondition" id="BTCondition_bb18x"]
+script = ExtResource("1_0c6sq")
+
+[sub_resource type="BTInvert" id="BTInvert_j1svj"]
+children = [SubResource("BTCondition_bb18x")]
+
+[sub_resource type="BTAction" id="BTAction_4jmus"]
+script = ExtResource("2_03xba")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_p08ib"]
+min_duration = 5.0
+max_duration = 20.0
+
+[sub_resource type="BTAction" id="BTAction_4ybl1"]
+script = ExtResource("2_7i06x")
+
+[sub_resource type="BTSequence" id="BTSequence_dqgba"]
+custom_name = "Idle"
+children = [SubResource("BTInvert_j1svj"), SubResource("BTAction_4jmus"), SubResource("BTRandomWait_p08ib"), SubResource("BTAction_4ybl1")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_0c6sq")
+root_task = SubResource("BTSequence_dqgba")

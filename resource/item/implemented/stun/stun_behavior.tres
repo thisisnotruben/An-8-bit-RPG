@@ -1,0 +1,63 @@
+[gd_resource type="BehaviorTree" load_steps=17 format=3 uid="uid://bl8v6o1m15ks3"]
+
+[ext_resource type="Script" uid="uid://dxrvsskvprnwo" path="res://resource/limbo_ai_trees/tasks/modify_attribute.gd" id="1_ey2wf"]
+[ext_resource type="Script" uid="uid://ceqfbg0d2eyn7" path="res://resource/modifier/amount/modifier_amount.gd" id="2_883ss"]
+[ext_resource type="Script" uid="uid://cujso8rjhjc5e" path="res://resource/action/modify_attribute.gd" id="3_tu8ab"]
+[ext_resource type="Script" uid="uid://c2xsuasi01xam" path="res://resource/limbo_ai_trees/tasks/item/item_cooldown_wait.gd" id="4_883ss"]
+[ext_resource type="Script" uid="uid://b0tcgr436w7t0" path="res://resource/limbo_ai_trees/tasks/modifer_remove.gd" id="4_ai82h"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_j0ron"]
+
+[sub_resource type="Resource" id="Resource_883ss"]
+script = ExtResource("2_883ss")
+_amount = 0.5
+is_percentage = true
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_tu8ab"]
+script = ExtResource("3_tu8ab")
+type_attribute = 3
+modifier = SubResource("Resource_883ss")
+metadata/_custom_type_script = "uid://cujso8rjhjc5e"
+
+[sub_resource type="BTAction" id="BTAction_ey2wf"]
+script = ExtResource("1_ey2wf")
+strategy = SubResource("Resource_tu8ab")
+strategy_var_name = "move_speed_var"
+
+[sub_resource type="Resource" id="Resource_vreg2"]
+script = ExtResource("2_883ss")
+_amount = 0.5
+is_percentage = true
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jgu14"]
+script = ExtResource("3_tu8ab")
+type_attribute = 4
+modifier = SubResource("Resource_vreg2")
+metadata/_custom_type_script = "uid://cujso8rjhjc5e"
+
+[sub_resource type="BTAction" id="BTAction_883ss"]
+script = ExtResource("1_ey2wf")
+strategy = SubResource("Resource_jgu14")
+strategy_var_name = "attack_speed_var"
+
+[sub_resource type="BTWait" id="BTWait_tu8ab"]
+script = ExtResource("4_883ss")
+item_type = 1
+
+[sub_resource type="BTAction" id="BTAction_tu8ab"]
+script = ExtResource("4_ai82h")
+strategy_name_var = "move_speed_var"
+
+[sub_resource type="BTAction" id="BTAction_vreg2"]
+script = ExtResource("4_ai82h")
+strategy_name_var = "attack_speed_var"
+
+[sub_resource type="BTSequence" id="BTSequence_j0ron"]
+custom_name = "Stun"
+children = [SubResource("BTAction_ey2wf"), SubResource("BTAction_883ss"), SubResource("BTWait_tu8ab"), SubResource("BTAction_tu8ab"), SubResource("BTAction_vreg2")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_j0ron")
+root_task = SubResource("BTSequence_j0ron")

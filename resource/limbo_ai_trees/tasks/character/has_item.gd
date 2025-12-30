@@ -1,5 +1,5 @@
 @tool
-extends BTAction
+extends BTCondition
 
 @export var item_type := BaseItem.Type.INVALID
 

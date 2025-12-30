@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=8 format=3 uid="uid://bgpttn45cv1ks"]
+
+[ext_resource type="BehaviorTree" uid="uid://dpbyi0n7xie4a" path="res://resource/item/implemented/fireball/fireball_behavior.tres" id="1_rvord"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="3_77c3c"]
+[ext_resource type="Script" uid="uid://bvqr3hct5j1xr" path="res://resource/item/ability.gd" id="4_17fuk"]
+[ext_resource type="Texture2D" uid="uid://bgmj6l74owyte" path="res://asset/img/exclusives/Creatures/Fire_Elemental/_FireBallProjectile.png" id="4_r536p"]
+[ext_resource type="Resource" uid="uid://cjafm3bqej356" path="res://resource/item/implemented/fireball/fireball_projectile_strategy.tres" id="5_03yt7"]
+
+[sub_resource type="Resource" id="Resource_tm2gy"]
+script = ExtResource("3_77c3c")
+type = 2
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvord"]
+atlas = ExtResource("4_r536p")
+region = Rect2(0, 80, 16, 16)
+
+[resource]
+script = ExtResource("4_17fuk")
+cost_type = 1
+cost = SubResource("Resource_tm2gy")
+target_type = 1
+cast_time = 2.0
+projectile_strategy = ExtResource("5_03yt7")
+item_name = "Fireball"
+blurb = "Throws a fiery ball that causes Fire damage."
+worth = 20
+can_drop = false
+icon = SubResource("AtlasTexture_rvord")
+type = 2
+category = 8
+behavior = ExtResource("1_rvord")
+cooldown = 3.0
+metadata/_custom_type_script = "uid://bvqr3hct5j1xr"

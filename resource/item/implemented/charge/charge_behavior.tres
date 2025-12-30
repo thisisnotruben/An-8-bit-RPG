@@ -1,0 +1,42 @@
+[gd_resource type="BehaviorTree" load_steps=16 format=3 uid="uid://bk2t4h2o1bbdr"]
+
+[ext_resource type="Script" uid="uid://bvtr4c8q8kc0v" path="res://resource/limbo_ai_trees/tasks/character/can_shoot.gd" id="1_35mte"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="1_c317e"]
+[ext_resource type="Script" uid="uid://dxrvsskvprnwo" path="res://resource/limbo_ai_trees/tasks/modify_attribute.gd" id="1_k37k8"]
+[ext_resource type="Script" uid="uid://c5vqpe3n85mpq" path="res://resource/limbo_ai_trees/tasks/character/can_move_to_target.gd" id="2_56geu"]
+[ext_resource type="Script" uid="uid://b0tcgr436w7t0" path="res://resource/limbo_ai_trees/tasks/modifer_remove.gd" id="6_pteqv"]
+[ext_resource type="Script" uid="uid://bjx33ahcsgjei" path="res://resource/limbo_ai_trees/tasks/character/has_move_arrived.gd" id="7_35mte"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ooql8"]
+
+[sub_resource type="BTCondition" id="BTCondition_ndje2"]
+script = ExtResource("1_35mte")
+
+[sub_resource type="BTCondition" id="BTCondition_kgb45"]
+script = ExtResource("2_56geu")
+
+[sub_resource type="BTAction" id="BTAction_56geu"]
+script = ExtResource("1_k37k8")
+
+[sub_resource type="BTAction" id="BTAction_02p42"]
+script = ExtResource("1_c317e")
+state = 1
+
+[sub_resource type="BTCondition" id="BTCondition_56geu"]
+script = ExtResource("7_35mte")
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_ndje2"]
+time_limit = 3.0
+children = [SubResource("BTCondition_56geu")]
+
+[sub_resource type="BTAction" id="BTAction_17bx0"]
+script = ExtResource("6_pteqv")
+strategy_name_var = "move_speed_var"
+
+[sub_resource type="BTSelector" id="BTSelector_ooql8"]
+custom_name = "Charge"
+children = [SubResource("BTCondition_ndje2"), SubResource("BTCondition_kgb45"), SubResource("BTAction_56geu"), SubResource("BTAction_02p42"), SubResource("BTTimeLimit_ndje2"), SubResource("BTAction_17bx0")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ooql8")
+root_task = SubResource("BTSelector_ooql8")

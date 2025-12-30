@@ -1,4 +1,3 @@
-extends BaseItem
-class_name ItemVital
+class_name ItemVital extends BaseItem
 
-@export var amount: int = 0
+@export var modifier: ModifierAmountBase

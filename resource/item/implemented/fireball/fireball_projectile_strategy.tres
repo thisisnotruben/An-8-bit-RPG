@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ProjectileStrategy" load_steps=9 format=3 uid="uid://cjafm3bqej356"]
+
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="3_nig77"]
+[ext_resource type="Script" uid="uid://srlruy472rta" path="res://resource/modifier/projectile_movement/move_linear.gd" id="4_1umlo"]
+[ext_resource type="Script" uid="uid://b8j5u8bk4vwcx" path="res://resource/modifier/projectile_movement/projectile_strategy.gd" id="4_4jfb2"]
+[ext_resource type="AudioStream" uid="uid://cof2qj2l7jnsp" path="res://asset/snd/50_RPG_Battle_Magic_SFX/07_Fireball_01.wav" id="5_75or1"]
+[ext_resource type="AudioStream" uid="uid://bx5hqlqlo2rx0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/08_Fireball_02.wav" id="6_03qab"]
+[ext_resource type="AudioStream" uid="uid://bsdy3vcxekdn0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/09_Fireball_03.wav" id="7_t2ia7"]
+
+[sub_resource type="Resource" id="Resource_m3lr7"]
+script = ExtResource("3_nig77")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_nig77"]
+script = ExtResource("4_1umlo")
+metadata/_custom_type_script = "uid://srlruy472rta"
+
+[resource]
+script = ExtResource("4_4jfb2")
+damage = SubResource("Resource_m3lr7")
+timeout_sec = 20.0
+snd_hit_sfx = Array[AudioStream]([ExtResource("5_75or1"), ExtResource("6_03qab"), ExtResource("7_t2ia7")])
+move_strategy = SubResource("Resource_nig77")
+metadata/_custom_type_script = "uid://b8j5u8bk4vwcx"

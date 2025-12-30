@@ -1,0 +1,104 @@
+[gd_resource type="BehaviorTree" load_steps=31 format=3 uid="uid://bmm4llq2i8kce"]
+
+[ext_resource type="BlackboardPlan" uid="uid://dakrpekxvoqk2" path="res://resource/limbo_ai_trees/character/blackboard_plan_character_default.tres" id="1_iw43q"]
+[ext_resource type="Script" uid="uid://bklci2awtglue" path="res://resource/limbo_ai_trees/tasks/player/can_melee.gd" id="1_spe64"]
+[ext_resource type="Script" uid="uid://b2vhs8l3fwy12" path="res://resource/limbo_ai_trees/tasks/player/can_shoot.gd" id="2_w7c6f"]
+[ext_resource type="BehaviorTree" uid="uid://cxfwiqfk8biws" path="res://resource/limbo_ai_trees/character/tree_components/dead_subtree.tres" id="2_xptis"]
+[ext_resource type="BehaviorTree" uid="uid://bq1qtv635p1rn" path="res://resource/limbo_ai_trees/character/tree_components/hurt_subtree.tres" id="3_6kkfr"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="4_ig2lr"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_6kkfr"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_ig2lr"]
+subtree = ExtResource("2_xptis")
+blackboard_plan = SubResource("BlackboardPlan_6kkfr")
+
+[sub_resource type="BTSubtree" id="BTSubtree_2vhlx"]
+subtree = ExtResource("3_6kkfr")
+blackboard_plan = ExtResource("1_iw43q")
+
+[sub_resource type="BBVariant" id="BBVariant_32cym"]
+type = 4
+saved_value = "idle"
+resource_name = "idle"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_2vhlx"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_32cym")
+
+[sub_resource type="BTAction" id="BTAction_32cym"]
+script = ExtResource("4_ig2lr")
+
+[sub_resource type="BTSequence" id="BTSequence_b1h55"]
+custom_name = "idle"
+children = [SubResource("BTCheckVar_2vhlx"), SubResource("BTAction_32cym")]
+
+[sub_resource type="BBVariant" id="BBVariant_6kkfr"]
+type = 4
+saved_value = "move"
+resource_name = "move"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ig2lr"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_6kkfr")
+
+[sub_resource type="BTAction" id="BTAction_ig2lr"]
+script = ExtResource("4_ig2lr")
+state = 1
+
+[sub_resource type="BTSequence" id="BTSequence_xptis"]
+custom_name = "move"
+children = [SubResource("BTCheckVar_ig2lr"), SubResource("BTAction_ig2lr")]
+
+[sub_resource type="BBVariant" id="BBVariant_w7c6f"]
+type = 4
+saved_value = "attack"
+resource_name = "attack"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_iw43q"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_w7c6f")
+
+[sub_resource type="BTCondition" id="BTCondition_w7c6f"]
+script = ExtResource("1_spe64")
+
+[sub_resource type="BTAction" id="BTAction_2vhlx"]
+script = ExtResource("4_ig2lr")
+state = 2
+
+[sub_resource type="BTCooldown" id="BTCooldown_w7c6f"]
+duration = 1.5
+children = [SubResource("BTAction_2vhlx")]
+
+[sub_resource type="BTSequence" id="BTSequence_6kkfr"]
+custom_name = "melee"
+children = [SubResource("BTCondition_w7c6f"), SubResource("BTCooldown_w7c6f")]
+
+[sub_resource type="BTCondition" id="BTCondition_iw43q"]
+script = ExtResource("2_w7c6f")
+
+[sub_resource type="BTAction" id="BTAction_y61wm"]
+script = ExtResource("4_ig2lr")
+state = 3
+
+[sub_resource type="BTCooldown" id="BTCooldown_iw43q"]
+duration = 1.5
+children = [SubResource("BTAction_y61wm")]
+
+[sub_resource type="BTSequence" id="BTSequence_ig2lr"]
+custom_name = "shoot"
+children = [SubResource("BTCondition_iw43q"), SubResource("BTCooldown_iw43q")]
+
+[sub_resource type="BTSelector" id="BTSelector_w7c6f"]
+children = [SubResource("BTSequence_6kkfr"), SubResource("BTSequence_ig2lr")]
+
+[sub_resource type="BTSequence" id="BTSequence_iw43q"]
+custom_name = "attack"
+children = [SubResource("BTCheckVar_iw43q"), SubResource("BTSelector_w7c6f")]
+
+[sub_resource type="BTSelector" id="BTSelector_spe64"]
+children = [SubResource("BTSubtree_ig2lr"), SubResource("BTSubtree_2vhlx"), SubResource("BTSequence_b1h55"), SubResource("BTSequence_xptis"), SubResource("BTSequence_iw43q")]
+
+[resource]
+blackboard_plan = ExtResource("1_iw43q")
+root_task = SubResource("BTSelector_spe64")

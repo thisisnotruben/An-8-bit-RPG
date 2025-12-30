@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" load_steps=10 format=3 uid="uid://cwrhk1auce0gu"]
+
+[ext_resource type="AnimationLibrary" uid="uid://ccbewocsmf0s4" path="res://resource/animation/Centaur.tres" id="1_raju6"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b7277cowcl0ix" path="res://resource/animation_state_machine/Centaur_state_machine.tres" id="2_1rtj5"]
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="3_raju6"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="4_1rtj5"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="4_b76bn"]
+[ext_resource type="BehaviorTree" uid="uid://wafm6ld3cml" path="res://resource/limbo_ai_trees/character/implemented/centaur_behavior.tres" id="5_57bsv"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="5_xxgph"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://resource/limbo_ai_trees/character/behavior_character_player.tres" id="6_mr416"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="9_ganjv"]
+
+[resource]
+script = ExtResource("5_xxgph")
+character_name = "Centaur"
+npc = false
+npc_behavior = ExtResource("5_57bsv")
+anim_state_machine = ExtResource("2_1rtj5")
+anim_library = ExtResource("1_raju6")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

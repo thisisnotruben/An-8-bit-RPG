@@ -1,0 +1,120 @@
+[gd_resource type="BehaviorTree" load_steps=39 format=3 uid="uid://wafm6ld3cml"]
+
+[ext_resource type="BehaviorTree" uid="uid://cxfwiqfk8biws" path="res://resource/limbo_ai_trees/character/tree_components/dead_subtree.tres" id="1_niicx"]
+[ext_resource type="Script" uid="uid://x6mbdg432n2j" path="res://resource/limbo_ai_trees/tasks/character/has_valid_target.gd" id="1_ycmk6"]
+[ext_resource type="Script" uid="uid://co5w3xhfch4nk" path="res://resource/limbo_ai_trees/tasks/character/look_at_target.gd" id="2_kf6qt"]
+[ext_resource type="BehaviorTree" uid="uid://bq1qtv635p1rn" path="res://resource/limbo_ai_trees/character/tree_components/hurt_subtree.tres" id="2_ogrrp"]
+[ext_resource type="BehaviorTree" uid="uid://cggfbykhjdvtl" path="res://resource/limbo_ai_trees/character/tree_components/npc_idle_subtree.tres" id="3_3jdax"]
+[ext_resource type="BehaviorTree" uid="uid://xblnoae3ir6i" path="res://resource/limbo_ai_trees/character/tree_components/npc_pursuit_subtree.tres" id="6_ogrrp"]
+[ext_resource type="BehaviorTree" uid="uid://rv6sfw6jquv4" path="res://resource/limbo_ai_trees/character/tree_components/npc_melee_subtree.tres" id="7_efa0v"]
+[ext_resource type="Resource" uid="uid://cu68imb6cxg71" path="res://resource/item/implemented/stun/stun_ability.tres" id="7_vt0o6"]
+[ext_resource type="Resource" uid="uid://bgpttn45cv1ks" path="res://resource/item/implemented/fireball/fireball_ability.tres" id="8_vt0o6"]
+[ext_resource type="BehaviorTree" uid="uid://drpnfiyrb8mue" path="res://resource/limbo_ai_trees/character/tree_components/cast_ability_subtree.tres" id="9_vt0o6"]
+[ext_resource type="Resource" uid="uid://dwi2asf1q45jt" path="res://resource/item/implemented/charge/charge_ability.tres" id="11_vt0o6"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="12_vt0o6"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_btdf4"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_efa0v"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_btdf4"]
+subtree = ExtResource("1_niicx")
+blackboard_plan = SubResource("BlackboardPlan_efa0v")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_wpqna"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_1jf74"]
+subtree = ExtResource("2_ogrrp")
+blackboard_plan = SubResource("BlackboardPlan_wpqna")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ybnbj"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_ycmk6"]
+subtree = ExtResource("3_3jdax")
+blackboard_plan = SubResource("BlackboardPlan_ybnbj")
+
+[sub_resource type="BTCondition" id="BTCondition_o4y27"]
+script = ExtResource("1_ycmk6")
+
+[sub_resource type="BTAction" id="BTAction_niicx"]
+script = ExtResource("2_kf6qt")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_3jdax"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_kf6qt"]
+subtree = ExtResource("6_ogrrp")
+blackboard_plan = SubResource("BlackboardPlan_3jdax")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_vt0o6"]
+var/ability_var/name = &"ability_var"
+var/ability_var/type = 24
+var/ability_var/value = ExtResource("7_vt0o6")
+var/ability_var/hint = 17
+var/ability_var/hint_string = "Ability"
+mapping/character_var = &"character_var"
+
+[sub_resource type="BTSubtree" id="BTSubtree_iufdm"]
+subtree = ExtResource("9_vt0o6")
+blackboard_plan = SubResource("BlackboardPlan_vt0o6")
+custom_name = "Stun cast"
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_0g6t3"]
+var/ability_var/name = &"ability_var"
+var/ability_var/type = 24
+var/ability_var/value = ExtResource("8_vt0o6")
+var/ability_var/hint = 17
+var/ability_var/hint_string = "Ability"
+mapping/character_var = &"character_var"
+
+[sub_resource type="BTSubtree" id="BTSubtree_2av4f"]
+subtree = ExtResource("9_vt0o6")
+blackboard_plan = SubResource("BlackboardPlan_0g6t3")
+custom_name = "Fireball cast"
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_2av4f"]
+children = [SubResource("BTSubtree_iufdm"), SubResource("BTSubtree_2av4f")]
+
+[sub_resource type="BTProbability" id="BTProbability_wpqna"]
+run_chance = 0.25
+custom_name = "Spells"
+children = [SubResource("BTRandomSelector_2av4f")]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_wxfn2"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_o4y27"]
+subtree = ExtResource("7_efa0v")
+blackboard_plan = SubResource("BlackboardPlan_wxfn2")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_iufdm"]
+var/ability_var/name = &"ability_var"
+var/ability_var/type = 24
+var/ability_var/value = ExtResource("11_vt0o6")
+var/ability_var/hint = 17
+var/ability_var/hint_string = "Ability"
+mapping/character_var = &"character_var"
+
+[sub_resource type="BTSubtree" id="BTSubtree_ybnbj"]
+subtree = ExtResource("9_vt0o6")
+blackboard_plan = SubResource("BlackboardPlan_iufdm")
+custom_name = "Charge cast"
+
+[sub_resource type="BTProbability" id="BTProbability_wxfn2"]
+run_chance = 0.35
+children = [SubResource("BTSubtree_ybnbj")]
+
+[sub_resource type="BTAction" id="BTAction_0g6t3"]
+script = ExtResource("12_vt0o6")
+
+[sub_resource type="BTSelector" id="BTSelector_ycmk6"]
+children = [SubResource("BTSubtree_kf6qt"), SubResource("BTProbability_wpqna"), SubResource("BTSubtree_o4y27"), SubResource("BTProbability_wxfn2"), SubResource("BTAction_0g6t3")]
+
+[sub_resource type="BTSequence" id="BTSequence_btdf4"]
+custom_name = "Attack"
+children = [SubResource("BTCondition_o4y27"), SubResource("BTAction_niicx"), SubResource("BTSelector_ycmk6")]
+
+[sub_resource type="BTSelector" id="BTSelector_kf6qt"]
+children = [SubResource("BTSubtree_btdf4"), SubResource("BTSubtree_1jf74"), SubResource("BTSubtree_ycmk6"), SubResource("BTSequence_btdf4")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_btdf4")
+root_task = SubResource("BTSelector_kf6qt")

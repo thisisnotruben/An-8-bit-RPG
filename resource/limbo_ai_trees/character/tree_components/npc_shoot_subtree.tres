@@ -1,0 +1,29 @@
+[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://bab562nee3usr"]
+
+[ext_resource type="Script" uid="uid://bvtr4c8q8kc0v" path="res://resource/limbo_ai_trees/tasks/character/can_shoot.gd" id="1_083ew"]
+[ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://resource/limbo_ai_trees/tasks/character/play_audio.gd" id="2_ach4s"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="2_tllxq"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_wnewu"]
+
+[sub_resource type="BTCondition" id="BTCondition_1nu3b"]
+script = ExtResource("1_083ew")
+
+[sub_resource type="BTAction" id="BTAction_a50k3"]
+script = ExtResource("2_tllxq")
+state = 3
+
+[sub_resource type="BTCooldown" id="BTCooldown_4akb2"]
+children = [SubResource("BTAction_a50k3")]
+
+[sub_resource type="BTAction" id="BTAction_467gq"]
+script = ExtResource("2_ach4s")
+audio_lib_type = 3
+
+[sub_resource type="BTSequence" id="BTSequence_4uc3b"]
+custom_name = "Shoot"
+children = [SubResource("BTCondition_1nu3b"), SubResource("BTCooldown_4akb2"), SubResource("BTAction_467gq")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_wnewu")
+root_task = SubResource("BTSequence_4uc3b")

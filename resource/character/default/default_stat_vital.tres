@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatModifer" load_steps=5 format=3 uid="uid://eml2nyacvdlf"]
+
+[ext_resource type="Script" uid="uid://ceqfbg0d2eyn7" path="res://resource/modifier/amount/modifier_amount.gd" id="1_gb867"]
+[ext_resource type="Script" uid="uid://cwpxy0f2j4icl" path="res://resource/modifier/amount/modifer_amount_abstract.gd" id="2_bmkvd"]
+[ext_resource type="Script" uid="uid://by30of4e8c7jk" path="res://resource/modifier/stat/stat_modifier.gd" id="3_2g3xs"]
+
+[sub_resource type="Resource" id="Resource_87myl"]
+script = ExtResource("1_gb867")
+_amount = 5.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[resource]
+script = ExtResource("3_2g3xs")
+base = SubResource("Resource_87myl")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"

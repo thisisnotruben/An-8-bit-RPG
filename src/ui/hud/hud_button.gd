@@ -3,7 +3,7 @@ class_name HudButton
 
 enum Type{ PLAYER, MERCHANT }
 
-const drag_item := preload("res://src/ui/hud/hud_drag_icon.tscn")
+const drag_item := preload('uid://bxulpvlxhgm72')
 
 @onready var label: Label = $margin_label/label
 @onready var color_rect: ColorRect = $margin_color/colorRect
@@ -23,18 +23,18 @@ signal on_cooldown_started(_item_type: Item.Type)
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if quick_slot and item_type != Item.Type.INVALID:
 		set_drag_preview(drag_item.instantiate().init(item_icon))
-		return { "item_type": item_type, "slot": self, }
+		return { 'item_type': item_type, 'slot': self, }
 	return { }
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	return quick_slot and data is Dictionary and data.has_all(["item_type", "slot",])
+	return quick_slot and data is Dictionary and data.has_all(['item_type', 'slot',])
 
 func _drop_data(_at_position: Vector2, data: Variant):
 	if quick_slot:
 		if item_type != Item.Type.INVALID:
-			data["slot"].clear()
-			data["slot"]._on_set_item(item_type)
-		_on_set_item(data["item_type"])
+			data['slot'].clear()
+			data['slot']._on_set_item(item_type)
+		_on_set_item(data['item_type'])
 
 func _on_pressed():
 	use()
@@ -46,26 +46,26 @@ func _on_tween_finished():
 	color_rect.hide()
 
 func _on_focus_entered():
-	anim.play("focus")
+	anim.play('focus')
 
 func _on_focus_exited():
-	anim.play("unfocus")
+	anim.play('unfocus')
 
 func use():
 	if item_type != Item.Type.INVALID:
-		var item := ItemDB.get_item_type_data(item_type)
+		var item := ItemDB.get_item(item_type)
 		if item.behavior:
 			player.spawn_item_behavior(item.behavior)
-			if item.behavior_cooldown > 0.0:
-				_start_tween(item.behavior_cooldown)
+			if item.cooldown > 0.0:
+				_start_tween(item.cooldown)
 				on_cooldown_started.emit(item_type)
 
 func check_cooldown(value: Item.Type):
 	if type == Type.PLAYER and not is_cooling_down \
 	and item_type != Item.Type.INVALID and item_type == value:
-		var item := ItemDB.get_item_type_data(value)
-		if item.behavior and item.behavior_cooldown > 0.0:
-			_start_tween(item.behavior_cooldown)
+		var item := ItemDB.get_item(value)
+		if item.behavior and item.cooldown > 0.0:
+			_start_tween(item.cooldown)
 
 func _start_tween(tween_time_sec: float):
 	is_cooling_down = true
@@ -78,7 +78,7 @@ func _start_tween(tween_time_sec: float):
 func _on_set_item(value: Item.Type):
 	item_type = value
 	if item_type != Item.Type.INVALID:
-		_on_set_icon(ItemDB.get_item_type_data(value).icon)
+		_on_set_icon(ItemDB.get_item(value).icon)
 
 func _on_set_icon(value: Texture):
 	$icon.texture = value
@@ -86,17 +86,17 @@ func _on_set_icon(value: Texture):
 func _on_set_type(value: Type):
 	type = value
 	if value == Type.MERCHANT:
-		remove_from_group("serializable")
+		remove_from_group('serializable')
 		pressed.disconnect(_on_pressed)
 	else:
-		if not is_in_group("serializable"):
-			add_to_group("serializable")
+		if not is_in_group('serializable'):
+			add_to_group('serializable')
 		if not pressed.is_connected(_on_pressed):
 			pressed.connect(_on_pressed)
 
 func clear():
 	item_type = Item.Type.INVALID
-	label.text = ""
+	label.text = ''
 	if is_instance_valid(tween) and tween is Tween:
 		tween.stop()
 	_on_tween_finished()
@@ -106,11 +106,11 @@ func set_cooldown_text(value: int):
 
 func serialize() -> Dictionary:
 	return {}
-	# TODO
-	#return { "time_left": player.current_uses[item_type].time_left \
+	# TODO: serialize
+	#return { 'time_left': player.current_uses[item_type].time_left \
 		#if player.current_uses.has(item_type) else -1.0 } \
 	#if is_cooling_down else {}
 
 func deserialize(payload: Dictionary):
-	if payload.has("time_left") and payload["time_left"] > 0.0:
-		_start_tween(payload["time_left"])
+	if payload.has('time_left') and payload['time_left'] > 0.0:
+		_start_tween(payload['time_left'])

@@ -1,6 +1,6 @@
 extends Control
 
-var quest_entry_scene := preload("res://src/ui/objective_tracker/quest_entry.tscn")
+var quest_entry_scene := preload("uid://d0ndwgbbr3qcw")
 
 var play_focus_sfx := false
 var last_focused_entry: Control = null

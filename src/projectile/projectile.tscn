@@ -1,35 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://1krshwqbaymx"]
+[gd_scene load_steps=11 format=3 uid="uid://1krshwqbaymx"]
 
 [ext_resource type="Script" uid="uid://u2d6q0o5rsb" path="res://src/projectile/projectile.gd" id="1_0ck1q"]
-[ext_resource type="Script" uid="uid://bw1yy3xykmuun" path="res://resource/character/hit_flags.gd" id="2_0abhd"]
-[ext_resource type="Script" uid="uid://b8j5u8bk4vwcx" path="res://resource/projectile/projectile_strategy.gd" id="3_0abhd"]
+[ext_resource type="Resource" uid="uid://cjafm3bqej356" path="res://resource/item/implemented/fireball/fireball_projectile_strategy.tres" id="2_0abhd"]
 [ext_resource type="Script" uid="uid://cy3054qggro0q" path="res://src/fsm/_fsm.gd" id="4_ckvcp"]
-[ext_resource type="Texture2D" uid="uid://u48xdwltu42a" path="res://icon.svg" id="4_kc6oy"]
 [ext_resource type="Script" uid="uid://udmhm5wklpci" path="res://src/projectile/strategy/projectile_move_instant.gd" id="4_q2lyy"]
 [ext_resource type="Script" uid="uid://dpmy6ydkxvueu" path="res://src/projectile/strategy/projectile_move_linear.gd" id="5_0abhd"]
 [ext_resource type="Script" uid="uid://b02448n84k1j3" path="res://src/projectile/strategy/projectile_move_stopped.gd" id="5_45bxm"]
 [ext_resource type="Script" uid="uid://cqc6u82wgh70k" path="res://src/projectile/strategy/projectile_move_speed_curve.gd" id="6_45bxm"]
 [ext_resource type="Script" uid="uid://deuepluy7puev" path="res://src/projectile/strategy/projectile_move_tween.gd" id="7_wpinl"]
 
-[sub_resource type="Resource" id="Resource_45bxm"]
-script = ExtResource("2_0abhd")
-metadata/_custom_type_script = "uid://bw1yy3xykmuun"
-
-[sub_resource type="Resource" id="Resource_wpinl"]
-script = ExtResource("3_0abhd")
-metadata/_custom_type_script = "uid://b8j5u8bk4vwcx"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdh5j"]
-radius = 4.0
-height = 12.0
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rdh5j"]
-b = Vector2(0, 52)
+b = Vector2(0, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2lyy"]
+radius = 3.0
 
 [node name="projectile" type="Node2D"]
 script = ExtResource("1_0ck1q")
-game_hit_flags = SubResource("Resource_45bxm")
-strategy = SubResource("Resource_wpinl")
+strategy = ExtResource("2_0abhd")
 
 [node name="fsm" type="Node" parent="."]
 script = ExtResource("4_ckvcp")
@@ -58,11 +46,19 @@ projectile = NodePath("../..")
 need_physics_process = true
 
 [node name="timer" type="Timer" parent="."]
+wait_time = 20.0
 one_shot = true
 
 [node name="img" type="Sprite2D" parent="."]
-scale = Vector2(0.063, 0.063)
-texture = ExtResource("4_kc6oy")
+rotation = -41.49738
+
+[node name="dodge_sight" type="Area2D" parent="img"]
+collision_layer = 0
+monitorable = false
+
+[node name="coll" type="CollisionShape2D" parent="img/dodge_sight"]
+rotation = -1.5707941
+shape = SubResource("SegmentShape2D_rdh5j")
 
 [node name="snd" type="AudioStreamPlayer2D" parent="."]
 
@@ -73,15 +69,10 @@ collision_mask = 2
 
 [node name="body" type="CollisionShape2D" parent="hit_box"]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_rdh5j")
+shape = SubResource("CircleShape2D_q2lyy")
 
-[node name="dodge_sight" type="Area2D" parent="."]
-collision_layer = 0
-monitorable = false
-
-[node name="coll" type="CollisionShape2D" parent="dodge_sight"]
-shape = SubResource("SegmentShape2D_rdh5j")
+[node name="anim" type="AnimationPlayer" parent="."]
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="img/dodge_sight" to="." method="_on_dodge_sight_body_entered"]
 [connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
-[connection signal="body_entered" from="dodge_sight" to="." method="_on_dodge_sight_body_entered"]

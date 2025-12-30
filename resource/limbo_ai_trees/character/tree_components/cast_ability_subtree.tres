@@ -1,0 +1,33 @@
+[gd_resource type="BehaviorTree" load_steps=14 format=3 uid="uid://drpnfiyrb8mue"]
+
+[ext_resource type="BlackboardPlan" uid="uid://m8tjqfc55awy" path="res://resource/limbo_ai_trees/character/tree_components/blackboard_plan_cast.tres" id="1_pi281"]
+[ext_resource type="Script" uid="uid://cnbtak1s167do" path="res://resource/limbo_ai_trees/tasks/ability/ability_wait_cast.gd" id="2_3sc36"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="2_ehf26"]
+[ext_resource type="Script" uid="uid://b2v573r6egocn" path="res://resource/limbo_ai_trees/tasks/ability/has_ability_target.gd" id="2_ehvax"]
+[ext_resource type="Script" uid="uid://desp3bpe0cxr8" path="res://resource/limbo_ai_trees/tasks/ability/has_cast_time.gd" id="2_uwvxd"]
+[ext_resource type="Script" uid="uid://cb4wviao2w3ov" path="res://resource/limbo_ai_trees/tasks/ability/ability_cast.gd" id="5_uwvxd"]
+
+[sub_resource type="BTCondition" id="BTCondition_ehf26"]
+script = ExtResource("2_ehvax")
+
+[sub_resource type="BTCondition" id="BTCondition_mcgi5"]
+script = ExtResource("2_uwvxd")
+
+[sub_resource type="BTAction" id="BTAction_uwvxd"]
+script = ExtResource("2_ehf26")
+
+[sub_resource type="BTWait" id="BTWait_ehvax"]
+script = ExtResource("2_3sc36")
+
+[sub_resource type="BTSequence" id="BTSequence_j0rqu"]
+children = [SubResource("BTCondition_mcgi5"), SubResource("BTAction_uwvxd"), SubResource("BTWait_ehvax")]
+
+[sub_resource type="BTAction" id="BTAction_mcgi5"]
+script = ExtResource("5_uwvxd")
+
+[sub_resource type="BTSelector" id="BTSelector_1u8gl"]
+children = [SubResource("BTCondition_ehf26"), SubResource("BTSequence_j0rqu"), SubResource("BTAction_mcgi5")]
+
+[resource]
+blackboard_plan = ExtResource("1_pi281")
+root_task = SubResource("BTSelector_1u8gl")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6dgb7"]
 [ext_resource type="AudioStream" uid="uid://de0ujchwm2a0p" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/06_Large_Humanoid_Idle_1.wav" id="2_2mufq"]
 [ext_resource type="AudioStream" uid="uid://dks0m0xgggf81" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/05_Large_Humanoid_Death.wav" id="2_6gmee"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://s2cibbmfawmq" path="res://resource/animation_state_machine/Cyclop_state_machine.tres" id="2_maotf"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dhfqh5xsj6ro6" path="res://resource/animation_state_machine/Cyclop_state_machine.tres" id="2_maotf"]
 [ext_resource type="Texture2D" uid="uid://bhcjib2n0h21a" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Cyclop/CyclopIdle.png" id="3_f7l3b"]
 [ext_resource type="AudioStream" uid="uid://iviip2thllgr" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/07_Large_Humanoid_Idle_2.wav" id="3_vw54x"]
 [ext_resource type="AudioStream" uid="uid://xpvjrw7ffouf" path="res://asset/snd/Minifantasy_Creatures_SFX_v3.0/Big_Guys/Large_Humanoid/01_Large_Humanoid_Attack_1.wav" id="5_op4p6"]
@@ -25,7 +25,7 @@ melee_snd = Array[AudioStream]([ExtResource("5_op4p6"), ExtResource("6_3fal6")])
 [node name="hurt" parent="fsm" index="5"]
 quips = Array[AudioStream]([ExtResource("7_1unf6"), ExtResource("8_ll1qm")])
 
-[node name="anim_tree" parent="." index="3"]
+[node name="anim_tree" parent="." index="10"]
 tree_root = ExtResource("2_maotf")
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
@@ -33,8 +33,8 @@ parameters/idle/blend_position = Vector2(-0.0656064, 0.136986)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="img" parent="." index="7"]
+[node name="img" parent="." index="11"]
 texture = ExtResource("3_f7l3b")
-frame = 28
+frame = 29
 
 [connection signal="animation_changed" from="anim_player" to="." method="_on_anim_player_animation_changed"]

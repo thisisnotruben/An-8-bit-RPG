@@ -1,5 +1,4 @@
-extends Node
-class_name ItemBehavior
+class_name ItemBehavior extends Node
 
 @onready var behavior: BTPlayer = $behavior
 var current_cooldown: float = 0.0

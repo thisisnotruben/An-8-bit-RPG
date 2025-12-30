@@ -25,6 +25,15 @@ TODO
 	- make_character_icons: [Hedgehog] has no 'idle' anim.
 	- make_character_icons: [Panda] has no 'idle' anim.
 
+
+- Centaur
+	- make charge ability
+	- make fireball ability
+	- make melee stun ability
+	- make flee animation
+- To make centaur will have to me behavior tree modular
+
+
 ### Bugs
 
 

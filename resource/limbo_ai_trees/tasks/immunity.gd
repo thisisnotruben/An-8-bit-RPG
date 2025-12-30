@@ -7,7 +7,7 @@ extends BTAction
 
 func _generate_name() -> String:
 	return "Immunity: add [%s], type [%s]" % \
-		[add, AttackType.Type.keys()[strategy.immunity]]
+		[add, ModifierAttack.Type.keys()[strategy.immunity]]
 
 func _tick(_delta: float) -> Status:
 	var character: Character = blackboard.get_var("character_var")
@@ -24,6 +24,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	if strategy == null:
 		warnings.append("Need's a strategy.")
-	elif strategy.immunity == AttackType.Type.NORMAL:
+	elif strategy.immunity == ModifierAttack.Type.NORMAL:
 		warnings.append("Strategy immunity cannot be of type: [NORMAL].")
 	return warnings

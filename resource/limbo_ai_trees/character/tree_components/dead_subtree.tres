@@ -1,0 +1,31 @@
+[gd_resource type="BehaviorTree" load_steps=9 format=3 uid="uid://cxfwiqfk8biws"]
+
+[ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://resource/limbo_ai_trees/tasks/character/play_audio.gd" id="1_vtk5p"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="1_xu8q6"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_vtk5p"]
+
+[sub_resource type="BBVariant" id="BBVariant_ej0v8"]
+type = 2
+saved_value = 0
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_u11nt"]
+variable = &"health_var"
+value = SubResource("BBVariant_ej0v8")
+
+[sub_resource type="BTAction" id="BTAction_swh00"]
+script = ExtResource("1_xu8q6")
+state = 4
+
+[sub_resource type="BTAction" id="BTAction_komxf"]
+script = ExtResource("1_vtk5p")
+audio_lib_type = 4
+
+[sub_resource type="BTSequence" id="BTSequence_3shns"]
+custom_name = "Dead"
+children = [SubResource("BTCheckVar_u11nt"), SubResource("BTAction_swh00"), SubResource("BTAction_komxf")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_vtk5p")
+root_task = SubResource("BTSequence_3shns")

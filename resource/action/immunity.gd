@@ -1,4 +1,4 @@
 extends ActionContructor
 class_name ActionImmunity
 
-@export var immunity := AttackType.Type.NORMAL
+@export var immunity := ModifierAttack.Type.NORMAL

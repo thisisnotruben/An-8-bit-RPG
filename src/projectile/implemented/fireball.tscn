@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw8xrgubs5bov"]
+
+[ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="1_orrd1"]
+[ext_resource type="Texture2D" uid="uid://cek74a7f3t8wx" path="res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Wizard/Special_Animations/Fireball/Fireball_Projectile.png" id="2_xp51r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6r4e"]
+atlas = ExtResource("2_xp51r")
+region = Rect2(72, 40, 16, 16)
+
+[node name="fireball" instance=ExtResource("1_orrd1")]
+rotation = 0.00021731715
+
+[node name="img" parent="." index="2"]
+rotation = 0.0
+texture = SubResource("AtlasTexture_y6r4e")

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://dwi2asf1q45jt"]
+
+[ext_resource type="BehaviorTree" uid="uid://bk2t4h2o1bbdr" path="res://resource/item/implemented/charge/charge_behavior.tres" id="1_1ujfo"]
+[ext_resource type="Script" uid="uid://bvqr3hct5j1xr" path="res://resource/item/ability.gd" id="1_lsc12"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="3_6i0wj"]
+
+[sub_resource type="Resource" id="Resource_jly34"]
+script = ExtResource("3_6i0wj")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[resource]
+script = ExtResource("1_lsc12")
+cost_type = 2
+cost = SubResource("Resource_jly34")
+target_type = 1
+blurb = "Charge to an enemy, dealing  damage, stunning it for 1 sec"
+worth = 20
+can_drop = false
+type = 3
+category = 8
+behavior = ExtResource("1_1ujfo")
+cooldown = 6.0
+metadata/_custom_type_script = "uid://bvqr3hct5j1xr"

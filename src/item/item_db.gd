@@ -1,8 +1,7 @@
-extends Node
-class_name ItemDB
+class_name ItemDB extends Node
 
 static var items := { }
 
 
-static func get_item_type_data(item_type: Item.Type) -> BaseItem:
+static func get_item(item_type: Item.Type) -> BaseItem:
 	return items.get(item_type, null)

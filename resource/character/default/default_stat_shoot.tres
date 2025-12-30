@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CharacterAttackStats" load_steps=9 format=3 uid="uid://c6wamfb52kyyj"]
+
+[ext_resource type="Script" uid="uid://ceqfbg0d2eyn7" path="res://resource/modifier/amount/modifier_amount.gd" id="1_72oli"]
+[ext_resource type="Script" uid="uid://cqcoedlomhoec" path="res://resource/character/attack_stats.gd" id="1_klx6a"]
+[ext_resource type="Script" uid="uid://cwpxy0f2j4icl" path="res://resource/modifier/amount/modifer_amount_abstract.gd" id="2_4uc1q"]
+[ext_resource type="Script" uid="uid://by30of4e8c7jk" path="res://resource/modifier/stat/stat_modifier.gd" id="3_ioc44"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="4_ljfif"]
+
+[sub_resource type="Resource" id="Resource_pwhwt"]
+script = ExtResource("1_72oli")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_k0ovm"]
+script = ExtResource("3_ioc44")
+base = SubResource("Resource_pwhwt")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_rln5g"]
+script = ExtResource("4_ljfif")
+type = 1
+modifier = SubResource("Resource_k0ovm")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[resource]
+script = ExtResource("1_klx6a")
+damage = SubResource("Resource_rln5g")
+attack_range = 64.0
+metadata/_custom_type_script = "uid://cqcoedlomhoec"

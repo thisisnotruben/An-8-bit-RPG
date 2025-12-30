@@ -1,5 +1,4 @@
-extends IState
-class_name ProjectileMoveState
+class_name ProjectileMoveState extends IState
 
 enum Type{ INVALID, STOPPED, INSTANT, LINEAR, SPEED_CURVE, TWEEN, }
 enum UntilType { EXPIRE, POS, }

@@ -1,5 +1,4 @@
-extends Control
-class_name HUD
+class_name HUD extends Control
 
 var play_focus_sfx := false
 var hovered_control: Control = null
@@ -86,7 +85,7 @@ func _on_set_target(value: Character):
 
 	if value:
 
-		var show_slot := not value.character_roles.is_empty()
+		var show_slot := not value.unit.character_roles.is_empty()
 		target_slot.visible = show_slot
 		target_status_bar.visible = not value.character_name.is_empty()
 		target_name_label.text = value.character_name if show_slot \
@@ -94,19 +93,19 @@ func _on_set_target(value: Character):
 
 		if show_slot:
 			tab_master.current_tab = tabs_master["npc"]
-			var is_one_role := value.character_roles.size() == 1
+			var is_one_role := value.unit.character_roles.size() == 1
 			tab_npc.tabs_visible = not is_one_role
 
 			if is_one_role:
 				var npc_view := ""
 				match value.character_roles[0]:
-					Character.CharaterSideRoles.MERCHANT:
+					CharacterBuilder.CharaterSideRoles.MERCHANT:
 						target_slot.item_icon = merchant_icon
 						npc_view = "merchant"
-					Character.CharaterSideRoles.TRAINER:
+					CharacterBuilder.CharaterSideRoles.TRAINER:
 						target_slot.item_icon = trainer_icon
 						npc_view = "trainer"
-					Character.CharaterSideRoles.DIALOGUE:
+					CharacterBuilder.CharaterSideRoles.DIALOGUE:
 						target_slot.item_icon = dialogue_icon
 						npc_view = "dialogue"
 				if not npc_view.is_empty():
@@ -114,9 +113,9 @@ func _on_set_target(value: Character):
 
 			else:
 				var role_map := { # mapped against 'tab_npc' index
-					Character.CharaterSideRoles.DIALOGUE: 0,
-					Character.CharaterSideRoles.TRAINER: 1,
-					Character.CharaterSideRoles.MERCHANT: 2
+					CharacterBuilder.CharaterSideRoles.DIALOGUE: 0,
+					CharacterBuilder.CharaterSideRoles.TRAINER: 1,
+					CharacterBuilder.CharaterSideRoles.MERCHANT: 2
 				}
 				for role in role_map:
 					tab_npc.get_tab_bar().set_tab_hidden(role_map[role],

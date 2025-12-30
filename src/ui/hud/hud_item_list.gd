@@ -68,7 +68,7 @@ func _on_draw():
 
 func display(item_type: Item.Type, is_cooling_down: bool):
 	if item_type != Item.Type.INVALID:
-		var data := ItemDB.get_item_type_data(item_type)
+		var data := ItemDB.get_item(item_type)
 		item_icon.texture = data.icon
 		item_name.text = data.item_name
 		item_blurb.text = data.blurb
@@ -122,4 +122,4 @@ func _on_drop_pressed():
 func _on_learn_pressed():
 	snd_learn.play()
 	player.inventory_modify(focused_slot.item_type, true)
-	player.gold -= ItemDB.get_item_type_data(focused_slot.item_type).worth
+	player.gold -= ItemDB.get_item(focused_slot.item_type).worth

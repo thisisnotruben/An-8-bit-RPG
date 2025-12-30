@@ -1,0 +1,57 @@
+[gd_resource type="BehaviorTree" load_steps=11 format=3 uid="uid://bq1qtv635p1rn"]
+
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="1_5ljsl"]
+[ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://resource/limbo_ai_trees/tasks/character/play_audio.gd" id="1_7n4oc"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_7n4oc"]
+var/character_var/name = &"character_var"
+var/character_var/type = 24
+var/character_var/hint = 34
+var/character_var/hint_string = "Character"
+var/input_state_var/name = &"input_state_var"
+var/input_state_var/type = 4
+var/input_state_var/value = ""
+var/input_state_var/hint = 0
+var/input_state_var/hint_string = ""
+var/health_var/name = &"health_var"
+var/health_var/type = 2
+var/health_var/value = 0
+var/health_var/hint = 0
+var/health_var/hint_string = ""
+var/hurt_var/name = &"hurt_var"
+var/hurt_var/type = 1
+var/hurt_var/value = false
+var/hurt_var/hint = 0
+var/hurt_var/hint_string = ""
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_1pu5h"]
+variable = &"hurt_var"
+
+[sub_resource type="BTCooldown" id="BTCooldown_aq5ae"]
+duration = 1.0
+children = [SubResource("BTCheckTrigger_1pu5h")]
+
+[sub_resource type="BBVariant" id="BBVariant_lipyn"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetVar" id="BTSetVar_50uf6"]
+variable = &"hurt_var"
+value = SubResource("BBVariant_lipyn")
+
+[sub_resource type="BTAction" id="BTAction_avk3q"]
+script = ExtResource("1_5ljsl")
+state = 6
+
+[sub_resource type="BTAction" id="BTAction_aucgc"]
+script = ExtResource("1_7n4oc")
+audio_lib_type = 6
+
+[sub_resource type="BTSequence" id="BTSequence_dmsi3"]
+custom_name = "Hurt"
+children = [SubResource("BTCooldown_aq5ae"), SubResource("BTSetVar_50uf6"), SubResource("BTAction_avk3q"), SubResource("BTAction_aucgc")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_7n4oc")
+root_task = SubResource("BTSequence_dmsi3")

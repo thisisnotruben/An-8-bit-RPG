@@ -1,13 +1,12 @@
-extends Node
-class_name GameCursor
+class_name GameCursor extends Node
 
 enum Cursor {DEFAULT, HAND, ATTACK, DIALOGUE, BAG}
 
-const arrow := preload("res://resource/texture/texture_ui_cursor_arrow.tres")
-const pointing_hand := preload("res://resource/texture/texture_ui_cursor_pointing_hand.tres")
-const attack := preload("res://resource/texture/texture_ui_cursor_attack.tres")
-const dialogue := preload("res://resource/texture/texture_ui_cursor_dialogue.tres")
-const bag := preload("res://resource/texture/texture_ui_cursor_bag.tres")
+const arrow := preload("uid://ev1yg26v2q1o")
+const pointing_hand := preload("uid://nw30g6et71ym")
+const attack := preload("uid://dyltp5mo1hlq")
+const dialogue := preload("uid://be8gm8iwmn67r")
+const bag := preload("uid://da1wwh6wk8k5y")
 
 const map := {
 	Cursor.DEFAULT: arrow,

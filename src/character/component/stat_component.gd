@@ -4,21 +4,21 @@ class_name StatComponent
 @export var current: int = 1
 @export var max_value: int = 1
 
-@export var resistances: Array[AttackType.Type] = []
-@export var immunities: Array[AttackType.Type] = []
+@export var resistances: Array[ModifierAttack.Type] = []
+@export var immunities: Array[ModifierAttack.Type] = []
 
 signal changed(_current: int, _max: int, _old_value: int)
 
 
-func modify(modifier: AttackType):
-	if not immunities.has(modifier.type):
+func modify(attack: ModifierAttack):
+	if not immunities.has(attack.type):
 		var prev_current := current
 
-		if resistances.has(modifier.type):
+		if resistances.has(attack.type):
 			pass
 
-		var amount: int = abs(modifier.amount)
-		if not modifier.add:
+		var amount: int = abs(attack.amount)
+		if not attack.add:
 			amount *= -1
 
 		current = clampi(current + amount, 0, max_value)

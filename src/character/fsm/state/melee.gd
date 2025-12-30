@@ -10,12 +10,20 @@ func _init():
 
 func enter():
 	super.enter()
-	play_quip()
 	switch_type_status = SwitchTypeStatus.ACTIVE
 	if active:
 		var hit_scan := character.hit_scan_melee.get_collider() as Character
 		if character.is_foe(hit_scan):
-			hit_scan.health.modify(character.stats.melee_stats.damage)
+
+			if blackboard.has('ability_player_var'):
+				var ability_player: AbilityPlayer = blackboard.get('ability_player_var')
+				blackboard.erase('ability_player_var')
+
+				ability_player.blackboard.set_var('character_var', hit_scan)
+				ability_player.blackboard.set_var('on_hit_var', true)
+				ability_player.enter()
+
+			hit_scan.health.modify(character.unit.stats.melee.damage)
 			if not melee_snd.is_empty():
 				snd.stream = melee_snd.pick_random()
 				snd.play()

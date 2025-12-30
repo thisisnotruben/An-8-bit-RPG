@@ -1,39 +1,103 @@
-extends Resource
-class_name CharacterStats
+@tool
+class_name CharacterStats extends Resource
 
-@export_category("Health")
-@export_range(1, 10) var health_max: int = 2
-@export_range(1.0, 90.0, 0.1) var health_regen_sec: float = 30.0
-@export_range(1, 10) var health_regen_amt: int = 1
+const _default_vital: StatModifer = preload('uid://eml2nyacvdlf')
+const _default_vital_regen_sec: StatModifer = preload('uid://t5x8lqvvii74')
+const _default_vital_regen_amnt: StatModifer = preload('uid://cej4dsuot70pl')
 
-@export_category("Mana")
-@export_range(1, 10) var mana_max: int = 2
-@export_range(1.0, 90.0, 0.1) var mana_regen_sec: float = 30.0
-@export_range(1, 10) var mana_regen_amt: int = 1
+@export var move_speed: StatModifer = preload('uid://dx4fqdca1tv1d')
 
-@export_category("Agility")
-@export_range(1, 10) var ability_max: int = 2
-@export_range(1.0, 90.0, 0.1) var ability_regen_sec: float = 30.0
-@export_range(1, 10) var ability_regen_amt: int = 1
+@export_group('Health')
 
-@export_category("Combat")
-@export var melee_stats: CharacterAttackStats
-@export var shoot_stats: CharacterAttackStats
+@export var health_max := _default_vital
+@export var health_regen_sec := _default_vital_regen_sec
+@export var health_regen_amt := _default_vital_regen_amnt
+
+@export_group('Mana')
+@export var mana_max := _default_vital
+@export var mana_regen_sec := _default_vital_regen_sec
+@export var mana_regen_amt := _default_vital_regen_amnt
+
+@export_group('Agility')
+@export var ability_max := _default_vital
+@export var ability_regen_sec := _default_vital_regen_sec
+@export var ability_regen_amt := _default_vital_regen_amnt
+
+@export_group('Combat')
+@export var attack_speed: StatModifer = preload('uid://dswpholksjmce')
+@export var melee: CharacterAttackStats = preload('uid://cvn58to2gmt7e')
+@export var shoot: CharacterAttackStats = preload('uid://c6wamfb52kyyj')
+
+var target: Character
 
 
-func set_stats(target: Node2D):
-	if target is Character:
-		target.health.max_value = health_max
-		target.health.current = health_max
-		target.health_regen.regen_amount = health_regen_amt
-		target.health_regen.set_timer(health_regen_sec)
+func init(_target: Node2D):
+	target = _target
+	if _target is Character:
+		var signal_map: Dictionary[StatModifer, Callable] = {
+			move_speed: _on_speed_changed,
+			health_max: _on_health_max_changed,
+			health_regen_amt: _on_health_regen_changed,
+			mana_max: _on_mana_max_changed,
+			mana_regen_amt: _on_mana_regen_changed,
+			ability_max: _on_ability_max_changed,
+			ability_regen_amt: _on_ability_regen_changed,
+		}
 
-		target.mana.max_value = mana_max
-		target.mana.current = mana_max
-		target.mana_regen.regen_amount = mana_regen_amt
-		target.mana_regen.set_timer(mana_regen_sec)
+		if not Engine.is_editor_hint():
+			signal_map.merge({
+				health_regen_sec: _on_health_regen_sec_changed,
+				mana_regen_sec: _on_mana_regen_sec_changed,
+				ability_regen_sec: _on_ability_regen_sec_changed,
+			})
 
-		target.ability.max_value = ability_max
-		target.ability.current = ability_max
-		target.ability_regen.regen_amount = ability_regen_amt
-		target.ability_regen.set_timer(ability_regen_sec)
+		for stat in signal_map:
+			if not stat.on_current_changed.is_connected(signal_map[stat]):
+				stat.on_current_changed.connect(signal_map[stat])
+			stat.calculate()
+
+		target.health.current = int(health_max.current)
+		target.mana.current = int(mana_max.current)
+		target.ability.current = int(ability_max.current)
+
+		melee.init(target.hit_scan_melee)
+		shoot.init(target.hit_scan_shoot)
+
+func _on_speed_changed(value: float):
+	(target.get_node('fsm/move') as Move).speed = value
+
+#region health
+func _on_health_max_changed(value: float):
+	target.health.max_value = int(value)
+
+func _on_health_regen_sec_changed(value: float):
+	target.health_regen.set_timer(value)
+
+func _on_health_regen_changed(value: float):
+	target.health_regen.regen_amount = value
+#endregion
+
+#region mana
+func _on_mana_max_changed(value: float):
+	target.mana.max_value = int(value)
+
+func _on_mana_regen_sec_changed(value: float):
+	target.mana_regen.set_timer(value)
+
+func _on_mana_regen_changed(value: float):
+	target.mana_regen.regen_amount = value
+#endregion
+
+#region ability
+func _on_ability_max_changed(value: float):
+	target.ability.max_value = int(value)
+
+func _on_ability_regen_sec_changed(value: float):
+	target.ability_regen.set_timer(value)
+
+func _on_ability_regen_changed(value: float):
+	target.ability_regen.regen_amount = value
+#endregion
+
+func _on_attack_speed_changed(_value: float):
+	print_debug('TODO: need to implement this in the Character [behavior_tree]')

@@ -58,7 +58,7 @@ func _on_draw():
 
 func display(item_type: Item.Type, is_player_slot: bool):
 	if item_type != Item.Type.INVALID:
-		var data := ItemDB.get_item_type_data(item_type)
+		var data := ItemDB.get_item(item_type)
 		if is_player_slot:
 			player_item_icon.texture = data.icon
 			player_item_name.text = data.item_name
@@ -88,11 +88,11 @@ func clear(is_player: bool):
 func _on_sell_pressed():
 	$snd_sell.play()
 	player.inventory_modify(player_focused_slot.item_type, false)
-	player.gold += ItemDB.get_item_type_data(player_focused_slot.item_type).worth
+	player.gold += ItemDB.get_item(player_focused_slot.item_type).worth
 	clear(true)
 
 func _on_buy_pressed():
-	var item : Item = ItemDB.get_item_type_data(merchant_focused_slot.item_type)
+	var item : Item = ItemDB.get_item(merchant_focused_slot.item_type)
 	assert(item is Item)
 	if player.gold < item.worth:
 		$snd_cant_afford.play()

@@ -40,7 +40,7 @@ func exit():
 
 func physics_process(delta: float):
 	super.physics_process(delta)
-	if character.npc:
+	if character.unit.npc:
 		npc_move.physics_process(delta)
 	elif not player_pause:
 		player_move.physics_process(delta)
@@ -48,9 +48,9 @@ func physics_process(delta: float):
 # animation
 func apply_animation(input_dir: Vector2):
 	if input_dir.length() > 0.0:
-		var a_t := "parameters/%s/blend_position"
+		var a_t := 'parameters/%s/blend_position'
 		var anim_direction := input_dir.normalized()
-		["attack", "idle", "idle_start", "walk", "hurt"].filter(func(s): \
+		['attack', 'idle', 'idle_start', 'walk', 'hurt'].filter(func(s): \
 			return character.anim_tree.get(a_t % s) != null) \
 			.map(func(s): character.anim_tree[a_t % s] = anim_direction)
 

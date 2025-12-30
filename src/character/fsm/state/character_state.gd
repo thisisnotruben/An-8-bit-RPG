@@ -12,17 +12,9 @@ var character: Character = null
 var switch_type := SwitchType.IMMEDIATE
 var switch_type_status := SwitchTypeStatus.INACTIVE
 var type := -1
+var blackboard := {}
 
 
 func init(args := {}) -> IState:
-	character = args["character"]
+	character = args['character']
 	return self
-
-func play_quip(override := false, idx: int = -1):
-	if not quips.is_empty() and (override or \
-	(not character.snd.playing and quip_play_chance >= randf())):
-		if idx == -1:
-			character.snd.stream = quips.pick_random()
-		else:
-			character.snd.stream = quips[idx]
-		character.snd.play()

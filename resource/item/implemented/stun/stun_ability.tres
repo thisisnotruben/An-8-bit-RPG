@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://cu68imb6cxg71"]
+
+[ext_resource type="BehaviorTree" uid="uid://bl8v6o1m15ks3" path="res://resource/item/implemented/stun/stun_behavior.tres" id="1_088ja"]
+[ext_resource type="Script" uid="uid://bvqr3hct5j1xr" path="res://resource/item/ability.gd" id="1_lrtpg"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="2_088ja"]
+
+[sub_resource type="Resource" id="Resource_s1agc"]
+script = ExtResource("2_088ja")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[resource]
+script = ExtResource("1_lrtpg")
+cost_type = 2
+cost = SubResource("Resource_s1agc")
+target_type = 1
+item_name = "Stun"
+blurb = "Stun an enemy on attack."
+worth = 15
+can_drop = false
+type = 1
+category = 8
+behavior = ExtResource("1_088ja")
+cooldown = 5.0
+metadata/_custom_type_script = "uid://bvqr3hct5j1xr"

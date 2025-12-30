@@ -7,7 +7,7 @@ extends BTAction
 
 func _generate_name() -> String:
 	return "Resistance: add [%s], resistance type [%s], amount [%s]" % \
-		[add, AttackType.Type.keys()[strategy.resistance.type], strategy.resistance.amount]
+		[add, ModifierAttack.Type.keys()[strategy.resistance.type], strategy.resistance.amount]
 
 func _tick(_delta: float) -> Status:
 	var character: Character = blackboard.get_var("character_var")

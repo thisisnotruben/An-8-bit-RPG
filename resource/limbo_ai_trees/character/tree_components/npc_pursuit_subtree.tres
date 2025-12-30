@@ -1,0 +1,39 @@
+[gd_resource type="BehaviorTree" load_steps=14 format=3 uid="uid://xblnoae3ir6i"]
+
+[ext_resource type="Script" uid="uid://b652b1io2x5nu" path="res://resource/limbo_ai_trees/tasks/character/can_melee.gd" id="1_lahck"]
+[ext_resource type="Script" uid="uid://bvtr4c8q8kc0v" path="res://resource/limbo_ai_trees/tasks/character/can_shoot.gd" id="2_ndf6h"]
+[ext_resource type="Script" uid="uid://c5vqpe3n85mpq" path="res://resource/limbo_ai_trees/tasks/character/can_move_to_target.gd" id="3_633di"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="4_8d5x6"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_6ytga"]
+
+[sub_resource type="BTCondition" id="BTCondition_e8grk"]
+script = ExtResource("1_lahck")
+
+[sub_resource type="BTInvert" id="BTInvert_cm48d"]
+children = [SubResource("BTCondition_e8grk")]
+
+[sub_resource type="BTCondition" id="BTCondition_whfs7"]
+script = ExtResource("2_ndf6h")
+
+[sub_resource type="BTInvert" id="BTInvert_48bck"]
+children = [SubResource("BTCondition_whfs7")]
+
+[sub_resource type="BTCondition" id="BTCondition_cphkb"]
+script = ExtResource("3_633di")
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_s27bt"]
+time_limit = 6.0
+children = [SubResource("BTCondition_cphkb")]
+
+[sub_resource type="BTAction" id="BTAction_u6pfo"]
+script = ExtResource("4_8d5x6")
+state = 1
+
+[sub_resource type="BTSequence" id="BTSequence_72t4l"]
+custom_name = "pursuit"
+children = [SubResource("BTInvert_cm48d"), SubResource("BTInvert_48bck"), SubResource("BTTimeLimit_s27bt"), SubResource("BTAction_u6pfo")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_6ytga")
+root_task = SubResource("BTSequence_72t4l")

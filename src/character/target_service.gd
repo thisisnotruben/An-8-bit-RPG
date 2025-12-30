@@ -1,12 +1,11 @@
-extends Node
-class_name TargetService
+class_name TargetService extends Node
 
 @export var player: Character
 @export var hud: HUD
 
 
 func _ready():
-	get_tree().get_nodes_in_group("character") \
+	get_tree().get_nodes_in_group('character') \
 		.map(func(c): c.on_selected.connect(on_character_selected))
 
 func on_character_selected(character: Character):
