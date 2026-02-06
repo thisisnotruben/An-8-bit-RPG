@@ -11,14 +11,14 @@ signal subcontrol_mouse_exited
 
 func display(label: String, yes: String, no: String):
 	$header.text = label
-	$hBox/yes.text = "  %s  " % yes
-	$hBox/no.text = "  %s  " % no
+	$hBox/yes.text = '  %s  ' % yes
+	$hBox/no.text = '  %s  ' % no
 
 func _on_yes_pressed():
-	popup_return.emit("yes")
+	popup_return.emit('yes')
 
 func _on_no_pressed():
-	popup_return.emit("no")
+	popup_return.emit('no')
 
 func _on_draw():
 	play_focus_sfx = false

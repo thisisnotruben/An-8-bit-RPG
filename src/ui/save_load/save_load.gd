@@ -2,11 +2,8 @@ extends Control
 class_name GameUISaveLoad
 
 enum Type{ Load, Save, }
-const GAME_DATA_PATH := "user://gamedata.json"
-const SCREENSHOT_PATH := "user://game%d.png"
-const VERSION := "1.0"
-const SERIALIZE_GROUP := "serializable"
-const DEFAULT_SLOT_NAME := "Game %d"
+const SCREENSHOT_PATH := 'user://game%d.png'
+const DEFAULT_SLOT_NAME := 'Game %d'
 
 @onready var slots: Control = $hBox/scroll/vBox
 @onready var slot_save_image: TextureRect = $hBox/texture
@@ -17,11 +14,11 @@ const DEFAULT_SLOT_NAME := "Game %d"
 			await ready
 
 		type = value
-		var header_text := ""
+		var header_text := ''
 		if value == Type.Load:
-			header_text = "Load Game"
+			header_text = 'Load Game'
 		elif value == Type.Save:
-			header_text = "Save Game"
+			header_text = 'Save Game'
 		$header.text = header_text
 		$hBox2/load_save.text = header_text
 
@@ -38,8 +35,7 @@ signal subcontrol_mouse_exited
 
 
 func _ready():
-	for i in slots.get_child_count():
-		screenshots.append(null)
+	screenshots.resize(slots.get_child_count())
 
 	for bttn in slots.get_children():
 		bttn.text = DEFAULT_SLOT_NAME % (bttn.get_index() + 1)
@@ -49,9 +45,8 @@ func _ready():
 		bttn.mouse_exited.connect(_on_mouse_exited)
 		bttn.focus_entered.connect(_on_focus_entered)
 
-	var loaded_savegame := _get_save_load_file_data()
 	for i in slots.get_child_count():
-		_load_game(i, loaded_savegame, true)
+		_load_game(i, true)
 
 func _on_back_pressed():
 	back_pressed.emit()
@@ -84,83 +79,23 @@ func _on_slot_toggled(toggled_on: bool, source: CheckBox):
 
 func _on_load_save_pressed():
 	if slot_idx_selected != -1:
-		var payload := _get_save_load_file_data()
 		if type == Type.Load:
-			_load_game(slot_idx_selected, payload)
+			_load_game(slot_idx_selected)
 		elif type == Type.Save:
-			_save_game(slot_idx_selected, payload)
+			_save_game(slot_idx_selected)
 
-func _get_save_load_file_data() -> Dictionary:
-	if FileAccess.file_exists(GAME_DATA_PATH):
-		var file := FileAccess.open(GAME_DATA_PATH, FileAccess.READ)
-		var json := JSON.new()
-		var parsed_result := json.parse(file.get_as_text())
-		if parsed_result == Error.OK:
-			return json.data
-		else:
-			printerr("save_load.gd , _get_save_load_file_data(): parsed_result %s", parsed_result)
-		file.close()
-	return {}
+func _load_game(idx: int, is_preloaded := false):
+	var load_file := SaveFile.load_from_device_or_cache()
+	if not is_preloaded:
+		load_file.deserialize(get_tree(), idx)
+	for i in slots.get_child_count() - 1:
+		if load_file.slots[i]:
+			(slots.get_child(i) as Button).text = load_file.slots[i].datetime
+			screenshots.set(i, Image.new().load_png_from_buffer(load_file.slots[i].screenshot))
 
-func _load_game_screenshot(idx: int) -> ImageTexture:
-	var image_path := SCREENSHOT_PATH % idx
-	if FileAccess.file_exists(image_path):
-		return ImageTexture.create_from_image(Image.load_from_file(image_path))
-	return null
-
-func _load_game(idx: int, payload: Dictionary, preloaded := false):
-	for header in payload:
-		match header:
-			"slot" when not payload[header].has(idx):
-				for dserializable_type in payload[header][idx]:
-					match dserializable_type:
-						"character", "item_slot" when not preloaded:
-							for node_path in payload[header][idx][dserializable_type]:
-								if has_node(node_path):
-									get_node(node_path).deserialize(payload[header][idx][dserializable_type][node_path])
-								else:
-									print("save_load.gd , _load_game() [%s] doesn't exist" % node_path)
-						"time":
-							slots.get_child(idx).text = payload[header][idx][dserializable_type]
-							screenshots[idx] = _load_game_screenshot(idx)
-						"quest":
-							pass
-
-func _save_game(idx: int, master_payload: Dictionary):
-	var payload := {
-		"version": VERSION,
-		"slot": {
-			idx : {
-				"character": {},
-				"quest": {},
-				"item_slot": {},
-				"time": "{year}-{month}-{day} {hour}:{minute}"
-					.format(Time.get_datetime_dict_from_system())
-			}
-		}
-	}
-
-	slots.get_child(idx).text = payload["time"]
-
-	for node in get_tree().get_nodes_in_group(SERIALIZE_GROUP):
-		if not node.has_method("serialize") or not node.has_method("deserialize"):
-			print("save_load.gd, _save_game(): [%s] is not ISerializable" % node.get_path())
-			return
-
-		var node_payload: Dictionary = node.serialize()
-		if not node_payload.is_empty():
-			if node is Character:
-				payload["slot"][idx]["character"][node.get_path()] = node_payload
-			elif node is HudButton:
-				payload["slot"][idx]["item_slot"][node.get_path()] = node_payload
-
-	if not master_payload.is_empty():
-		master_payload["version"] = VERSION
-		master_payload["slot"][idx] = payload["slot"][idx]
-
-	var file = FileAccess.open(GAME_DATA_PATH, FileAccess.WRITE)
-	file.store_string(JSON.stringify(master_payload, "\t"))
-
+func _save_game(idx: int):
+	var screenshot_buffer: PackedByteArray = []
 	if screenshot:
-		screenshot.get_image().save_png(SCREENSHOT_PATH % idx)
 		screenshots[idx] = screenshot
+		screenshot_buffer = screenshot.get_image().save_png_to_buffer()
+	SaveFile.load_from_device_or_cache().serialize(get_tree(), idx, screenshot_buffer)

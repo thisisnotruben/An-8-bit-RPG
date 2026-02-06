@@ -7,6 +7,10 @@ enum TargetType { USER, TARGET, NONE, }
 @export var target_type := TargetType.USER
 @export var cast_time: float
 @export var projectile_strategy: ProjectileStrategy
+## Does this ability cast again without manually doing so?
+@export var autocast: bool
+## When added to inventory, does the ability automatically cast?
+@export var passive: bool
 
 
 func take_cost(character: Character):

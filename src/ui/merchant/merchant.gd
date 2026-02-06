@@ -63,27 +63,27 @@ func display(item_type: Item.Type, is_player_slot: bool):
 			player_item_icon.texture = data.icon
 			player_item_name.text = data.item_name
 			player_item_blurb.text = data.blurb
-			player_item_worth.text = "+ %d" % data.worth
+			player_item_worth.text = '+ %d' % data.worth
 		else:
 			merchant_item_icon.texture = data.icon
 			merchant_item_name.text = data.item_name
 			merchant_item_blurb.text = data.blurb
-			merchant_item_worth.text = "+ %d" % data.worth
+			merchant_item_worth.text = '+ %d' % data.worth
 
 func clear(is_player: bool):
 	if is_player:
 		player_focused_slot = null
 		player_item_icon.texture = null
-		player_item_name.text = ""
-		player_item_blurb.text = ""
-		player_item_worth.text = ""
+		player_item_name.text = ''
+		player_item_blurb.text = ''
+		player_item_worth.text = ''
 		sell_bttn.hide()
 	else:
 		merchant_focused_slot = null
 		merchant_item_icon.texture = null
-		merchant_item_name.text = ""
-		merchant_item_blurb.text = ""
-		merchant_item_worth.text = ""
+		merchant_item_name.text = ''
+		merchant_item_blurb.text = ''
+		merchant_item_worth.text = ''
 
 func _on_sell_pressed():
 	$snd_sell.play()

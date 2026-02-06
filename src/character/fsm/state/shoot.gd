@@ -19,13 +19,13 @@ func enter():
 			sin(character.hit_scan_shoot.rotation)).normalized(),
 		character.target.global_position)
 
-	if blackboard.has('ability_player_var'):
+	if blackboard.has(LimboVarLib.ABILITY_PLAYER):
 		projectile.on_entered.connect(_on_projectile_entered)
 		projectile.on_hit.connect(_on_projectile_hit)
 		projectile.on_expired.connect(_on_projectile_expired)
 
-		shot_projectiles_with_ability.set(projectile, blackboard.get('ability_player_var'))
-		blackboard.erase('ability_player_var')
+		shot_projectiles_with_ability.set(projectile, blackboard.get(LimboVarLib.ABILITY_PLAYER))
+		blackboard.erase(LimboVarLib.ABILITY_PLAYER)
 
 	character.add_sibling(projectile)
 	projectile.global_position = character.hit_scan_shoot.global_position
@@ -40,8 +40,8 @@ func _on_projectile_entered(projectile: Projectile):
 	shot_projectiles_with_ability[projectile].enter()
 
 func _on_projectile_hit(projectile: Projectile, hit_character: Character):
-	shot_projectiles_with_ability[projectile].blackboard.set_var('on_hit_var', true)
-	shot_projectiles_with_ability[projectile].blackboard.set_var('character_var', hit_character)
+	shot_projectiles_with_ability[projectile].blackboard.set_var(LimboVarLib.ON_HIT, true)
+	shot_projectiles_with_ability[projectile].blackboard.set_var(LimboVarLib.CHARACTER, hit_character)
 	shot_projectiles_with_ability.erase(projectile)
 
 func _on_projectile_expired(projectile: Projectile):

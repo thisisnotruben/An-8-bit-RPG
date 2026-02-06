@@ -1,8 +1,8 @@
 extends Control
 
-const tabs := {"main": 0, "license": 1, "credits": 2, "popup": 3}
+const tabs := {'main': 0, 'license': 1, 'credits': 2, 'popup': 3}
 
-@export_file("*.tscn") var game_level_scene_path := ""
+@export_file('*.tscn') var game_level_scene_path := ''
 
 var play_focus_sfx := false
 var hovered_control: Control = null
@@ -16,11 +16,11 @@ func _ready():
 	randomize()
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed('ui_cancel'):
 		match tab.current_tab:
-			tabs["license"], tabs["credits"]:
+			tabs['license'], tabs['credits']:
 				_on_back_pressed()
-			tabs["popup"]:
+			tabs['popup']:
 				popup._on_no_pressed()
 
 func _on_focus_entered():
@@ -49,30 +49,30 @@ func _on_start_pressed():
 func _on_license_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/license
-	tab.current_tab = tabs["license"]
+	tab.current_tab = tabs['license']
 
 func _on_credits_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/credits
-	tab.current_tab = tabs["credits"]
+	tab.current_tab = tabs['credits']
 
 func _on_exit_pressed():
 	$snd_popup.play()
-	popup.display("Exit Game?", "Exit", "Stay")
-	tab.current_tab = tabs["popup"]
+	popup.display('Exit Game?', 'Exit', 'Stay')
+	tab.current_tab = tabs['popup']
 	prev_tab = $center/panel/margin/tabs/main/exit
-	if await popup.popup_return == "yes":
+	if await popup.popup_return == 'yes':
 		$snd_exit.play()
 		$center/panel/margin/tabs/popup/hBox/yes.release_focus()
 		await $snd_exit.finished
 		get_tree().quit()
 	else:
 		$snd_back.play()
-		tab.current_tab = tabs["main"]
+		tab.current_tab = tabs['main']
 
 func _on_back_pressed():
 	$snd_back.play()
-	tab.current_tab = tabs["main"]
+	tab.current_tab = tabs['main']
 
 func _on_main_draw():
 	play_focus_sfx = false

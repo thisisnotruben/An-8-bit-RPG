@@ -25,7 +25,7 @@ func _set_state(_state_type):
 	state_changed.emit(_state_type)
 
 func _get_state():
-	return _curr['type']
+	return _curr.get('type', -1)
 
 func physics_process(delta: float):
 	if _curr['state']:

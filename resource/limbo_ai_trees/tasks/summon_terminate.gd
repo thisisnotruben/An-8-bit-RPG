@@ -3,10 +3,10 @@ extends BTAction
 
 
 func _generate_name() -> String:
-	return "Summon terminate"
+	return 'Summon terminate'
 
 func _tick(_delta: float) -> Status:
-	var target: Node = blackboard.get_var("summoned_object_var", null)
+	var target: Node = blackboard.get_var(LimboVarLib.SUMMONED_OBJECT, null)
 	if not is_instance_valid(target):
 		return FAILURE
 

@@ -1,15 +1,20 @@
 @tool
 extends BTCondition
 
-@export var ability_target_var_name := "ability_target_var"
+@export var ability_target_var_name := LimboVarLib.ABILITY_TARGET
 
 
 func _generate_name() -> String:
-	return "Character has target for ability"
+	return 'Character has target for ability [%s] | uses: [%s] [%s]' % \
+	[
+		LimboUtility.decorate_output_var(ability_target_var_name),
+		LimboUtility.decorate_var(LimboVarLib.CHARACTER),
+		LimboUtility.decorate_var(LimboVarLib.ABILITY),
+	]
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
-	var ability: Ability = blackboard.get_var("ability_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
+	var ability: Ability = blackboard.get_var(LimboVarLib.ABILITY)
 	if not is_instance_valid(character) or not ability:
 		return FAILURE
 

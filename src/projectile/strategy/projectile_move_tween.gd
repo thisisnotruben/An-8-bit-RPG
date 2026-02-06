@@ -12,11 +12,11 @@ func enter():
 	var tween := get_tree().create_tween().set_trans(transition_type).set_ease(ease_type)
 	match until_type:
 		UntilType.EXPIRE:
-			tween.tween_property(projectile, "global_position",
+			tween.tween_property(projectile, 'global_position',
 				projectile.global_position + projectile.direction *
 				speed * projectile.timer.wait_time, projectile.timer.wait_time)
 
 		UntilType.POS:
-			tween.tween_property(projectile, "global_position",
+			tween.tween_property(projectile, 'global_position',
 				projectile.seek_pos, projectile.global_position.distance_to(
 					projectile.seek_pos) / speed)

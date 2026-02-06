@@ -5,10 +5,10 @@ extends BTAction
 
 
 func _generate_name() -> String:
-	return "Resurrect to health pct: [%s]" % str(strategy.resurrect_pct_health)
+	return 'Resurrect to health pct: [%s]' % str(strategy.resurrect_pct_health)
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
 
@@ -20,5 +20,5 @@ func _tick(_delta: float) -> Status:
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	if strategy == null:
-		warnings.append("Need's a strategy.")
+		warnings.append('Need\'s a strategy')
 	return warnings

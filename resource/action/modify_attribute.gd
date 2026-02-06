@@ -1,5 +1,4 @@
-extends ActionContructor
-class_name ActionModifyAttribute
+class_name ActionModifyAttribute extends ActionContructor
 
 enum TypeAttribute{ HEALTH, MANA, ABILITY, MOVE_SPEED, ATTACK_SPEED, ARMOR, }
 
@@ -21,9 +20,9 @@ func modify_attribute(target: Character, add: bool):
 			var mod_arr := []
 			match type_attribute:
 				TypeAttribute.ATTACK_SPEED:
-					mod_arr = target.unit.attack_speed_modifiers
+					mod_arr = target.unit.stats.attack_speed_cooldown.modifiers
 				TypeAttribute.MOVE_SPEED:
-					mod_arr = target.unit.speed_modifiers
+					mod_arr = target.unit.stats.move_speed.modifiers
 				_:
 					return
 

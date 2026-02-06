@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=31 format=3 uid="uid://bmm4llq2i8kce"]
+[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://bmm4llq2i8kce"]
 
 [ext_resource type="BlackboardPlan" uid="uid://dakrpekxvoqk2" path="res://resource/limbo_ai_trees/character/blackboard_plan_character_default.tres" id="1_iw43q"]
 [ext_resource type="Script" uid="uid://bklci2awtglue" path="res://resource/limbo_ai_trees/tasks/player/can_melee.gd" id="1_spe64"]
@@ -6,6 +6,7 @@
 [ext_resource type="BehaviorTree" uid="uid://cxfwiqfk8biws" path="res://resource/limbo_ai_trees/character/tree_components/dead_subtree.tres" id="2_xptis"]
 [ext_resource type="BehaviorTree" uid="uid://bq1qtv635p1rn" path="res://resource/limbo_ai_trees/character/tree_components/hurt_subtree.tres" id="3_6kkfr"]
 [ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://resource/limbo_ai_trees/tasks/character/set_state.gd" id="4_ig2lr"]
+[ext_resource type="Script" uid="uid://d7rx68rlnifx" path="res://resource/limbo_ai_trees/tasks/character/attack_speed_cooldown.gd" id="6_r3oua"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_6kkfr"]
 
@@ -66,13 +67,13 @@ script = ExtResource("1_spe64")
 script = ExtResource("4_ig2lr")
 state = 2
 
-[sub_resource type="BTCooldown" id="BTCooldown_w7c6f"]
-duration = 1.5
+[sub_resource type="BTCooldown" id="BTCooldown_0fh2d"]
 children = [SubResource("BTAction_2vhlx")]
+script = ExtResource("6_r3oua")
 
 [sub_resource type="BTSequence" id="BTSequence_6kkfr"]
 custom_name = "melee"
-children = [SubResource("BTCondition_w7c6f"), SubResource("BTCooldown_w7c6f")]
+children = [SubResource("BTCondition_w7c6f"), SubResource("BTCooldown_0fh2d")]
 
 [sub_resource type="BTCondition" id="BTCondition_iw43q"]
 script = ExtResource("2_w7c6f")
@@ -81,13 +82,13 @@ script = ExtResource("2_w7c6f")
 script = ExtResource("4_ig2lr")
 state = 3
 
-[sub_resource type="BTCooldown" id="BTCooldown_iw43q"]
-duration = 1.5
+[sub_resource type="BTCooldown" id="BTCooldown_6wdp0"]
 children = [SubResource("BTAction_y61wm")]
+script = ExtResource("6_r3oua")
 
 [sub_resource type="BTSequence" id="BTSequence_ig2lr"]
 custom_name = "shoot"
-children = [SubResource("BTCondition_iw43q"), SubResource("BTCooldown_iw43q")]
+children = [SubResource("BTCondition_iw43q"), SubResource("BTCooldown_6wdp0")]
 
 [sub_resource type="BTSelector" id="BTSelector_w7c6f"]
 children = [SubResource("BTSequence_6kkfr"), SubResource("BTSequence_ig2lr")]

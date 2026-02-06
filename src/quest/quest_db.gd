@@ -1,5 +1,4 @@
-extends Node
-class_name QuestDB
+class_name QuestDB extends Node
 
 var quests := {}
 

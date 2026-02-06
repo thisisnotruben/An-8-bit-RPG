@@ -43,11 +43,11 @@ func _on_complete_pressed():
 
 func _check_quests():
 	if player and player.target:
-		QuestDB.check_quests({"search_key": player.target.get_path()})
+		QuestDB.check_quests({'search_key': player.target.get_path()})
 
 func display():
 	if player and player.target:
-		var data := QuestDB.get_data({"search_key": player.target.get_path()})
+		var data := QuestDB.get_data({'search_key': player.target.get_path()})
 		if data == null:
 			return
 
@@ -63,7 +63,7 @@ func display():
 		decline_bttn.visible = is_quest_started
 		complete_bttn.visible = is_quest_active and data.is_completable()
 
-		var text := ""
+		var text := ''
 		if is_quest_started:
 			text = data.start_blurb
 		elif is_quest_active:

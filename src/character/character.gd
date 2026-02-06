@@ -82,7 +82,7 @@ func _on_select_bttn_pressed():
 	on_selected.emit(self)
 
 func _on_health_changed(current: int, _max: int, old_value: int):
-	behavior.blackboard.set_var('hurt_var', current < old_value)
+	behavior.blackboard.set_var(LimboVarLib.HURT, current < old_value)
 
 func _on_sight_body_entered(other_npc: Node2D):
 	if other_npc != self:
@@ -114,16 +114,30 @@ func inventory_modify(item_type: BaseItem.Type, add: bool) -> bool:
 			spell_added.emit(item_type, add)
 		else:
 			inventory_added.emit(item_type, add)
-		spawn_item_behavior(item.behavior)
+
+		var item_ability := item as Ability
+		if item_ability and item_ability.passive \
+		and item_ability.target_type == Ability.TargetType.USER:
+			spawn_ability_player(item_ability, self)
 	return result
 
-func spawn_item_behavior(behavior_tree: BehaviorTree):
-	if behavior_tree:
-		var item_behavior: ItemBehavior = preload('uid://dcvw6o2fi5j6n').instantiate()
-		item_behavior.set_behavior_res(behavior_tree, self)
-		item_behaviors.add_child(item_behavior)
-		return item_behavior
-	return null
+func spawn_ability_player(ability_item: Ability, ability_target: Character):
+	var ability_player := (preload('uid://c0nmdbo1fso22').instantiate() \
+		as AbilityPlayer).init(ability_item, ability_target)
+	item_behaviors.add_child(ability_player)
+
+	ability_item.take_cost(self)
+	match ability_item.target_type:
+		Ability.TargetType.USER, Ability.TargetType.NONE:
+			ability_player.enter()
+		Ability.TargetType.TARGET:
+			var state_for_ability := CharacterStates.Type.MELEE
+			if ability_item.projectile_strategy:
+				state_for_ability = CharacterStates.Type.SHOOT
+
+			(fsm.states[state_for_ability] \
+				as CharacterState).blackboard.set(LimboVarLib.ABILITY_PLAYER, ability_player)
+			fsm.state = state_for_ability
 
 func _set_player_input_vars():
 	if not unit or unit.npc:
@@ -134,7 +148,7 @@ func _set_player_input_vars():
 		input_state = 'move'
 	elif Input.is_action_just_pressed('attack'):
 		input_state = 'attack'
-	behavior.blackboard.set_var('input_state_var', input_state)
+	behavior.blackboard.set_var(LimboVarLib.INPUT_STATE, input_state)
 
 func is_foe(_body: Node2D) -> bool:
 	return _body is Character and _body.unit.friendly != unit.friendly \
@@ -150,49 +164,4 @@ func aggro(_body: Node2D) -> bool:
 	return false
 
 func notify_projectile_incoming(projectile: Projectile):
-	behavior.blackboard.set_var('incoming_projectile_var', projectile)
-
-#region serialization
-func serialize() -> Dictionary:
-	var payload := {
-		'health': health.current,
-		'mana': mana.current,
-		'ability': ability.current,
-		#'gold': gold,
-		#'inventory': inventory,
-		#'spells': spells,
-		#'current_uses': {},
-		'global_position': [global_position.x, global_position.y]
-	}
-	# TODO: serialize
-	#for item_type: ItemBehavior in item_behaviors.get_children():
-		#payload['current_uses'][item_type] = item_type.current_cooldown
-	return payload
-
-func deserialize(payload: Dictionary):
-	for data in payload:
-		match data:
-			'health':
-				health.current = int(payload[data])
-			'mana':
-				mana.current = int(payload[data])
-			'ability':
-				ability.current = int(payload[data])
-			#'gold':
-				#gold = int(payload[data])
-			#'inventory':
-				#inventory = payload[data]
-				#for item_type in payload[data]:
-					#inventory_modify(item_type, true)
-			#'spells':
-				#spells = payload[data]
-				#for spell_type in payload[data]:
-					#inventory_modify(spell_type, true)
-			#'current_uses':
-				#for item_type in payload[data]:
-					#pass # TODO: serialize
-					#ItemDB.get_item(item_type).use_enter(payload[data][item_type])
-			'global_position':
-				global_position.x = payload[data][0]
-				global_position.y = payload[data][1]
-#endregion
+	behavior.blackboard.set_var(LimboVarLib.INCOMING_PROJECTILE, projectile)

@@ -5,15 +5,18 @@ extends BTAction
 
 
 func _generate_name() -> String:
-	return "Character play random audio from library: [%s]" % \
-		CharacterStates.Type.keys()[audio_lib_type]
+	return 'Play random audio from character library [%s] | uses: [%s]' % \
+	[
+		LimboUtility.decorate_var(CharacterStates.Type.keys()[audio_lib_type]),
+		LimboUtility.decorate_var(LimboVarLib.CHARACTER)
+	]
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
 
-	var audio_lib := []
+	var audio_lib: Array[AudioStream] = []
 	match audio_lib_type:
 		CharacterStates.Type.IDLE:
 			audio_lib = character.unit.snd_idle

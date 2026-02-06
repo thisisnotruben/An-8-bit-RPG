@@ -5,10 +5,10 @@ const _default_vital: StatModifer = preload('uid://eml2nyacvdlf')
 const _default_vital_regen_sec: StatModifer = preload('uid://t5x8lqvvii74')
 const _default_vital_regen_amnt: StatModifer = preload('uid://cej4dsuot70pl')
 
+@export_group('Movement')
 @export var move_speed: StatModifer = preload('uid://dx4fqdca1tv1d')
 
 @export_group('Health')
-
 @export var health_max := _default_vital
 @export var health_regen_sec := _default_vital_regen_sec
 @export var health_regen_amt := _default_vital_regen_amnt
@@ -24,7 +24,8 @@ const _default_vital_regen_amnt: StatModifer = preload('uid://cej4dsuot70pl')
 @export var ability_regen_amt := _default_vital_regen_amnt
 
 @export_group('Combat')
-@export var attack_speed: StatModifer = preload('uid://dswpholksjmce')
+const MIN_ATTACK_SPEED_COOLDOWN = 0.05
+@export var attack_speed_cooldown: StatModifer = preload('uid://dswpholksjmce')
 @export var melee: CharacterAttackStats = preload('uid://cvn58to2gmt7e')
 @export var shoot: CharacterAttackStats = preload('uid://c6wamfb52kyyj')
 
@@ -64,7 +65,8 @@ func init(_target: Node2D):
 		shoot.init(target.hit_scan_shoot)
 
 func _on_speed_changed(value: float):
-	(target.get_node('fsm/move') as Move).speed = value
+	target.nav_agent.max_speed = value
+	(target.fsm.states[CharacterStates.Type.MOVE] as Move).speed = value
 
 #region health
 func _on_health_max_changed(value: float):
@@ -100,4 +102,5 @@ func _on_ability_regen_changed(value: float):
 #endregion
 
 func _on_attack_speed_changed(_value: float):
-	print_debug('TODO: need to implement this in the Character [behavior_tree]')
+	attack_speed_cooldown.current = \
+		maxf(attack_speed_cooldown.current, MIN_ATTACK_SPEED_COOLDOWN)

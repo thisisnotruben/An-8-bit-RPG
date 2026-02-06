@@ -50,9 +50,9 @@ func init(character: Character):
 	(character.get_node('cam') as Camera2D).enabled = not npc
 	character.behavior.behavior_tree = npc_behavior if npc else player_behavior
 
-	character.behavior.blackboard.set_var('character_var', character)
-	character.behavior.blackboard.set_var('health_var', character.health.current)
-	character.behavior.blackboard.bind_var_to_property('health_var', character.health, 'current')
+	character.behavior.blackboard.set_var(LimboVarLib.CHARACTER, character)
+	character.behavior.blackboard.set_var(LimboVarLib.HEALTH, character.health.current)
+	character.behavior.blackboard.bind_var_to_property(LimboVarLib.HEALTH, character.health, 'current')
 
 	# Animation
 	character.anim_tree.tree_root = anim_state_machine
@@ -60,19 +60,6 @@ func init(character: Character):
 		character.anim.remove_animation_library(lib_name)
 	character.anim.add_animation_library( \
 		anim_library.resource_path.get_file().get_basename(), anim_library)
-
-	# Audio
-	var audio := {
-		'fsm/idle': snd_idle,
-		'fsm/move': snd_move,
-		'fsm/dead': snd_dead,
-		'fsm/melee': snd_melee,
-		'fsm/shoot': snd_shoot,
-		'fsm/hurt': snd_hurt,
-	}
-
-	for node_path in audio:
-		(character.get_node(node_path) as CharacterState).quips = audio[node_path]
 
 	# Image
 	character.img.offset = img_offset

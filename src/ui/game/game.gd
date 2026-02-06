@@ -1,10 +1,10 @@
 extends Control
 
-const tabs := {"main": 0, "license": 1, "credits": 2,
-"popup": 3, "dead": 4, "save_load": 5,}
+const tabs := {'main': 0, 'license': 1, 'credits': 2,
+'popup': 3, 'dead': 4, 'save_load': 5,}
 
 @export var player: Character = null
-@export_file("*.tscn") var start_level_scene_path := ""
+@export_file('*.tscn') var start_level_scene_path := ''
 
 var play_focus_sfx := false
 var dead := false
@@ -25,7 +25,7 @@ func _input(event: InputEvent):
 	if dead:
 		return
 
-	if event.is_action_pressed("ui_cancel") and tab.current_tab == tabs["main"]:
+	if event.is_action_pressed('ui_cancel') and tab.current_tab == tabs['main']:
 		if not visible:
 			await RenderingServer.frame_post_draw
 			save_load.screenshot = get_viewport().get_texture()
@@ -34,11 +34,11 @@ func _input(event: InputEvent):
 			$snd_pause.play()
 		else:
 			$snd_resume.play()
-	elif event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed('ui_cancel'):
 		match tab.current_tab:
-			tabs["license"], tabs["credits"], tabs["save_load"]:
+			tabs['license'], tabs['credits'], tabs['save_load']:
 				_on_back_pressed()
-			tabs["popup"]:
+			tabs['popup']:
 				popup._on_no_pressed()
 
 func _on_focus_entered():
@@ -63,10 +63,10 @@ func _on_resume_game_pressed():
 
 func _on_start_menu_pressed():
 	$snd_popup.play()
-	popup.display("Go to Start Menu?", "Go", "Stay")
+	popup.display('Go to Start Menu?', 'Go', 'Stay')
 	prev_tab = $center/panel/margin/tabs/main/start_menu
-	tab.current_tab = tabs["popup"]
-	if await popup.popup_return == "yes":
+	tab.current_tab = tabs['popup']
+	if await popup.popup_return == 'yes':
 		$snd_start.play()
 		$center/panel/margin/tabs/popup/hBox/yes.release_focus()
 		await $snd_start.finished
@@ -74,47 +74,47 @@ func _on_start_menu_pressed():
 		get_tree().change_scene_to_file(start_level_scene_path)
 	else:
 		$snd_back.play()
-		tab.current_tab = tabs["main"]
+		tab.current_tab = tabs['main']
 
 func _on_save_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/save
-	tab.get_child(tabs["save_load"]).type = GameUISaveLoad.Type.Save
-	tab.current_tab = tabs["save_load"]
+	tab.get_child(tabs['save_load']).type = GameUISaveLoad.Type.Save
+	tab.current_tab = tabs['save_load']
 
 func _on_load_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/load
-	tab.get_child(tabs["save_load"]).type = GameUISaveLoad.Type.Load
-	tab.current_tab = tabs["save_load"]
+	tab.get_child(tabs['save_load']).type = GameUISaveLoad.Type.Load
+	tab.current_tab = tabs['save_load']
 
 func _on_license_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/license
-	tab.current_tab = tabs["license"]
+	tab.current_tab = tabs['license']
 
 func _on_credits_pressed():
 	$snd.play()
 	prev_tab = $center/panel/margin/tabs/main/grid/credits
-	tab.current_tab = tabs["credits"]
+	tab.current_tab = tabs['credits']
 
 func _on_exit_pressed():
 	$snd_popup.play()
-	popup.display("Exit Game?", "Exit", "Stay")
-	tab.current_tab = tabs["popup"]
+	popup.display('Exit Game?', 'Exit', 'Stay')
+	tab.current_tab = tabs['popup']
 	prev_tab = $center/panel/margin/tabs/main/exit
-	if await popup.popup_return == "yes":
+	if await popup.popup_return == 'yes':
 		$snd_exit.play()
 		$center/panel/margin/tabs/popup/hBox/yes.release_focus()
 		await $snd_exit.finished
 		get_tree().quit()
 	else:
 		$snd_back.play()
-		tab.current_tab = tabs["main"]
+		tab.current_tab = tabs['main']
 
 func _on_back_pressed():
 	$snd_back.play()
-	tab.current_tab = tabs["main"]
+	tab.current_tab = tabs['main']
 
 func _on_main_draw():
 	play_focus_sfx = false
@@ -125,10 +125,10 @@ func _on_visibility_changed():
 	if not dead and is_inside_tree() and get_tree():
 		get_tree().paused = visible
 		if not visible:
-			tab.current_tab = tabs["main"]
+			tab.current_tab = tabs['main']
 			prev_tab = $center/panel/margin/tabs/main/resume_game
 
 func show_death_screen():
 	await get_tree().create_timer(2.5).timeout
-	tab.current_tab = tabs["dead"]
+	tab.current_tab = tabs['dead']
 	show()

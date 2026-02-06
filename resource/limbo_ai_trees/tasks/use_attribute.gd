@@ -6,13 +6,13 @@ extends BTAction
 
 
 func _generate_name() -> String:
-	return "Use attribute: [%s]" % \
+	return 'Use attribute: [%s]' % \
 		[
 			ActionModifyAttribute.TypeAttribute.keys()[attribute],
 		]
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
 
@@ -36,6 +36,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 		ActionModifyAttribute.TypeAttribute.MOVE_SPEED, \
 		ActionModifyAttribute.TypeAttribute.ATTACK_SPEED, \
 		ActionModifyAttribute.TypeAttribute.ARMOR:
-			warnings.append("Cannot be of attribute [%s]" % \
+			warnings.append('Cannot be of attribute [%s]' % \
 				ActionModifyAttribute.TypeAttribute.keys()[attribute])
+	if not attack:
+		warnings.append('[attack] needs to be set')
 	return warnings

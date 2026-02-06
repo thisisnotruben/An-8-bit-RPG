@@ -16,16 +16,16 @@ var hovered_control: Control = null
 
 @onready var interact_panel: Control = $bg_margin/vBox/panel
 
-@onready var player_health: AtlasTexture = $status_margin/player_health.get("texture_progress")
-@onready var player_mana: AtlasTexture = $status_margin/player_health/mana.get("texture_progress")
-@onready var player_ability: AtlasTexture = $status_margin/player_health/ability.get("texture_progress")
+@onready var player_health: AtlasTexture = $status_margin/player_health.get('texture_progress')
+@onready var player_mana: AtlasTexture = $status_margin/player_health/mana.get('texture_progress')
+@onready var player_ability: AtlasTexture = $status_margin/player_health/ability.get('texture_progress')
 
 @onready var target_mana_ctrl: Control = $status_margin/target_health/mana
 @onready var target_ability_ctrl: Control =  $status_margin/target_health/ability
 
-@onready var target_health: AtlasTexture = $status_margin/target_health.get("texture_progress")
-@onready var target_mana: AtlasTexture = $status_margin/target_health/mana.get("texture_progress")
-@onready var target_ability: AtlasTexture = $status_margin/target_health/ability.get("texture_progress")
+@onready var target_health: AtlasTexture = $status_margin/target_health.get('texture_progress')
+@onready var target_mana: AtlasTexture = $status_margin/target_health/mana.get('texture_progress')
+@onready var target_ability: AtlasTexture = $status_margin/target_health/ability.get('texture_progress')
 @onready var target_name_label: Label = $bg_margin/target_status_bar/margin/HBoxContainer/label
 @onready var target_slot: HudButton = $bg_margin/target_status_bar/margin/HBoxContainer/slot
 
@@ -39,19 +39,19 @@ var hovered_control: Control = null
 @onready var tab_master: TabContainer = $bg_margin/vBox/panel/content_margin/master
 @onready var tab_player: TabContainer = $bg_margin/vBox/panel/content_margin/master/player
 @onready var tab_npc: TabContainer = $bg_margin/vBox/panel/content_margin/master/npc
-const tabs_master := {"player": 0, "npc": 1}
-const tabs_npc := {"dialogue": 0, "trainer": 1, "merchant": 2}
+const tabs_master := {'player': 0, 'npc': 1}
+const tabs_npc := {'dialogue': 0, 'trainer': 1, 'merchant': 2}
 
 
 func _ready():
 	var tab_order := [inventory_icon, trainer_icon, objective_tracker_icon]
 	for i in tab_order.size():
 		tab_player.set_tab_icon(i, tab_order[i])
-		tab_player.set_tab_title(i, "")
+		tab_player.set_tab_title(i, '')
 	tab_order = [dialogue_icon, trainer_icon, merchant_icon]
 	for i in tab_order.size():
 		tab_npc.set_tab_icon(i, tab_order[i])
-		tab_npc.set_tab_title(i, "")
+		tab_npc.set_tab_title(i, '')
 
 	target_health_node.visibility_changed.connect(func(): \
 		target_status_bar.visible = target_health_node.visible)
@@ -89,25 +89,25 @@ func _on_set_target(value: Character):
 		target_slot.visible = show_slot
 		target_status_bar.visible = not value.character_name.is_empty()
 		target_name_label.text = value.character_name if show_slot \
-		else " ".repeat(target_status_name_padding) + value.character_name
+		else ' '.repeat(target_status_name_padding) + value.character_name
 
 		if show_slot:
-			tab_master.current_tab = tabs_master["npc"]
+			tab_master.current_tab = tabs_master['npc']
 			var is_one_role := value.unit.character_roles.size() == 1
 			tab_npc.tabs_visible = not is_one_role
 
 			if is_one_role:
-				var npc_view := ""
+				var npc_view := ''
 				match value.character_roles[0]:
 					CharacterBuilder.CharaterSideRoles.MERCHANT:
 						target_slot.item_icon = merchant_icon
-						npc_view = "merchant"
+						npc_view = 'merchant'
 					CharacterBuilder.CharaterSideRoles.TRAINER:
 						target_slot.item_icon = trainer_icon
-						npc_view = "trainer"
+						npc_view = 'trainer'
 					CharacterBuilder.CharaterSideRoles.DIALOGUE:
 						target_slot.item_icon = dialogue_icon
-						npc_view = "dialogue"
+						npc_view = 'dialogue'
 				if not npc_view.is_empty():
 					tab_npc.current_tab = tabs_npc[npc_view]
 
@@ -159,12 +159,12 @@ func _update_status_ui(atlas_texture: AtlasTexture, value: int, value_max: int):
 
 func _on_inventory_spell_book_pressed():
 	var is_hud_panel_visible := not interact_panel.visible
-	tab_master.current_tab = tabs_master["player"]
+	tab_master.current_tab = tabs_master['player']
 	interact_panel.visible = is_hud_panel_visible
 
 func _on_menu_pressed():
 	var cancel_event = InputEventAction.new()
-	cancel_event.action = "ui_cancel"
+	cancel_event.action = 'ui_cancel'
 	cancel_event.pressed = true
 	Input.parse_input_event(cancel_event)
 

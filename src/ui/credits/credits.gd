@@ -19,7 +19,7 @@ func _on_draw():
 func _on_redirect_pressed():
 	$snd.play()
 	await $snd.finished
-	OS.shell_open("https://github.com/thisisnotruben/An-8-bit-RPG")
+	OS.shell_open('https://github.com/thisisnotruben/An-8-bit-RPG')
 
 func _on_focus_entered():
 	if play_focus_sfx:

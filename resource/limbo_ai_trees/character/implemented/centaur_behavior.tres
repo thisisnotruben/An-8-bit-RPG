@@ -45,6 +45,23 @@ script = ExtResource("2_kf6qt")
 subtree = ExtResource("6_ogrrp")
 blackboard_plan = SubResource("BlackboardPlan_3jdax")
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_iufdm"]
+var/ability_var/name = &"ability_var"
+var/ability_var/type = 24
+var/ability_var/value = ExtResource("11_vt0o6")
+var/ability_var/hint = 17
+var/ability_var/hint_string = "Ability"
+mapping/character_var = &"character_var"
+
+[sub_resource type="BTSubtree" id="BTSubtree_ybnbj"]
+subtree = ExtResource("9_vt0o6")
+blackboard_plan = SubResource("BlackboardPlan_iufdm")
+custom_name = "Charge cast"
+
+[sub_resource type="BTProbability" id="BTProbability_wxfn2"]
+run_chance = 0.35
+children = [SubResource("BTSubtree_ybnbj")]
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_vt0o6"]
 var/ability_var/name = &"ability_var"
 var/ability_var/type = 24
@@ -76,7 +93,6 @@ children = [SubResource("BTSubtree_iufdm"), SubResource("BTSubtree_2av4f")]
 
 [sub_resource type="BTProbability" id="BTProbability_wpqna"]
 run_chance = 0.25
-custom_name = "Spells"
 children = [SubResource("BTRandomSelector_2av4f")]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_wxfn2"]
@@ -85,28 +101,11 @@ children = [SubResource("BTRandomSelector_2av4f")]
 subtree = ExtResource("7_efa0v")
 blackboard_plan = SubResource("BlackboardPlan_wxfn2")
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_iufdm"]
-var/ability_var/name = &"ability_var"
-var/ability_var/type = 24
-var/ability_var/value = ExtResource("11_vt0o6")
-var/ability_var/hint = 17
-var/ability_var/hint_string = "Ability"
-mapping/character_var = &"character_var"
-
-[sub_resource type="BTSubtree" id="BTSubtree_ybnbj"]
-subtree = ExtResource("9_vt0o6")
-blackboard_plan = SubResource("BlackboardPlan_iufdm")
-custom_name = "Charge cast"
-
-[sub_resource type="BTProbability" id="BTProbability_wxfn2"]
-run_chance = 0.35
-children = [SubResource("BTSubtree_ybnbj")]
-
 [sub_resource type="BTAction" id="BTAction_0g6t3"]
 script = ExtResource("12_vt0o6")
 
 [sub_resource type="BTSelector" id="BTSelector_ycmk6"]
-children = [SubResource("BTSubtree_kf6qt"), SubResource("BTProbability_wpqna"), SubResource("BTSubtree_o4y27"), SubResource("BTProbability_wxfn2"), SubResource("BTAction_0g6t3")]
+children = [SubResource("BTSubtree_kf6qt"), SubResource("BTProbability_wxfn2"), SubResource("BTProbability_wpqna"), SubResource("BTSubtree_o4y27"), SubResource("BTAction_0g6t3")]
 
 [sub_resource type="BTSequence" id="BTSequence_btdf4"]
 custom_name = "Attack"

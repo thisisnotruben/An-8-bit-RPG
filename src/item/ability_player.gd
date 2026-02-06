@@ -11,7 +11,7 @@ func init(_ability: Ability, _target: Character) -> AbilityPlayer:
 	return self
 
 func _ready():
-	player.blackboard.set_var('character_var', target)
+	player.blackboard.set_var(LimboVarLib.CHARACTER, target)
 	player.behavior_tree = ability.behavior
 
 func enter():

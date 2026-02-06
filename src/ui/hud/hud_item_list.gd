@@ -1,5 +1,5 @@
-extends GridContainer
-class_name UIItemHandler
+
+class_name UIItemHandler extends GridContainer
 
 enum Type { PLAYER, MERCHANT }
 
@@ -32,7 +32,7 @@ signal subcontrol_mouse_exited
 
 
 func _ready():
-	var quick_slots := get_tree().get_nodes_in_group("quick_slot")
+	var quick_slots := get_tree().get_nodes_in_group('quick_slot')
 	for slot in slots:
 		slot.focus_entered.connect(_on_slot_focus_entered.bind(slot))
 		slot.pressed.connect(_on_slot_focus_entered.bind(slot))
@@ -43,7 +43,7 @@ func _ready():
 		else:
 			slot.type = HudButton.Type.MERCHANT
 	if type == Type.MERCHANT:
-		$vBox/label.text = "Trainer"
+		$vBox/label.text = 'Trainer'
 
 func _on_focus_entered():
 	if play_focus_sfx:
@@ -80,8 +80,8 @@ func display(item_type: Item.Type, is_cooling_down: bool):
 
 func clear():
 	item_icon.texture = null
-	item_name.text = ""
-	item_blurb.text = ""
+	item_name.text = ''
+	item_blurb.text = ''
 	use_bttn.hide()
 	drop_bttn.hide()
 	learn_bttn.hide()
@@ -90,14 +90,14 @@ func is_full() -> bool:
 	return slots.filter(func(s): return s.item_type != Item.Type.INVALID).is_empty()
 
 func add_item(data: Dictionary) -> bool:
-	if data["add"]:
+	if data['add']:
 		var useable_slots = slots.filter(func(s): return s.item_type != Item.Type.INVALID)
 		if useable_slots.is_empty():
 			return false
-		useable_slots[0].item_type = data["type"]
+		useable_slots[0].item_type = data['type']
 	else:
 		for slot in slots:
-			if slot.item_type == data["type"]:
+			if slot.item_type == data['type']:
 				slot.clear()
 				break
 	return true

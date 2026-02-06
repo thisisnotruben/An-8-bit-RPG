@@ -1,17 +1,18 @@
 @tool
 extends BTAction
 
-@export var strategy_name_var := ""
+@export var strategy_name_var := ''
 
 
 func _setup():
 	strategy_name_var = strategy_name_var.strip_edges()
 
 func _generate_name() -> String:
-	return "Remove Modify attribute [%s]" % strategy_name_var
+	return 'Remove Modify attribute [%s]' % \
+		LimboUtility.decorate_var(strategy_name_var)
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
 
@@ -22,5 +23,5 @@ func _tick(_delta: float) -> Status:
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	if strategy_name_var.is_empty():
-		warnings.append("Need's a strategy name to act on")
+		warnings.append('Need\'s a strategy name to act on')
 	return warnings

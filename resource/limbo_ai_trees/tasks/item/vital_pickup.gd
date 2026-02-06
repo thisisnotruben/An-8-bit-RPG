@@ -3,15 +3,19 @@ extends BTAction
 
 
 func _generate_name() -> String:
-	return "Add vitals to character"
+	return 'Add vitals to character | uses: [%s] [%s]' % \
+	[
+		LimboUtility.decorate_var(LimboVarLib.CHARACTER),
+		LimboUtility.decorate_var(LimboVarLib.ITEM_TYPE),
+	]
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
 
 	var item: ItemVital = ItemDB.get_item( \
-		blackboard.get_var("item_type_var", BaseItem.Type.INVALID))
+		blackboard.get_var(LimboVarLib.ITEM_TYPE, BaseItem.Type.INVALID))
 
 	match item.category:
 		Item.Category.HEALTH when character.health.current < character.health.max_value:

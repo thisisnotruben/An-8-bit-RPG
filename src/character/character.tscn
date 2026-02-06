@@ -1,23 +1,21 @@
-[gd_scene load_steps=24 format=3 uid="uid://batngdfpuvufm"]
+[gd_scene load_steps=22 format=3 uid="uid://batngdfpuvufm"]
 
 [ext_resource type="Script" uid="uid://dhwxukmxuqfm8" path="res://src/character/character.gd" id="1_dmj6x"]
 [ext_resource type="Script" uid="uid://bei1wwsixdmk4" path="res://src/character/fsm/fsm_character.gd" id="2_6mb4q"]
 [ext_resource type="Script" uid="uid://bvbgyajrvqql4" path="res://src/character/fsm/state/idle.gd" id="3_k8eue"]
-[ext_resource type="Script" uid="uid://dt4jnar8yx6id" path="res://src/character/fsm/state/move_npc.gd" id="4_fi36g"]
 [ext_resource type="Script" uid="uid://c4fkfl7f2uyuk" path="res://src/character/fsm/state/move.gd" id="4_m366t"]
 [ext_resource type="Script" uid="uid://ccerxkr4dln24" path="res://src/character/fsm/state/dead.gd" id="4_tntuy"]
 [ext_resource type="Script" uid="uid://brsaqvqhir8tp" path="res://src/character/fsm/state/melee.gd" id="5_tntuy"]
-[ext_resource type="Script" uid="uid://cjflggqw8u031" path="res://src/character/fsm/state/move_player.gd" id="6_8cpw0"]
 [ext_resource type="Script" uid="uid://cirvakft87x8y" path="res://src/character/fsm/state/shoot.gd" id="6_56uj1"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
 [ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="12_fcqus"]
 [ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://resource/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
 [ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
-[ext_resource type="AnimationLibrary" uid="uid://ccbewocsmf0s4" path="res://resource/animation/Centaur.tres" id="17_4feda"]
+[ext_resource type="AnimationLibrary" uid="uid://ccbewocsmf0s4" path="res://resource/character/animation/Centaur.tres" id="17_4feda"]
 [ext_resource type="PackedScene" uid="uid://dkpcprd1cr4eg" path="res://src/character/component/stat_regen.tscn" id="24_0bjdw"]
 [ext_resource type="PackedScene" uid="uid://cscse0mnpcree" path="res://src/character/component/stat_component.tscn" id="25_880r3"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://b7277cowcl0ix" path="res://resource/animation_state_machine/Centaur_state_machine.tres" id="96_0ekrb"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b7277cowcl0ix" path="res://resource/character/animation_state_machine/Centaur_state_machine.tres" id="96_0ekrb"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="96_dnpej"]
 [ext_resource type="Texture2D" uid="uid://cq43xk55y0ftj" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurIdle.png" id="97_32hfe"]
 
@@ -41,17 +39,10 @@ script = ExtResource("2_6mb4q")
 [node name="idle" type="Node" parent="fsm"]
 script = ExtResource("3_k8eue")
 
-[node name="move" type="Node" parent="fsm" node_paths=PackedStringArray("snd_move")]
+[node name="move" type="Node" parent="fsm" node_paths=PackedStringArray("snd_move", "nav_agent")]
 script = ExtResource("4_m366t")
 snd_move = NodePath("../../snd_move")
-
-[node name="npc" type="Node" parent="fsm/move" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("4_fi36g")
-nav_agent = NodePath("../../../nav_agent")
-need_physics_process = true
-
-[node name="player" type="Node" parent="fsm/move"]
-script = ExtResource("6_8cpw0")
+nav_agent = NodePath("../../nav_agent")
 
 [node name="dead" type="Node" parent="fsm"]
 script = ExtResource("4_tntuy")
@@ -77,14 +68,14 @@ blackboard_plan = SubResource("BlackboardPlan_248u0")
 [node name="item_behaviors" type="Node" parent="."]
 
 [node name="health" parent="." instance=ExtResource("25_880r3")]
-current = 0
+current = 5
 max_value = 5
 
 [node name="mana" parent="." instance=ExtResource("25_880r3")]
-current = 0
+current = 5
 
 [node name="ability" parent="." instance=ExtResource("25_880r3")]
-current = 0
+current = 5
 
 [node name="health_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
 stat_component = NodePath("../health")

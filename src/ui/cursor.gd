@@ -2,11 +2,11 @@ class_name GameCursor extends Node
 
 enum Cursor {DEFAULT, HAND, ATTACK, DIALOGUE, BAG}
 
-const arrow := preload("uid://ev1yg26v2q1o")
-const pointing_hand := preload("uid://nw30g6et71ym")
-const attack := preload("uid://dyltp5mo1hlq")
-const dialogue := preload("uid://be8gm8iwmn67r")
-const bag := preload("uid://da1wwh6wk8k5y")
+const arrow := preload('uid://ev1yg26v2q1o')
+const pointing_hand := preload('uid://nw30g6et71ym')
+const attack := preload('uid://dyltp5mo1hlq')
+const dialogue := preload('uid://be8gm8iwmn67r')
+const bag := preload('uid://da1wwh6wk8k5y')
 
 const map := {
 	Cursor.DEFAULT: arrow,

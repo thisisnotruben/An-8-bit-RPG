@@ -1,35 +1,24 @@
 @tool
 extends BTAction
 
-@export var ability_target_var_name := "ability_target_var"
+@export var ability_target_var_name := LimboVarLib.ABILITY_TARGET
 
 
 func _generate_name() -> String:
-	return "Cast Ability"
+	return 'Cast Ability | uses: [%s] [%s] [%s]' % \
+	[
+		LimboUtility.decorate_var(ability_target_var_name),
+		LimboUtility.decorate_var(LimboVarLib.CHARACTER),
+		LimboUtility.decorate_var(LimboVarLib.ABILITY),
+	]
 
 func _tick(_delta: float) -> Status:
-	var character: Character = blackboard.get_var("character_var")
-	var ability: Ability = blackboard.get_var("ability_var")
+	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
+	var ability: Ability = blackboard.get_var(LimboVarLib.ABILITY)
 	var ability_target: Character = blackboard.get_var(ability_target_var_name)
 	if not is_instance_valid(character) or not ability \
 	or not is_instance_valid(ability_target):
 		return FAILURE
 
-	var ability_player := (preload("uid://c0nmdbo1fso22").instantiate() \
-		as AbilityPlayer).init(ability, ability_target)
-	character.item_behaviors.add_child(ability_player)
-
-	ability.take_cost(character)
-	match ability.target_type:
-		Ability.TargetType.USER, Ability.TargetType.NONE:
-			ability_player.enter()
-		_:
-			var state_for_ability := CharacterStates.Type.MELEE
-			if ability.projectile_strategy:
-				state_for_ability = CharacterStates.Type.SHOOT
-
-			(character.fsm.states[state_for_ability] \
-				as CharacterState).blackboard.set("ability_player_var", ability_player)
-			character.fsm.state = state_for_ability
-
+	character.spawn_ability_player(ability, ability_target)
 	return SUCCESS

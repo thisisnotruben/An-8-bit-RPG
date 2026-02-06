@@ -1,10 +1,14 @@
-[gd_resource type="BehaviorTree" load_steps=27 format=3 uid="uid://dpbyi0n7xie4a"]
+[gd_resource type="BehaviorTree" load_steps=34 format=3 uid="uid://dpbyi0n7xie4a"]
 
 [ext_resource type="Script" uid="uid://lv57wgn4gihn" path="res://resource/limbo_ai_trees/tasks/use_attribute.gd" id="1_hvq46"]
 [ext_resource type="AudioStream" uid="uid://cwvoig24kcd47" path="res://asset/snd/LEOHPAZ_Elemental_Creatures_SFX/LEOHPAZ_Elemental_Creatures_SFX/Fire_Elemental/Fireball_LOOP.wav" id="2_goldu"]
 [ext_resource type="AudioStream" uid="uid://cof2qj2l7jnsp" path="res://asset/snd/50_RPG_Battle_Magic_SFX/07_Fireball_01.wav" id="2_odrcc"]
+[ext_resource type="Script" uid="uid://ceqfbg0d2eyn7" path="res://resource/modifier/amount/modifier_amount.gd" id="2_xdf0g"]
+[ext_resource type="Script" uid="uid://cwpxy0f2j4icl" path="res://resource/modifier/amount/modifer_amount_abstract.gd" id="3_2ntlk"]
 [ext_resource type="AudioStream" uid="uid://bx5hqlqlo2rx0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/08_Fireball_02.wav" id="3_bm8co"]
 [ext_resource type="AudioStream" uid="uid://bsdy3vcxekdn0" path="res://asset/snd/50_RPG_Battle_Magic_SFX/09_Fireball_03.wav" id="4_a5yla"]
+[ext_resource type="Script" uid="uid://by30of4e8c7jk" path="res://resource/modifier/stat/stat_modifier.gd" id="4_rnwnm"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="5_mu5sn"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_nuhgx"]
 
@@ -35,8 +39,25 @@ children = [SubResource("BTInvert_bm8co"), SubResource("BTCallMethod_odrcc")]
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_o5bop"]
 variable = &"on_hit_var"
 
+[sub_resource type="Resource" id="Resource_xdf0g"]
+script = ExtResource("2_xdf0g")
+_amount = 2.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_e5fep"]
+script = ExtResource("4_rnwnm")
+base = SubResource("Resource_xdf0g")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_rkskk"]
+script = ExtResource("5_mu5sn")
+type = 2
+modifier = SubResource("Resource_e5fep")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
 [sub_resource type="BTAction" id="BTAction_xjdvm"]
 script = ExtResource("1_hvq46")
+attack = SubResource("Resource_rkskk")
 
 [sub_resource type="BTCooldown" id="BTCooldown_w4mdy"]
 duration = 2.0

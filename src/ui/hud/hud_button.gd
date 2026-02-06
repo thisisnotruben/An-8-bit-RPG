@@ -103,14 +103,3 @@ func clear():
 
 func set_cooldown_text(value: int):
 	label.text = str(value)
-
-func serialize() -> Dictionary:
-	return {}
-	# TODO: serialize
-	#return { 'time_left': player.current_uses[item_type].time_left \
-		#if player.current_uses.has(item_type) else -1.0 } \
-	#if is_cooling_down else {}
-
-func deserialize(payload: Dictionary):
-	if payload.has('time_left') and payload['time_left'] > 0.0:
-		_start_tween(payload['time_left'])

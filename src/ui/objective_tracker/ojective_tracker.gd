@@ -1,6 +1,6 @@
 extends Control
 
-var quest_entry_scene := preload("uid://d0ndwgbbr3qcw")
+var quest_entry_scene := preload('uid://d0ndwgbbr3qcw')
 
 var play_focus_sfx := false
 var last_focused_entry: Control = null
@@ -11,7 +11,7 @@ signal subcontrol_mouse_exited
 
 @onready var tab_bar: TabBar = $tabs.get_tab_bar()
 @onready var tab_size_x: float = $tabs.custom_minimum_size.x / 2.0
-var tabs := {"active": 0, "completed": 1}
+var tabs := {'active': 0, 'completed': 1}
 
 
 func _on_focus_entered():
@@ -36,13 +36,13 @@ func _on_quest_entry_focused(quest_entry: Control):
 	last_focused_entry = quest_entry
 
 func add_entry(quest_data: QuestData):
-	var filter_view := ""
+	var filter_view := ''
 	match quest_data.status:
 		QuestData.QuestStatus.ACTIVE:
-			filter_view = "active"
+			filter_view = 'active'
 		QuestData.QuestStatus.COMPLETED:
-			filter_view = "completed"
-			var active_view: Control = get_child(tabs["active"]).get_child(0)
+			filter_view = 'completed'
+			var active_view: Control = get_child(tabs['active']).get_child(0)
 			for i in active_view.get_child_count():
 				if active_view.get_child(i).quest_data == quest_data:
 					active_view.get_child(i).queue_free()
