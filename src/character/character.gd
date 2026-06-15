@@ -145,7 +145,7 @@ func _set_player_input_vars():
 
 	var input_state := 'idle'
 	if Input.get_vector('move_left', 'move_right', 'move_up', 'move_down').length() > 0.0:
-		input_state = 'move'
+		input_state = 'moveasdsad'
 	elif Input.is_action_just_pressed('attack'):
 		input_state = 'attack'
 	behavior.blackboard.set_var(LimboVarLib.INPUT_STATE, input_state)
