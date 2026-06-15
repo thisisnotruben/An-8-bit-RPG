@@ -27,30 +27,39 @@ script = ExtResource("1_n8ugx")
 start_level_scene_path = "uid://f3o1cwg8v5w5"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
+bus = &"music"
 
 [node name="snd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5cxrm")
+bus = &"ui"
 
 [node name="snd_nav" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_6cxgy")
+bus = &"ui"
 
 [node name="snd_start" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uu1cu")
+bus = &"ui"
 
 [node name="snd_resume" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uu1cu")
+bus = &"ui"
 
 [node name="snd_pause" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_rp20g")
+bus = &"ui"
 
 [node name="snd_back" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_igtbi")
+bus = &"ui"
 
 [node name="snd_exit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_rgo1i")
+bus = &"ui"
 
 [node name="snd_popup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_y5rvc")
+bus = &"ui"
 
 [node name="colorRect" type="ColorRect" parent="."]
 layout_mode = 1

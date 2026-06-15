@@ -1,5 +1,4 @@
-extends Node
-class_name StatComponent
+class_name StatComponent extends Node
 
 @export var current: int = 1
 @export var max_value: int = 1
@@ -15,7 +14,7 @@ func modify(attack: ModifierAttack):
 		var prev_current := current
 
 		if resistances.has(attack.type):
-			pass
+			pass # TODO
 
 		var amount: int = abs(attack.amount)
 		if not attack.add:

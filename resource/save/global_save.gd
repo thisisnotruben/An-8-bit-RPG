@@ -10,11 +10,16 @@ class_name GlobalSave extends Resource
 
 func serialize(tree: SceneTree, scrnshot: PackedByteArray):
 	screenshot = scrnshot
+	var res: Resource = null
 	for node in tree.get_nodes_in_group('serialize'):
 		if node is Character:
-			characters.append(CharacterSave.new().serialize(node))
+			res = CharacterSave.new().serialize(node)
+			if res != null:
+				characters.append(res)
 		elif node is HudButton:
-			slots.append(HudSlotSave.new().serialize(node))
+			res = HudSlotSave.new().serialize(node)
+			if res != null:
+				slots.append(res)
 
 func deserialize(tree: SceneTree):
 	for data in characters:

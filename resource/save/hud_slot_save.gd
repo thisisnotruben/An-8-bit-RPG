@@ -5,11 +5,14 @@ class_name HudSlotSave extends Resource
 
 
 func serialize(hud_slot: HudButton) -> HudSlotSave:
-	time_left = -1.0 # TODO: { 'time_left': player.current_uses[item_type].time_left \
-	path = hud_slot.get_path()
-	return self
+	if hud_slot.tween and hud_slot.is_cooling_down:
+		time_left = ItemDB.get_item(hud_slot.item_type).cooldown - hud_slot.tween.get_total_elapsed_time()
+		path = hud_slot.get_path()
+		if time_left > 0.0:
+			return self
+	return null
 
 func deserialize(tree: SceneTree):
 	var hud_slot: HudButton = tree.current_scene.get_node_or_null(path)
-	if hud_slot and time_left > 0.0:
+	if hud_slot:
 		hud_slot._start_tween(time_left)

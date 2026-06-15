@@ -1,0 +1,887 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://03ly36irlxiy"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_jhcvc"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_l3uja"]
+[ext_resource type="Texture2D" uid="uid://dker1w0rpmpg8" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaAttack.png" id="3_hb0jc"]
+[ext_resource type="Texture2D" uid="uid://dtcto5qk2wrhg" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDie.png" id="4_q1auv"]
+[ext_resource type="Texture2D" uid="uid://dvqu6vim3l1wv" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaDmg.png" id="5_vgnrr"]
+[ext_resource type="Texture2D" uid="uid://b5ugh31b0nvbv" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaIdle.png" id="6_3aao3"]
+[ext_resource type="Texture2D" uid="uid://j4rw2gom4kjd" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Hyena/HyenaWalk.png" id="7_slavw"]
+[ext_resource type="Texture2D" uid="uid://u0c8qwin24g5" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionAttack.png" id="8_ksira"]
+[ext_resource type="Texture2D" uid="uid://cuvnbo3d3m6bb" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDie.png" id="9_4j2pi"]
+[ext_resource type="Texture2D" uid="uid://u6odvxx0nliu" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionDmg.png" id="10_u4osk"]
+[ext_resource type="Texture2D" uid="uid://b2k65s35ei4r3" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionIdle.png" id="11_tn188"]
+[ext_resource type="Texture2D" uid="uid://c754y80iwsuo6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lion/LionWalk.png" id="12_bxhpg"]
+[ext_resource type="Texture2D" uid="uid://baf422gymxckv" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessAttack.png" id="13_k2uv7"]
+[ext_resource type="Texture2D" uid="uid://ugtpt55j7yrm" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDie.png" id="14_1fto7"]
+[ext_resource type="Texture2D" uid="uid://ffcm273ugbjs" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessDmg.png" id="15_p7mcm"]
+[ext_resource type="Texture2D" uid="uid://42qk0d7i47d4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessIdle.png" id="16_j42va"]
+[ext_resource type="Texture2D" uid="uid://ybkvoqa6q4o6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Lioness/LionessWalk.png" id="17_hnjja"]
+[ext_resource type="Texture2D" uid="uid://nrq2md2wflq4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearAttack.png" id="18_4bf3d"]
+[ext_resource type="Texture2D" uid="uid://doefp7nqmytx2" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDie.png" id="19_kgu27"]
+[ext_resource type="Texture2D" uid="uid://cnkymh8t2bjep" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearDmg.png" id="20_y2a14"]
+[ext_resource type="Texture2D" uid="uid://c8nnmmrd7ncwc" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearIdle.png" id="21_twua2"]
+[ext_resource type="Texture2D" uid="uid://seqpx2usd52k" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Polar Bear/PolarBearWalk.png" id="22_phb2o"]
+[ext_resource type="Texture2D" uid="uid://drb1h2ogajt4u" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoAttack.png" id="23_m1dly"]
+[ext_resource type="Texture2D" uid="uid://b03s8vf2avd4f" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDie.png" id="24_4b354"]
+[ext_resource type="Texture2D" uid="uid://dkvdc0h8evefj" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoDmg.png" id="25_wdgmu"]
+[ext_resource type="Texture2D" uid="uid://dwa23hq1kmy6l" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoIdle.png" id="26_jiot3"]
+[ext_resource type="Texture2D" uid="uid://dcswvpagp0vcu" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Rhino/RhinoWalk.png" id="27_qfo3c"]
+[ext_resource type="Texture2D" uid="uid://dc6eyhjgio4i5" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeAttack.png" id="28_rwrwy"]
+[ext_resource type="Texture2D" uid="uid://cijp288j6gmup" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDie.png" id="29_o5lbn"]
+[ext_resource type="Texture2D" uid="uid://mdqebtf4hnhj" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeDmg.png" id="30_q35qo"]
+[ext_resource type="Texture2D" uid="uid://dnend41pqvyml" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeIdle.png" id="31_7egxk"]
+[ext_resource type="Texture2D" uid="uid://bcd28iwguxag7" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Snake/SnakeCrawling.png" id="32_0ys1k"]
+[ext_resource type="Texture2D" uid="uid://jfnss0w2o302" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerAttack.png" id="33_v7k36"]
+[ext_resource type="Texture2D" uid="uid://xqcmcbskls3t" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDie.png" id="34_5e1ll"]
+[ext_resource type="Texture2D" uid="uid://b6ygrk771fgnq" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerDmg.png" id="35_ifbcw"]
+[ext_resource type="Texture2D" uid="uid://oe53g1j1rhyc" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerIdle.png" id="36_lw2ic"]
+[ext_resource type="Texture2D" uid="uid://jxlt3gr8lq3w" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Aggressive/Tiger/TigerWalk.png" id="37_g2q0p"]
+[ext_resource type="Texture2D" uid="uid://df264syn2ut8r" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDie.png" id="38_ykgx4"]
+[ext_resource type="Texture2D" uid="uid://cfilgd65qvhyv" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerDmg.png" id="39_np3sd"]
+[ext_resource type="Texture2D" uid="uid://dohi51gfn5ayb" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerIdle.png" id="40_82ptm"]
+[ext_resource type="Texture2D" uid="uid://c4kwd64e6kyi5" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Badger/BadgerWalk.png" id="41_7whqd"]
+[ext_resource type="Texture2D" uid="uid://do4t3t2nb7cil" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDie.png" id="42_ecd41"]
+[ext_resource type="Texture2D" uid="uid://byi5feibjpk5j" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelDmg.png" id="43_vrlpe"]
+[ext_resource type="Texture2D" uid="uid://bvupsqddojbym" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelIdle.png" id="44_g51tl"]
+[ext_resource type="Texture2D" uid="uid://blvsusqogxutu" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Camel/CamelWalk.png" id="45_f4ykw"]
+[ext_resource type="Texture2D" uid="uid://c6agh5xbielw4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDie.png" id="46_0rdvc"]
+[ext_resource type="Texture2D" uid="uid://ne1s5gyrwmbk" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatDmg.png" id="47_jtg2f"]
+[ext_resource type="Texture2D" uid="uid://c0fe8lkn4wr0l" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatIdle.png" id="48_ktttw"]
+[ext_resource type="Texture2D" uid="uid://b80chm4tetx1d" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Cat/CatWalk.png" id="49_6hksq"]
+[ext_resource type="Texture2D" uid="uid://ds0s3ex8j0hx6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDie.png" id="50_utrg6"]
+[ext_resource type="Texture2D" uid="uid://b16eniect5gdu" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogDmg.png" id="51_6nte1"]
+[ext_resource type="Texture2D" uid="uid://oy86dfflhloy" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogIdle.png" id="52_vnnbs"]
+[ext_resource type="Texture2D" uid="uid://bnmjyg0gnmevp" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Dog/DogWalk.png" id="53_6d644"]
+[ext_resource type="Texture2D" uid="uid://baq68rj58lytg" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDie.png" id="54_m6tle"]
+[ext_resource type="Texture2D" uid="uid://bdqxrikyjdq6g" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantDmg.png" id="55_kr7f4"]
+[ext_resource type="Texture2D" uid="uid://wig32yiocnif" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantIdle.png" id="56_pnd44"]
+[ext_resource type="Texture2D" uid="uid://dwl63e5kcfo41" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Elephant/ElephantWalk.png" id="57_uhds0"]
+[ext_resource type="Texture2D" uid="uid://dacvlrjj2obt6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDie.png" id="58_6ycs4"]
+[ext_resource type="Texture2D" uid="uid://ctk6wony04rys" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogDmg.png" id="59_l8u1n"]
+[ext_resource type="Texture2D" uid="uid://08ycigq62k10" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogIdle.png" id="60_y6n7j"]
+[ext_resource type="Texture2D" uid="uid://bh2k7ja0e8bvs" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Frog/GreenFrogWalk.png" id="61_av2ii"]
+[ext_resource type="Texture2D" uid="uid://cw10kyel85vce" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDie.png" id="62_0a38a"]
+[ext_resource type="Texture2D" uid="uid://dr5dbllsiuusa" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailDmg.png" id="63_tafo7"]
+[ext_resource type="Texture2D" uid="uid://ca3qeoj5f1m73" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailInShell.png" id="64_rcyhh"]
+[ext_resource type="Texture2D" uid="uid://c31qi7xu5737r" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailOutShell.png" id="65_vybkc"]
+[ext_resource type="Texture2D" uid="uid://blvg4c04qp7p4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/GiantSnail/GiantSnailCrawl.png" id="66_c7ipj"]
+[ext_resource type="Texture2D" uid="uid://cc3g04rfyqist" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDie.png" id="67_y32ow"]
+[ext_resource type="Texture2D" uid="uid://bdtonvm3lpqrn" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatDmg.png" id="68_7yi13"]
+[ext_resource type="Texture2D" uid="uid://5irlwv718ib0" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatIdle.png" id="69_ghvdf"]
+[ext_resource type="Texture2D" uid="uid://b3es14apv2tm5" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Goat/GoatWalk.png" id="70_3luwe"]
+[ext_resource type="Texture2D" uid="uid://c5p664y6c03hh" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDie.png" id="71_r3yca"]
+[ext_resource type="Texture2D" uid="uid://c2bc8aq3etl2g" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogDmg.png" id="72_gnutl"]
+[ext_resource type="Texture2D" uid="uid://bcbp5gvalu2as" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesOut.png" id="73_u4kmv"]
+[ext_resource type="Texture2D" uid="uid://hwmegg2jc3v0" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogSpikesIn.png" id="74_rhsmf"]
+[ext_resource type="Texture2D" uid="uid://de42bmy60o73l" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hedgehog/HedgehogWalk.png" id="75_w0epr"]
+[ext_resource type="Texture2D" uid="uid://rq8ooxtmq554" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDie.png" id="76_enwv1"]
+[ext_resource type="Texture2D" uid="uid://d107q5lkvvn3k" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoDmg.png" id="77_3q2tl"]
+[ext_resource type="Texture2D" uid="uid://bicm2pcuvmdk6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoIdle.png" id="78_iqn2x"]
+[ext_resource type="Texture2D" uid="uid://dhipp7kc0c0nr" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Hippo/HippoWalk.png" id="79_ys0l8"]
+[ext_resource type="Texture2D" uid="uid://d0ev1kyckofkb" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDie.png" id="80_rl1bc"]
+[ext_resource type="Texture2D" uid="uid://daw1tketewe6m" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseDmg.png" id="81_b1d5m"]
+[ext_resource type="Texture2D" uid="uid://bqt3uvlb08lt1" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseIdle.png" id="82_8atdj"]
+[ext_resource type="Texture2D" uid="uid://b5ykwaem8215b" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseWalk.png" id="83_p6hjp"]
+[ext_resource type="Texture2D" uid="uid://0mmo5brje02s" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDie.png" id="84_p13bm"]
+[ext_resource type="Texture2D" uid="uid://hugjpx5rccf2" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooDmg.png" id="85_rf6r8"]
+[ext_resource type="Texture2D" uid="uid://brwqj6im53xav" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooIdle.png" id="86_t1bk6"]
+[ext_resource type="Texture2D" uid="uid://bov76x27agpba" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Kangaroo/KangarooHop.png" id="87_xedjh"]
+[ext_resource type="Texture2D" uid="uid://dedb8akqld3i4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDie.png" id="88_qypxq"]
+[ext_resource type="Texture2D" uid="uid://btlcu64vsosa1" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseDmg.png" id="89_f63jh"]
+[ext_resource type="Texture2D" uid="uid://cexhljr2s4fee" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseIdle.png" id="90_b843o"]
+[ext_resource type="Texture2D" uid="uid://cy3l13majigl4" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Moose/MooseWalk.png" id="91_xgmty"]
+[ext_resource type="Texture2D" uid="uid://cwhuean40rl32" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDie.png" id="92_t5idv"]
+[ext_resource type="Texture2D" uid="uid://d1o23rnwkgm1x" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxDmg.png" id="93_upqum"]
+[ext_resource type="Texture2D" uid="uid://b4n6ndwha1lhx" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxIdle.png" id="94_i6cko"]
+[ext_resource type="Texture2D" uid="uid://dqum30vm31pxl" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Orange Fox/OrangeFoxWalk.png" id="95_xq2ie"]
+[ext_resource type="Texture2D" uid="uid://bvhmph0und0rc" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDie.png" id="96_u57r8"]
+[ext_resource type="Texture2D" uid="uid://lmag5jgtgu44" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichDmg.png" id="97_j5ok5"]
+[ext_resource type="Texture2D" uid="uid://cr8ub8tfqys8a" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichIdle.png" id="98_e5qm7"]
+[ext_resource type="Texture2D" uid="uid://pevyvhsvsw4y" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Ostrich/OstrichWalk.png" id="99_ov8jg"]
+[ext_resource type="Texture2D" uid="uid://cw5f8l42t0er0" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDie.png" id="100_8u6pm"]
+[ext_resource type="Texture2D" uid="uid://v1nhuqyvlk24" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaDmg.png" id="101_wawu8"]
+[ext_resource type="Texture2D" uid="uid://bu8slg4re8y4f" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaSleep.png" id="102_y412k"]
+[ext_resource type="Texture2D" uid="uid://dkdn7uqftljh8" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaStandUp.png" id="103_3oixo"]
+[ext_resource type="Texture2D" uid="uid://b5kpix70djjxk" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaLaydown.png" id="104_s2vem"]
+[ext_resource type="Texture2D" uid="uid://cuixtnt5rsms6" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Panda/PandaWalk.png" id="105_nscfg"]
+[ext_resource type="Texture2D" uid="uid://swgnwqau5ma2" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDie.png" id="106_7x50s"]
+[ext_resource type="Texture2D" uid="uid://ch2il1vrf1bh2" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusDmg.png" id="107_x1ahd"]
+[ext_resource type="Texture2D" uid="uid://clecf1ni3453b" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusIdle.png" id="108_4w6f2"]
+[ext_resource type="Texture2D" uid="uid://c5pfv7t4diae0" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Platypus/PlatypusWalking.png" id="109_0ujnp"]
+[ext_resource type="Texture2D" uid="uid://c7ihtyhibnmgk" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDie.png" id="110_38l2w"]
+[ext_resource type="Texture2D" uid="uid://dpq7lv3ojqx5x" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxDmg.png" id="111_bopk2"]
+[ext_resource type="Texture2D" uid="uid://beotglkir7ihc" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxIdel.png" id="112_rhuad"]
+[ext_resource type="Texture2D" uid="uid://nbb0a4ltjtdi" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Polar Fox/PolarFoxWalk.png" id="113_g1d8m"]
+[ext_resource type="Texture2D" uid="uid://1as4hyj0gwsq" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDie.png" id="114_ouqjw"]
+[ext_resource type="Texture2D" uid="uid://cxjbs6vsqdqbt" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkDmg.png" id="115_8ny7s"]
+[ext_resource type="Texture2D" uid="uid://dtvex2eee377a" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkIdle.png" id="116_00p6o"]
+[ext_resource type="Texture2D" uid="uid://b1mjtepp76olu" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Skunk/SkunkWalk.png" id="117_2ia6h"]
+[ext_resource type="Texture2D" uid="uid://5goo1lb04xgb" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDie.png" id="118_swndp"]
+[ext_resource type="Texture2D" uid="uid://d3ibqgaw7xibq" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelDmg.png" id="119_aen2i"]
+[ext_resource type="Texture2D" uid="uid://g5epv3tvab0h" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelIdle.png" id="120_0dm6q"]
+[ext_resource type="Texture2D" uid="uid://uod6kj1agil8" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelWalk.png" id="121_smlfm"]
+[ext_resource type="Texture2D" uid="uid://4l8yg7f5kqnq" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDie.png" id="122_padot"]
+[ext_resource type="Texture2D" uid="uid://cuthyoy7v5m78" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseDmg.png" id="123_oytwe"]
+[ext_resource type="Texture2D" uid="uid://cb557kg2w0kqo" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseIdle.png" id="124_w5t4h"]
+[ext_resource type="Texture2D" uid="uid://xt36xnk1i83x" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Tortoise/TortoiseWalk.png" id="125_uila0"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="126_vq7ig"]
+
+[sub_resource type="Resource" id="Resource_0n7dh"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("3_hb0jc")
+
+[sub_resource type="Resource" id="Resource_qdo3p"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("4_q1auv")
+
+[sub_resource type="Resource" id="Resource_tud38"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("5_vgnrr")
+
+[sub_resource type="Resource" id="Resource_px61r"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("6_3aao3")
+
+[sub_resource type="Resource" id="Resource_ovj76"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("7_slavw")
+
+[sub_resource type="Resource" id="Resource_rdsst"]
+script = ExtResource("1_jhcvc")
+name = "Hyena"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_0n7dh"), SubResource("Resource_qdo3p"), SubResource("Resource_tud38"), SubResource("Resource_px61r"), SubResource("Resource_ovj76")])
+
+[sub_resource type="Resource" id="Resource_ubutu"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("8_ksira")
+
+[sub_resource type="Resource" id="Resource_7q1ok"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("9_4j2pi")
+
+[sub_resource type="Resource" id="Resource_f4fxx"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("10_u4osk")
+
+[sub_resource type="Resource" id="Resource_5yaqw"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("11_tn188")
+
+[sub_resource type="Resource" id="Resource_hu73b"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("12_bxhpg")
+
+[sub_resource type="Resource" id="Resource_g0ste"]
+script = ExtResource("1_jhcvc")
+name = "Lion"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_ubutu"), SubResource("Resource_7q1ok"), SubResource("Resource_f4fxx"), SubResource("Resource_5yaqw"), SubResource("Resource_hu73b")])
+
+[sub_resource type="Resource" id="Resource_7420c"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("13_k2uv7")
+
+[sub_resource type="Resource" id="Resource_80kxs"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("14_1fto7")
+
+[sub_resource type="Resource" id="Resource_lcqlu"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("15_p7mcm")
+
+[sub_resource type="Resource" id="Resource_mll8l"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("16_j42va")
+
+[sub_resource type="Resource" id="Resource_ttg2g"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("17_hnjja")
+
+[sub_resource type="Resource" id="Resource_q3bgg"]
+script = ExtResource("1_jhcvc")
+name = "Lioness"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_7420c"), SubResource("Resource_80kxs"), SubResource("Resource_lcqlu"), SubResource("Resource_mll8l"), SubResource("Resource_ttg2g")])
+
+[sub_resource type="Resource" id="Resource_qyb4d"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("18_4bf3d")
+
+[sub_resource type="Resource" id="Resource_hub0a"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("19_kgu27")
+
+[sub_resource type="Resource" id="Resource_sg8bu"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("20_y2a14")
+
+[sub_resource type="Resource" id="Resource_qvukj"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("21_twua2")
+
+[sub_resource type="Resource" id="Resource_2i2wy"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("22_phb2o")
+
+[sub_resource type="Resource" id="Resource_5qjcb"]
+script = ExtResource("1_jhcvc")
+name = "Polar_Bear"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_qyb4d"), SubResource("Resource_hub0a"), SubResource("Resource_sg8bu"), SubResource("Resource_qvukj"), SubResource("Resource_2i2wy")])
+
+[sub_resource type="Resource" id="Resource_dd236"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("23_m1dly")
+
+[sub_resource type="Resource" id="Resource_inf7c"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("24_4b354")
+
+[sub_resource type="Resource" id="Resource_j1sam"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("25_wdgmu")
+
+[sub_resource type="Resource" id="Resource_l22hd"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("26_jiot3")
+
+[sub_resource type="Resource" id="Resource_d5n66"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("27_qfo3c")
+
+[sub_resource type="Resource" id="Resource_4owav"]
+script = ExtResource("1_jhcvc")
+name = "Rhino"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_dd236"), SubResource("Resource_inf7c"), SubResource("Resource_j1sam"), SubResource("Resource_l22hd"), SubResource("Resource_d5n66")])
+
+[sub_resource type="Resource" id="Resource_0skga"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("28_rwrwy")
+
+[sub_resource type="Resource" id="Resource_l7bue"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("29_o5lbn")
+
+[sub_resource type="Resource" id="Resource_2mbc6"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("30_q35qo")
+
+[sub_resource type="Resource" id="Resource_g0tyv"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("31_7egxk")
+
+[sub_resource type="Resource" id="Resource_6dp1e"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("32_0ys1k")
+
+[sub_resource type="Resource" id="Resource_c4yxh"]
+script = ExtResource("1_jhcvc")
+name = "Snake"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_0skga"), SubResource("Resource_l7bue"), SubResource("Resource_2mbc6"), SubResource("Resource_g0tyv"), SubResource("Resource_6dp1e")])
+
+[sub_resource type="Resource" id="Resource_y1rbu"]
+script = ExtResource("2_l3uja")
+name = "attack"
+img = ExtResource("33_v7k36")
+
+[sub_resource type="Resource" id="Resource_c72vm"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("34_5e1ll")
+
+[sub_resource type="Resource" id="Resource_s1iup"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("35_ifbcw")
+
+[sub_resource type="Resource" id="Resource_hyetf"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("36_lw2ic")
+
+[sub_resource type="Resource" id="Resource_ip3x1"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("37_g2q0p")
+
+[sub_resource type="Resource" id="Resource_uo1ko"]
+script = ExtResource("1_jhcvc")
+name = "Tiger"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_y1rbu"), SubResource("Resource_c72vm"), SubResource("Resource_s1iup"), SubResource("Resource_hyetf"), SubResource("Resource_ip3x1")])
+
+[sub_resource type="Resource" id="Resource_s5h0y"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("38_ykgx4")
+
+[sub_resource type="Resource" id="Resource_wket3"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("39_np3sd")
+
+[sub_resource type="Resource" id="Resource_fv7pd"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("40_82ptm")
+
+[sub_resource type="Resource" id="Resource_nxljx"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("41_7whqd")
+
+[sub_resource type="Resource" id="Resource_fexov"]
+script = ExtResource("1_jhcvc")
+name = "Badger"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_s5h0y"), SubResource("Resource_wket3"), SubResource("Resource_fv7pd"), SubResource("Resource_nxljx")])
+
+[sub_resource type="Resource" id="Resource_m841q"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("42_ecd41")
+
+[sub_resource type="Resource" id="Resource_48a75"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("43_vrlpe")
+
+[sub_resource type="Resource" id="Resource_ak7wu"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("44_g51tl")
+
+[sub_resource type="Resource" id="Resource_aw07j"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("45_f4ykw")
+
+[sub_resource type="Resource" id="Resource_qwb21"]
+script = ExtResource("1_jhcvc")
+name = "Camel"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_m841q"), SubResource("Resource_48a75"), SubResource("Resource_ak7wu"), SubResource("Resource_aw07j")])
+
+[sub_resource type="Resource" id="Resource_30bk0"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("46_0rdvc")
+
+[sub_resource type="Resource" id="Resource_plj4x"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("47_jtg2f")
+
+[sub_resource type="Resource" id="Resource_57v3e"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("48_ktttw")
+
+[sub_resource type="Resource" id="Resource_h6m0b"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("49_6hksq")
+
+[sub_resource type="Resource" id="Resource_4lci4"]
+script = ExtResource("1_jhcvc")
+name = "Cat"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_30bk0"), SubResource("Resource_plj4x"), SubResource("Resource_57v3e"), SubResource("Resource_h6m0b")])
+
+[sub_resource type="Resource" id="Resource_fo1id"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("50_utrg6")
+
+[sub_resource type="Resource" id="Resource_gw4w0"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("51_6nte1")
+
+[sub_resource type="Resource" id="Resource_a6hl1"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("52_vnnbs")
+
+[sub_resource type="Resource" id="Resource_i78ck"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("53_6d644")
+
+[sub_resource type="Resource" id="Resource_otgbx"]
+script = ExtResource("1_jhcvc")
+name = "Dog"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_fo1id"), SubResource("Resource_gw4w0"), SubResource("Resource_a6hl1"), SubResource("Resource_i78ck")])
+
+[sub_resource type="Resource" id="Resource_2fk2l"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("54_m6tle")
+
+[sub_resource type="Resource" id="Resource_0ekjs"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("55_kr7f4")
+
+[sub_resource type="Resource" id="Resource_8qr6n"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("56_pnd44")
+
+[sub_resource type="Resource" id="Resource_h4akn"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("57_uhds0")
+
+[sub_resource type="Resource" id="Resource_dtfbl"]
+script = ExtResource("1_jhcvc")
+name = "Elephant"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_2fk2l"), SubResource("Resource_0ekjs"), SubResource("Resource_8qr6n"), SubResource("Resource_h4akn")])
+
+[sub_resource type="Resource" id="Resource_3eshn"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("58_6ycs4")
+
+[sub_resource type="Resource" id="Resource_vegye"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("59_l8u1n")
+
+[sub_resource type="Resource" id="Resource_maeph"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("60_y6n7j")
+
+[sub_resource type="Resource" id="Resource_esa6a"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("61_av2ii")
+
+[sub_resource type="Resource" id="Resource_3s0xs"]
+script = ExtResource("1_jhcvc")
+name = "Frog"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_3eshn"), SubResource("Resource_vegye"), SubResource("Resource_maeph"), SubResource("Resource_esa6a")])
+
+[sub_resource type="Resource" id="Resource_5u2pn"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("62_0a38a")
+
+[sub_resource type="Resource" id="Resource_2pc7j"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("63_tafo7")
+
+[sub_resource type="Resource" id="Resource_qtdrv"]
+script = ExtResource("2_l3uja")
+name = "idle_in"
+img = ExtResource("64_rcyhh")
+
+[sub_resource type="Resource" id="Resource_bfrra"]
+script = ExtResource("2_l3uja")
+name = "idle_out"
+img = ExtResource("65_vybkc")
+
+[sub_resource type="Resource" id="Resource_efd04"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("66_c7ipj")
+
+[sub_resource type="Resource" id="Resource_kyg5m"]
+script = ExtResource("1_jhcvc")
+name = "GiantSnail"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_5u2pn"), SubResource("Resource_2pc7j"), SubResource("Resource_qtdrv"), SubResource("Resource_bfrra"), SubResource("Resource_efd04")])
+
+[sub_resource type="Resource" id="Resource_ubgw4"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("67_y32ow")
+
+[sub_resource type="Resource" id="Resource_02ajs"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("68_7yi13")
+
+[sub_resource type="Resource" id="Resource_okloq"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("69_ghvdf")
+
+[sub_resource type="Resource" id="Resource_vpo7k"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("70_3luwe")
+
+[sub_resource type="Resource" id="Resource_31ux5"]
+script = ExtResource("1_jhcvc")
+name = "Goat"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_ubgw4"), SubResource("Resource_02ajs"), SubResource("Resource_okloq"), SubResource("Resource_vpo7k")])
+
+[sub_resource type="Resource" id="Resource_su4rp"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("71_r3yca")
+
+[sub_resource type="Resource" id="Resource_yums0"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("72_gnutl")
+
+[sub_resource type="Resource" id="Resource_7us2d"]
+script = ExtResource("2_l3uja")
+name = "idle_spike_out"
+img = ExtResource("73_u4kmv")
+
+[sub_resource type="Resource" id="Resource_goj4n"]
+script = ExtResource("2_l3uja")
+name = "idle_spike_in"
+img = ExtResource("74_rhsmf")
+
+[sub_resource type="Resource" id="Resource_jw2vn"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("75_w0epr")
+
+[sub_resource type="Resource" id="Resource_i8x7k"]
+script = ExtResource("1_jhcvc")
+name = "Hedgehog"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_su4rp"), SubResource("Resource_yums0"), SubResource("Resource_7us2d"), SubResource("Resource_goj4n"), SubResource("Resource_jw2vn")])
+
+[sub_resource type="Resource" id="Resource_rdl2f"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("76_enwv1")
+
+[sub_resource type="Resource" id="Resource_m32c6"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("77_3q2tl")
+
+[sub_resource type="Resource" id="Resource_8r44o"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("78_iqn2x")
+
+[sub_resource type="Resource" id="Resource_l5h44"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("79_ys0l8")
+
+[sub_resource type="Resource" id="Resource_o0faj"]
+script = ExtResource("1_jhcvc")
+name = "Hippo"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_rdl2f"), SubResource("Resource_m32c6"), SubResource("Resource_8r44o"), SubResource("Resource_l5h44")])
+
+[sub_resource type="Resource" id="Resource_p02cm"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("80_rl1bc")
+
+[sub_resource type="Resource" id="Resource_lh6le"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("81_b1d5m")
+
+[sub_resource type="Resource" id="Resource_pa0uy"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("82_8atdj")
+
+[sub_resource type="Resource" id="Resource_r6igg"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("83_p6hjp")
+
+[sub_resource type="Resource" id="Resource_av7pc"]
+script = ExtResource("1_jhcvc")
+name = "Horse"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_p02cm"), SubResource("Resource_lh6le"), SubResource("Resource_pa0uy"), SubResource("Resource_r6igg")])
+
+[sub_resource type="Resource" id="Resource_4kpe1"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("84_p13bm")
+
+[sub_resource type="Resource" id="Resource_o3o8q"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("85_rf6r8")
+
+[sub_resource type="Resource" id="Resource_m2ggn"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("86_t1bk6")
+
+[sub_resource type="Resource" id="Resource_2f851"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("87_xedjh")
+
+[sub_resource type="Resource" id="Resource_tb7bp"]
+script = ExtResource("1_jhcvc")
+name = "Kangaroo"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_4kpe1"), SubResource("Resource_o3o8q"), SubResource("Resource_m2ggn"), SubResource("Resource_2f851")])
+
+[sub_resource type="Resource" id="Resource_osy17"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("88_qypxq")
+
+[sub_resource type="Resource" id="Resource_tgdfy"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("89_f63jh")
+
+[sub_resource type="Resource" id="Resource_k01sl"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("90_b843o")
+
+[sub_resource type="Resource" id="Resource_vet3n"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("91_xgmty")
+
+[sub_resource type="Resource" id="Resource_fldq5"]
+script = ExtResource("1_jhcvc")
+name = "Moose"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_osy17"), SubResource("Resource_tgdfy"), SubResource("Resource_k01sl"), SubResource("Resource_vet3n")])
+
+[sub_resource type="Resource" id="Resource_ukg6u"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("92_t5idv")
+
+[sub_resource type="Resource" id="Resource_q1imd"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("93_upqum")
+
+[sub_resource type="Resource" id="Resource_xxpex"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("94_i6cko")
+
+[sub_resource type="Resource" id="Resource_ujxf3"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("95_xq2ie")
+
+[sub_resource type="Resource" id="Resource_6jwuo"]
+script = ExtResource("1_jhcvc")
+name = "Orange_Fox"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_ukg6u"), SubResource("Resource_q1imd"), SubResource("Resource_xxpex"), SubResource("Resource_ujxf3")])
+
+[sub_resource type="Resource" id="Resource_bsf0s"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("96_u57r8")
+
+[sub_resource type="Resource" id="Resource_ka7yo"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("97_j5ok5")
+
+[sub_resource type="Resource" id="Resource_cx16y"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("98_e5qm7")
+
+[sub_resource type="Resource" id="Resource_vs8do"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("99_ov8jg")
+
+[sub_resource type="Resource" id="Resource_v04i4"]
+script = ExtResource("1_jhcvc")
+name = "Ostrich"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_bsf0s"), SubResource("Resource_ka7yo"), SubResource("Resource_cx16y"), SubResource("Resource_vs8do")])
+
+[sub_resource type="Resource" id="Resource_up7um"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("100_8u6pm")
+
+[sub_resource type="Resource" id="Resource_rwne6"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("101_wawu8")
+
+[sub_resource type="Resource" id="Resource_37m3u"]
+script = ExtResource("2_l3uja")
+name = "sleep"
+img = ExtResource("102_y412k")
+
+[sub_resource type="Resource" id="Resource_ixe4f"]
+script = ExtResource("2_l3uja")
+name = "stand_up"
+img = ExtResource("103_3oixo")
+
+[sub_resource type="Resource" id="Resource_46jsk"]
+script = ExtResource("2_l3uja")
+name = "lay_down"
+img = ExtResource("104_s2vem")
+
+[sub_resource type="Resource" id="Resource_q5ia5"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("105_nscfg")
+
+[sub_resource type="Resource" id="Resource_qifwd"]
+script = ExtResource("1_jhcvc")
+name = "Panda"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_up7um"), SubResource("Resource_rwne6"), SubResource("Resource_37m3u"), SubResource("Resource_ixe4f"), SubResource("Resource_46jsk"), SubResource("Resource_q5ia5")])
+
+[sub_resource type="Resource" id="Resource_4fr02"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("106_7x50s")
+
+[sub_resource type="Resource" id="Resource_tcueb"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("107_x1ahd")
+
+[sub_resource type="Resource" id="Resource_utbr0"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("108_4w6f2")
+
+[sub_resource type="Resource" id="Resource_oj428"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("109_0ujnp")
+
+[sub_resource type="Resource" id="Resource_5g7k7"]
+script = ExtResource("1_jhcvc")
+name = "Platypus"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_4fr02"), SubResource("Resource_tcueb"), SubResource("Resource_utbr0"), SubResource("Resource_oj428")])
+
+[sub_resource type="Resource" id="Resource_hbqwr"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("110_38l2w")
+
+[sub_resource type="Resource" id="Resource_f6th5"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("111_bopk2")
+
+[sub_resource type="Resource" id="Resource_5xnen"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("112_rhuad")
+
+[sub_resource type="Resource" id="Resource_tdi4f"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("113_g1d8m")
+
+[sub_resource type="Resource" id="Resource_a7exh"]
+script = ExtResource("1_jhcvc")
+name = "Polar_Fox"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_hbqwr"), SubResource("Resource_f6th5"), SubResource("Resource_5xnen"), SubResource("Resource_tdi4f")])
+
+[sub_resource type="Resource" id="Resource_wrvjf"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("114_ouqjw")
+
+[sub_resource type="Resource" id="Resource_doktr"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("115_8ny7s")
+
+[sub_resource type="Resource" id="Resource_cbg24"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("116_00p6o")
+
+[sub_resource type="Resource" id="Resource_mvf43"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("117_2ia6h")
+
+[sub_resource type="Resource" id="Resource_jdyym"]
+script = ExtResource("1_jhcvc")
+name = "Skunk"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_wrvjf"), SubResource("Resource_doktr"), SubResource("Resource_cbg24"), SubResource("Resource_mvf43")])
+
+[sub_resource type="Resource" id="Resource_ophu5"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("118_swndp")
+
+[sub_resource type="Resource" id="Resource_csgrw"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("119_aen2i")
+
+[sub_resource type="Resource" id="Resource_auk6o"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("120_0dm6q")
+
+[sub_resource type="Resource" id="Resource_jxvx6"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("121_smlfm")
+
+[sub_resource type="Resource" id="Resource_cgeju"]
+script = ExtResource("1_jhcvc")
+name = "Squirrel"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_ophu5"), SubResource("Resource_csgrw"), SubResource("Resource_auk6o"), SubResource("Resource_jxvx6")])
+
+[sub_resource type="Resource" id="Resource_ecs6s"]
+script = ExtResource("2_l3uja")
+name = "die"
+img = ExtResource("122_padot")
+
+[sub_resource type="Resource" id="Resource_gcy83"]
+script = ExtResource("2_l3uja")
+name = "dmg"
+img = ExtResource("123_oytwe")
+
+[sub_resource type="Resource" id="Resource_sys5x"]
+script = ExtResource("2_l3uja")
+name = "idle"
+img = ExtResource("124_w5t4h")
+
+[sub_resource type="Resource" id="Resource_x2d0o"]
+script = ExtResource("2_l3uja")
+name = "walk"
+img = ExtResource("125_uila0")
+
+[sub_resource type="Resource" id="Resource_mkgv2"]
+script = ExtResource("1_jhcvc")
+name = "Tortoise"
+spritesheet = Array[ExtResource("2_l3uja")]([SubResource("Resource_ecs6s"), SubResource("Resource_gcy83"), SubResource("Resource_sys5x"), SubResource("Resource_x2d0o")])
+
+[resource]
+script = ExtResource("126_vq7ig")
+lib = Array[ExtResource("1_jhcvc")]([SubResource("Resource_rdsst"), SubResource("Resource_g0ste"), SubResource("Resource_q3bgg"), SubResource("Resource_5qjcb"), SubResource("Resource_4owav"), SubResource("Resource_c4yxh"), SubResource("Resource_uo1ko"), SubResource("Resource_fexov"), SubResource("Resource_qwb21"), SubResource("Resource_4lci4"), SubResource("Resource_otgbx"), SubResource("Resource_dtfbl"), SubResource("Resource_3s0xs"), SubResource("Resource_kyg5m"), SubResource("Resource_31ux5"), SubResource("Resource_i8x7k"), SubResource("Resource_o0faj"), SubResource("Resource_av7pc"), SubResource("Resource_tb7bp"), SubResource("Resource_fldq5"), SubResource("Resource_6jwuo"), SubResource("Resource_v04i4"), SubResource("Resource_qifwd"), SubResource("Resource_5g7k7"), SubResource("Resource_a7exh"), SubResource("Resource_jdyym"), SubResource("Resource_cgeju"), SubResource("Resource_mkgv2")])

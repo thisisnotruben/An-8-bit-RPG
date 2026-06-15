@@ -2,7 +2,11 @@
 class_name StatModifer extends Resource
 
 @export var modifiers: Array[ModifierAmountBase] = []
-@export var base: ModifierAmountBase
+@export var base: ModifierAmountBase:
+	set(value):
+		base = value
+		if value:
+			calculate()
 var current := 0.0
 
 signal on_current_changed(_current: float)
@@ -18,6 +22,5 @@ func calculate():
 			cum_sum += modifier.amount
 
 	var new_current := cum_sum * cum_product
-	if not is_equal_approx(new_current, current):
-		current = new_current
-		on_current_changed.emit(new_current)
+	current = new_current
+	on_current_changed.emit(new_current)

@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://dtnrgl3tae5s4"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_wr66x"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_kv0ll"]
+[ext_resource type="Texture2D" uid="uid://8v4w3cjlh7ye" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/General_Animations/Attack.png" id="3_v7dgj"]
+[ext_resource type="Texture2D" uid="uid://ejgruvaxys71" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/General_Animations/Die.png" id="4_ryoi1"]
+[ext_resource type="Texture2D" uid="uid://bkvmkh6k45ikd" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/General_Animations/Dmg.png" id="5_j1i2m"]
+[ext_resource type="Texture2D" uid="uid://c0vdfovpk70hq" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/General_Animations/Idle.png" id="6_a2vyh"]
+[ext_resource type="Texture2D" uid="uid://8kyj1nrs7uol" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/General_Animations/Walk.png" id="7_u02ls"]
+[ext_resource type="Texture2D" uid="uid://0bpw1depdrhh" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/Special_Animations/Crush/Crush.png" id="8_xo0up"]
+[ext_resource type="Texture2D" uid="uid://bfuvvswkrw5xl" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Dark_Priest/Special_Animations/Retaliation/Retaliation.png" id="9_m34ji"]
+[ext_resource type="Texture2D" uid="uid://c7gfxktw2gtx8" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Demonologist/General_Animations/Attack.png" id="10_g730m"]
+[ext_resource type="Texture2D" uid="uid://dcrqdulft1ewg" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Demonologist/General_Animations/Die.png" id="11_eitoq"]
+[ext_resource type="Texture2D" uid="uid://bxu4d62pau4fn" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Demonologist/General_Animations/Dmg.png" id="12_1igp7"]
+[ext_resource type="Texture2D" uid="uid://dp6p0sx63u6uh" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Demonologist/General_Animations/Idle.png" id="13_xkuco"]
+[ext_resource type="Texture2D" uid="uid://c3c8opxcgs62u" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Demonologist/General_Animations/Walk.png" id="14_3abp2"]
+[ext_resource type="Texture2D" uid="uid://d4emorfkxg6co" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Supreme_Necromancer/General_Animations/Attack.png" id="15_g6xtu"]
+[ext_resource type="Texture2D" uid="uid://ce13e2tmbspk2" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Supreme_Necromancer/General_Animations/Die.png" id="16_yum8q"]
+[ext_resource type="Texture2D" uid="uid://cnctkp0mqxeyd" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Supreme_Necromancer/General_Animations/Dmg.png" id="17_1sdrm"]
+[ext_resource type="Texture2D" uid="uid://voy6yww7qxj3" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Supreme_Necromancer/General_Animations/Idle.png" id="18_q50p7"]
+[ext_resource type="Texture2D" uid="uid://cm4drmls7bs5x" path="res://asset/img/Minifantasy_True_Villains_I_v1.0/_Minifantasy_True_Villains_Assets/Supreme_Necromancer/General_Animations/Walk.png" id="19_grmsd"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="20_m0x7s"]
+
+[sub_resource type="Resource" id="Resource_bhbi8"]
+script = ExtResource("2_kv0ll")
+name = "attack"
+img = ExtResource("3_v7dgj")
+
+[sub_resource type="Resource" id="Resource_7jeai"]
+script = ExtResource("2_kv0ll")
+name = "die"
+img = ExtResource("4_ryoi1")
+
+[sub_resource type="Resource" id="Resource_lwjsp"]
+script = ExtResource("2_kv0ll")
+name = "dmg"
+img = ExtResource("5_j1i2m")
+
+[sub_resource type="Resource" id="Resource_a66y3"]
+script = ExtResource("2_kv0ll")
+name = "idle"
+img = ExtResource("6_a2vyh")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_5n6ht"]
+script = ExtResource("2_kv0ll")
+name = "walk"
+img = ExtResource("7_u02ls")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_0f5ks"]
+script = ExtResource("2_kv0ll")
+name = "crush"
+img = ExtResource("8_xo0up")
+
+[sub_resource type="Resource" id="Resource_acv4k"]
+script = ExtResource("2_kv0ll")
+name = "retaliation"
+img = ExtResource("9_m34ji")
+
+[sub_resource type="Resource" id="Resource_pjp5s"]
+script = ExtResource("1_wr66x")
+name = "Dark_Priest"
+spritesheet = Array[ExtResource("2_kv0ll")]([SubResource("Resource_bhbi8"), SubResource("Resource_7jeai"), SubResource("Resource_lwjsp"), SubResource("Resource_a66y3"), SubResource("Resource_5n6ht"), SubResource("Resource_0f5ks"), SubResource("Resource_acv4k")])
+
+[sub_resource type="Resource" id="Resource_1068w"]
+script = ExtResource("2_kv0ll")
+name = "attack"
+img = ExtResource("10_g730m")
+
+[sub_resource type="Resource" id="Resource_d343o"]
+script = ExtResource("2_kv0ll")
+name = "die"
+img = ExtResource("11_eitoq")
+
+[sub_resource type="Resource" id="Resource_g3pkf"]
+script = ExtResource("2_kv0ll")
+name = "dmg"
+img = ExtResource("12_1igp7")
+
+[sub_resource type="Resource" id="Resource_883b2"]
+script = ExtResource("2_kv0ll")
+name = "idle"
+img = ExtResource("13_xkuco")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_mxr20"]
+script = ExtResource("2_kv0ll")
+name = "walk"
+img = ExtResource("14_3abp2")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_ykefe"]
+script = ExtResource("1_wr66x")
+name = "Demonologist"
+spritesheet = Array[ExtResource("2_kv0ll")]([SubResource("Resource_1068w"), SubResource("Resource_d343o"), SubResource("Resource_g3pkf"), SubResource("Resource_883b2"), SubResource("Resource_mxr20")])
+
+[sub_resource type="Resource" id="Resource_xcy31"]
+script = ExtResource("2_kv0ll")
+name = "attack"
+img = ExtResource("15_g6xtu")
+
+[sub_resource type="Resource" id="Resource_b3oee"]
+script = ExtResource("2_kv0ll")
+name = "die"
+img = ExtResource("16_yum8q")
+
+[sub_resource type="Resource" id="Resource_sghpn"]
+script = ExtResource("2_kv0ll")
+name = "dmg"
+img = ExtResource("17_1sdrm")
+
+[sub_resource type="Resource" id="Resource_woexj"]
+script = ExtResource("2_kv0ll")
+name = "idle"
+img = ExtResource("18_q50p7")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_mmhcg"]
+script = ExtResource("2_kv0ll")
+name = "walk"
+img = ExtResource("19_grmsd")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_fruyu"]
+script = ExtResource("1_wr66x")
+name = "Supreme_Necromancer"
+spritesheet = Array[ExtResource("2_kv0ll")]([SubResource("Resource_xcy31"), SubResource("Resource_b3oee"), SubResource("Resource_sghpn"), SubResource("Resource_woexj"), SubResource("Resource_mmhcg")])
+
+[resource]
+script = ExtResource("20_m0x7s")
+lib = Array[ExtResource("1_wr66x")]([SubResource("Resource_pjp5s"), SubResource("Resource_ykefe"), SubResource("Resource_fruyu")])

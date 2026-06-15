@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl16mwa5130l4"]
+[gd_scene format=3 uid="uid://bl16mwa5130l4"]
 
 [ext_resource type="PackedScene" uid="uid://duahdlh0x8w3r" path="res://tiled/map/zone1.tmx" id="1_abhg3"]
 [ext_resource type="PackedScene" uid="uid://d1ri6cvdxflr1" path="res://src/character/target_service.tscn" id="2_7py1t"]
@@ -13,8 +13,9 @@ source_geometry_mode = 2
 source_geometry_group_name = &"world_tileset"
 agent_radius = 5.0
 
-[node name="zone1" instance=ExtResource("1_abhg3")]
+[node name="zone1" unique_id=1490588062 instance=ExtResource("1_abhg3")]
 y_sort_enabled = true
+position = Vector2(-0.99999994, 0)
 scale = Vector2(5, 5)
 
 [node name="ground" parent="ground" index="0" groups=["world_tileset"]]
@@ -59,21 +60,18 @@ scale = Vector2(5, 5)
 
 [node name="cliff_deco_z2" parent="cliff" index="3" groups=["world_tileset"]]
 
-[node name="centaur" parent="object/character" index="0"]
-collision_layer = 26
-
-[node name="nav_area" type="NavigationRegion2D" parent="." index="6"]
+[node name="nav_area" type="NavigationRegion2D" parent="." index="6" unique_id=806383223]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_7py1t")
 
-[node name="target_service" parent="." index="7" node_paths=PackedStringArray("hud") instance=ExtResource("2_7py1t")]
+[node name="target_service" parent="." index="7" unique_id=628653585 node_paths=PackedStringArray("hud") instance=ExtResource("2_7py1t")]
 hud = NodePath("../canvasLayer/hud")
 
-[node name="canvasLayer" type="CanvasLayer" parent="." index="8"]
+[node name="canvasLayer" type="CanvasLayer" parent="." index="8" unique_id=1552799375]
 
-[node name="hud" parent="canvasLayer" index="0" instance=ExtResource("4_7py1t")]
+[node name="hud" parent="canvasLayer" index="0" unique_id=869778270 instance=ExtResource("4_7py1t")]
 
-[node name="game" parent="canvasLayer" index="1" instance=ExtResource("3_jh433")]
+[node name="game" parent="canvasLayer" index="1" unique_id=372470081 instance=ExtResource("3_jh433")]
 visible = false
 
 [connection signal="mouse_entered" from="object/character/centaur" to="object/character/centaur" method="_on_mouse_entered"]

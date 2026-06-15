@@ -1,23 +1,30 @@
-[gd_scene load_steps=22 format=3 uid="uid://batngdfpuvufm"]
+[gd_scene format=3 uid="uid://batngdfpuvufm"]
 
 [ext_resource type="Script" uid="uid://dhwxukmxuqfm8" path="res://src/character/character.gd" id="1_dmj6x"]
 [ext_resource type="Script" uid="uid://bei1wwsixdmk4" path="res://src/character/fsm/fsm_character.gd" id="2_6mb4q"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="3_4feda"]
 [ext_resource type="Script" uid="uid://bvbgyajrvqql4" path="res://src/character/fsm/state/idle.gd" id="3_k8eue"]
 [ext_resource type="Script" uid="uid://c4fkfl7f2uyuk" path="res://src/character/fsm/state/move.gd" id="4_m366t"]
 [ext_resource type="Script" uid="uid://ccerxkr4dln24" path="res://src/character/fsm/state/dead.gd" id="4_tntuy"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="4_y5dg0"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://resource/limbo_ai_trees/character/behavior_character_default.tres" id="5_j7xr0"]
 [ext_resource type="Script" uid="uid://brsaqvqhir8tp" path="res://src/character/fsm/state/melee.gd" id="5_tntuy"]
 [ext_resource type="Script" uid="uid://cirvakft87x8y" path="res://src/character/fsm/state/shoot.gd" id="6_56uj1"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="7_gn7y0"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="8_7aoyf"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
 [ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="12_fcqus"]
 [ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://resource/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
 [ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
-[ext_resource type="AnimationLibrary" uid="uid://ccbewocsmf0s4" path="res://resource/character/animation/Centaur.tres" id="17_4feda"]
 [ext_resource type="PackedScene" uid="uid://dkpcprd1cr4eg" path="res://src/character/component/stat_regen.tscn" id="24_0bjdw"]
 [ext_resource type="PackedScene" uid="uid://cscse0mnpcree" path="res://src/character/component/stat_component.tscn" id="25_880r3"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://b7277cowcl0ix" path="res://resource/character/animation_state_machine/Centaur_state_machine.tres" id="96_0ekrb"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="96_dnpej"]
 [ext_resource type="Texture2D" uid="uid://cq43xk55y0ftj" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurIdle.png" id="97_32hfe"]
+
+[sub_resource type="Resource" id="Resource_kpnva"]
+script = ExtResource("7_gn7y0")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_248u0"]
 
@@ -28,122 +35,122 @@ radius = 32.0
 atlas = ExtResource("95_vsifm")
 region = Rect2(1360, 208, 6, 8)
 
-[node name="character" type="CharacterBody2D" groups=["character", "serializable"]]
-collision_layer = 26
+[node name="character" type="CharacterBody2D" unique_id=845622493 groups=["character", "serializable"]]
+collision_layer = 10
 collision_mask = 3
 script = ExtResource("1_dmj6x")
+unit = SubResource("Resource_kpnva")
 
-[node name="fsm" type="Node" parent="."]
+[node name="fsm" type="Node" parent="." unique_id=721548796]
 script = ExtResource("2_6mb4q")
 
-[node name="idle" type="Node" parent="fsm"]
+[node name="idle" type="Node" parent="fsm" unique_id=1467440703]
 script = ExtResource("3_k8eue")
 
-[node name="move" type="Node" parent="fsm" node_paths=PackedStringArray("snd_move", "nav_agent")]
+[node name="move" type="Node" parent="fsm" unique_id=2016542198 node_paths=PackedStringArray("snd_move", "nav_agent")]
 script = ExtResource("4_m366t")
 snd_move = NodePath("../../snd_move")
 nav_agent = NodePath("../../nav_agent")
 
-[node name="dead" type="Node" parent="fsm"]
+[node name="dead" type="Node" parent="fsm" unique_id=1822427354]
 script = ExtResource("4_tntuy")
 item_scene = ExtResource("12_fcqus")
 
-[node name="melee" type="Node" parent="fsm" node_paths=PackedStringArray("snd")]
+[node name="melee" type="Node" parent="fsm" unique_id=1706596097 node_paths=PackedStringArray("snd")]
 script = ExtResource("5_tntuy")
 snd = NodePath("../../snd_melee")
 
-[node name="shoot" type="Node" parent="fsm"]
+[node name="shoot" type="Node" parent="fsm" unique_id=2058784079]
 script = ExtResource("6_56uj1")
 bullet_scene = ExtResource("14_imcyw")
 enabled = false
 
-[node name="hurt" type="Node" parent="fsm"]
+[node name="hurt" type="Node" parent="fsm" unique_id=930920962]
 script = ExtResource("10_38jpj")
 
-[node name="behavior" type="BTPlayer" parent="."]
-behavior_tree = ExtResource("14_38jpj")
-active = false
+[node name="behavior" type="BTPlayer" parent="." unique_id=125419236]
+behavior_tree = ExtResource("5_j7xr0")
 blackboard_plan = SubResource("BlackboardPlan_248u0")
 
-[node name="item_behaviors" type="Node" parent="."]
+[node name="item_behaviors" type="Node" parent="." unique_id=1300632349]
 
-[node name="health" parent="." instance=ExtResource("25_880r3")]
+[node name="health" parent="." unique_id=2045060394 instance=ExtResource("25_880r3")]
 current = 5
 max_value = 5
 
-[node name="mana" parent="." instance=ExtResource("25_880r3")]
+[node name="mana" parent="." unique_id=1148382661 instance=ExtResource("25_880r3")]
 current = 5
 
-[node name="ability" parent="." instance=ExtResource("25_880r3")]
+[node name="ability" parent="." unique_id=276973969 instance=ExtResource("25_880r3")]
 current = 5
+max_value = 5
 
-[node name="health_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+[node name="health_regen" parent="." unique_id=519822888 node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
 stat_component = NodePath("../health")
 
-[node name="mana_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+[node name="mana_regen" parent="." unique_id=1508846229 node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
 stat_component = NodePath("../mana")
 
-[node name="ability_regen" parent="." node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
+[node name="ability_regen" parent="." unique_id=921332414 node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
 stat_component = NodePath("../ability")
+regen_amount = 1.0
 
-[node name="anim_player" type="AnimationPlayer" parent="."]
-libraries = {
-&"Centaur": ExtResource("17_4feda")
-}
+[node name="anim_player" type="AnimationPlayer" parent="." unique_id=1820659917]
 
-[node name="anim_tree" type="AnimationTree" parent="."]
-tree_root = ExtResource("96_0ekrb")
+[node name="anim_tree" type="AnimationTree" parent="." unique_id=634827393]
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../anim_player")
-parameters/attack/blend_position = Vector2(0, 0)
-parameters/dmg/blend_position = Vector2(0, 0)
-parameters/idle/blend_position = Vector2(0, 0)
-parameters/jump/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="img" type="Sprite2D" parent="."]
+[node name="img" type="Sprite2D" parent="." unique_id=1054139227]
 texture = ExtResource("97_32hfe")
 offset = Vector2(0, -3)
 hframes = 16
 vframes = 4
-frame = 3
+frame = 11
 
-[node name="body" type="CollisionShape2D" parent="."]
+[node name="body" type="CollisionShape2D" parent="." unique_id=810498800]
 position = Vector2(0, -4)
 shape = ExtResource("96_dnpej")
 
-[node name="snd" type="AudioStreamPlayer2D" parent="."]
+[node name="snd" type="AudioStreamPlayer2D" parent="." unique_id=1482826658]
+bus = &"entity"
 
-[node name="snd_shoot" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_shoot" type="AudioStreamPlayer2D" parent="." unique_id=1861319096]
+bus = &"entity"
 
-[node name="snd_melee" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_melee" type="AudioStreamPlayer2D" parent="." unique_id=1234199404]
+bus = &"entity"
 
-[node name="snd_move" type="AudioStreamPlayer2D" parent="."]
+[node name="snd_move" type="AudioStreamPlayer2D" parent="." unique_id=1044332240]
+bus = &"entity"
 
-[node name="hit_shoot_cast" type="RayCast2D" parent="."]
+[node name="hit_shoot_cast" type="RayCast2D" parent="." unique_id=1918154628]
 position = Vector2(0, -4)
 target_position = Vector2(64, 0)
 collision_mask = 21
 
-[node name="hit_melee_cast" type="RayCast2D" parent="."]
+[node name="hit_melee_cast" type="RayCast2D" parent="." unique_id=1833407982]
 position = Vector2(0, -4)
 target_position = Vector2(16, 0)
 collision_mask = 21
 
-[node name="cam" type="Camera2D" parent="."]
+[node name="cam" type="Camera2D" parent="." unique_id=2013942814]
+enabled = false
 process_callback = 0
 
-[node name="nav_agent" type="NavigationAgent2D" parent="."]
+[node name="nav_agent" type="NavigationAgent2D" parent="." unique_id=765749331]
+avoidance_enabled = true
+max_speed = 72.0
 
-[node name="sight" type="Area2D" parent="."]
+[node name="sight" type="Area2D" parent="." unique_id=923594958]
 collision_layer = 0
 collision_mask = 34
 monitorable = false
 
-[node name="coll" type="CollisionShape2D" parent="sight"]
+[node name="coll" type="CollisionShape2D" parent="sight" unique_id=1452062700]
 shape = SubResource("CircleShape2D_2pcmc")
 
-[node name="select_bttn" type="TouchScreenButton" parent="."]
+[node name="select_bttn" type="TouchScreenButton" parent="." unique_id=483367888]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-3, -8)
 texture_normal = SubResource("AtlasTexture_jdd1s")

@@ -1,33 +1,27 @@
-extends Node
-class_name Importer
+class_name Importer extends Node
 
-const FRAME_SIZE := Vector2(32.0, 32.0)
+const ANIM_DIR := 'res://resource/character/animation/'
 const FRAME_DIRECTION_SEQ := ['down_right', 'down_left', 'right_up', 'left_up']
 const FACING := [Vector2(0.1, 0.2), Vector2(-0.2, 0.2), Vector2(0.1, -0.2), Vector2(-0.2, -0.2)]
 const LOOPABLE_ANIM := ['move', 'idle', 'walk']
 
 
-func import_anim_file(file_path: String, anim_base_name: String,
-anim_name: String,  frame_length_mili: int, frame_size := FRAME_SIZE):
-	var resource_file_path := 'res://resource/animation/%s.tres' % anim_base_name
+func import_anim_file(texture: Texture2D, anim_base_name: String, anim_name: String,  frame_length_mili: int, frame_size: Vector2):
+	var resource_file_path := ANIM_DIR + anim_base_name + '.tres'
 	var anim_library := AnimationLibrary.new()
 	if ResourceLoader.exists(resource_file_path):
 		anim_library = ResourceLoader.load(resource_file_path)
 
-	var texture: Texture2D = load(file_path)
 	var v_frames := texture.get_height() / frame_size.y
-
 	for i in range(v_frames):
 		anim_library.add_animation(
 			'%s_%s' % [anim_name, FRAME_DIRECTION_SEQ[i]] if v_frames > 1 else anim_name,
-			create_anim(file_path, frame_length_mili, i, anim_name, frame_size))
+			_create_anim(texture, frame_length_mili, i, anim_name, frame_size))
 
 	ResourceSaver.save(anim_library, resource_file_path)
 
-func create_anim(file_path: String, frame_length_mili: int,
-frame_seq: int, anim_name: String, frame_size: Vector2) -> Animation:
+func _create_anim(texture: Texture2D, frame_length_mili: int, frame_seq: int, anim_name: String, frame_size: Vector2) -> Animation:
 	var animation := Animation.new()
-	var texture: Texture2D = load(file_path)
 	var frames := texture.get_size() / frame_size
 	animation.length = float(frame_length_mili) * float(frames.x) * 0.001
 	if LOOPABLE_ANIM.has(anim_name):
@@ -62,16 +56,13 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 	if ResourceLoader.exists(anim_library_path):
 		anim_library = ResourceLoader.load(anim_library_path)
 	else:
-		print_debug('create_state_machine: unable to load anim library [%s]' \
-			% anim_library_path)
+		print_debug('create_state_machine: unable to load anim library [%s]' % anim_library_path)
 		return
 
 	var node_placement := Vector2(384.0, 64.0 * 3.0)
 	var anim_list := anim_library.get_animation_list()
-	var anims_without_facing := anim_list.filter(
-		func(a): return anim_name_templates.has(a))
-	var anims_with_facing := anim_name_templates.filter(
-		func(a): return not anims_without_facing.has(a))
+	var anims_without_facing := anim_list.filter(func(a): return anim_name_templates.has(a))
+	var anims_with_facing := anim_name_templates.filter(func(a): return not anims_without_facing.has(a))
 
 	for anim_name in anims_without_facing:
 		var node = AnimationNodeAnimation.new()
@@ -89,8 +80,7 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 				anim_node.animation = '%s/%s' % [anim_base_name, anim_name_face]
 				node.add_blend_point(anim_node, FACING[i])
 			else:
-				print_debug('create_state_machine: [%s] doesn\'t have [%s]' \
-					% [anim_library_path, anim_name_face])
+				print_debug('create_state_machine: [%s] doesn\'t have [%s]' % [anim_library_path, anim_name_face])
 		state_machine.add_node(anim_name, node, node_placement)
 		node_placement.y += 64.0
 
@@ -129,12 +119,10 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 			'die':
 				_add_transition(state_machine, anim_name_type, 'idle', 'fsm.state == 0')
 
-	ResourceSaver.save(state_machine, \
-		'res://resource/animation_state_machine/%s_state_machine.tres' \
+	ResourceSaver.save(state_machine, 'res://resource/animation_state_machine/%s_state_machine.tres' \
 		% anim_library_path.get_file().get_basename())
 
-func _add_transition(state_machine: AnimationNodeStateMachine,
-from: String, to: String, expression: String, at_end := false):
+func _add_transition(state_machine: AnimationNodeStateMachine, from: String, to: String, expression: String, at_end := false):
 	if state_machine.has_node(from) and state_machine.has_node(to):
 		var transition := AnimationNodeStateMachineTransition.new()
 		transition.advance_mode = AnimationNodeStateMachineTransition.ADVANCE_MODE_AUTO
@@ -142,12 +130,3 @@ from: String, to: String, expression: String, at_end := false):
 			transition.switch_mode = AnimationNodeStateMachineTransition.SWITCH_MODE_AT_END
 		transition.advance_expression = expression
 		state_machine.add_transition(from, to, transition)
-
-func make_character_icon(file_path: String, character_name: String, frame_size := FRAME_SIZE):
-	if not ResourceLoader.exists(file_path):
-		print('make_character_icon: [%s] doesn\'t exist.' % file_path)
-		return
-
-	var image := Image.load_from_file(file_path)
-	image.crop(int(frame_size.x), int(frame_size.y))
-	image.save_png('res://tiled/tileset/character/%s.png' % character_name)

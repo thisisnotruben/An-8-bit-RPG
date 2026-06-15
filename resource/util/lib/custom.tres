@@ -1,0 +1,133 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://ceex7hrujmuvg"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_bsvun"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="2_oeaqi"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_ue5lh"]
+[ext_resource type="Texture2D" uid="uid://dmpxndbvd3ito" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-die.png" id="3_lmxgw"]
+[ext_resource type="Texture2D" uid="uid://4ulu2sdqoy3v" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-dmg.png" id="4_xetq5"]
+[ext_resource type="Texture2D" uid="uid://c7wa8ivg0i7gc" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-hit.png" id="5_csseb"]
+[ext_resource type="Texture2D" uid="uid://cn1t540u23v6t" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-idle.png" id="6_u5p8a"]
+[ext_resource type="Texture2D" uid="uid://bcgw6og22tl4r" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-walk.png" id="7_w5brr"]
+[ext_resource type="Texture2D" uid="uid://b7utxtyugsuxh" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-die.png" id="8_msngg"]
+[ext_resource type="Texture2D" uid="uid://cf1kj3f03xhtx" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-dmg.png" id="9_04csr"]
+[ext_resource type="Texture2D" uid="uid://dkt70o80nwadf" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-idle.png" id="10_k337r"]
+[ext_resource type="Texture2D" uid="uid://tp7ru6h2kmvn" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-shot.png" id="11_e7atv"]
+[ext_resource type="Texture2D" uid="uid://bhw53t30nlvh0" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-walk.png" id="12_50jf5"]
+[ext_resource type="Texture2D" uid="uid://d1bc0sp2o81b7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-die.png" id="13_6nmc5"]
+[ext_resource type="Texture2D" uid="uid://gmbqgb0ecosp" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-dmg.png" id="14_kh5ja"]
+[ext_resource type="Texture2D" uid="uid://ccaxdk6xk1xwh" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-hit.png" id="15_ypkpd"]
+[ext_resource type="Texture2D" uid="uid://cn15isb6003ho" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-idle.png" id="16_wb6op"]
+[ext_resource type="Texture2D" uid="uid://cvxhroc0ne1ka" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-walk.png" id="17_at8en"]
+
+[sub_resource type="Resource" id="Resource_msngg"]
+script = ExtResource("2_ue5lh")
+name = "die"
+img = ExtResource("3_lmxgw")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_04csr"]
+script = ExtResource("2_ue5lh")
+name = "dmg"
+img = ExtResource("4_xetq5")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_k337r"]
+script = ExtResource("2_ue5lh")
+name = "hit"
+img = ExtResource("5_csseb")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_e7atv"]
+script = ExtResource("2_ue5lh")
+name = "idle"
+img = ExtResource("6_u5p8a")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_50jf5"]
+script = ExtResource("2_ue5lh")
+name = "walk"
+img = ExtResource("7_w5brr")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_srv76"]
+script = ExtResource("1_bsvun")
+name = "Orc_Green_Axe"
+spritesheet = Array[ExtResource("2_ue5lh")]([SubResource("Resource_msngg"), SubResource("Resource_04csr"), SubResource("Resource_k337r"), SubResource("Resource_e7atv"), SubResource("Resource_50jf5")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_6nmc5"]
+script = ExtResource("2_ue5lh")
+name = "die"
+img = ExtResource("8_msngg")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_kh5ja"]
+script = ExtResource("2_ue5lh")
+name = "dmg"
+img = ExtResource("9_04csr")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_ypkpd"]
+script = ExtResource("2_ue5lh")
+name = "idle"
+img = ExtResource("10_k337r")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_wb6op"]
+script = ExtResource("2_ue5lh")
+name = "attack"
+img = ExtResource("11_e7atv")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_at8en"]
+script = ExtResource("2_ue5lh")
+name = "walk"
+img = ExtResource("12_50jf5")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_kakb0"]
+script = ExtResource("1_bsvun")
+name = "Orc_Green_Bow"
+spritesheet = Array[ExtResource("2_ue5lh")]([SubResource("Resource_6nmc5"), SubResource("Resource_kh5ja"), SubResource("Resource_ypkpd"), SubResource("Resource_wb6op"), SubResource("Resource_at8en")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_v6lf7"]
+script = ExtResource("2_ue5lh")
+name = "die"
+img = ExtResource("13_6nmc5")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_50oh3"]
+script = ExtResource("2_ue5lh")
+name = "dmg"
+img = ExtResource("14_kh5ja")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_xebhy"]
+script = ExtResource("2_ue5lh")
+name = "hit"
+img = ExtResource("15_ypkpd")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_fjklv"]
+script = ExtResource("2_ue5lh")
+name = "idle"
+img = ExtResource("16_wb6op")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_05hyx"]
+script = ExtResource("2_ue5lh")
+name = "walk"
+img = ExtResource("17_at8en")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_u8or0"]
+script = ExtResource("1_bsvun")
+name = "Orc_Green_Spear"
+spritesheet = Array[ExtResource("2_ue5lh")]([SubResource("Resource_v6lf7"), SubResource("Resource_50oh3"), SubResource("Resource_xebhy"), SubResource("Resource_fjklv"), SubResource("Resource_05hyx")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[resource]
+script = ExtResource("2_oeaqi")
+lib = Array[ExtResource("1_bsvun")]([SubResource("Resource_srv76"), SubResource("Resource_kakb0"), SubResource("Resource_u8or0")])
+metadata/_custom_type_script = "uid://dbtbgohqvujbc"

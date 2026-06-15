@@ -1,0 +1,585 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://8dcb6o3is1yg"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_3xib4"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_x8aw6"]
+[ext_resource type="Texture2D" uid="uid://qfwow6glgb08" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Attack.png" id="3_1mrgu"]
+[ext_resource type="Texture2D" uid="uid://b65upiv3egv8a" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Die.png" id="4_w21a6"]
+[ext_resource type="Texture2D" uid="uid://eee71xy0xmgd" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Dmg.png" id="5_1x7q8"]
+[ext_resource type="Texture2D" uid="uid://c7ng30qqh6m56" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Idle_Fly.png" id="6_i4kdc"]
+[ext_resource type="Texture2D" uid="uid://dlwavdyplwk7m" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Attack.png" id="7_1i31l"]
+[ext_resource type="Texture2D" uid="uid://c373dl331g8ii" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Ghost/Appear_disappear.png" id="7_x8aw6"]
+[ext_resource type="Texture2D" uid="uid://didt1utwyfjtc" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Die.png" id="8_18gub"]
+[ext_resource type="Texture2D" uid="uid://bpafijriwecqb" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Dmg.png" id="9_630fo"]
+[ext_resource type="Texture2D" uid="uid://c17mlwk65tc72" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Idle_Activate_Deactivate.png" id="10_x60mn"]
+[ext_resource type="Texture2D" uid="uid://ch07kslftq0mr" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Headless_Skeleton/Walk.png" id="11_bhseh"]
+[ext_resource type="Texture2D" uid="uid://dtha03afoco1d" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Attack.png" id="12_2n2hy"]
+[ext_resource type="Texture2D" uid="uid://cfisfo5qgn0my" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Die.png" id="13_uft36"]
+[ext_resource type="Texture2D" uid="uid://e8iorj8wgv82" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Dmg.png" id="14_xahhs"]
+[ext_resource type="Texture2D" uid="uid://bbknf44peyqku" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Idle.png" id="15_ipgcf"]
+[ext_resource type="Texture2D" uid="uid://b6c8no0pc84lw" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Jumping_Skull/Jump.png" id="16_du50e"]
+[ext_resource type="Texture2D" uid="uid://bl2ko6utbn4x1" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Attack.png" id="17_0un1m"]
+[ext_resource type="Texture2D" uid="uid://c4b58xalwd1dc" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Die.png" id="18_mbsb5"]
+[ext_resource type="Texture2D" uid="uid://c4kccpqd7kd7w" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Dmg.png" id="19_rwaft"]
+[ext_resource type="Texture2D" uid="uid://bvhd5cti5w52a" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Idle_Activation_Deactivation.png" id="20_tbsun"]
+[ext_resource type="Texture2D" uid="uid://b0pg0gsjr3q48" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Archer/Walk.png" id="21_dhf54"]
+[ext_resource type="Texture2D" uid="uid://dv120o4xvw0rj" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Cast.png" id="22_w8wmp"]
+[ext_resource type="Texture2D" uid="uid://cxvruegv5iks5" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Die.png" id="23_bbr6t"]
+[ext_resource type="Texture2D" uid="uid://dro8v6pd35558" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Dmg.png" id="24_27sct"]
+[ext_resource type="Texture2D" uid="uid://c0vbao3wqgnk8" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Idle_Activation_Deactivation.png" id="25_t5fou"]
+[ext_resource type="Texture2D" uid="uid://5hmwqd4r0bt8" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Mage/Walk.png" id="26_5ctd3"]
+[ext_resource type="Texture2D" uid="uid://dr2t3y0v0lf2p" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Attack.png" id="27_wcbim"]
+[ext_resource type="Texture2D" uid="uid://b5ldah54o02kn" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Die.png" id="28_50cxv"]
+[ext_resource type="Texture2D" uid="uid://0v8n6jn1p3bw" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Dmg.png" id="29_a8ggk"]
+[ext_resource type="Texture2D" uid="uid://cl1epvkx8c6wr" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Idle_Activation_Deactivation.png" id="30_r4shh"]
+[ext_resource type="Texture2D" uid="uid://dmhd3i21lwwle" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Skeleton_Warrior/Walk.png" id="31_8jx5k"]
+[ext_resource type="Texture2D" uid="uid://bmgs77x7pghpc" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Attack.png" id="32_w1gtn"]
+[ext_resource type="Texture2D" uid="uid://dxx83ji1q8jdr" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Die.png" id="33_e528c"]
+[ext_resource type="Texture2D" uid="uid://d32lpfgvp70te" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Dmg.png" id="34_7cj8a"]
+[ext_resource type="Texture2D" uid="uid://b17f8b3wxbk5j" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Idle.png" id="35_b4xbk"]
+[ext_resource type="Texture2D" uid="uid://cb3xbki3ko8hk" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Archer/Walk.png" id="36_m2ers"]
+[ext_resource type="Texture2D" uid="uid://c6yd3td8hagbl" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Cast.png" id="37_cmuhg"]
+[ext_resource type="Texture2D" uid="uid://bwfb0hb7jgby" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Die.png" id="38_p3fjy"]
+[ext_resource type="Texture2D" uid="uid://b2o3whepcuu3a" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Dmg.png" id="39_q5g6a"]
+[ext_resource type="Texture2D" uid="uid://dbxgpabiw37kc" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Idle.png" id="40_d0yo6"]
+[ext_resource type="Texture2D" uid="uid://u52ttw1kgrt5" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Mage/Walk.png" id="41_whv0n"]
+[ext_resource type="Texture2D" uid="uid://b0gee4wlv0g6y" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Attack.png" id="42_d00qw"]
+[ext_resource type="Texture2D" uid="uid://kbj67qorf5lg" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Die.png" id="43_y67ej"]
+[ext_resource type="Texture2D" uid="uid://bknuen215ut64" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Dmg.png" id="44_rsc3m"]
+[ext_resource type="Texture2D" uid="uid://brgkdc1t3blty" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Idle.png" id="45_cj6p1"]
+[ext_resource type="Texture2D" uid="uid://bxty8thhg5bcb" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Reanimated_Zombie_Warrior/Walk.png" id="46_fm2w3"]
+[ext_resource type="Texture2D" uid="uid://dji3pyk4hxmf4" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Attack_horse.png" id="47_o4m2t"]
+[ext_resource type="Texture2D" uid="uid://b632qujp3kagt" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Die_horse.png" id="48_mad13"]
+[ext_resource type="Texture2D" uid="uid://c318r65ioe14i" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Dmg_horse.png" id="49_yhtpm"]
+[ext_resource type="Texture2D" uid="uid://d0pcqes2imas2" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Idle_Activation_Deactivation_horse.png" id="50_0ut7t"]
+[ext_resource type="Texture2D" uid="uid://ddt3rcm7bc8vo" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Walk_horse.png" id="51_08plb"]
+[ext_resource type="Texture2D" uid="uid://buvn1k2gqj43t" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Attack_rider.png" id="52_6wqai"]
+[ext_resource type="Texture2D" uid="uid://ck1bj4ls7a6kk" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Die_raider.png" id="53_xiam4"]
+[ext_resource type="Texture2D" uid="uid://ccwqqrmvcrak4" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Dmg_raider.png" id="54_rodwy"]
+[ext_resource type="Texture2D" uid="uid://d0jfocrrfyhpy" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Idle_Activation_Deactivation_raider.png" id="55_m6kf3"]
+[ext_resource type="Texture2D" uid="uid://1trc1lvumfdg" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Walk_raider.png" id="56_bg5dq"]
+[ext_resource type="Texture2D" uid="uid://bhwelqxfnaj7v" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Attack.png" id="57_j0t2t"]
+[ext_resource type="Texture2D" uid="uid://dgekvsektg7xi" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Die.png" id="58_ipxs6"]
+[ext_resource type="Texture2D" uid="uid://cl2r8vpopstru" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Dmg_layer 1.png" id="59_dgl0k"]
+[ext_resource type="Texture2D" uid="uid://curx6ynhusahi" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Idle_activate_deactivate.png" id="60_2hfpx"]
+[ext_resource type="Texture2D" uid="uid://d0b6hcuvkmviw" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeleton_Minotaur/Walk_layer 2.png" id="61_yeojh"]
+[ext_resource type="Texture2D" uid="uid://bxbjalpcy7qha" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Attack.png" id="62_scauc"]
+[ext_resource type="Texture2D" uid="uid://c7oonq3dqa1gd" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Die.png" id="63_0854k"]
+[ext_resource type="Texture2D" uid="uid://bh2lcqvco8v05" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Dmg.png" id="64_qo7i6"]
+[ext_resource type="Texture2D" uid="uid://vx8y02fkbhh4" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Idle.png" id="65_dxme0"]
+[ext_resource type="Texture2D" uid="uid://ys72be162r27" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Bear/Walk.png" id="66_id2va"]
+[ext_resource type="Texture2D" uid="uid://bv2213t5xfw2" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Attack.png" id="67_skthm"]
+[ext_resource type="Texture2D" uid="uid://w7rs7dq0ujh5" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Die.png" id="68_7fhrj"]
+[ext_resource type="Texture2D" uid="uid://7l3nkr54hoid" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Dmg.png" id="69_lskml"]
+[ext_resource type="Texture2D" uid="uid://x0r3mdyq2yp5" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Idle.png" id="70_68neg"]
+[ext_resource type="Texture2D" uid="uid://55iyvpqpo5v3" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Giant/Walk.png" id="71_14qfj"]
+[ext_resource type="Texture2D" uid="uid://bdg4lyrh10y7j" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Attack.png" id="72_h3edw"]
+[ext_resource type="Texture2D" uid="uid://ceutbogn2c27" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Die.png" id="73_0awo8"]
+[ext_resource type="Texture2D" uid="uid://cjb4p8xx81gio" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Dmg_flattened.png" id="74_glt63"]
+[ext_resource type="Texture2D" uid="uid://1b8dvcgcetkg" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Idle.png" id="75_shx5g"]
+[ext_resource type="Texture2D" uid="uid://cy2q8x74j5fjv" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Zombie_Minotaur/Walk.png" id="76_bugoq"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="77_uc7ap"]
+
+[sub_resource type="Resource" id="Resource_ult2a"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("3_1mrgu")
+
+[sub_resource type="Resource" id="Resource_4lger"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("4_w21a6")
+
+[sub_resource type="Resource" id="Resource_xg2tu"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("5_1x7q8")
+
+[sub_resource type="Resource" id="Resource_pxg2m"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("6_i4kdc")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_h2j7m"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("6_i4kdc")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_1mrgu"]
+script = ExtResource("2_x8aw6")
+name = "appear_disappear"
+img = ExtResource("7_x8aw6")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_6kb8m"]
+script = ExtResource("1_3xib4")
+name = "Ghost"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_ult2a"), SubResource("Resource_4lger"), SubResource("Resource_xg2tu"), SubResource("Resource_pxg2m"), SubResource("Resource_h2j7m"), SubResource("Resource_1mrgu")])
+
+[sub_resource type="Resource" id="Resource_6x0fn"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("7_1i31l")
+
+[sub_resource type="Resource" id="Resource_tlmrv"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("8_18gub")
+
+[sub_resource type="Resource" id="Resource_3oo52"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("9_630fo")
+
+[sub_resource type="Resource" id="Resource_bm07y"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("10_x60mn")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_rddcy"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("11_bhseh")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_x8aw6"]
+script = ExtResource("2_x8aw6")
+name = "idle_activate_deactivate"
+img = ExtResource("10_x60mn")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_xwdno"]
+script = ExtResource("1_3xib4")
+name = "Headless_Skeleton"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_6x0fn"), SubResource("Resource_tlmrv"), SubResource("Resource_3oo52"), SubResource("Resource_bm07y"), SubResource("Resource_rddcy"), SubResource("Resource_x8aw6")])
+
+[sub_resource type="Resource" id="Resource_awd58"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("12_2n2hy")
+
+[sub_resource type="Resource" id="Resource_fdcp3"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("13_uft36")
+
+[sub_resource type="Resource" id="Resource_bmpxp"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("14_xahhs")
+
+[sub_resource type="Resource" id="Resource_y8uqm"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("15_ipgcf")
+
+[sub_resource type="Resource" id="Resource_4erxf"]
+script = ExtResource("2_x8aw6")
+name = "jump"
+img = ExtResource("16_du50e")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_5dfyp"]
+script = ExtResource("1_3xib4")
+name = "Jumping_Skull"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_awd58"), SubResource("Resource_fdcp3"), SubResource("Resource_bmpxp"), SubResource("Resource_y8uqm"), SubResource("Resource_4erxf")])
+
+[sub_resource type="Resource" id="Resource_oiun8"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("17_0un1m")
+
+[sub_resource type="Resource" id="Resource_ppbko"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("18_mbsb5")
+
+[sub_resource type="Resource" id="Resource_7f1a4"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("19_rwaft")
+
+[sub_resource type="Resource" id="Resource_4voxn"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("20_tbsun")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_j5r5n"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("21_dhf54")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_w21a6"]
+script = ExtResource("2_x8aw6")
+name = "idle_activate_deactivate"
+img = ExtResource("20_tbsun")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_aajmy"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Skeleton_Archer"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_oiun8"), SubResource("Resource_ppbko"), SubResource("Resource_7f1a4"), SubResource("Resource_4voxn"), SubResource("Resource_j5r5n"), SubResource("Resource_w21a6")])
+
+[sub_resource type="Resource" id="Resource_e4iir"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("22_w8wmp")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_acp8n"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("23_bbr6t")
+
+[sub_resource type="Resource" id="Resource_0w6nr"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("24_27sct")
+
+[sub_resource type="Resource" id="Resource_m4b8l"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("25_t5fou")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_qbw3g"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("26_5ctd3")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_kocms"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Skeleton_Mage"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_e4iir"), SubResource("Resource_acp8n"), SubResource("Resource_0w6nr"), SubResource("Resource_m4b8l"), SubResource("Resource_qbw3g")])
+
+[sub_resource type="Resource" id="Resource_qob2n"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("27_wcbim")
+
+[sub_resource type="Resource" id="Resource_6de2p"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("28_50cxv")
+
+[sub_resource type="Resource" id="Resource_i2jye"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("29_a8ggk")
+
+[sub_resource type="Resource" id="Resource_l7hsd"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("30_r4shh")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_47c8i"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("31_8jx5k")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_uck1j"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Skeleton_Warrior"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_qob2n"), SubResource("Resource_6de2p"), SubResource("Resource_i2jye"), SubResource("Resource_l7hsd"), SubResource("Resource_47c8i")])
+
+[sub_resource type="Resource" id="Resource_k4rhx"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("32_w1gtn")
+
+[sub_resource type="Resource" id="Resource_re1bg"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("33_e528c")
+
+[sub_resource type="Resource" id="Resource_wyydq"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("34_7cj8a")
+
+[sub_resource type="Resource" id="Resource_rabce"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("35_b4xbk")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_wgldx"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("36_m2ers")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_hh5hp"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Zombie_Archer"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_k4rhx"), SubResource("Resource_re1bg"), SubResource("Resource_wyydq"), SubResource("Resource_rabce"), SubResource("Resource_wgldx")])
+
+[sub_resource type="Resource" id="Resource_reqhb"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("37_cmuhg")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_a28y2"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("38_p3fjy")
+
+[sub_resource type="Resource" id="Resource_203dk"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("39_q5g6a")
+
+[sub_resource type="Resource" id="Resource_nrsv5"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("40_d0yo6")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_0408f"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("41_whv0n")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_2kb64"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Zombie_Mage"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_reqhb"), SubResource("Resource_a28y2"), SubResource("Resource_203dk"), SubResource("Resource_nrsv5"), SubResource("Resource_0408f")])
+
+[sub_resource type="Resource" id="Resource_uhfqv"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("42_d00qw")
+
+[sub_resource type="Resource" id="Resource_dv2xy"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("43_y67ej")
+
+[sub_resource type="Resource" id="Resource_5a1f2"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("44_rsc3m")
+
+[sub_resource type="Resource" id="Resource_0jhy1"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("45_cj6p1")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_r6vac"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("46_fm2w3")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_iw5m7"]
+script = ExtResource("1_3xib4")
+name = "Reanimated_Zombie_Warrior"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_uhfqv"), SubResource("Resource_dv2xy"), SubResource("Resource_5a1f2"), SubResource("Resource_0jhy1"), SubResource("Resource_r6vac")])
+
+[sub_resource type="Resource" id="Resource_x1qca"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("47_o4m2t")
+
+[sub_resource type="Resource" id="Resource_t1t8c"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("48_mad13")
+
+[sub_resource type="Resource" id="Resource_gv0be"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("49_yhtpm")
+
+[sub_resource type="Resource" id="Resource_psva7"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("50_0ut7t")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_p5576"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("51_08plb")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_wyij4"]
+script = ExtResource("1_3xib4")
+name = "Skeletal_Horse"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_x1qca"), SubResource("Resource_t1t8c"), SubResource("Resource_gv0be"), SubResource("Resource_psva7"), SubResource("Resource_p5576")])
+
+[sub_resource type="Resource" id="Resource_kk065"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("52_6wqai")
+
+[sub_resource type="Resource" id="Resource_gy7yt"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("53_xiam4")
+
+[sub_resource type="Resource" id="Resource_8f0xx"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("54_rodwy")
+
+[sub_resource type="Resource" id="Resource_hlnr0"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("55_m6kf3")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_grepq"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("56_bg5dq")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_8iwr6"]
+script = ExtResource("1_3xib4")
+name = "Skeletal_Horse_Rider"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_kk065"), SubResource("Resource_gy7yt"), SubResource("Resource_8f0xx"), SubResource("Resource_hlnr0"), SubResource("Resource_grepq")])
+
+[sub_resource type="Resource" id="Resource_gywhk"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("57_j0t2t")
+
+[sub_resource type="Resource" id="Resource_h1hw3"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("58_ipxs6")
+
+[sub_resource type="Resource" id="Resource_bvivg"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("59_dgl0k")
+
+[sub_resource type="Resource" id="Resource_hqd7x"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("60_2hfpx")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_qigqc"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("61_yeojh")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_r3ijl"]
+script = ExtResource("1_3xib4")
+name = "Skeleton_Minotaur"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_gywhk"), SubResource("Resource_h1hw3"), SubResource("Resource_bvivg"), SubResource("Resource_hqd7x"), SubResource("Resource_qigqc")])
+
+[sub_resource type="Resource" id="Resource_b7i8y"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("62_scauc")
+
+[sub_resource type="Resource" id="Resource_cp3i7"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("63_0854k")
+
+[sub_resource type="Resource" id="Resource_chs6m"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("64_qo7i6")
+
+[sub_resource type="Resource" id="Resource_3idfc"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("65_dxme0")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_qeopt"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("66_id2va")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_78yns"]
+script = ExtResource("1_3xib4")
+name = "Zombie_Bear"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_b7i8y"), SubResource("Resource_cp3i7"), SubResource("Resource_chs6m"), SubResource("Resource_3idfc"), SubResource("Resource_qeopt")])
+
+[sub_resource type="Resource" id="Resource_16nbd"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("67_skthm")
+
+[sub_resource type="Resource" id="Resource_w6k0q"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("68_7fhrj")
+
+[sub_resource type="Resource" id="Resource_4k5vn"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("69_lskml")
+
+[sub_resource type="Resource" id="Resource_3scfi"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("70_68neg")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_clcba"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("71_14qfj")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_3fvk4"]
+script = ExtResource("1_3xib4")
+name = "Zombie_Giant"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_16nbd"), SubResource("Resource_w6k0q"), SubResource("Resource_4k5vn"), SubResource("Resource_3scfi"), SubResource("Resource_clcba")])
+
+[sub_resource type="Resource" id="Resource_ce7ho"]
+script = ExtResource("2_x8aw6")
+name = "attack"
+img = ExtResource("72_h3edw")
+
+[sub_resource type="Resource" id="Resource_y41vl"]
+script = ExtResource("2_x8aw6")
+name = "die"
+img = ExtResource("73_0awo8")
+
+[sub_resource type="Resource" id="Resource_xneyo"]
+script = ExtResource("2_x8aw6")
+name = "dmg"
+img = ExtResource("74_glt63")
+
+[sub_resource type="Resource" id="Resource_go0ji"]
+script = ExtResource("2_x8aw6")
+name = "idle"
+img = ExtResource("75_shx5g")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_l2n0x"]
+script = ExtResource("2_x8aw6")
+name = "walk"
+img = ExtResource("76_bugoq")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_57nxl"]
+script = ExtResource("1_3xib4")
+name = "Zombie_Minotaur"
+spritesheet = Array[ExtResource("2_x8aw6")]([SubResource("Resource_ce7ho"), SubResource("Resource_y41vl"), SubResource("Resource_xneyo"), SubResource("Resource_go0ji"), SubResource("Resource_l2n0x")])
+
+[resource]
+script = ExtResource("77_uc7ap")
+lib = Array[ExtResource("1_3xib4")]([SubResource("Resource_6kb8m"), SubResource("Resource_xwdno"), SubResource("Resource_5dfyp"), SubResource("Resource_aajmy"), SubResource("Resource_kocms"), SubResource("Resource_uck1j"), SubResource("Resource_hh5hp"), SubResource("Resource_2kb64"), SubResource("Resource_iw5m7"), SubResource("Resource_wyij4"), SubResource("Resource_8iwr6"), SubResource("Resource_r3ijl"), SubResource("Resource_78yns"), SubResource("Resource_3fvk4"), SubResource("Resource_57nxl")])

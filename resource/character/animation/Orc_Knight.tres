@@ -1,8 +1,8 @@
-[gd_resource type="AnimationLibrary" load_steps=13 format=3]
+[gd_resource type="AnimationLibrary" load_steps=13 format=3 uid="uid://dyixa25jeq8u2"]
 
-[ext_resource type="Texture2D" path="res://asset/img/exclusives/Creatures/Orc_Knight/Die.png" id="1_u7iit"]
-[ext_resource type="Texture2D" path="res://asset/img/exclusives/Creatures/Orc_Knight/Dmg.png" id="2_7yoga"]
-[ext_resource type="Texture2D" path="res://asset/img/exclusives/Creatures/Orc_Knight/Gallop.png" id="3_bc6ou"]
+[ext_resource type="Texture2D" uid="uid://cpy4x4pqcqxbu" path="res://asset/img/exclusives/Creatures/Orc_Knight/Die.png" id="1_u7iit"]
+[ext_resource type="Texture2D" uid="uid://7e1eve7qpdlj" path="res://asset/img/exclusives/Creatures/Orc_Knight/Dmg.png" id="2_7yoga"]
+[ext_resource type="Texture2D" uid="uid://owitl6kl06e5" path="res://asset/img/exclusives/Creatures/Orc_Knight/Gallop.png" id="3_bc6ou"]
 
 [sub_resource type="Animation" id="Animation_7yoga"]
 length = 1.7
@@ -259,58 +259,6 @@ tracks/3/keys = {
 "values": [8.0, 11.0]
 }
 
-[sub_resource type="Animation" id="Animation_1k8pq"]
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("img:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("3_bc6ou")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("img:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("img:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("img:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.0]
-}
-
 [sub_resource type="Animation" id="Animation_ti7jb"]
 length = 0.8
 loop_mode = 1
@@ -363,7 +311,7 @@ tracks/3/keys = {
 "values": [4.0, 7.0]
 }
 
-[sub_resource type="Animation" id="Animation_ggncp"]
+[sub_resource type="Animation" id="Animation_1k8pq"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -412,7 +360,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [8.0, 11.0]
+"values": [0.0, 3.0]
 }
 
 [sub_resource type="Animation" id="Animation_70ltv"]
@@ -465,6 +413,58 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [12.0, 15.0]
+}
+
+[sub_resource type="Animation" id="Animation_ggncp"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("img:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("3_bc6ou")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("img:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("img:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("img:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 11.0]
 }
 
 [resource]

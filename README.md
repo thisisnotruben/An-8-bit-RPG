@@ -11,6 +11,28 @@ TODO
 - [Tiled](https://www.mapeditor.org/)
 - [Aseprite](https://www.aseprite.org/)
 
+### BLAH
+- Folder to import:
+	- for characters
+		- Minifantasy_Enchanted_Companions_v1.0
+		- Minifantasy_Mounts_v1.0
+		- Minifantasy_Forest_Dwellers_v1.0
+			- used in the middle of the map
+		- Minifantasy_Monster_Creatures_v1.0
+		- Minifantasy_True_Villains_I_v1.0
+	- for map
+		- Minifantasy_Medieval_Carnival_v1.0
+		- Minifantasy_Orc_Kingdom_v1.0
+			- use this for the centaur area
+	- icons
+		- Minifantasy_CraftingAndProfessions_v1.0
+		- Minifantasy_CraftingAndProfessions2_v1.0
+	- spells
+		- Minifantasy_MagicAndSorcery_v1.1
+		- Minifantasy_Magic_Weapons_And_Effects_v1.0
+		- Minifantasy_Spell Effects_v1.0
+		- Minifantasy_Spell_Effects_II_v1.0
+
 ### TODO
 
 - Iterate through characters
@@ -32,43 +54,3 @@ TODO
 	- make melee stun ability
 	- make flee animation
 - To make centaur will have to me behavior tree modular
-
-
-### Bugs
-
-
-## Audio
-
-Audio done for:
-
-- goat
-- horse
-- bat
-- cat
-- dog
-- frog
-- lion
-- lioness
-- elephant
-- hedgehog
-- wolf
-- blue mother slime
-- blue slime
-- green mother slime
-- green slime
-- orange fox
-- polar fox
-- wildfire
-
-### sound done
-- goat
-- horse
-- bat
-- cat
-- dog
-- frog
-- lion
-- lioness
-- elephant
-- hedgehog
-- wolf

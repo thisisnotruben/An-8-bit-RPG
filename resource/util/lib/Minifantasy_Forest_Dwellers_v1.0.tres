@@ -1,0 +1,440 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://dp4vh3p178gdm"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_qnx0k"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="2_nlshw"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_yuuj8"]
+[ext_resource type="Texture2D" uid="uid://cklxvi8xcvqg6" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Base_Model/Pine_Attack.png" id="3_8m540"]
+[ext_resource type="Texture2D" uid="uid://buom1sc5vw168" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Base_Model/Pine_Die.png" id="4_bmq77"]
+[ext_resource type="Texture2D" uid="uid://cdnckllgfbd8v" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Base_Model/Pine_Dmg.png" id="5_mcj7s"]
+[ext_resource type="Texture2D" uid="uid://di1vyf67op5nh" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Base_Model/Pine_Idle.png" id="6_y3y0m"]
+[ext_resource type="Texture2D" uid="uid://cctjfco8jh05t" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Base_Model/Pine_Walk.png" id="7_ralry"]
+[ext_resource type="Texture2D" uid="uid://saob1kd8hb2v" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Treetop_Variation/Pine2_Attack.png" id="8_ralry"]
+[ext_resource type="Texture2D" uid="uid://dx87i8an75frc" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Treetop_Variation/Pine2_Die.png" id="9_ge22p"]
+[ext_resource type="Texture2D" uid="uid://gdh2h2sh223l" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Treetop_Variation/Pine2_Dmg.png" id="10_rno3w"]
+[ext_resource type="Texture2D" uid="uid://ef6g8oamg4ao" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Treetop_Variation/Pine2_Idle.png" id="11_aiu28"]
+[ext_resource type="Texture2D" uid="uid://b0xnrtqpoterb" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Pine_Guardians/Treetop_Variation/Pine2_Walk.png" id="12_vq116"]
+[ext_resource type="Texture2D" uid="uid://dvxh0e7ono7wl" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Base_Model/Oak_Attack.png" id="13_lhkcv"]
+[ext_resource type="Texture2D" uid="uid://rlqqphmm2m3" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Base_Model/Oak_Die.png" id="14_8drgg"]
+[ext_resource type="Texture2D" uid="uid://tkuig5ah0dpp" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Base_Model/Oak_Dmg.png" id="15_y266k"]
+[ext_resource type="Texture2D" uid="uid://cdje7hidlbfbf" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Base_Model/Oak_Idle.png" id="16_vu2ne"]
+[ext_resource type="Texture2D" uid="uid://bsb172fwa12iq" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Base_Model/Oak_Walk.png" id="17_jiguq"]
+[ext_resource type="Texture2D" uid="uid://b7a1cdpkkcah8" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Treetop_Variation/Oak2_Attack.png" id="18_8drgg"]
+[ext_resource type="Texture2D" uid="uid://blnhrx2jlsp6f" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Treetop_Variation/Oak2_Die.png" id="19_uhoed"]
+[ext_resource type="Texture2D" uid="uid://bslsbnrkmkmeo" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Treetop_Variation/Oak2_Dmg.png" id="20_s1nhb"]
+[ext_resource type="Texture2D" uid="uid://dplhkh7enqkew" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Treetop_Variation/Oak2_Idle.png" id="21_s44sf"]
+[ext_resource type="Texture2D" uid="uid://dyug0st25uo3j" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Oak_Guardians/Treetop_Variation/Oak2_Walk.png" id="22_7qiy7"]
+[ext_resource type="Texture2D" uid="uid://bdiugv4l8q0fl" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Base_Model/Hickory_Attack.png" id="23_j3cdk"]
+[ext_resource type="Texture2D" uid="uid://7pjwlyfb25hn" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Base_Model/Hickory_Die.png" id="24_40yao"]
+[ext_resource type="Texture2D" uid="uid://cggy46l6ahj7u" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Base_Model/Hickory_Dmg.png" id="25_hijb5"]
+[ext_resource type="Texture2D" uid="uid://4nv40clwvryf" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Base_Model/Hickory_Idle.png" id="26_08oag"]
+[ext_resource type="Texture2D" uid="uid://dwbgppid7w0k6" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Base_Model/Hickory_Walk.png" id="27_5kt8t"]
+[ext_resource type="Texture2D" uid="uid://deas1t7wbybct" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Treetop_Variation/Hickory2_Attack.png" id="28_2mqas"]
+[ext_resource type="Texture2D" uid="uid://bfgb653y0mqax" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Treetop_Variation/Hickory2_Die.png" id="29_tq6ar"]
+[ext_resource type="Texture2D" uid="uid://bqc8hb58k51ic" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Treetop_Variation/Hickory2_Dmg.png" id="30_umx57"]
+[ext_resource type="Texture2D" uid="uid://cbr14pnglgybc" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Treetop_Variation/Hickory2_Idle.png" id="31_ixeoi"]
+[ext_resource type="Texture2D" uid="uid://57o6p234151r" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Hickory_Guardians/Treetop_Variation/Hickory2_Walk.png" id="32_056f0"]
+[ext_resource type="Texture2D" uid="uid://nvr6oqwn3q0j" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Base_Model/Willow_Attack.png" id="33_1a6mf"]
+[ext_resource type="Texture2D" uid="uid://dolyuplvd1el5" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Base_Model/Willow_Die.png" id="34_p0uwv"]
+[ext_resource type="Texture2D" uid="uid://col3pnwvlrs7" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Base_Model/Willow_Dmg.png" id="35_xyoyx"]
+[ext_resource type="Texture2D" uid="uid://7oevsnrxu2q1" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Base_Model/Willow_Idle.png" id="36_v1fr3"]
+[ext_resource type="Texture2D" uid="uid://dwhsbgwomcg4e" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Base_Model/Willow_Walk.png" id="37_63ii5"]
+[ext_resource type="Texture2D" uid="uid://cbvsu61rav0vv" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Treetop_Variation/Willow2_Attack.png" id="38_4w2xn"]
+[ext_resource type="Texture2D" uid="uid://bw6ciw8046ivc" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Treetop_Variation/Willow2_Die.png" id="39_1curk"]
+[ext_resource type="Texture2D" uid="uid://b1n86n2yqe8uu" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Treetop_Variation/Willow2_Dmg.png" id="40_rts7i"]
+[ext_resource type="Texture2D" uid="uid://cuepq7jhxo2qa" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Treetop_Variation/Willow2_Idle.png" id="41_5gw5d"]
+[ext_resource type="Texture2D" uid="uid://bhpa0v3aa5ojr" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Willow_Guardians/Treetop_Variation/Willow2_Walk.png" id="42_wmwf7"]
+[ext_resource type="Texture2D" uid="uid://qd5n6a5i4jmf" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Base_Model/Birch_Attack.png" id="43_h4d2v"]
+[ext_resource type="Texture2D" uid="uid://24n70uqyx1v0" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Base_Model/Birch_Die.png" id="44_4edfk"]
+[ext_resource type="Texture2D" uid="uid://bab8r1jno686u" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Base_Model/Birch_Dmg.png" id="45_t2b7g"]
+[ext_resource type="Texture2D" uid="uid://c4glr0o2skxl5" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Base_Model/Birch_Idle.png" id="46_goj4b"]
+[ext_resource type="Texture2D" uid="uid://ca0gp8v8r8w4r" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Base_Model/Birch_Walk.png" id="47_tlc8n"]
+[ext_resource type="Texture2D" uid="uid://10x0vcul3ccn" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Treetop_Variation/Birch2_Attack.png" id="48_riv8m"]
+[ext_resource type="Texture2D" uid="uid://b6gjh4krhlw8a" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Treetop_Variation/Birch2_Die.png" id="49_erl2c"]
+[ext_resource type="Texture2D" uid="uid://dg8f25702acio" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Treetop_Variation/Birch2_Dmg.png" id="50_fh23s"]
+[ext_resource type="Texture2D" uid="uid://oacyigjtrnex" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Treetop_Variation/Birch2_Idle.png" id="51_027nx"]
+[ext_resource type="Texture2D" uid="uid://bxx05l0rxpwv2" path="res://asset/img/Minifantasy_Forest_Dwellers_v1.0/Minifantasy_Forest_Dwellers_Assets/Woodborn/Forest_Guardians/Birch_Guardians/Treetop_Variation/Birch2_Walk.png" id="52_bv8fw"]
+
+[sub_resource type="Resource" id="Resource_ge22p"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("3_8m540")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_rno3w"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("4_bmq77")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_aiu28"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("5_mcj7s")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_vq116"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("6_y3y0m")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_lhkcv"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("7_ralry")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_8drgg"]
+script = ExtResource("1_qnx0k")
+name = "Pine_Guardians_base"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_ge22p"), SubResource("Resource_rno3w"), SubResource("Resource_aiu28"), SubResource("Resource_vq116"), SubResource("Resource_lhkcv")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_y266k"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("8_ralry")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_vu2ne"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("9_ge22p")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_jiguq"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("10_rno3w")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_uhoed"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("11_aiu28")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_s1nhb"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("12_vq116")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_s44sf"]
+script = ExtResource("1_qnx0k")
+name = "Pine_Guardians_treetop"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_y266k"), SubResource("Resource_vu2ne"), SubResource("Resource_jiguq"), SubResource("Resource_uhoed"), SubResource("Resource_s1nhb")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_7qiy7"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("13_lhkcv")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_ga2mw"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("14_8drgg")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_j3cdk"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("15_y266k")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_40yao"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("16_vu2ne")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_hijb5"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("17_jiguq")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_08oag"]
+script = ExtResource("1_qnx0k")
+name = "Oak_Guardians_base"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_7qiy7"), SubResource("Resource_ga2mw"), SubResource("Resource_j3cdk"), SubResource("Resource_40yao"), SubResource("Resource_hijb5")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_5kt8t"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("18_8drgg")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_tq6ar"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("19_uhoed")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_umx57"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("20_s1nhb")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_ixeoi"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("21_s44sf")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_056f0"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("22_7qiy7")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_2mqas"]
+script = ExtResource("1_qnx0k")
+name = "Oak_Guardians_treetop"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_5kt8t"), SubResource("Resource_tq6ar"), SubResource("Resource_umx57"), SubResource("Resource_ixeoi"), SubResource("Resource_056f0")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_1a6mf"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("23_j3cdk")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_p0uwv"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("24_40yao")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_xyoyx"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("25_hijb5")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_v1fr3"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("26_08oag")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_63ii5"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("27_5kt8t")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_4w2xn"]
+script = ExtResource("1_qnx0k")
+name = "Hickory_Guardians_base"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_1a6mf"), SubResource("Resource_p0uwv"), SubResource("Resource_xyoyx"), SubResource("Resource_v1fr3"), SubResource("Resource_63ii5")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_1curk"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("28_2mqas")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_rts7i"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("29_tq6ar")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_5gw5d"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("30_umx57")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_wmwf7"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("31_ixeoi")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_h4d2v"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("32_056f0")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_4edfk"]
+script = ExtResource("1_qnx0k")
+name = "Hickory_Guardians_treetop"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_1curk"), SubResource("Resource_rts7i"), SubResource("Resource_5gw5d"), SubResource("Resource_wmwf7"), SubResource("Resource_h4d2v")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_t2b7g"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("33_1a6mf")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_goj4b"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("34_p0uwv")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_tlc8n"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("35_xyoyx")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_riv8m"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("36_v1fr3")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_erl2c"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("37_63ii5")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_fh23s"]
+script = ExtResource("1_qnx0k")
+name = "Willow_Guardians_base"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_t2b7g"), SubResource("Resource_goj4b"), SubResource("Resource_tlc8n"), SubResource("Resource_riv8m"), SubResource("Resource_erl2c")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_027nx"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("38_4w2xn")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_bv8fw"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("39_1curk")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_63pp4"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("40_rts7i")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_n7itm"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("41_5gw5d")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_03b8g"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("42_wmwf7")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_528y7"]
+script = ExtResource("1_qnx0k")
+name = "Willow_Guardians_treetop"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_027nx"), SubResource("Resource_bv8fw"), SubResource("Resource_63pp4"), SubResource("Resource_n7itm"), SubResource("Resource_03b8g")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_p1uq6"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("43_h4d2v")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_ehre1"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("44_4edfk")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_com6i"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("45_t2b7g")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_7v2f2"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("46_goj4b")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_7gg4g"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("47_tlc8n")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_fmh2x"]
+script = ExtResource("1_qnx0k")
+name = "Birch_Guardians_base"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_p1uq6"), SubResource("Resource_ehre1"), SubResource("Resource_com6i"), SubResource("Resource_7v2f2"), SubResource("Resource_7gg4g")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_0y08s"]
+script = ExtResource("2_yuuj8")
+name = "attack"
+img = ExtResource("48_riv8m")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_cy1ig"]
+script = ExtResource("2_yuuj8")
+name = "die"
+img = ExtResource("49_erl2c")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_46nr3"]
+script = ExtResource("2_yuuj8")
+name = "dmg"
+img = ExtResource("50_fh23s")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_g28n5"]
+script = ExtResource("2_yuuj8")
+name = "idle"
+img = ExtResource("51_027nx")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_wyjsl"]
+script = ExtResource("2_yuuj8")
+name = "walk"
+img = ExtResource("52_bv8fw")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_xhncq"]
+script = ExtResource("1_qnx0k")
+name = "Birch_Guardians_treetop"
+spritesheet = Array[ExtResource("2_yuuj8")]([SubResource("Resource_0y08s"), SubResource("Resource_cy1ig"), SubResource("Resource_46nr3"), SubResource("Resource_g28n5"), SubResource("Resource_wyjsl")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[resource]
+script = ExtResource("2_nlshw")
+lib = Array[ExtResource("1_qnx0k")]([SubResource("Resource_8drgg"), SubResource("Resource_s44sf"), SubResource("Resource_08oag"), SubResource("Resource_2mqas"), SubResource("Resource_4w2xn"), SubResource("Resource_4edfk"), SubResource("Resource_fh23s"), SubResource("Resource_528y7"), SubResource("Resource_fmh2x"), SubResource("Resource_xhncq")])
+metadata/_custom_type_script = "uid://dbtbgohqvujbc"

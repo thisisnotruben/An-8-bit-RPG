@@ -1,10 +1,10 @@
-[gd_resource type="AnimationLibrary" load_steps=23 format=3]
+[gd_resource type="AnimationLibrary" load_steps=23 format=3 uid="uid://be6x4i1cjn4s7"]
 
-[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-die.png" id="1_qc1hs"]
-[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-dmg.png" id="2_rcaid"]
-[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-hit.png" id="3_qhaq0"]
-[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-idle.png" id="4_x8c1r"]
-[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-walk.png" id="5_najl1"]
+[ext_resource type="Texture2D" uid="uid://d1bc0sp2o81b7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-die.png" id="1_qc1hs"]
+[ext_resource type="Texture2D" uid="uid://gmbqgb0ecosp" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-dmg.png" id="2_rcaid"]
+[ext_resource type="Texture2D" uid="uid://ccaxdk6xk1xwh" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-hit.png" id="3_qhaq0"]
+[ext_resource type="Texture2D" uid="uid://cn15isb6003ho" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-idle.png" id="4_x8c1r"]
+[ext_resource type="Texture2D" uid="uid://cvxhroc0ne1ka" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-walk.png" id="5_najl1"]
 
 [sub_resource type="Animation" id="Animation_rcaid"]
 length = 1.2
@@ -673,58 +673,6 @@ tracks/3/keys = {
 "values": [32.0, 47.0]
 }
 
-[sub_resource type="Animation" id="Animation_3g37r"]
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("img:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_najl1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("img:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("img:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("img:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 3.0]
-}
-
 [sub_resource type="Animation" id="Animation_h4f5k"]
 length = 0.4
 loop_mode = 1
@@ -777,7 +725,7 @@ tracks/3/keys = {
 "values": [4.0, 7.0]
 }
 
-[sub_resource type="Animation" id="Animation_o56mx"]
+[sub_resource type="Animation" id="Animation_3g37r"]
 length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
@@ -826,7 +774,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [8.0, 11.0]
+"values": [0.0, 3.0]
 }
 
 [sub_resource type="Animation" id="Animation_v74uq"]
@@ -879,6 +827,58 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [12.0, 15.0]
+}
+
+[sub_resource type="Animation" id="Animation_o56mx"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("img:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("5_najl1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("img:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("img:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("img:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 11.0]
 }
 
 [resource]

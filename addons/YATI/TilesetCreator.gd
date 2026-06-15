@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2023-2025 Roland Helmerichs
+# Copyright (c) 2023-2026 Roland Helmerichs
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -88,14 +88,14 @@ func set_custom_data_prefix(value: String):
 func create_from_dictionary_array(tileSets: Array):
 	for tile_set in tileSets:
 		var tile_set_dict = tile_set
-
+	
 		if tile_set.has("source"):
 			var source_file: String = tile_set["source"]
-
+ 
 			# Catch the AutoMap Rules tileset (is Tiled internal)
 			if source_file.begins_with(":/automap"):
 				continue # This is no error skip it
-
+ 
 			var tiled_file_content = DataLoader.get_tiled_file_content(source_file, _base_path_map)
 			if tiled_file_content == null:
 				printerr("ERROR: Tileset file '" + source_file + "' not found. -> Continuing but result may be unusable")
@@ -103,19 +103,19 @@ func create_from_dictionary_array(tileSets: Array):
 				continue
 
 			_base_path_tileset = _base_path_map.path_join(source_file).get_base_dir()
-
+ 
 			tile_set_dict = preload("DictionaryBuilder.gd").new().get_dictionary(tiled_file_content, source_file)
 			if tile_set_dict != null and tile_set.has("firstgid"):
 				tile_set_dict["firstgid"] = tile_set["firstgid"]
-
+	
 		# Possible error condition
 		if tile_set_dict == null:
 			CommonUtils.error_count += 1
 			continue
-
+	
 		create_or_append(tile_set_dict)
 		_append = true
-
+   
 	return _tileset
 
 
@@ -125,7 +125,7 @@ func get_registered_atlas_sources():
 
 func get_registered_object_groups():
 	return _object_groups
-
+	
 
 func create_or_append(tile_set: Dictionary):
 	# Catch the AutoMap Rules tileset (is Tiled internal)
@@ -185,7 +185,7 @@ func create_or_append(tile_set: Dictionary):
 		_current_atlas_source.texture = texture
 		_columns = _current_atlas_source.texture.get_width() / _tile_size.x
 		_tile_count = _columns * _current_atlas_source.texture.get_height() / _tile_size.y
-
+		
 		register_atlas_source(added_source_id, _tile_count, -1, _tile_offset)
 		var atlas_grid_size = _current_atlas_source.get_atlas_grid_size()
 		_current_max_x = atlas_grid_size.x - 1
@@ -201,7 +201,7 @@ func create_or_append(tile_set: Dictionary):
 
 	if _ct != null:
 		_ct.merge_custom_properties(tile_set, "tileset")
-
+		
 	if tile_set.has("properties"):
 		handle_tileset_properties(tile_set["properties"])
 
@@ -218,7 +218,7 @@ func register_atlas_source(source_id: int, num_tiles: int, assigned_tile_id: int
 	atlas_source_item["objectAlignment"] = _object_alignment
 	atlas_source_item["firstGid"] = _current_first_gid
 	_atlas_sources.push_back(atlas_source_item)
-
+	
 
 func register_object_group(tile_id: int, object_group: Dictionary):
 	if _object_groups == null:
@@ -292,6 +292,8 @@ func handle_tiles(tiles: Array):
 			if tile.has("y"):
 				tile_offset_y = tile["y"]
 			_current_atlas_source.margins = Vector2i(tile_offset_x, tile_offset_y)
+			# For single image tiles the tileset's tilesize is misleading, use the texture size
+			_tile_size = _current_atlas_source.texture_region_size
 
 			_current_atlas_source.create_tile(Vector2(0, 0))
 			current_tile = _current_atlas_source.get_tile_data(Vector2(0, 0), 0)
@@ -327,10 +329,10 @@ func handle_tiles(tiles: Array):
 
 		if _ct != null:
 			_ct.merge_custom_properties(tile, "tile")
-
+		
 		if tile.has("properties"):
 			handle_tile_properties(tile["properties"], current_tile)
-
+	
 
 func handle_animation(frames: Array, tile_id: int) -> void:
 	var frame_count: int = 0
@@ -394,7 +396,7 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 	_object_groups_counter += 1
 	register_object_group(_object_groups_counter, object_group)
 	current_tile.set_custom_data(CUSTOM_DATA_INTERNAL, _object_groups_counter)
-
+	
 	var polygon_indices = {}
 	var objects = object_group["objects"] as Array
 	for obj in objects:
@@ -402,18 +404,10 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 			# print_rich("[color="+WARNING_COLOR+"] -- 'Point' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
 			# CommonUtils.warning_count += 1
 			continue
-		if obj.has("ellipse") and obj["ellipse"]:
-			# print_rich("[color="+WARNING_COLOR+"] -- 'Ellipse' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
-			# CommonUtils.warning_count += 1
-			continue
-		if obj.has("capsule") and obj["capsule"]:
-			# print_rich("[color="+WARNING_COLOR+"] -- 'Capsule' on tile " + str(tile_id) + " skipped as there is no corresponding element in Godot 4.[/color]")
-			# CommonUtils.warning_count += 1
-			continue
 
 		if _ct != null:
 			_ct.merge_custom_properties(obj, "object")
-
+		
 		var object_base_coords = Vector2(obj["x"], obj["y"])
 		object_base_coords = transpose_coords(object_base_coords.x, object_base_coords.y)
 		object_base_coords -= Vector2(current_tile.texture_origin)
@@ -440,6 +434,63 @@ func handle_objectgroup(object_group: Dictionary, current_tile: TileData, tile_i
 				var p_coord = transpose_coords(pt["x"], pt["y"])
 				var p_coord_rot = Vector2(p_coord.x * cos_a - p_coord.y * sin_a, p_coord.x * sin_a + p_coord.y * cos_a)
 				polygon.append(object_base_coords + p_coord_rot)
+		elif obj.has("ellipse") and obj["ellipse"]:
+			# Approximate ellipse as a polygon (Godot 4 has no native ellipse collision)
+			var cx: float = (obj.get("width", 0.0) / 2.0)
+			var cy: float = (obj.get("height", 0.0) / 2.0)
+			const segments: int = 12
+			polygon = []
+			for i in range(segments):
+				var angle := TAU * float(i) / float(segments)
+				var pt := Vector2(cx + cx * cos(angle), cy + cy * sin(angle))
+				var pt_trans = transpose_coords(pt.x, pt.y)
+				var pt_rot := Vector2(
+					pt_trans.x * cos_a - pt_trans.y * sin_a,
+					pt_trans.x * sin_a + pt_trans.y * cos_a
+				)
+				polygon.append(object_base_coords + pt_rot)
+		elif obj.has("capsule") and obj["capsule"]:
+			# Approximate capsule as a polygon (Godot 4 has no native capsule collision)
+			var height: float = obj.get("height", 0.0)
+			var width: float = obj.get("width", 0.0)
+			var r: float = width / 2.0
+			if width > height:
+				r = height / 2.0
+			const segments: int = 12 # must be dividable by 4!
+			polygon = []
+			for i in range(segments):
+				var angle := TAU * float(i) / float(segments)
+				var pt := Vector2(width/2.0 + r * cos(angle), height/2.0 + r * sin(angle))
+				polygon.append(pt)
+			if abs(width - height) > 0.01:
+				polygon.append(Vector2.ZERO)
+				polygon.append(Vector2.ZERO)
+			if height > width and polygon.size() > segments:
+				var y_offs: float = (height - width) / 2.0
+				polygon[segments+1].x = polygon[0].x
+				polygon[segments+1].y = polygon[0].y - y_offs
+				for i in range(segments, segments/2, -1):
+					polygon[i].x = polygon[i-1].x
+					polygon[i].y = polygon[i-1].y - y_offs
+				for i in range(segments/2 + 1):
+					polygon[i].y += y_offs
+			if width > height and polygon.size() > segments:
+				var x_offs: float = (width - height) / 2.0
+				for i in range(segments+1, segments*3/4 + 1, -1):
+					polygon[i].y = polygon[i-2].y
+					polygon[i].x = polygon[i-2].x + x_offs
+				for i in range(segments*3/4 + 1, segments/4, -1):
+					polygon[i].y = polygon[i-1].y
+					polygon[i].x = polygon[i-1].x - x_offs
+				for i in range(segments/4 + 1):
+					polygon[i].x += x_offs
+			for i in range(polygon.size()):
+				var pt_trans = transpose_coords(polygon[i].x, polygon[i].y)
+				var pt_rot := Vector2(
+					pt_trans.x * cos_a - pt_trans.y * sin_a,
+					pt_trans.x * sin_a + pt_trans.y * cos_a
+				)
+				polygon[i] = object_base_coords + pt_rot
 		else:
 			# Should be a simple rectangle
 			polygon = [Vector2(), Vector2(), Vector2(), Vector2()]
@@ -530,7 +581,16 @@ func handle_tile_properties(properties: Array, current_tile: TileData):
 	for property in properties:
 		var name = property.get("name", "")
 		var type = property.get("type", "string")
-		var val = str(property.get("value", ""))
+		var list_val = ""
+		var val: String = ""
+		if type == "list":
+			list_val = []
+			for item in property["value"]:
+				var item_type: String = item["type"]
+				var item_val: String = str(item.get("value", ""))
+				list_val.append(CommonUtils.get_right_typed_value(item_type, item_val))
+		else:
+			val = str(property.get("value", ""))
 		if name == "": continue
 		if name.to_lower() == "texture_origin_x" and  type == "int":
 			current_tile.texture_origin = Vector2i(int(val), current_tile.texture_origin.y)
@@ -597,14 +657,26 @@ func handle_tile_properties(properties: Array, current_tile: TileData):
 				current_tile.set_custom_data(name, CommonUtils.get_right_typed_value(type, val))
 
 			if _custom_data_prefix == "" or not name.to_lower().begins_with(_custom_data_prefix):
-				current_tile.set_meta(name, CommonUtils.get_right_typed_value(type, val))
+				if type == "list":
+					current_tile.set_meta(name, list_val)
+				else:
+					current_tile.set_meta(name, CommonUtils.get_right_typed_value(type, val))
 
 
 func handle_tileset_properties(properties: Array):
 	for property in properties:
 		var name = property.get("name", "")
 		var type = property.get("type", "string")
-		var val = str(property.get("value", ""))
+		var list_val = ""
+		var val: String = ""
+		if type == "list":
+			list_val = []
+			for item in property["value"]:
+				var item_type: String = item["type"]
+				var item_val: String = str(item.get("value", ""))
+				list_val.append(CommonUtils.get_right_typed_value(item_type, item_val))
+		else:
+			val = str(property.get("value", ""))
 		if name == "": continue
 		var layer_index
 		if name.to_lower() == "collision_layer" and type == "string":
@@ -654,7 +726,10 @@ func handle_tileset_properties(properties: Array):
 		elif name.to_lower() == "resource_name" and type == "string":
 			_tileset.resource_name = val
 		elif name.to_lower() != GODOT_ATLAS_ID_PROPERTY:
-			_tileset.set_meta(name, CommonUtils.get_right_typed_value(type, val))
+			if type == "list":
+				_tileset.set_meta(name, list_val)
+			else:
+				_tileset.set_meta(name, CommonUtils.get_right_typed_value(type, val))
 
 
 func ensure_layer_existing(tp: layer_type, layer: int):
@@ -671,7 +746,7 @@ func ensure_layer_existing(tp: layer_type, layer: int):
 			while _occlusion_layer_counter < layer:
 				_tileset.add_occlusion_layer()
 				_occlusion_layer_counter += 1
-
+	
 
 func handle_wangsets_old_mapping(wangsets):
 	_tileset.add_terrain_set()

@@ -1,0 +1,139 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://cputct6wdb7au"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_dngtr"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_7ltyr"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="2_7v4vp"]
+[ext_resource type="Texture2D" uid="uid://dkfqh16un8blt" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Attack.png" id="3_65rtt"]
+[ext_resource type="Texture2D" uid="uid://b0a5ggfqe6xbm" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Die.png" id="4_edrs6"]
+[ext_resource type="Texture2D" uid="uid://cvd33moct466l" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Dmg.png" id="5_kd3ob"]
+[ext_resource type="Texture2D" uid="uid://cw11okmra7uco" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Idle.png" id="6_ml6rp"]
+[ext_resource type="Texture2D" uid="uid://cjduh62ddjfpa" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Walk.png" id="7_ahqg4"]
+[ext_resource type="Texture2D" uid="uid://whrsawqvm02" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Ninja_Assassin/General_Animations/Attack.png" id="8_ahqg4"]
+[ext_resource type="Texture2D" uid="uid://dkwcvxilw7j4v" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Ninja_Assassin/General_Animations/Die.png" id="9_vlj4s"]
+[ext_resource type="Texture2D" uid="uid://cpcjvkl7urr7s" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Ninja_Assassin/General_Animations/Dmg.png" id="10_qvm25"]
+[ext_resource type="Texture2D" uid="uid://db42or0gul0sf" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Ninja_Assassin/General_Animations/Idle.png" id="11_boa3c"]
+[ext_resource type="Texture2D" uid="uid://dk14aeru5vat0" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Ninja_Assassin/General_Animations/Walk.png" id="12_vlj4s"]
+[ext_resource type="Texture2D" uid="uid://2npmvhwaho2w" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Tech-Augmented_Gunslinger/General_Animations/Die.png" id="13_pkolf"]
+[ext_resource type="Texture2D" uid="uid://bc6o6xvllfhu8" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Tech-Augmented_Gunslinger/General_Animations/Dmg.png" id="14_hxgi1"]
+[ext_resource type="Texture2D" uid="uid://cy353qaoc541y" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Tech-Augmented_Gunslinger/General_Animations/Idle.png" id="15_t1d11"]
+[ext_resource type="Texture2D" uid="uid://bn0ncwy0136l7" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Tech-Augmented_Gunslinger/General_Animations/Walk.png" id="16_mxdw2"]
+[ext_resource type="Texture2D" uid="uid://put1qbw3dj6l" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Tech-Augmented_Gunslinger/General_Animations/Shot_Orthogonal.png" id="17_t8lpa"]
+
+[sub_resource type="Resource" id="Resource_vlj4s"]
+script = ExtResource("2_7ltyr")
+name = "attack"
+img = ExtResource("3_65rtt")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_qvm25"]
+script = ExtResource("2_7ltyr")
+name = "die"
+img = ExtResource("4_edrs6")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_boa3c"]
+script = ExtResource("2_7ltyr")
+name = "dmg"
+img = ExtResource("5_kd3ob")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_1iris"]
+script = ExtResource("2_7ltyr")
+name = "idle"
+img = ExtResource("6_ml6rp")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_kjqm2"]
+script = ExtResource("2_7ltyr")
+name = "walk"
+img = ExtResource("7_ahqg4")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_131n8"]
+script = ExtResource("1_dngtr")
+name = "Blood_Mage"
+spritesheet = Array[ExtResource("2_7ltyr")]([SubResource("Resource_vlj4s"), SubResource("Resource_qvm25"), SubResource("Resource_boa3c"), SubResource("Resource_1iris"), SubResource("Resource_kjqm2")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_pkolf"]
+script = ExtResource("2_7ltyr")
+name = "attack"
+img = ExtResource("8_ahqg4")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_hxgi1"]
+script = ExtResource("2_7ltyr")
+name = "die"
+img = ExtResource("9_vlj4s")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_t1d11"]
+script = ExtResource("2_7ltyr")
+name = "dmg"
+img = ExtResource("10_qvm25")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_mxdw2"]
+script = ExtResource("2_7ltyr")
+name = "idle"
+img = ExtResource("11_boa3c")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_brduy"]
+script = ExtResource("2_7ltyr")
+name = "walk"
+img = ExtResource("12_vlj4s")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_t8lpa"]
+script = ExtResource("1_dngtr")
+name = "Ninja_Assassin"
+spritesheet = Array[ExtResource("2_7ltyr")]([SubResource("Resource_pkolf"), SubResource("Resource_hxgi1"), SubResource("Resource_t1d11"), SubResource("Resource_mxdw2"), SubResource("Resource_brduy")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[sub_resource type="Resource" id="Resource_u3v1s"]
+script = ExtResource("2_7ltyr")
+name = "die"
+img = ExtResource("13_pkolf")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_32gdq"]
+script = ExtResource("2_7ltyr")
+name = "dmg"
+img = ExtResource("14_hxgi1")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_q6vti"]
+script = ExtResource("2_7ltyr")
+name = "idle"
+img = ExtResource("15_t1d11")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_t1hnd"]
+script = ExtResource("2_7ltyr")
+name = "walk"
+img = ExtResource("16_mxdw2")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_y8wrf"]
+script = ExtResource("2_7ltyr")
+name = "attack"
+img = ExtResource("17_t8lpa")
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_080xe"]
+script = ExtResource("1_dngtr")
+name = "Tech-Augmented_Gunslinger"
+spritesheet = Array[ExtResource("2_7ltyr")]([SubResource("Resource_u3v1s"), SubResource("Resource_32gdq"), SubResource("Resource_q6vti"), SubResource("Resource_t1hnd"), SubResource("Resource_y8wrf")])
+metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
+
+[resource]
+script = ExtResource("2_7v4vp")
+lib = Array[ExtResource("1_dngtr")]([SubResource("Resource_131n8"), SubResource("Resource_t8lpa"), SubResource("Resource_080xe")])
+metadata/_custom_type_script = "uid://dbtbgohqvujbc"

@@ -10,9 +10,12 @@ func _set_state(_state_type):
 			when _curr['state'].switch_type_status == CharacterState.SwitchTypeStatus.ACTIVE:
 					return false
 	super._set_state(_state_type)
+	return true
 
 func can_melee() -> bool:
+	# TODO: need a better way to figure out what can melee
 	return states.has(CharacterStates.Type.MELEE)
 
 func can_shoot() -> bool:
+	# TODO: need a better way to figure out what can shoot
 	return states.has(CharacterStates.Type.SHOOT)

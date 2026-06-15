@@ -1,0 +1,450 @@
+[gd_resource type="Resource" script_class="CharacterSpriteSheetLib" format=3 uid="uid://b5skywf8tcg5c"]
+
+[ext_resource type="Script" uid="uid://duoxh8uxp8wm7" path="res://resource/util/character_spritesheet_entry.gd" id="1_n61td"]
+[ext_resource type="Script" uid="uid://cokka62i6xlji" path="res://resource/util/character_spritesheet.gd" id="2_faajb"]
+[ext_resource type="Texture2D" uid="uid://bi6f2mm5fmo7s" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDie.png" id="3_ihst6"]
+[ext_resource type="Texture2D" uid="uid://bcr22apatvjt6" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistDmg.png" id="4_2sn7h"]
+[ext_resource type="Texture2D" uid="uid://dqbcl8wx6bece" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistIdle.png" id="5_tethm"]
+[ext_resource type="Texture2D" uid="uid://8s2l2ip2ixnv" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWalk.png" id="6_vxstu"]
+[ext_resource type="Texture2D" uid="uid://81xe1vyiuc0l" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Alchemist/Minifantasy_NPCsAlchemistWorking.png" id="7_ykll3"]
+[ext_resource type="Texture2D" uid="uid://baxo6wbn5vq5q" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDie.png" id="8_a2tdd"]
+[ext_resource type="Texture2D" uid="uid://cehaqm3kwuvk8" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithDmg.png" id="9_acjay"]
+[ext_resource type="Texture2D" uid="uid://bhpocuuv4iwnr" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithIdle.png" id="10_r5o5d"]
+[ext_resource type="Texture2D" uid="uid://cte3tygj1q0ay" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWalk.png" id="11_oi1vg"]
+[ext_resource type="Texture2D" uid="uid://cfkap2x70jwek" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Blacksmith/Minifantasy_NPCsBlacksmithWorking.png" id="12_37nka"]
+[ext_resource type="Texture2D" uid="uid://dayju58280s8h" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDie.png" id="13_lk2wk"]
+[ext_resource type="Texture2D" uid="uid://bxkc55sfif1fa" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherDmg.png" id="14_y22ky"]
+[ext_resource type="Texture2D" uid="uid://ca513iim3bf6l" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherIdle.png" id="15_43kph"]
+[ext_resource type="Texture2D" uid="uid://gf8440rchyrk" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWalk.png" id="16_4ckg6"]
+[ext_resource type="Texture2D" uid="uid://0gmdt8xxh315" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Butcher/Minifantasy_NPCsButcherWorking.png" id="17_rlxkd"]
+[ext_resource type="Texture2D" uid="uid://b8y4lrmqonck7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDie.png" id="18_tkhaf"]
+[ext_resource type="Texture2D" uid="uid://dpho8hiypn7fa" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterDmg.png" id="19_bjhgk"]
+[ext_resource type="Texture2D" uid="uid://3tajxjrgt68q" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterIdle.png" id="20_4etw5"]
+[ext_resource type="Texture2D" uid="uid://dg2qs0ue4l3b7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWalk.png" id="21_sn2j5"]
+[ext_resource type="Texture2D" uid="uid://sr4xo2yb4cna" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Carpenter/Minifantasy_NPCsCarpenterWorking.png" id="22_nb563"]
+[ext_resource type="Texture2D" uid="uid://bis2w2hsydrdn" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDie.png" id="23_6jg4r"]
+[ext_resource type="Texture2D" uid="uid://dakptqf2kr5fv" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerDmg.png" id="24_hq50q"]
+[ext_resource type="Texture2D" uid="uid://bu8j0wyxi7y6t" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png" id="25_d6g0d"]
+[ext_resource type="Texture2D" uid="uid://mmfgm8h300w2" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWalk.png" id="26_obbh0"]
+[ext_resource type="Texture2D" uid="uid://dx2v0livfp31b" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerWorking.png" id="27_gem5e"]
+[ext_resource type="Texture2D" uid="uid://dle688xsqxgp6" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDie.png" id="28_bspud"]
+[ext_resource type="Texture2D" uid="uid://cllsfo2bglpm7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerDmg.png" id="29_s3muk"]
+[ext_resource type="Texture2D" uid="uid://fhtng84k5jrb" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerIdle.png" id="30_4p6ne"]
+[ext_resource type="Texture2D" uid="uid://beivjfagapcb8" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWalk.png" id="31_hhy0c"]
+[ext_resource type="Texture2D" uid="uid://vcv7st01b86o" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Dyer/Minifantasy_NPCsDyerWorking.png" id="32_txtqj"]
+[ext_resource type="Texture2D" uid="uid://dv0ouwgdu3gbw" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDie.png" id="33_qyd2f"]
+[ext_resource type="Texture2D" uid="uid://d82cx66qyhqo" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierDmg.png" id="34_ppvli"]
+[ext_resource type="Texture2D" uid="uid://kej3ctio7o5r" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierIdle.png" id="35_x2pfu"]
+[ext_resource type="Texture2D" uid="uid://dr53no08lkia4" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWalk.png" id="36_qdt5g"]
+[ext_resource type="Texture2D" uid="uid://bcred1pvtlt0b" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Furrier/Minifantasy_NPCsFurrierWorking.png" id="37_hhx5k"]
+[ext_resource type="Texture2D" uid="uid://bvto1vh16m3q7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDie.png" id="38_mdh4j"]
+[ext_resource type="Texture2D" uid="uid://tls0vgtbglqd" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerDmg.png" id="39_66spe"]
+[ext_resource type="Texture2D" uid="uid://c8i3su2nx3nxb" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerIdle.png" id="40_cyo0w"]
+[ext_resource type="Texture2D" uid="uid://2u5ldh2upjkp" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWalk.png" id="41_gimjf"]
+[ext_resource type="Texture2D" uid="uid://dlpy630m8usrg" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Jeweller/Minifantasy_NPCsJewellerWorking.png" id="42_kipmn"]
+[ext_resource type="Texture2D" uid="uid://disyck17nyqb0" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDie.png" id="43_j2ki1"]
+[ext_resource type="Texture2D" uid="uid://c86skbdswseih" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorDmg.png" id="44_vx8qv"]
+[ext_resource type="Texture2D" uid="uid://1ryudb83h1" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorIdle.png" id="45_0rr0g"]
+[ext_resource type="Texture2D" uid="uid://bx7wgine0h230" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Tailor/Minifantasy_NPCsTailorWalk.png" id="46_63104"]
+[ext_resource type="Texture2D" uid="uid://dmpxndbvd3ito" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-die.png" id="47_ttqc5"]
+[ext_resource type="Texture2D" uid="uid://4ulu2sdqoy3v" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-dmg.png" id="48_wpedr"]
+[ext_resource type="Texture2D" uid="uid://c7wa8ivg0i7gc" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-hit.png" id="49_wy082"]
+[ext_resource type="Texture2D" uid="uid://cn1t540u23v6t" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-idle.png" id="50_430iy"]
+[ext_resource type="Texture2D" uid="uid://bcgw6og22tl4r" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-axe-walk.png" id="51_2f2n2"]
+[ext_resource type="Texture2D" uid="uid://b7utxtyugsuxh" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-die.png" id="52_o125k"]
+[ext_resource type="Texture2D" uid="uid://cf1kj3f03xhtx" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-dmg.png" id="53_pv3l7"]
+[ext_resource type="Texture2D" uid="uid://tp7ru6h2kmvn" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-shot.png" id="54_wx46s"]
+[ext_resource type="Texture2D" uid="uid://dkt70o80nwadf" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-idle.png" id="55_eqwpw"]
+[ext_resource type="Texture2D" uid="uid://bhw53t30nlvh0" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-bow-walk.png" id="56_7eskl"]
+[ext_resource type="Texture2D" uid="uid://d1bc0sp2o81b7" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-die.png" id="57_4x5n1"]
+[ext_resource type="Texture2D" uid="uid://gmbqgb0ecosp" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-dmg.png" id="58_rtx74"]
+[ext_resource type="Texture2D" uid="uid://ccaxdk6xk1xwh" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-hit.png" id="59_rt862"]
+[ext_resource type="Texture2D" uid="uid://cn15isb6003ho" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-idle.png" id="60_bth45"]
+[ext_resource type="Texture2D" uid="uid://cvxhroc0ne1ka" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/my_templates/orc/orc1-spear-walk.png" id="61_3ble5"]
+[ext_resource type="Script" uid="uid://dbtbgohqvujbc" path="res://resource/util/character_spritesheet_lib.gd" id="62_ageoh"]
+
+[sub_resource type="Resource" id="Resource_cixlg"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("3_ihst6")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_23td5"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("4_2sn7h")
+
+[sub_resource type="Resource" id="Resource_f5c38"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("5_tethm")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_0d4lp"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("6_vxstu")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_705x3"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("7_ykll3")
+
+[sub_resource type="Resource" id="Resource_k6vwr"]
+script = ExtResource("1_n61td")
+name = "Alchemist"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_cixlg"), SubResource("Resource_23td5"), SubResource("Resource_f5c38"), SubResource("Resource_0d4lp"), SubResource("Resource_705x3")])
+
+[sub_resource type="Resource" id="Resource_oncjs"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("8_a2tdd")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_nhvo5"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("9_acjay")
+
+[sub_resource type="Resource" id="Resource_dkfva"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("10_r5o5d")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_k4pog"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("11_oi1vg")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_5hkhr"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("12_37nka")
+
+[sub_resource type="Resource" id="Resource_n3ehj"]
+script = ExtResource("1_n61td")
+name = "Blacksmith"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_oncjs"), SubResource("Resource_nhvo5"), SubResource("Resource_dkfva"), SubResource("Resource_k4pog"), SubResource("Resource_5hkhr")])
+
+[sub_resource type="Resource" id="Resource_p52br"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("13_lk2wk")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_xh6v1"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("14_y22ky")
+
+[sub_resource type="Resource" id="Resource_xusii"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("15_43kph")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_hvrn4"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("16_4ckg6")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_kvc4x"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("17_rlxkd")
+
+[sub_resource type="Resource" id="Resource_e0tce"]
+script = ExtResource("1_n61td")
+name = "Butcher"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_p52br"), SubResource("Resource_xh6v1"), SubResource("Resource_xusii"), SubResource("Resource_hvrn4"), SubResource("Resource_kvc4x")])
+
+[sub_resource type="Resource" id="Resource_h14x7"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("18_tkhaf")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_bnnxu"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("19_bjhgk")
+
+[sub_resource type="Resource" id="Resource_lntcw"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("20_4etw5")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_o0dg3"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("21_sn2j5")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_ddquc"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("22_nb563")
+
+[sub_resource type="Resource" id="Resource_uibui"]
+script = ExtResource("1_n61td")
+name = "Carpenter"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_h14x7"), SubResource("Resource_bnnxu"), SubResource("Resource_lntcw"), SubResource("Resource_o0dg3"), SubResource("Resource_ddquc")])
+
+[sub_resource type="Resource" id="Resource_qufag"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("23_6jg4r")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_w6fye"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("24_hq50q")
+
+[sub_resource type="Resource" id="Resource_ocyn6"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("25_d6g0d")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_37x4s"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("26_obbh0")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_14oys"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("27_gem5e")
+
+[sub_resource type="Resource" id="Resource_fh0a3"]
+script = ExtResource("1_n61td")
+name = "Cooker"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_qufag"), SubResource("Resource_w6fye"), SubResource("Resource_ocyn6"), SubResource("Resource_37x4s"), SubResource("Resource_14oys")])
+
+[sub_resource type="Resource" id="Resource_c1u7y"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("28_bspud")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_synkd"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("29_s3muk")
+
+[sub_resource type="Resource" id="Resource_ph711"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("30_4p6ne")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_xumjk"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("31_hhy0c")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_enw2d"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("32_txtqj")
+
+[sub_resource type="Resource" id="Resource_fcfg4"]
+script = ExtResource("1_n61td")
+name = "Dyer"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_c1u7y"), SubResource("Resource_synkd"), SubResource("Resource_ph711"), SubResource("Resource_xumjk"), SubResource("Resource_enw2d")])
+
+[sub_resource type="Resource" id="Resource_o52o6"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("33_qyd2f")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_dhw2x"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("34_ppvli")
+
+[sub_resource type="Resource" id="Resource_ivxlf"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("35_x2pfu")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_jfyji"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("36_qdt5g")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_8gokj"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("37_hhx5k")
+
+[sub_resource type="Resource" id="Resource_yigpd"]
+script = ExtResource("1_n61td")
+name = "Furrier"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_o52o6"), SubResource("Resource_dhw2x"), SubResource("Resource_ivxlf"), SubResource("Resource_jfyji"), SubResource("Resource_8gokj")])
+
+[sub_resource type="Resource" id="Resource_8ogmw"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("38_mdh4j")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_3ict4"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("39_66spe")
+
+[sub_resource type="Resource" id="Resource_81jfi"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("40_cyo0w")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_ce653"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("41_gimjf")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_kh66f"]
+script = ExtResource("2_faajb")
+name = "work"
+img = ExtResource("42_kipmn")
+
+[sub_resource type="Resource" id="Resource_52aqw"]
+script = ExtResource("1_n61td")
+name = "Jeweller"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_8ogmw"), SubResource("Resource_3ict4"), SubResource("Resource_81jfi"), SubResource("Resource_ce653"), SubResource("Resource_kh66f")])
+
+[sub_resource type="Resource" id="Resource_7tq43"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("43_j2ki1")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_8p887"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("44_vx8qv")
+
+[sub_resource type="Resource" id="Resource_mo26c"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("45_0rr0g")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_ri6fv"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("46_63104")
+time = 200.0
+
+[sub_resource type="Resource" id="Resource_swase"]
+script = ExtResource("1_n61td")
+name = "Tailor"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_7tq43"), SubResource("Resource_8p887"), SubResource("Resource_mo26c"), SubResource("Resource_ri6fv")])
+
+[sub_resource type="Resource" id="Resource_rqhmr"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("47_ttqc5")
+
+[sub_resource type="Resource" id="Resource_v0bi6"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("48_wpedr")
+
+[sub_resource type="Resource" id="Resource_a6dht"]
+script = ExtResource("2_faajb")
+name = "hit"
+img = ExtResource("49_wy082")
+
+[sub_resource type="Resource" id="Resource_mther"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("50_430iy")
+
+[sub_resource type="Resource" id="Resource_tmrc5"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("51_2f2n2")
+
+[sub_resource type="Resource" id="Resource_fk4dq"]
+script = ExtResource("1_n61td")
+name = "Orc_Green_Axe"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_rqhmr"), SubResource("Resource_v0bi6"), SubResource("Resource_a6dht"), SubResource("Resource_mther"), SubResource("Resource_tmrc5")])
+
+[sub_resource type="Resource" id="Resource_dcy0j"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("52_o125k")
+
+[sub_resource type="Resource" id="Resource_cv4hw"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("53_pv3l7")
+
+[sub_resource type="Resource" id="Resource_2wsqp"]
+script = ExtResource("2_faajb")
+name = "hit"
+img = ExtResource("54_wx46s")
+
+[sub_resource type="Resource" id="Resource_fsvm4"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("55_eqwpw")
+
+[sub_resource type="Resource" id="Resource_ixdk6"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("56_7eskl")
+
+[sub_resource type="Resource" id="Resource_x3qs5"]
+script = ExtResource("1_n61td")
+name = "Orc_Green_Bow"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_dcy0j"), SubResource("Resource_cv4hw"), SubResource("Resource_2wsqp"), SubResource("Resource_fsvm4"), SubResource("Resource_ixdk6")])
+
+[sub_resource type="Resource" id="Resource_qtoxs"]
+script = ExtResource("2_faajb")
+name = "die"
+img = ExtResource("57_4x5n1")
+
+[sub_resource type="Resource" id="Resource_mpchh"]
+script = ExtResource("2_faajb")
+name = "dmg"
+img = ExtResource("58_rtx74")
+
+[sub_resource type="Resource" id="Resource_26k1j"]
+script = ExtResource("2_faajb")
+name = "hit"
+img = ExtResource("59_rt862")
+
+[sub_resource type="Resource" id="Resource_usd7q"]
+script = ExtResource("2_faajb")
+name = "idle"
+img = ExtResource("60_bth45")
+
+[sub_resource type="Resource" id="Resource_nohtd"]
+script = ExtResource("2_faajb")
+name = "walk"
+img = ExtResource("61_3ble5")
+
+[sub_resource type="Resource" id="Resource_gvl0h"]
+script = ExtResource("1_n61td")
+name = "Orc_Green_Spear"
+spritesheet = Array[ExtResource("2_faajb")]([SubResource("Resource_qtoxs"), SubResource("Resource_mpchh"), SubResource("Resource_26k1j"), SubResource("Resource_usd7q"), SubResource("Resource_nohtd")])
+
+[resource]
+script = ExtResource("62_ageoh")
+lib = Array[ExtResource("1_n61td")]([SubResource("Resource_k6vwr"), SubResource("Resource_n3ehj"), SubResource("Resource_e0tce"), SubResource("Resource_uibui"), SubResource("Resource_fh0a3"), SubResource("Resource_fcfg4"), SubResource("Resource_yigpd"), SubResource("Resource_52aqw"), SubResource("Resource_swase"), SubResource("Resource_fk4dq"), SubResource("Resource_x3qs5"), SubResource("Resource_gvl0h")])
