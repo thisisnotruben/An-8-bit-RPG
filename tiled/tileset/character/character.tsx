@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.12.2" name="character" tilewidth="64" tileheight="64" tilecount="108" columns="0">
+<tileset version="1.10" tiledversion="1.12.2" name="character" tilewidth="64" tileheight="64" tilecount="157" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0" type="Instance">
   <properties>
@@ -949,5 +949,152 @@
    <property name="type" type="class" propertytype="Character"/>
   </properties>
   <image source="Undead_Knight.png" width="32" height="32"/>
+ </tile>
+ <tile id="109">
+  <image source="Ambuster.png" width="40" height="40"/>
+ </tile>
+ <tile id="110">
+  <image source="Angel_of_Death.png" width="32" height="32"/>
+ </tile>
+ <tile id="111">
+  <image source="Baby_Beholder.png" width="32" height="32"/>
+ </tile>
+ <tile id="112">
+  <image source="Bicephalous_1_head.png" width="32" height="32"/>
+ </tile>
+ <tile id="113">
+  <image source="Bicephalous_2_head.png" width="32" height="32"/>
+ </tile>
+ <tile id="114">
+  <image source="Birch_Guardians_base.png" width="32" height="32"/>
+ </tile>
+ <tile id="115">
+  <image source="Birch_Guardians_treetop.png" width="32" height="32"/>
+ </tile>
+ <tile id="116">
+  <image source="Blood_Mage.png" width="32" height="32"/>
+ </tile>
+ <tile id="117">
+  <image source="Book.png" width="32" height="32"/>
+ </tile>
+ <tile id="118">
+  <image source="Brain_Slayer.png" width="32" height="32"/>
+ </tile>
+ <tile id="119">
+  <image source="Bulldog.png" width="32" height="32"/>
+ </tile>
+ <tile id="120">
+  <image source="Centaur_King.png" width="32" height="32"/>
+ </tile>
+ <tile id="121">
+  <image source="Cloud.png" width="32" height="32"/>
+ </tile>
+ <tile id="122">
+  <image source="Dark_Priest.png" width="32" height="32"/>
+ </tile>
+ <tile id="123">
+  <image source="Demonologist.png" width="32" height="32"/>
+ </tile>
+ <tile id="124">
+  <image source="Demon_Spider.png" width="32" height="32"/>
+ </tile>
+ <tile id="125">
+  <image source="Divine_Minion.png" width="40" height="40"/>
+ </tile>
+ <tile id="126">
+  <image source="Divine_Warden.png" width="64" height="64"/>
+ </tile>
+ <tile id="127">
+  <image source="Draco.png" width="32" height="32"/>
+ </tile>
+ <tile id="128">
+  <image source="Gargoyle.png" width="32" height="32"/>
+ </tile>
+ <tile id="129">
+  <image source="Giant.png" width="32" height="32"/>
+ </tile>
+ <tile id="130">
+  <image source="Giant_Rat.png" width="32" height="32"/>
+ </tile>
+ <tile id="131">
+  <image source="Gnoll.png" width="32" height="32"/>
+ </tile>
+ <tile id="132">
+  <image source="Hickory_Guardians_base.png" width="32" height="32"/>
+ </tile>
+ <tile id="133">
+  <image source="Hickory_Guardians_treetop.png" width="32" height="32"/>
+ </tile>
+ <tile id="134">
+  <image source="Huntsman_Spider.png" width="32" height="32"/>
+ </tile>
+ <tile id="135">
+  <image source="Lich.png" width="32" height="32"/>
+ </tile>
+ <tile id="136">
+  <image source="Light_Acolyte.png" width="32" height="32"/>
+ </tile>
+ <tile id="137">
+  <image source="Lobster.png" width="32" height="32"/>
+ </tile>
+ <tile id="138">
+  <image source="Magma_Hound.png" width="32" height="32"/>
+ </tile>
+ <tile id="139">
+  <image source="Ninja_Assassin.png" width="32" height="32"/>
+ </tile>
+ <tile id="140">
+  <image source="Oak_Guardians_base.png" width="32" height="32"/>
+ </tile>
+ <tile id="141">
+  <image source="Oak_Guardians_treetop.png" width="32" height="32"/>
+ </tile>
+ <tile id="142">
+  <image source="Observer.png" width="32" height="32"/>
+ </tile>
+ <tile id="143">
+  <image source="Octopurr.png" width="48" height="48"/>
+ </tile>
+ <tile id="144">
+  <image source="Orc_Knight.png" width="32" height="32"/>
+ </tile>
+ <tile id="145">
+  <image source="Pine_Guardians_base.png" width="32" height="32"/>
+ </tile>
+ <tile id="146">
+  <image source="Pine_Guardians_treetop.png" width="32" height="32"/>
+ </tile>
+ <tile id="147">
+  <image source="Shifted.png" width="32" height="32"/>
+ </tile>
+ <tile id="148">
+  <image source="Skull.png" width="32" height="32"/>
+ </tile>
+ <tile id="149">
+  <image source="Stalker.png" width="32" height="32"/>
+ </tile>
+ <tile id="150">
+  <image source="Stickman.png" width="40" height="40"/>
+ </tile>
+ <tile id="151">
+  <image source="Supreme_Necromancer.png" width="32" height="32"/>
+ </tile>
+ <tile id="152">
+  <image source="Sword.png" width="32" height="32"/>
+ </tile>
+ <tile id="153">
+  <image source="Tech-Augmented_Gunslinger.png" width="32" height="32"/>
+ </tile>
+ <tile id="154">
+  <image source="Willow_Guardians_base.png" width="32" height="32"/>
+ </tile>
+ <tile id="155">
+  <image source="Willow_Guardians_treetop.png" width="32" height="32"/>
+ </tile>
+ <tile id="156">
+  <image source="Winged.png" width="32" height="32"/>
+ </tile>
+ <tile id="157">
+  <image source="Worm.png" width="32" height="32"/>
  </tile>
 </tileset>

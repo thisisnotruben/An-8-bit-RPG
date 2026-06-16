@@ -6,14 +6,14 @@ var anim_importer := Importer.new()
 
 func _ready():
 	#get_unique_anim_type_names()
-	#make_import_library(true)
-	#make_state_machines()
+	make_import_library(true)
+	make_state_machines()
 	make_character_icons()
 
 func make_import_library(new_file:= false):
 	var dir_access := DirAccess.open(Importer.ANIM_DIR)
 	for lib in spritesheet_libs:
-		for entry: CharacterSpriteSheetEntry in lib:
+		for entry: CharacterSpriteSheetEntry in lib.lib:
 			if new_file:
 				dir_access.remove(entry.name + '.tres')
 			for spritesheet: CharacterSpriteSheet in entry.spritesheet:
@@ -22,7 +22,7 @@ func make_import_library(new_file:= false):
 
 func make_state_machines():
 	for lib in spritesheet_libs:
-		for entry: CharacterSpriteSheetEntry in lib:
+		for entry: CharacterSpriteSheetEntry in lib.lib:
 			var file_path := Importer.ANIM_DIR + entry.name + '.tres'
 			var anim_template_names := []
 			for spritesheet: CharacterSpriteSheet in entry.spritesheet:
@@ -39,7 +39,7 @@ func get_unique_anim_type_names():
 
 func make_character_icons():
 	for lib in spritesheet_libs:
-		for entry: CharacterSpriteSheetEntry in lib:
+		for entry: CharacterSpriteSheetEntry in lib.lib:
 			var idle_tex: Texture2D
 			for spritesheet: CharacterSpriteSheet in entry.spritesheet:
 				if spritesheet.name == 'idle':

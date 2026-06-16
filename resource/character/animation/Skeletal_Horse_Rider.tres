@@ -1,12 +1,12 @@
-[gd_resource type="AnimationLibrary" load_steps=22 format=3 uid="uid://cjmxu0f5hgmlv"]
+[gd_resource type="AnimationLibrary" format=3]
 
-[ext_resource type="Texture2D" uid="uid://buvn1k2gqj43t" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Attack_rider.png" id="1_t4x6w"]
-[ext_resource type="Texture2D" uid="uid://ck1bj4ls7a6kk" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Die_raider.png" id="2_h1vtf"]
-[ext_resource type="Texture2D" uid="uid://ccwqqrmvcrak4" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Dmg_raider.png" id="3_bd7lv"]
-[ext_resource type="Texture2D" uid="uid://d0jfocrrfyhpy" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Idle_Activation_Deactivation_raider.png" id="4_j34y3"]
-[ext_resource type="Texture2D" uid="uid://1trc1lvumfdg" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Walk_raider.png" id="5_fq4e3"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Attack_rider.png" id="1_xtfs8"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Die_raider.png" id="2_pbner"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Dmg_raider.png" id="3_67pi6"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Idle_Activation_Deactivation_raider.png" id="4_rs7mu"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Undead_Creatures_v1.0/Minifantasy_Undead_Creatures_Assets/Skeletal_Horse/Rider/Walk_raider.png" id="5_nn0wi"]
 
-[sub_resource type="Animation" id="Animation_bd7lv"]
+[sub_resource type="Animation" id="Animation_pbner"]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_t4x6w")]
+"values": [ExtResource("1_xtfs8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,7 +57,7 @@ tracks/3/keys = {
 "values": [6.0, 11.0]
 }
 
-[sub_resource type="Animation" id="Animation_h1vtf"]
+[sub_resource type="Animation" id="Animation_67pi6"]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -69,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_t4x6w")]
+"values": [ExtResource("1_xtfs8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +108,7 @@ tracks/3/keys = {
 "values": [0.0, 5.0]
 }
 
-[sub_resource type="Animation" id="Animation_fq4e3"]
+[sub_resource type="Animation" id="Animation_rs7mu"]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -120,7 +120,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_t4x6w")]
+"values": [ExtResource("1_xtfs8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -159,7 +159,7 @@ tracks/3/keys = {
 "values": [18.0, 23.0]
 }
 
-[sub_resource type="Animation" id="Animation_j34y3"]
+[sub_resource type="Animation" id="Animation_nn0wi"]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -171,7 +171,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_t4x6w")]
+"values": [ExtResource("1_xtfs8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -210,7 +210,7 @@ tracks/3/keys = {
 "values": [12.0, 17.0]
 }
 
-[sub_resource type="Animation" id="Animation_yyx75"]
+[sub_resource type="Animation" id="Animation_unf08"]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -222,7 +222,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("2_h1vtf")]
+"values": [ExtResource("2_pbner")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -261,7 +261,7 @@ tracks/3/keys = {
 "values": [0.0, 14.0]
 }
 
-[sub_resource type="Animation" id="Animation_joikg"]
+[sub_resource type="Animation" id="Animation_4trpy"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -273,7 +273,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("3_bd7lv")]
+"values": [ExtResource("3_67pi6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -312,7 +312,7 @@ tracks/3/keys = {
 "values": [4.0, 7.0]
 }
 
-[sub_resource type="Animation" id="Animation_vo361"]
+[sub_resource type="Animation" id="Animation_fi6fo"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -324,7 +324,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("3_bd7lv")]
+"values": [ExtResource("3_67pi6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -363,7 +363,7 @@ tracks/3/keys = {
 "values": [0.0, 3.0]
 }
 
-[sub_resource type="Animation" id="Animation_midri"]
+[sub_resource type="Animation" id="Animation_gap6y"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -375,7 +375,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("3_bd7lv")]
+"values": [ExtResource("3_67pi6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -414,7 +414,7 @@ tracks/3/keys = {
 "values": [12.0, 15.0]
 }
 
-[sub_resource type="Animation" id="Animation_1d5mk"]
+[sub_resource type="Animation" id="Animation_q1k6y"]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -426,7 +426,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("3_bd7lv")]
+"values": [ExtResource("3_67pi6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -465,7 +465,7 @@ tracks/3/keys = {
 "values": [8.0, 11.0]
 }
 
-[sub_resource type="Animation" id="Animation_72540"]
+[sub_resource type="Animation" id="Animation_hej8i"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -477,7 +477,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("4_j34y3")]
+"values": [ExtResource("4_rs7mu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -516,7 +516,7 @@ tracks/3/keys = {
 "values": [5.0, 9.0]
 }
 
-[sub_resource type="Animation" id="Animation_6lqqm"]
+[sub_resource type="Animation" id="Animation_j368y"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -528,7 +528,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("4_j34y3")]
+"values": [ExtResource("4_rs7mu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -567,7 +567,7 @@ tracks/3/keys = {
 "values": [0.0, 4.0]
 }
 
-[sub_resource type="Animation" id="Animation_40eha"]
+[sub_resource type="Animation" id="Animation_ktdat"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -579,7 +579,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("4_j34y3")]
+"values": [ExtResource("4_rs7mu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -618,7 +618,7 @@ tracks/3/keys = {
 "values": [10.0, 14.0]
 }
 
-[sub_resource type="Animation" id="Animation_g2rm7"]
+[sub_resource type="Animation" id="Animation_4gxah"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -631,7 +631,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_fq4e3")]
+"values": [ExtResource("5_nn0wi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -670,7 +670,7 @@ tracks/3/keys = {
 "values": [4.0, 7.0]
 }
 
-[sub_resource type="Animation" id="Animation_guic8"]
+[sub_resource type="Animation" id="Animation_cc1fj"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -683,7 +683,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_fq4e3")]
+"values": [ExtResource("5_nn0wi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -722,7 +722,7 @@ tracks/3/keys = {
 "values": [0.0, 3.0]
 }
 
-[sub_resource type="Animation" id="Animation_w66g2"]
+[sub_resource type="Animation" id="Animation_e65fs"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -735,7 +735,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_fq4e3")]
+"values": [ExtResource("5_nn0wi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -774,7 +774,7 @@ tracks/3/keys = {
 "values": [12.0, 15.0]
 }
 
-[sub_resource type="Animation" id="Animation_h25h1"]
+[sub_resource type="Animation" id="Animation_0uiur"]
 length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
@@ -787,7 +787,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_fq4e3")]
+"values": [ExtResource("5_nn0wi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -828,20 +828,20 @@ tracks/3/keys = {
 
 [resource]
 _data = {
-&"attack_down_left": SubResource("Animation_bd7lv"),
-&"attack_down_right": SubResource("Animation_h1vtf"),
-&"attack_left_up": SubResource("Animation_fq4e3"),
-&"attack_right_up": SubResource("Animation_j34y3"),
-&"die": SubResource("Animation_yyx75"),
-&"dmg_down_left": SubResource("Animation_joikg"),
-&"dmg_down_right": SubResource("Animation_vo361"),
-&"dmg_left_up": SubResource("Animation_midri"),
-&"dmg_right_up": SubResource("Animation_1d5mk"),
-&"idle_down_left": SubResource("Animation_72540"),
-&"idle_down_right": SubResource("Animation_6lqqm"),
-&"idle_right_up": SubResource("Animation_40eha"),
-&"walk_down_left": SubResource("Animation_g2rm7"),
-&"walk_down_right": SubResource("Animation_guic8"),
-&"walk_left_up": SubResource("Animation_w66g2"),
-&"walk_right_up": SubResource("Animation_h25h1")
+&"attack_down_left": SubResource("Animation_pbner"),
+&"attack_down_right": SubResource("Animation_67pi6"),
+&"attack_left_up": SubResource("Animation_rs7mu"),
+&"attack_right_up": SubResource("Animation_nn0wi"),
+&"die": SubResource("Animation_unf08"),
+&"dmg_down_left": SubResource("Animation_4trpy"),
+&"dmg_down_right": SubResource("Animation_fi6fo"),
+&"dmg_left_up": SubResource("Animation_gap6y"),
+&"dmg_right_up": SubResource("Animation_q1k6y"),
+&"idle_down_left": SubResource("Animation_hej8i"),
+&"idle_down_right": SubResource("Animation_j368y"),
+&"idle_right_up": SubResource("Animation_ktdat"),
+&"walk_down_left": SubResource("Animation_4gxah"),
+&"walk_down_right": SubResource("Animation_cc1fj"),
+&"walk_left_up": SubResource("Animation_e65fs"),
+&"walk_right_up": SubResource("Animation_0uiur")
 }

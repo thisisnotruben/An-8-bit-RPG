@@ -118,6 +118,7 @@
 [ext_resource type="Texture2D" uid="uid://dducnc1p1kk7" path="res://asset/img/exclusives/Creatures/Lich/Fly.png" id="116_1igij"]
 [ext_resource type="Texture2D" uid="uid://dbvdnnf08bhsx" path="res://asset/img/exclusives/Creatures/Lich/Spellcast_ice_claws.png" id="117_u2i0q"]
 [ext_resource type="Texture2D" uid="uid://d1tlv83j5tbuu" path="res://asset/img/exclusives/Creatures/Lich/Spellcast_reanimation.png" id="118_nepbc"]
+[ext_resource type="Texture2D" uid="uid://l1k3v6e7n1ve" path="res://asset/img/exclusives/Creatures/Lich/Idle.png" id="119_1mu3j"]
 [ext_resource type="Texture2D" uid="uid://cd7l8d1cgciga" path="res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchanStalltIdle.png" id="119_004ns"]
 [ext_resource type="Texture2D" uid="uid://b1yp0uqo1i8of" path="res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantDie.png" id="120_qe1b0"]
 [ext_resource type="Texture2D" uid="uid://i6lgui1govmj" path="res://asset/img/exclusives/Creatures/Merchant/Minifantasy_MerchantDmg.png" id="121_nuwmr"]
@@ -146,6 +147,7 @@
 [ext_resource type="Texture2D" uid="uid://owitl6kl06e5" path="res://asset/img/exclusives/Creatures/Orc_Knight/Gallop.png" id="144_bbn4l"]
 [ext_resource type="Texture2D" uid="uid://cn7u8fwkh3y0p" path="res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Attack_human.png" id="145_hr1tp"]
 [ext_resource type="Texture2D" uid="uid://b6poac7h0fhyc" path="res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Die_human.png" id="146_5k7yw"]
+[ext_resource type="Texture2D" uid="uid://b0f55tlgoaps4" path="res://asset/img/exclusives/Creatures/Orc_Knight/Idle.png" id="146_sk8c5"]
 [ext_resource type="Texture2D" uid="uid://by1sbmucxw54h" path="res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Dmg_human.png" id="147_h5nho"]
 [ext_resource type="Texture2D" uid="uid://cy0n3dwonrqdg" path="res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Idle_human.png" id="148_fh00j"]
 [ext_resource type="Texture2D" uid="uid://db1r7wl5kfcno" path="res://asset/img/exclusives/Creatures/Town_Guards/Human Town Guard/Guards_Walk_human.png" id="149_jvip0"]
@@ -913,10 +915,17 @@ name = "cast_reanimation"
 img = ExtResource("118_nepbc")
 time = 200.0
 
+[sub_resource type="Resource" id="Resource_qtvst"]
+script = ExtResource("2_6r08j")
+name = "idle"
+img = ExtResource("119_1mu3j")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
 [sub_resource type="Resource" id="Resource_fn40y"]
 script = ExtResource("1_vw3hk")
 name = "Lich"
-spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_hd4eb"), SubResource("Resource_bmwq6"), SubResource("Resource_sivbl"), SubResource("Resource_3fsrh"), SubResource("Resource_iicwc")])
+spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_hd4eb"), SubResource("Resource_bmwq6"), SubResource("Resource_sivbl"), SubResource("Resource_3fsrh"), SubResource("Resource_iicwc"), SubResource("Resource_qtvst")])
 
 [sub_resource type="Resource" id="Resource_ichex"]
 script = ExtResource("2_6r08j")
@@ -1080,10 +1089,24 @@ name = "walk"
 img = ExtResource("144_bbn4l")
 time = 200.0
 
+[sub_resource type="Resource" id="Resource_qj6vp"]
+script = ExtResource("2_6r08j")
+name = "idle"
+img = ExtResource("146_sk8c5")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
+[sub_resource type="Resource" id="Resource_h2gca"]
+script = ExtResource("2_6r08j")
+name = "gallop"
+img = ExtResource("144_bbn4l")
+time = 200.0
+metadata/_custom_type_script = "uid://cokka62i6xlji"
+
 [sub_resource type="Resource" id="Resource_jtg6p"]
 script = ExtResource("1_vw3hk")
 name = "Orc_Knight"
-spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_32xq1"), SubResource("Resource_87tqu"), SubResource("Resource_olhuh")])
+spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_32xq1"), SubResource("Resource_87tqu"), SubResource("Resource_olhuh"), SubResource("Resource_qj6vp"), SubResource("Resource_h2gca")])
 
 [sub_resource type="Resource" id="Resource_rdqvc"]
 script = ExtResource("2_6r08j")
@@ -1431,15 +1454,10 @@ name = "walk"
 img = ExtResource("195_74aef")
 metadata/_custom_type_script = "uid://cokka62i6xlji"
 
-[sub_resource type="Resource" id="Resource_cnbxx"]
-script = ExtResource("2_6r08j")
-name = "Magma Hound"
-metadata/_custom_type_script = "uid://cokka62i6xlji"
-
 [sub_resource type="Resource" id="Resource_kxbhf"]
 script = ExtResource("1_vw3hk")
 name = "Light_Acolyte"
-spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_41wlb"), SubResource("Resource_3kl0l"), SubResource("Resource_n1qut"), SubResource("Resource_vi5jt"), SubResource("Resource_kveio"), SubResource("Resource_cnbxx")])
+spritesheet = Array[ExtResource("2_6r08j")]([SubResource("Resource_41wlb"), SubResource("Resource_3kl0l"), SubResource("Resource_n1qut"), SubResource("Resource_vi5jt"), SubResource("Resource_kveio")])
 metadata/_custom_type_script = "uid://duoxh8uxp8wm7"
 
 [sub_resource type="Resource" id="Resource_sk8c5"]

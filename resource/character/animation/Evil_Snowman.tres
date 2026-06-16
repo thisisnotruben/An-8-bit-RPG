@@ -1,9 +1,9 @@
-[gd_resource type="AnimationLibrary" load_steps=8 format=3 uid="uid://bksvuuophikiq"]
+[gd_resource type="AnimationLibrary" format=3]
 
-[ext_resource type="Texture2D" uid="uid://4jqwvvnm48p0" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanAttack.png" id="1_ufah2"]
-[ext_resource type="Texture2D" uid="uid://1dkae0d0ht75" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanActivation.png" id="2_pbtee"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanAttack.png" id="1_aodws"]
+[ext_resource type="Texture2D" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Evil_Snowman/EvilSnowmanActivation.png" id="2_tjup7"]
 
-[sub_resource type="Animation" id="Animation_4nvxf"]
+[sub_resource type="Animation" id="Animation_tjup7"]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_ufah2")]
+"values": [ExtResource("1_aodws")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,7 +54,7 @@ tracks/3/keys = {
 "values": [12.0, 23.0]
 }
 
-[sub_resource type="Animation" id="Animation_pbtee"]
+[sub_resource type="Animation" id="Animation_hupde"]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_ufah2")]
+"values": [ExtResource("1_aodws")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -105,7 +105,7 @@ tracks/3/keys = {
 "values": [0.0, 11.0]
 }
 
-[sub_resource type="Animation" id="Animation_5me07"]
+[sub_resource type="Animation" id="Animation_dto7w"]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -117,7 +117,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_ufah2")]
+"values": [ExtResource("1_aodws")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -156,7 +156,7 @@ tracks/3/keys = {
 "values": [36.0, 47.0]
 }
 
-[sub_resource type="Animation" id="Animation_g2vry"]
+[sub_resource type="Animation" id="Animation_edtir"]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -168,7 +168,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_ufah2")]
+"values": [ExtResource("1_aodws")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -207,7 +207,7 @@ tracks/3/keys = {
 "values": [24.0, 35.0]
 }
 
-[sub_resource type="Animation" id="Animation_spwa4"]
+[sub_resource type="Animation" id="Animation_5c0xv"]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -219,7 +219,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("2_pbtee")]
+"values": [ExtResource("2_tjup7")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -260,9 +260,9 @@ tracks/3/keys = {
 
 [resource]
 _data = {
-&"attack_down_left": SubResource("Animation_4nvxf"),
-&"attack_down_right": SubResource("Animation_pbtee"),
-&"attack_left_up": SubResource("Animation_5me07"),
-&"attack_right_up": SubResource("Animation_g2vry"),
-&"spot": SubResource("Animation_spwa4")
+&"attack_down_left": SubResource("Animation_tjup7"),
+&"attack_down_right": SubResource("Animation_hupde"),
+&"attack_left_up": SubResource("Animation_dto7w"),
+&"attack_right_up": SubResource("Animation_edtir"),
+&"spot": SubResource("Animation_5c0xv")
 }
