@@ -23,7 +23,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var npc_behavior: BehaviorTree = preload('uid://bn3ar0pqvknrx')
 @export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
 
-@export_group('Animation')
+@export_group('Animation') # TODO
 @export var anim_state_machine: AnimationNodeStateMachine
 @export var anim_library: AnimationLibrary
 
@@ -58,8 +58,9 @@ func init(character: Character):
 	character.anim_tree.tree_root = anim_state_machine
 	for lib_name in character.anim.get_animation_library_list():
 		character.anim.remove_animation_library(lib_name)
-	character.anim.add_animation_library( \
-		anim_library.resource_path.get_file().get_basename(), anim_library)
+	if anim_library != null:
+		character.anim.add_animation_library( \
+			anim_library.resource_path.get_file().get_basename(), anim_library)
 
 	# Image
 	character.img.offset = img_offset

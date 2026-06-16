@@ -1,15 +1,8 @@
 extends Node
 
+
 var anim_importer := Importer.new()
 @export var spritesheet_libs: Array[CharacterSpriteSheetLib] = []
-
-# finished:
-# Minifantasy_Wildlife_v1.0.tres
-#
-#
-#
-#
-
 
 func _ready():
 	#get_unique_anim_type_names()
