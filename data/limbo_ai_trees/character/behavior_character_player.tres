@@ -1,0 +1,105 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://bmm4llq2i8kce"]
+
+[ext_resource type="BlackboardPlan" uid="uid://dakrpekxvoqk2" path="res://data/limbo_ai_trees/character/blackboard_plan_character_default.tres" id="1_361so"]
+[ext_resource type="BehaviorTree" uid="uid://cxfwiqfk8biws" path="res://data/limbo_ai_trees/character/tree_components/dead_subtree.tres" id="2_ht226"]
+[ext_resource type="BehaviorTree" uid="uid://bq1qtv635p1rn" path="res://data/limbo_ai_trees/character/tree_components/hurt_subtree.tres" id="3_uayrq"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="4_3ig4r"]
+[ext_resource type="Script" uid="uid://bklci2awtglue" path="res://data/limbo_ai_trees/tasks/player/can_melee.gd" id="5_3h5rl"]
+[ext_resource type="Script" uid="uid://d7rx68rlnifx" path="res://data/limbo_ai_trees/tasks/character/attack_speed_cooldown.gd" id="6_ldyx6"]
+[ext_resource type="Script" uid="uid://b2vhs8l3fwy12" path="res://data/limbo_ai_trees/tasks/player/can_shoot.gd" id="7_4hxw2"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_6kkfr"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_ig2lr"]
+subtree = ExtResource("2_ht226")
+blackboard_plan = SubResource("BlackboardPlan_6kkfr")
+
+[sub_resource type="BTSubtree" id="BTSubtree_2vhlx"]
+subtree = ExtResource("3_uayrq")
+blackboard_plan = ExtResource("1_361so")
+
+[sub_resource type="BBVariant" id="BBVariant_32cym"]
+type = 4
+saved_value = "idle"
+resource_name = "idle"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_2vhlx"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_32cym")
+
+[sub_resource type="BTAction" id="BTAction_32cym"]
+script = ExtResource("4_3ig4r")
+
+[sub_resource type="BTSequence" id="BTSequence_b1h55"]
+custom_name = "idle"
+children = [SubResource("BTCheckVar_2vhlx"), SubResource("BTAction_32cym")]
+
+[sub_resource type="BBVariant" id="BBVariant_6kkfr"]
+type = 4
+saved_value = "move"
+resource_name = "move"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ig2lr"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_6kkfr")
+
+[sub_resource type="BTAction" id="BTAction_ig2lr"]
+script = ExtResource("4_3ig4r")
+state = 1
+
+[sub_resource type="BTSequence" id="BTSequence_xptis"]
+custom_name = "move"
+children = [SubResource("BTCheckVar_ig2lr"), SubResource("BTAction_ig2lr")]
+
+[sub_resource type="BBVariant" id="BBVariant_w7c6f"]
+type = 4
+saved_value = "attack"
+resource_name = "attack"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_iw43q"]
+variable = &"input_state_var"
+value = SubResource("BBVariant_w7c6f")
+
+[sub_resource type="BTCondition" id="BTCondition_w7c6f"]
+script = ExtResource("5_3h5rl")
+
+[sub_resource type="BTAction" id="BTAction_2vhlx"]
+script = ExtResource("4_3ig4r")
+state = 2
+
+[sub_resource type="BTCooldown" id="BTCooldown_0fh2d"]
+children = [SubResource("BTAction_2vhlx")]
+script = ExtResource("6_ldyx6")
+
+[sub_resource type="BTSequence" id="BTSequence_6kkfr"]
+custom_name = "melee"
+children = [SubResource("BTCondition_w7c6f"), SubResource("BTCooldown_0fh2d")]
+
+[sub_resource type="BTCondition" id="BTCondition_iw43q"]
+script = ExtResource("7_4hxw2")
+
+[sub_resource type="BTAction" id="BTAction_y61wm"]
+script = ExtResource("4_3ig4r")
+state = 3
+
+[sub_resource type="BTCooldown" id="BTCooldown_6wdp0"]
+children = [SubResource("BTAction_y61wm")]
+script = ExtResource("6_ldyx6")
+
+[sub_resource type="BTSequence" id="BTSequence_ig2lr"]
+custom_name = "shoot"
+children = [SubResource("BTCondition_iw43q"), SubResource("BTCooldown_6wdp0")]
+
+[sub_resource type="BTSelector" id="BTSelector_w7c6f"]
+children = [SubResource("BTSequence_6kkfr"), SubResource("BTSequence_ig2lr")]
+
+[sub_resource type="BTSequence" id="BTSequence_iw43q"]
+custom_name = "attack"
+children = [SubResource("BTCheckVar_iw43q"), SubResource("BTSelector_w7c6f")]
+
+[sub_resource type="BTSelector" id="BTSelector_spe64"]
+children = [SubResource("BTSubtree_ig2lr"), SubResource("BTSubtree_2vhlx"), SubResource("BTSequence_b1h55"), SubResource("BTSequence_xptis"), SubResource("BTSequence_iw43q")]
+
+[resource]
+blackboard_plan = ExtResource("1_361so")
+root_task = SubResource("BTSelector_spe64")

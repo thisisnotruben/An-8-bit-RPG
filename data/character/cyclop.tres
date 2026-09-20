@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://kp2bk0ntfatl"]
+
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_ho10e"]
+[ext_resource type="AnimationLibrary" uid="uid://1tka0pjlx8om" path="res://resource/character/animation/Cyclop.tres" id="1_mqtnn"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_7gi3f"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dhfqh5xsj6ro6" path="res://resource/character/animation_state_machine/Cyclop_state_machine.tres" id="2_ayofv"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_mqtnn"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_ayofv"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="5_effih"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="6_l05d4"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="7_7q4v5"]
+
+[resource]
+script = ExtResource("6_l05d4")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+anim_state_machine = ExtResource("2_ayofv")
+anim_library = ExtResource("1_mqtnn")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

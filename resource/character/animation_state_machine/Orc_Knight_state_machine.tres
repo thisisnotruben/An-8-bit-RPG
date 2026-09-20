@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://knikf88pdgaw"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://knikf88pdgaw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rco82"]
 animation = &"Orc_Knight/die"
@@ -16,15 +16,19 @@ animation = &"Orc_Knight/dmg_right_up"
 animation = &"Orc_Knight/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_s2g8o"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_6kmxn")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_xxng5")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_doydl")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_ohi22")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ilr5"]
 animation = &"Orc_Knight/walk_down_right"
@@ -39,15 +43,19 @@ animation = &"Orc_Knight/walk_right_up"
 animation = &"Orc_Knight/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kxxm8"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_6ilr5")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_76fvv")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_1uceq")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_a6t8x")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ulc6n"]
 switch_mode = 2

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=44 format=3 uid="uid://lf37uov7hcfh"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://lf37uov7hcfh"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1jo1n"]
 animation = &"Giant_Spider/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Giant_Spider/attack_right_up"
 animation = &"Giant_Spider/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qhkm5"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_1jo1n")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_si8rg")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_py2hw")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_88tto")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l0nbg"]
 animation = &"Giant_Spider/die"
@@ -39,15 +43,19 @@ animation = &"Giant_Spider/dmg_right_up"
 animation = &"Giant_Spider/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_evxv3"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_uw3sy")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_q3o0a")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_1ixqi")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_qbb42")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1x582"]
 animation = &"Giant_Spider/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Giant_Spider/idle_right_up"
 animation = &"Giant_Spider/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_a7sk8"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_1x582")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_55hcc")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_17f76")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_2su7f")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_abngi"]
 animation = &"Giant_Spider/shoot_down_right"
@@ -85,15 +97,19 @@ animation = &"Giant_Spider/shoot_right_up"
 animation = &"Giant_Spider/shoot_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ben4p"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_abngi")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_pglpi")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_oetib")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_jykvf")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_afb85"]
 animation = &"Giant_Spider/walk_down_right"
@@ -108,15 +124,19 @@ animation = &"Giant_Spider/walk_right_up"
 animation = &"Giant_Spider/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_sqsnb"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_afb85")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_p1l5c")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_g8omk")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_wtjyj")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yf33a"]
 advance_mode = 2

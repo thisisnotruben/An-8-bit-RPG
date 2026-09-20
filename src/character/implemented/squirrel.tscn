@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://k4hcthntvinq"]
+[gd_scene format=3 uid="uid://k4hcthntvinq"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_wu7a6"]
+[ext_resource type="Resource" uid="uid://dgsf12645n4bt" path="res://data/character/squirrel.tres" id="2_ervxl"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cblhow2d55d0p" path="res://resource/character/animation_state_machine/Squirrel_state_machine.tres" id="2_lvrx7"]
+[ext_resource type="AnimationLibrary" uid="uid://c77f88a4xu2vv" path="res://resource/character/animation/Squirrel.tres" id="3_3gnwl"]
+[ext_resource type="Texture2D" uid="uid://g5epv3tvab0h" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Squirrel/SquirrelIdle.png" id="5_hwyyy"]
 
-[node name="Squirrel" instance=ExtResource("1_wu7a6")]
+[node name="Squirrel" unique_id=1934848144 instance=ExtResource("1_wu7a6")]
+unit = ExtResource("2_ervxl")
 
-[node name="anim_tree" parent="." index="3"]
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Squirrel = ExtResource("3_3gnwl")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
 tree_root = ExtResource("2_lvrx7")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_hwyyy")
+hframes = 17
+frame = 9

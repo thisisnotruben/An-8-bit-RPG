@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3 uid="uid://bbua1cxpl6ufr"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://bbua1cxpl6ufr"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxns5"]
 animation = &"Wraith/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Wraith/attack_right_up"
 animation = &"Wraith/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2lme1"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_lxns5")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_5g7vf")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_q6o33")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_6w62u")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfe4c"]
 animation = &"Wraith/die"
@@ -39,15 +43,19 @@ animation = &"Wraith/dmg_right_up"
 animation = &"Wraith/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ca56u"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_fobu0")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_hcmfw")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_0iyn8")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_qoqmc")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ev1b"]
 animation = &"Wraith/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Wraith/idle_right_up"
 animation = &"Wraith/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bhrys"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_0ev1b")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_70p3i")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_3mtb0")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_0hud3")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_riikp"]
 animation = &"Wraith/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Wraith/walk_right_up"
 animation = &"Wraith/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5a1qx"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_riikp")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_n4n77")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_wibat")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_rdb1u")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cplen"]
 advance_mode = 2

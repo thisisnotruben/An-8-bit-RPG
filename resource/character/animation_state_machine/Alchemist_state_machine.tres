@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=29 format=3 uid="uid://bh80k8hdjd02q"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://bh80k8hdjd02q"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ygetk"]
 animation = &"Alchemist/die"
@@ -16,15 +16,19 @@ animation = &"Alchemist/dmg_right_up"
 animation = &"Alchemist/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wmh50"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_57sdl")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_r07y1")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ki0au")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_c42pi")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kypwe"]
 animation = &"Alchemist/idle_down_right"
@@ -39,15 +43,19 @@ animation = &"Alchemist/idle_right_up"
 animation = &"Alchemist/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ypf2p"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_kypwe")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_2qeb3")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_shmqt")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_gdfru")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oneyx"]
 animation = &"Alchemist/walk_down_right"
@@ -62,15 +70,19 @@ animation = &"Alchemist/walk_right_up"
 animation = &"Alchemist/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gywew"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_oneyx")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_5ydd2")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_apmge")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_ona02")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o1cpp"]
 animation = &"Alchemist/work"

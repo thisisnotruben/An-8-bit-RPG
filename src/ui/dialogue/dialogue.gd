@@ -43,11 +43,11 @@ func _on_complete_pressed():
 
 func _check_quests():
 	if player and player.target:
-		QuestDB.check_quests({'search_key': player.target.get_path()})
+		QuestService.check_quests({'search_key': player.target.get_path()})
 
 func display():
 	if player and player.target:
-		var data := QuestDB.get_data({'search_key': player.target.get_path()})
+		var data := QuestService.get_data({'search_key': player.target.get_path()})
 		if data == null:
 			return
 

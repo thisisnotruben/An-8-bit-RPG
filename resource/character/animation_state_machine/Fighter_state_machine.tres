@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=52 format=3 uid="uid://b05cus7l0ey4y"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://b05cus7l0ey4y"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3f6a"]
 animation = &"Fighter/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Fighter/attack_right_up"
 animation = &"Fighter/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4xfp4"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_i3f6a")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_8n8la")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_u0ep3")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_dnwxt")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3yl1"]
 animation = &"Fighter/die"
@@ -39,15 +43,19 @@ animation = &"Fighter/dmg_right_up"
 animation = &"Fighter/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wejgo"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_iqnyt")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_kbsxn")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_at60s")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_tx81y")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tx3v3"]
 animation = &"Fighter/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Fighter/idle_right_up"
 animation = &"Fighter/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jdohq"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_tx3v3")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_7fmg5")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_6l4lo")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_e7n4p")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qjxx6"]
 animation = &"Fighter/idle_special_down_right"
@@ -85,15 +97,19 @@ animation = &"Fighter/idle_special_right_up"
 animation = &"Fighter/idle_special_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jonbw"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_qjxx6")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_qh2il")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_wj65a")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_35hx6")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0trp"]
 animation = &"Fighter/jump_down_right"
@@ -108,15 +124,19 @@ animation = &"Fighter/jump_right_up"
 animation = &"Fighter/jump_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mkhhb"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_c0trp")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_q13pa")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_f0wu1")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_2pofa")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tds2o"]
 animation = &"Fighter/walk_down_right"
@@ -131,15 +151,19 @@ animation = &"Fighter/walk_right_up"
 animation = &"Fighter/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_cblkm"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_tds2o")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_08o06")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_opbl1")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_1y54n")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7qc2"]
 advance_mode = 2

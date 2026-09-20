@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dk4mxu2k1dinn"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_3riwk"]
+[ext_resource type="Resource" uid="uid://b2oc5ot7de6tq" path="res://data/character/shifted.tres" id="2_6unm4"]
+[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Shifted.tres" id="3_lif8b"]
+
+[node name="shifted" unique_id=845622493 instance=ExtResource("1_3riwk")]
+unit = ExtResource("2_6unm4")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Shifted = ExtResource("3_lif8b")

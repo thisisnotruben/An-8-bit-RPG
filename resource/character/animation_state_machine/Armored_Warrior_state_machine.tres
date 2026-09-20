@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=40 format=3 uid="uid://rvrnq4kyj6kx"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://rvrnq4kyj6kx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ly01r"]
 animation = &"Armored_Warrior/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Armored_Warrior/attack_right_up"
 animation = &"Armored_Warrior/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nfc1u"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_ly01r")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_2cajd")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_d12o7")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_uufis")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_onirm"]
 animation = &"Armored_Warrior/charging"
@@ -42,15 +46,19 @@ animation = &"Armored_Warrior/dmg_right_up"
 animation = &"Armored_Warrior/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2uh7e"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_hxqfl")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_phrqb")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_6yr7s")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_a3vqu")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uy5mc"]
 animation = &"Armored_Warrior/idle_down_right"
@@ -65,15 +73,19 @@ animation = &"Armored_Warrior/idle_right_up"
 animation = &"Armored_Warrior/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vyjn7"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_uy5mc")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_rnmpk")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_iuyjs")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_0hul5")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l733s"]
 animation = &"Armored_Warrior/walk_down_right"
@@ -88,15 +100,19 @@ animation = &"Armored_Warrior/walk_right_up"
 animation = &"Armored_Warrior/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jokuo"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_l733s")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_e73xo")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_pyl3m")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_tsxes")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjsj2"]
 advance_mode = 2

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=26 format=3 uid="uid://35luykhdnfxb"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://35luykhdnfxb"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sqoor"]
 animation = &"Lich/cast_ice_claws_down_right"
@@ -13,15 +13,19 @@ animation = &"Lich/cast_ice_claws_right_up"
 animation = &"Lich/cast_ice_claws_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r7yaa"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_sqoor")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_3kdmy")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_0cety")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_pxaye")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfgw"]
 animation = &"Lich/cast_reanimation_down_right"
@@ -36,15 +40,19 @@ animation = &"Lich/cast_reanimation_right_up"
 animation = &"Lich/cast_reanimation_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b2tjt"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_ppfgw")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_sjber")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ja82l")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_y5hpv")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jo3ql"]
 animation = &"Lich/die"
@@ -62,15 +70,19 @@ animation = &"Lich/dmg_right_up"
 animation = &"Lich/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_33kfa"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_x1hot")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_ivj02")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_mfjgq")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_sxy1p")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c82a1"]
 animation = &"Lich/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Lich/walk_right_up"
 animation = &"Lich/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_g1y51"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_c82a1")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_wqtni")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_s5fpg")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_onu81")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vhs4b"]
 switch_mode = 2

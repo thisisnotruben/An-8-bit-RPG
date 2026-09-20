@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=40 format=3 uid="uid://bv6uhmprnm8d2"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://bv6uhmprnm8d2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdjx5"]
 animation = &"Diablo/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Diablo/attack_right_up"
 animation = &"Diablo/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mnwex"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_fdjx5")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_l0bmv")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_5eeb0")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_r7xcm")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_atyy7"]
 animation = &"Diablo/attack_2_down_right"
@@ -36,15 +40,19 @@ animation = &"Diablo/attack_2_right_up"
 animation = &"Diablo/attack_2_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7dk5a"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_atyy7")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_0afxn")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_qau6d")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_wupnj")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7vrd1"]
 animation = &"Diablo/die"
@@ -65,15 +73,19 @@ animation = &"Diablo/idle_right_up"
 animation = &"Diablo/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_eg5h3"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_k1nov")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_6gfqj")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_c4x8r")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_to6uy")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfcq6"]
 animation = &"Diablo/walk_down_right"
@@ -88,15 +100,19 @@ animation = &"Diablo/walk_right_up"
 animation = &"Diablo/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_tb0lm"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_rfcq6")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_wp55d")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_csc3o")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_f4j58")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sie08"]
 advance_mode = 2

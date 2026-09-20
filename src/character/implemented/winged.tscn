@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpbi1eciqjnw5"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_n6bme"]
+[ext_resource type="Resource" uid="uid://d2bhvasubfo7d" path="res://data/character/winged.tres" id="2_38bh1"]
+[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Winged.tres" id="3_grl8e"]
+
+[node name="winged" unique_id=845622493 instance=ExtResource("1_n6bme")]
+unit = ExtResource("2_38bh1")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Winged = ExtResource("3_grl8e")

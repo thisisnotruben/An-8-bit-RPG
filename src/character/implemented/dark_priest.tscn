@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dm8hja2oekx73"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_bdj41"]
+[ext_resource type="Resource" uid="uid://csp2wp6q76erk" path="res://data/character/dark_priest.tres" id="2_olae2"]
+[ext_resource type="AnimationLibrary" uid="uid://cwdq3kw5erugb" path="res://resource/character/animation/Dark_Priest.tres" id="3_oomra"]
+
+[node name="dark_priest" unique_id=845622493 instance=ExtResource("1_bdj41")]
+unit = ExtResource("2_olae2")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Dark_Priest = ExtResource("3_oomra")

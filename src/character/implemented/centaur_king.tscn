@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c61c8ddr1efvd"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_gykhw"]
+[ext_resource type="Resource" uid="uid://brytva55x1fvv" path="res://data/character/centaur_king.tres" id="2_qitlc"]
+[ext_resource type="AnimationLibrary" uid="uid://dkmgrh3asysvp" path="res://resource/character/animation/Centaur_King.tres" id="3_suj0y"]
+
+[node name="centaur_king" unique_id=845622493 instance=ExtResource("1_gykhw")]
+unit = ExtResource("2_qitlc")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Centaur_King = ExtResource("3_suj0y")

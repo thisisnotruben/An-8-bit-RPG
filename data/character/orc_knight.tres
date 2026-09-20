@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://3ol0eg202on5"]
+
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_5y28a"]
+[ext_resource type="AnimationLibrary" uid="uid://dyixa25jeq8u2" path="res://resource/character/animation/Orc_Knight.tres" id="1_kh1xk"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://knikf88pdgaw" path="res://resource/character/animation_state_machine/Orc_Knight_state_machine.tres" id="2_4tvpt"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_8dk3a"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_kh1xk"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_4tvpt"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="5_yyfyk"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="6_vtenc"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="7_2g3k5"]
+
+[resource]
+script = ExtResource("6_vtenc")
+character_name = "Orc Knight"
+tags = Array[String](["orc", "humanoid"])
+anim_state_machine = ExtResource("2_4tvpt")
+anim_library = ExtResource("1_kh1xk")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

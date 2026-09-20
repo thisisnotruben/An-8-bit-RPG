@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cblu4d3dntspo"]
+[gd_scene format=3 uid="uid://cblu4d3dntspo"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_qqcac"]
-[ext_resource type="AnimationNodeStateMachine" path="res://resource/character/animation_state_machine/Cooker_state_machine.tres" id="2_agwm7"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://e5aewr4ubfr1" path="res://resource/character/animation_state_machine/Cooker_state_machine.tres" id="2_agwm7"]
+[ext_resource type="Resource" uid="uid://ck1erbm3g0edm" path="res://data/character/cooker.tres" id="2_h0prl"]
+[ext_resource type="AnimationLibrary" uid="uid://dsh3b08mqft2n" path="res://resource/character/animation/Cooker.tres" id="3_sijvs"]
+[ext_resource type="Texture2D" uid="uid://bu8j0wyxi7y6t" path="res://asset/img/Minifantasy_AMyriadOfNPCs_v.1.0/Minifantasy_NPCs_Assets/Premade_NPCs/Cooker/Minifantasy_NPCsCookerIdle.png" id="5_de48c"]
 
-[node name="Cooker" instance=ExtResource("1_qqcac")]
+[node name="Cooker" unique_id=1628156168 instance=ExtResource("1_qqcac")]
+unit = ExtResource("2_h0prl")
 
-[node name="anim_tree" parent="." index="3"]
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Cooker = ExtResource("3_sijvs")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
 tree_root = ExtResource("2_agwm7")
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_de48c")
+frame = 7

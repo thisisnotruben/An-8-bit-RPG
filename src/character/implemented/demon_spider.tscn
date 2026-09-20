@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://77wvfdivexyu"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_3o5fn"]
+[ext_resource type="Resource" uid="uid://dk6j02iglp1u0" path="res://data/character/demon_spider.tres" id="2_7sh7q"]
+[ext_resource type="AnimationLibrary" uid="uid://dk22u1sbktg6k" path="res://resource/character/animation/Demon_Spider.tres" id="3_j34ta"]
+
+[node name="demon_spider" unique_id=845622493 instance=ExtResource("1_3o5fn")]
+unit = ExtResource("2_7sh7q")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Demon_Spider = ExtResource("3_j34ta")

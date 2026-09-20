@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://dgsf12645n4bt"]
+
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_wq2pf"]
+[ext_resource type="AnimationLibrary" uid="uid://c77f88a4xu2vv" path="res://resource/character/animation/Squirrel.tres" id="1_xyjcf"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cblhow2d55d0p" path="res://resource/character/animation_state_machine/Squirrel_state_machine.tres" id="2_6x03f"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_cm1rd"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_xyjcf"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_6x03f"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="5_l736o"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="6_touoe"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="7_4ufxv"]
+
+[resource]
+script = ExtResource("6_touoe")
+character_name = "Squirrel"
+tags = Array[String](["beast"])
+anim_state_machine = ExtResource("2_6x03f")
+anim_library = ExtResource("1_xyjcf")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

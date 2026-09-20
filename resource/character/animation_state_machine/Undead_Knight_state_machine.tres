@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3 uid="uid://dwdl38a7tnpe1"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dwdl38a7tnpe1"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3oly3"]
 animation = &"Undead_Knight/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Undead_Knight/attack_right_up"
 animation = &"Undead_Knight/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_8nhat"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_3oly3")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_ufuxs")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_5sgft")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_b1t4k")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n1p1w"]
 animation = &"Undead_Knight/die"
@@ -39,15 +43,19 @@ animation = &"Undead_Knight/dmg_right_up"
 animation = &"Undead_Knight/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_skftj"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_vv418")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_s7n8d")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_e5khv")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_r7l04")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_blkb1"]
 animation = &"Undead_Knight/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Undead_Knight/idle_right_up"
 animation = &"Undead_Knight/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3ooqu"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_blkb1")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_j1tnn")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_i2ve0")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_jegno")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjv8h"]
 animation = &"Undead_Knight/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Undead_Knight/walk_right_up"
 animation = &"Undead_Knight/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ylyvh"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_vjv8h")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_cekad")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ydrl3")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_ce6k5")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ei0d"]
 advance_mode = 2

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://cvftjkr3g7wkx"]
+
+[ext_resource type="AnimationLibrary" uid="uid://5asqsn2vhdup" path="res://resource/character/animation/Blue_Slime.tres" id="1_7jy4d"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dfwul6c3o31lu" path="res://resource/character/animation_state_machine/Blue_Slime_state_machine.tres" id="2_cl2na"]
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="3_xi7tj"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="4_1seoy"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="5_ooguy"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="6_m1bve"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="7_gblmy"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="8_bei2c"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="9_bn6qq"]
+
+[resource]
+script = ExtResource("8_bei2c")
+character_name = "Blue Slime"
+tags = Array[String](["slime"])
+anim_state_machine = ExtResource("2_cl2na")
+anim_library = ExtResource("1_7jy4d")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

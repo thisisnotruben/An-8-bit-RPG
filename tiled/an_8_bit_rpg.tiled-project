@@ -58,11 +58,6 @@
                     "value": true
                 },
                 {
-                    "name": "res_path",
-                    "type": "file",
-                    "value": ""
-                },
-                {
                     "name": "shoot_damage",
                     "type": "int",
                     "value": 0
@@ -71,12 +66,20 @@
                     "name": "shoot_range",
                     "type": "float",
                     "value": 0
+                },
+                {
+                    "name": "tag",
+                    "type": "list",
+                    "value": [
+                    ]
                 }
             ],
             "name": "Character",
             "type": "class",
             "useAs": [
                 "property",
+                "map",
+                "layer",
                 "object"
             ]
         },

@@ -1,0 +1,71 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://bn3ar0pqvknrx"]
+
+[ext_resource type="BlackboardPlan" uid="uid://dakrpekxvoqk2" path="res://data/limbo_ai_trees/character/blackboard_plan_character_default.tres" id="1_vlo6o"]
+[ext_resource type="BehaviorTree" uid="uid://cxfwiqfk8biws" path="res://data/limbo_ai_trees/character/tree_components/dead_subtree.tres" id="2_rbxel"]
+[ext_resource type="BehaviorTree" uid="uid://bq1qtv635p1rn" path="res://data/limbo_ai_trees/character/tree_components/hurt_subtree.tres" id="3_skj6g"]
+[ext_resource type="BehaviorTree" uid="uid://cggfbykhjdvtl" path="res://data/limbo_ai_trees/character/tree_components/npc_idle_subtree.tres" id="4_v6li5"]
+[ext_resource type="Script" uid="uid://x6mbdg432n2j" path="res://data/limbo_ai_trees/tasks/character/has_valid_target.gd" id="5_t4ni3"]
+[ext_resource type="Script" uid="uid://co5w3xhfch4nk" path="res://data/limbo_ai_trees/tasks/character/look_at_target.gd" id="6_lx2lo"]
+[ext_resource type="BehaviorTree" uid="uid://xblnoae3ir6i" path="res://data/limbo_ai_trees/character/tree_components/npc_pursuit_subtree.tres" id="7_u7h8h"]
+[ext_resource type="BehaviorTree" uid="uid://rv6sfw6jquv4" path="res://data/limbo_ai_trees/character/tree_components/npc_melee_subtree.tres" id="8_k6g06"]
+[ext_resource type="BehaviorTree" uid="uid://bab562nee3usr" path="res://data/limbo_ai_trees/character/tree_components/npc_shoot_subtree.tres" id="9_lidih"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="10_xna24"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_624cc"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_fq1bd"]
+subtree = ExtResource("2_rbxel")
+blackboard_plan = SubResource("BlackboardPlan_624cc")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_fq1bd"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_v4fqj"]
+subtree = ExtResource("3_skj6g")
+blackboard_plan = SubResource("BlackboardPlan_fq1bd")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_v4fqj"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_dim4t"]
+subtree = ExtResource("4_v6li5")
+blackboard_plan = SubResource("BlackboardPlan_v4fqj")
+
+[sub_resource type="BTCondition" id="BTCondition_vmj8q"]
+script = ExtResource("5_t4ni3")
+
+[sub_resource type="BTAction" id="BTAction_vmj8q"]
+script = ExtResource("6_lx2lo")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_dim4t"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_y4huq"]
+subtree = ExtResource("7_u7h8h")
+blackboard_plan = SubResource("BlackboardPlan_dim4t")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_aqp5t"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_0ggo3"]
+subtree = ExtResource("8_k6g06")
+blackboard_plan = SubResource("BlackboardPlan_aqp5t")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_e3yd7"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_j56gk"]
+subtree = ExtResource("9_lidih")
+blackboard_plan = SubResource("BlackboardPlan_e3yd7")
+
+[sub_resource type="BTAction" id="BTAction_v4fqj"]
+script = ExtResource("10_xna24")
+
+[sub_resource type="BTSelector" id="BTSelector_2ko0t"]
+children = [SubResource("BTSubtree_y4huq"), SubResource("BTSubtree_0ggo3"), SubResource("BTSubtree_j56gk"), SubResource("BTAction_v4fqj")]
+
+[sub_resource type="BTSequence" id="BTSequence_qkaqj"]
+custom_name = "Attack"
+children = [SubResource("BTCondition_vmj8q"), SubResource("BTAction_vmj8q"), SubResource("BTSelector_2ko0t")]
+
+[sub_resource type="BTSelector" id="BTSelector_037yu"]
+children = [SubResource("BTSubtree_fq1bd"), SubResource("BTSubtree_v4fqj"), SubResource("BTSubtree_dim4t"), SubResource("BTSequence_qkaqj")]
+
+[resource]
+blackboard_plan = ExtResource("1_vlo6o")
+root_task = SubResource("BTSelector_037yu")

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=27 format=3 uid="uid://dqa8vk0dokycd"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dqa8vk0dokycd"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_is7j7"]
 animation = &"Dog/die"
@@ -16,15 +16,19 @@ animation = &"Dog/dmg_right_up"
 animation = &"Dog/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xrpf3"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_xiwns")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_cw1vj")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_uqqqm")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_e4lw4")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7y55"]
 animation = &"Dog/idle_down_right"
@@ -39,15 +43,19 @@ animation = &"Dog/idle_right_up"
 animation = &"Dog/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_6xpio"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_n7y55")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_feq6h")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_fxsdu")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_4y6e8")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oxisc"]
 animation = &"Dog/walk_down_right"
@@ -62,15 +70,19 @@ animation = &"Dog/walk_right_up"
 animation = &"Dog/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_867oa"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_oxisc")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_m0egm")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_q3l7u")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_84lco")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qisdk"]
 advance_mode = 2

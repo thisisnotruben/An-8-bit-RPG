@@ -20,12 +20,15 @@ class_name Character extends CharacterBody2D
 @onready var ability: StatComponent = $ability
 @onready var ability_regen: StatRegenComponent = $ability_regen
 @onready var fsm: FsmCharacter = $fsm
+@onready var dialogue_actionable: DialogueActionable2D = $dialogue_actionable
+@onready var dialogue_state_context: DialogueStateContext = $dialogue_state_context
 
 @export_tool_button('Refresh Builder', 'Callable') var refresh_build = func(): \
 	if unit:
 		unit.init(self)
 @export var unit: CharacterBuilder:
 	set(value):
+		# NOTICE: comment this out when importing from tiled
 		if not is_node_ready():
 			await ready
 		if value:
@@ -36,7 +39,8 @@ class_name Character extends CharacterBody2D
 			value.init(self)
 		else:
 			unit = null
-		behavior.active = value != null
+		if not Engine.is_editor_hint():
+			behavior.active = value != null
 
 var target: Character = null
 
@@ -165,3 +169,11 @@ func aggro(_body: Node2D) -> bool:
 
 func notify_projectile_incoming(projectile: Projectile):
 	behavior.blackboard.set_var(LimboVarLib.INCOMING_PROJECTILE, projectile)
+
+func set_dialogue(dialogue_res: DialogueResource = null, cue_name := '', alias := ''):
+	dialogue_actionable.dialogue_resource = dialogue_res
+	dialogue_actionable.dialogue_cue = cue_name
+	dialogue_state_context.alias = alias
+
+func start_dialogue():
+	dialogue_actionable.action()

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3 uid="uid://bn2amqnfk5bon"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://bn2amqnfk5bon"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_friiy"]
 animation = &"Blue_Mother_Slime/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Blue_Mother_Slime/attack_right_up"
 animation = &"Blue_Mother_Slime/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_02d0n"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_friiy")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_qyluo")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_1hxs0")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_6c861")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qm0ij"]
 animation = &"Blue_Mother_Slime/die"
@@ -39,15 +43,19 @@ animation = &"Blue_Mother_Slime/dmg_right_up"
 animation = &"Blue_Mother_Slime/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_x8kiw"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_fqk68")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_rndlk")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_sk5c4")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_4shw1")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_odse2"]
 animation = &"Blue_Mother_Slime/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Blue_Mother_Slime/idle_right_up"
 animation = &"Blue_Mother_Slime/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_muwxc"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_odse2")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_evfvk")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_qveg4")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_n8heq")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pasw"]
 animation = &"Blue_Mother_Slime/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Blue_Mother_Slime/walk_right_up"
 animation = &"Blue_Mother_Slime/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0y6ro"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_0pasw")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_pkv3q")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_6bv5i")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_gfakf")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qna3o"]
 advance_mode = 2

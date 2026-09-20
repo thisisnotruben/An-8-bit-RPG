@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://ck1erbm3g0edm"]
+
+[ext_resource type="AnimationLibrary" uid="uid://dsh3b08mqft2n" path="res://resource/character/animation/Cooker.tres" id="1_bphxs"]
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_ufu8w"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://e5aewr4ubfr1" path="res://resource/character/animation_state_machine/Cooker_state_machine.tres" id="2_bjofs"]
+[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_pogw3"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_bphxs"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_bjofs"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="5_7l5sl"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="6_s5ynh"]
+[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="7_ky0om"]
+
+[resource]
+script = ExtResource("6_s5ynh")
+character_name = "Cook"
+anim_state_machine = ExtResource("2_bjofs")
+anim_library = ExtResource("1_bphxs")
+metadata/_custom_type_script = "uid://osxc61u0jjco"

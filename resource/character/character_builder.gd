@@ -6,28 +6,29 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var character_name := ''
 @export var npc := true
 @export var friendly := false
+@export var tags: Array[String] = []
 @export var character_roles: Array[CharaterSideRoles] = []
 @export var gold: ModifierAmount = preload('uid://dvkkiqw5dqasq')
 
 @export var hit_flags: HitFlags = preload('uid://bdowfnvtuwygf')
 @export var stats: CharacterStats = preload('uid://dotidkyrhls6l')
 
-@export_group('Items & Spells')
-@export_subgroup('Npc')
+@export_category('Items & Spells')
+@export_group('Npc')
 @export var drops: Dictionary[int, Item.Type] = {} # int [0 - 100 range] (drop percent)
-@export_subgroup('Player')
+@export_group('Player')
 @export var spells: Array[Item.Type] = []
 @export var inventory: Array[Item.Type] = []
 
-@export_group('Behavior')
+@export_category('Behavior')
 @export var npc_behavior: BehaviorTree = preload('uid://bn3ar0pqvknrx')
 @export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
 
-@export_group('Animation') # TODO
+@export_category('Animation') # TODO
 @export var anim_state_machine: AnimationNodeStateMachine
 @export var anim_library: AnimationLibrary
 
-@export_group('Audio')
+@export_category('Audio')
 @export var snd_idle: Array[AudioStream] = []
 @export var snd_move: Array[AudioStream] = []
 @export var snd_dead: Array[AudioStream] = []
@@ -35,7 +36,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var snd_shoot: Array[AudioStream] = []
 @export var snd_hurt: Array[AudioStream] = []
 
-@export_group('Image')
+@export_category('Image')
 @export var img_offset := Vector2(0.0, -3.0)
 @export var coll_body: Shape2D = preload('uid://ccrqr6kge8p4w')
 @export var coll_body_offset := Vector2(0.0, -4.0)

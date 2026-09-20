@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=27 format=3 uid="uid://dhk1wct6igwv"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dhk1wct6igwv"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yf6o"]
 animation = &"Tailor/die"
@@ -16,15 +16,19 @@ animation = &"Tailor/dmg_right_up"
 animation = &"Tailor/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vpmv3"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_5hff1")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_vpfss")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_umk1a")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_dy6iw")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kwo5f"]
 animation = &"Tailor/idle_down_right"
@@ -39,15 +43,19 @@ animation = &"Tailor/idle_right_up"
 animation = &"Tailor/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3lshf"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_kwo5f")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_4wban")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_nimgh")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_o0bhq")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jf56v"]
 animation = &"Tailor/walk_down_right"
@@ -62,15 +70,19 @@ animation = &"Tailor/walk_right_up"
 animation = &"Tailor/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_a6usv"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_jf56v")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_k6wc7")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_garvq")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_b4tay")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwm1j"]
 advance_mode = 2

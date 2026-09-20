@@ -1,13 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxp05unrw5kjd"]
+[gd_scene format=3 uid="uid://bxp05unrw5kjd"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_nhvcq"]
-[ext_resource type="AnimationNodeStateMachine" path="res://resource/character/animation_state_machine/Fighter_state_machine.tres" id="2_xj3k5"]
+[ext_resource type="Resource" uid="uid://c6nvvlpq1lfik" path="res://data/character/fighter.tres" id="2_rd751"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b05cus7l0ey4y" path="res://resource/character/animation_state_machine/Fighter_state_machine.tres" id="2_xj3k5"]
+[ext_resource type="AnimationLibrary" uid="uid://cdi3vfaddnjht" path="res://resource/character/animation/Fighter.tres" id="3_ux4ht"]
+[ext_resource type="Texture2D" uid="uid://dh4q4aoqupkk0" path="res://asset/img/Minifantasy_True_Heroes_III_v1.0/Minifantasy_True_Herfoes_III_Assets/Fighter/General_Animations/Figther_Idle.png" id="5_6igoc"]
 
-[node name="Fighter" instance=ExtResource("1_nhvcq")]
+[node name="fighter" unique_id=841986313 instance=ExtResource("1_nhvcq")]
+unit = ExtResource("2_rd751")
 
-[node name="anim_tree" parent="." index="3"]
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Fighter = ExtResource("3_ux4ht")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
 tree_root = ExtResource("2_xj3k5")
+parameters/attack/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/idle_special/blend_position = Vector2(0, 0)
 parameters/jump/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_6igoc")
+frame = 8

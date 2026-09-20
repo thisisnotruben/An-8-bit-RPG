@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3 uid="uid://dqgaw8ntbuex0"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dqgaw8ntbuex0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3rx1b"]
 animation = &"Human_Town_Guard/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Human_Town_Guard/attack_right_up"
 animation = &"Human_Town_Guard/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lxfso"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_3rx1b")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_cc4jd")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ut405")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_dcqjt")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bl7qh"]
 animation = &"Human_Town_Guard/die"
@@ -39,15 +43,19 @@ animation = &"Human_Town_Guard/dmg_right_up"
 animation = &"Human_Town_Guard/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_i1dqb"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_yo1r0")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_63wx1")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ts5g3")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_axx1g")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yqhag"]
 animation = &"Human_Town_Guard/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Human_Town_Guard/idle_right_up"
 animation = &"Human_Town_Guard/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gvot2"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_yqhag")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_a56rf")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_a46i8")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_jqjy2")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6g2oe"]
 animation = &"Human_Town_Guard/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Human_Town_Guard/walk_right_up"
 animation = &"Human_Town_Guard/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_afrwh"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_6g2oe")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_ufcrv")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_66x6x")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_rk5w7")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b2j8b"]
 advance_mode = 2

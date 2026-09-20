@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://btdnqwwx1am2k"]
+
+[ext_resource type="Resource" uid="uid://1n4ju65m7pbn" path="res://data/dialogue/orc_caverns.dialogue" id="1_jj32v"]
+[ext_resource type="Script" uid="uid://coab2uigp166k" path="res://resource/quest/quest_whose_involved.gd" id="1_y08ch"]
+[ext_resource type="Script" uid="uid://tsvv1aj8gnwi" path="res://resource/quest/quest_objective.gd" id="2_jj32v"]
+[ext_resource type="Script" uid="uid://cyg5giijxf70b" path="res://resource/quest/quest.gd" id="3_rckce"]
+
+[sub_resource type="Resource" id="Resource_361so"]
+script = ExtResource("1_y08ch")
+speaker_node_path = NodePath("object/character/human_town_guard5")
+alias = "Town Guard"
+cue_name = "quest_line"
+metadata/_custom_type_script = "uid://coab2uigp166k"
+
+[sub_resource type="Resource" id="Resource_6ikw5"]
+script = ExtResource("2_jj32v")
+tag = "orc"
+display_name = "Orc"
+amount = 10
+metadata/_custom_type_script = "uid://tsvv1aj8gnwi"
+
+[sub_resource type="Resource" id="Resource_6bfeg"]
+script = ExtResource("2_jj32v")
+tag = "orc_boss"
+display_name = "Orc Boss"
+amount = 1
+metadata/_custom_type_script = "uid://tsvv1aj8gnwi"
+
+[resource]
+script = ExtResource("3_rckce")
+quest_name = "Orc Caverns"
+dialogue = ExtResource("1_jj32v")
+dialogue_whose_involved = Array[ExtResource("1_y08ch")]([SubResource("Resource_361so")])
+objectives = Array[ExtResource("2_jj32v")]([SubResource("Resource_6ikw5"), SubResource("Resource_6bfeg")])
+metadata/_custom_type_script = "uid://cyg5giijxf70b"

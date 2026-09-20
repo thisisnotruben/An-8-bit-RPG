@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=49 format=3 uid="uid://cwxekp1qqcehb"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://cwxekp1qqcehb"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eidc2"]
 animation = &"Farmer/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Farmer/attack_right_up"
 animation = &"Farmer/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xraoc"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_eidc2")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_jkt3w")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ymujg")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_lr0lf")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f3ixt"]
 animation = &"Farmer/die"
@@ -39,15 +43,19 @@ animation = &"Farmer/dmg_right_up"
 animation = &"Farmer/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_va1hf"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_jf8mi")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_c2avf")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_ce1ws")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_80mk3")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jc2v4"]
 animation = &"Farmer/hoe_down_right"
@@ -62,15 +70,19 @@ animation = &"Farmer/hoe_right_up"
 animation = &"Farmer/hoe_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nb5mo"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_jc2v4")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_il4rf")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_a1vyg")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_cw5un")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e1ye2"]
 animation = &"Farmer/idle_down_right"
@@ -85,15 +97,19 @@ animation = &"Farmer/idle_right_up"
 animation = &"Farmer/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jyg6w"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_e1ye2")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_5tqt8")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_13p5h")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_ilsra")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6nrmf"]
 animation = &"Farmer/walk_down_right"
@@ -108,15 +124,19 @@ animation = &"Farmer/walk_right_up"
 animation = &"Farmer/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r8uuy"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_6nrmf")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_l3y5n")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_j40q2")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_fwyas")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1gab0"]
 animation = &"Farmer/watering_down_right"
@@ -131,15 +151,19 @@ animation = &"Farmer/watering_right_up"
 animation = &"Farmer/watering_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_pgkba"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_1gab0")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_vptax")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_5tdhe")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_dw62x")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wk1i0"]
 advance_mode = 2

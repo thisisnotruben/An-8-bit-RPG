@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=39 format=3 uid="uid://b4j6ss4rn624h"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://b4j6ss4rn624h"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_08t2o"]
 animation = &"Wise_Orc/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Wise_Orc/attack_right_up"
 animation = &"Wise_Orc/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_bnrjs"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_08t2o")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_cnfbg")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_qi2ju")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_nj6j3")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jp458"]
 animation = &"Wise_Orc/die"
@@ -39,15 +43,19 @@ animation = &"Wise_Orc/dmg_right_up"
 animation = &"Wise_Orc/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_frsnm"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_kb5cp")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_fx158")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_po0k3")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_njh52")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yd1mp"]
 animation = &"Wise_Orc/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Wise_Orc/idle_right_up"
 animation = &"Wise_Orc/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_p7ltx"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_yd1mp")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_71hgq")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_rs8s5")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_040y3")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5cpu"]
 animation = &"Wise_Orc/walk_down_right"
@@ -85,15 +97,19 @@ animation = &"Wise_Orc/walk_right_up"
 animation = &"Wise_Orc/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_6atw6"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_n5cpu")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_58v2i")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_tswcr")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_qx5m3")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2toiu"]
 advance_mode = 2

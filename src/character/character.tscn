@@ -7,15 +7,17 @@
 [ext_resource type="Script" uid="uid://c4fkfl7f2uyuk" path="res://src/character/fsm/state/move.gd" id="4_m366t"]
 [ext_resource type="Script" uid="uid://ccerxkr4dln24" path="res://src/character/fsm/state/dead.gd" id="4_tntuy"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="4_y5dg0"]
-[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://resource/limbo_ai_trees/character/behavior_character_default.tres" id="5_j7xr0"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="5_j7xr0"]
 [ext_resource type="Script" uid="uid://brsaqvqhir8tp" path="res://src/character/fsm/state/melee.gd" id="5_tntuy"]
 [ext_resource type="Script" uid="uid://cirvakft87x8y" path="res://src/character/fsm/state/shoot.gd" id="6_56uj1"]
 [ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="7_gn7y0"]
 [ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="8_7aoyf"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
 [ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="12_fcqus"]
-[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://resource/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
 [ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
+[ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="22_y5dg0"]
+[ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="23_j7xr0"]
 [ext_resource type="PackedScene" uid="uid://dkpcprd1cr4eg" path="res://src/character/component/stat_regen.tscn" id="24_0bjdw"]
 [ext_resource type="PackedScene" uid="uid://cscse0mnpcree" path="res://src/character/component/stat_component.tscn" id="25_880r3"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
@@ -30,6 +32,9 @@ metadata/_custom_type_script = "uid://osxc61u0jjco"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pcmc"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2qrx"]
+radius = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdd1s"]
 atlas = ExtResource("95_vsifm")
@@ -149,6 +154,19 @@ monitorable = false
 
 [node name="coll" type="CollisionShape2D" parent="sight" unique_id=1452062700]
 shape = SubResource("CircleShape2D_2pcmc")
+
+[node name="dialogue_actionable" type="Area2D" parent="." unique_id=797207612]
+position = Vector2(0, -3)
+script = ExtResource("22_y5dg0")
+metadata/_custom_type_script = "uid://cqcur1rm7433g"
+
+[node name="coll" type="CollisionShape2D" parent="dialogue_actionable" unique_id=1590320276]
+shape = SubResource("CircleShape2D_m2qrx")
+
+[node name="dialogue_state_context" type="Node" parent="." unique_id=238002914 node_paths=PackedStringArray("target")]
+script = ExtResource("23_j7xr0")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://cd3222nx3y3k5"
 
 [node name="select_bttn" type="TouchScreenButton" parent="." unique_id=483367888]
 modulate = Color(1, 1, 1, 0)

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cj7r5dmugvedr"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_rfwih"]
+[ext_resource type="Resource" uid="uid://3ol0eg202on5" path="res://data/character/orc_knight.tres" id="2_nlxmj"]
+[ext_resource type="AnimationLibrary" uid="uid://dyixa25jeq8u2" path="res://resource/character/animation/Orc_Knight.tres" id="3_1u2ux"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://knikf88pdgaw" path="res://resource/character/animation_state_machine/Orc_Knight_state_machine.tres" id="4_cg72o"]
+
+[node name="orc_knight" unique_id=845622493 instance=ExtResource("1_rfwih")]
+unit = ExtResource("2_nlxmj")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Orc_Knight = ExtResource("3_1u2ux")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_cg72o")
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = null
+hframes = 17
+vframes = 1
+frame = 0

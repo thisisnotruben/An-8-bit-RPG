@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://o652xbmww6uf"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_1m5bc"]
+[ext_resource type="Resource" uid="uid://coahliwh1j33v" path="res://data/character/lobster.tres" id="2_6l3rq"]
+[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Lobster.tres" id="3_34g5q"]
+
+[node name="lobster" unique_id=845622493 instance=ExtResource("1_1m5bc")]
+unit = ExtResource("2_6l3rq")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Lobster = ExtResource("3_34g5q")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://byauk1w0fcjnc"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6bdeo"]
+[ext_resource type="Resource" uid="uid://br8dno3gw7xsg" path="res://data/character/observer.tres" id="2_givps"]
+[ext_resource type="AnimationLibrary" uid="uid://cv8j0wqtqmxie" path="res://resource/character/animation/Observer.tres" id="3_va0q0"]
+
+[node name="observer" unique_id=845622493 instance=ExtResource("1_6bdeo")]
+unit = ExtResource("2_givps")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Observer = ExtResource("3_va0q0")

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=47 format=3 uid="uid://dhfqh5xsj6ro6"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dhfqh5xsj6ro6"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jinbw"]
 animation = &"Cyclop/attack_down_right"
@@ -13,15 +13,19 @@ animation = &"Cyclop/attack_right_up"
 animation = &"Cyclop/attack_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l2ujp"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_jinbw")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_vtamx")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_lpbdc")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_c7ird")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tj5vw"]
 animation = &"Cyclop/die"
@@ -39,15 +43,19 @@ animation = &"Cyclop/dmg_right_up"
 animation = &"Cyclop/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t4nil"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_cplm4")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_wtbj6")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_eskcv")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_qy0pj")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sbhtr"]
 animation = &"Cyclop/idle_down_right"
@@ -62,15 +70,19 @@ animation = &"Cyclop/idle_right_up"
 animation = &"Cyclop/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5vn1c"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_sbhtr")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_upn0x")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_xujxv")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_fj6nw")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7i7nh"]
 animation = &"Cyclop/jump_down_right"
@@ -85,15 +97,19 @@ animation = &"Cyclop/jump_right_up"
 animation = &"Cyclop/jump_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_x370o"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_7i7nh")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_rth1p")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_6i4y3")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_sppaw")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_edu2n"]
 animation = &"Cyclop/walk_down_right"
@@ -108,15 +124,19 @@ animation = &"Cyclop/walk_right_up"
 animation = &"Cyclop/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_26kif"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_edu2n")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_1tg6x")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_8eohl")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_dsmue")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f7lb4"]
 advance_mode = 2

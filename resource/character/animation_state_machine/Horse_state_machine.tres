@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=27 format=3 uid="uid://5pyd4ae107yd"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://5pyd4ae107yd"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3731"]
 animation = &"Horse/die"
@@ -16,15 +16,19 @@ animation = &"Horse/dmg_right_up"
 animation = &"Horse/dmg_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5e0es"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_l5v3p")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_ilbb1")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_24r6d")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_x0w3c")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tgcxc"]
 animation = &"Horse/idle_down_right"
@@ -39,15 +43,19 @@ animation = &"Horse/idle_right_up"
 animation = &"Horse/idle_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5oxlv"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_tgcxc")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_n3ho0")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_5m3l2")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_v6c6u")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ludmw"]
 animation = &"Horse/walk_down_right"
@@ -62,15 +70,19 @@ animation = &"Horse/walk_right_up"
 animation = &"Horse/walk_left_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r6gw2"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_ludmw")
 blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_cqb47")
 blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_7dnbx")
 blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_vpvyf")
 blend_point_3/pos = Vector2(-0.2, -0.2)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aa387"]
 advance_mode = 2

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://byqqdllikn08w"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6ga24"]
+[ext_resource type="Resource" uid="uid://dmnoyp8rbp68s" path="res://data/character/angel_of_death.tres" id="2_4jecb"]
+[ext_resource type="AnimationLibrary" uid="uid://cw2pn6d1cg8d6" path="res://resource/character/animation/Angel_of_Death.tres" id="3_aoii3"]
+
+[node name="angel_of_death" unique_id=845622493 instance=ExtResource("1_6ga24")]
+unit = ExtResource("2_4jecb")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Angel_of_Death = ExtResource("3_aoii3")
