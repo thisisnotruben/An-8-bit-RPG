@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://csbyiujtuk7bd"]
+
+[ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_cjhu7"]
+[ext_resource type="Resource" uid="uid://slux17j3rt5f" path="res://data/character/giant.tres" id="2_7tkqc"]
+[ext_resource type="AnimationLibrary" uid="uid://bud46ch251mx1" path="res://resource/character/animation/Giant.tres" id="3_4k8uj"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bws2yuushv3xe" path="res://resource/character/animation_state_machine/Giant_state_machine.tres" id="4_6x775"]
+[ext_resource type="Texture2D" uid="uid://dc4ku40pj6x3c" path="res://asset/img/Minifantasy_Monster_Creatures_v1.0/Minifantasy_Monster_Creatures_Assets/Giant/GiantIdle.png" id="5_gkaty"]
+
+[node name="giant" unique_id=845622493 instance=ExtResource("1_cjhu7")]
+unit = ExtResource("2_7tkqc")
+
+[node name="anim_player" parent="." index="9" unique_id=1820659917]
+libraries/Giant = ExtResource("3_4k8uj")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_6x775")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_gkaty")
+hframes = 25
+frame = 13

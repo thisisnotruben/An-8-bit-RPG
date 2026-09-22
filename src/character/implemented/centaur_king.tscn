@@ -3,9 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_gykhw"]
 [ext_resource type="Resource" uid="uid://brytva55x1fvv" path="res://data/character/centaur_king.tres" id="2_qitlc"]
 [ext_resource type="AnimationLibrary" uid="uid://dkmgrh3asysvp" path="res://resource/character/animation/Centaur_King.tres" id="3_suj0y"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://comt0qm3yrllf" path="res://resource/character/animation_state_machine/Centaur_King_state_machine.tres" id="4_iue7g"]
+[ext_resource type="Texture2D" uid="uid://btlpnq1ys7jf" path="res://asset/img/Minifantasy_Monster_Creatures_v1.0/Minifantasy_Monster_Creatures_Assets/Centaur_King/CentaurKingIdle.png" id="5_0s636"]
 
 [node name="centaur_king" unique_id=845622493 instance=ExtResource("1_gykhw")]
 unit = ExtResource("2_qitlc")
 
 [node name="anim_player" parent="." index="9" unique_id=1820659917]
 libraries/Centaur_King = ExtResource("3_suj0y")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_iue7g")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_0s636")
+frame = 1

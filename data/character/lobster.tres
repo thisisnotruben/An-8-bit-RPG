@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://coahliwh1j33v"]
 
-[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Lobster.tres" id="1_m7wh5"]
+[ext_resource type="AnimationLibrary" uid="uid://cvrhmrn67eeih" path="res://resource/character/animation/Lobster.tres" id="1_m7wh5"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bb3lwq40q20hq" path="res://resource/character/animation_state_machine/Lobster_state_machine.tres" id="2_ed4pk"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="2_okyoj"]
 [ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="3_ed4pk"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="4_0wv7d"]
@@ -13,5 +14,7 @@
 script = ExtResource("7_n01fk")
 character_name = "Lobster"
 tags = Array[String](["spirit"])
+anim_state_machine = ExtResource("2_ed4pk")
 anim_library = ExtResource("1_m7wh5")
+img_offset = Vector2(0, -5)
 metadata/_custom_type_script = "uid://osxc61u0jjco"

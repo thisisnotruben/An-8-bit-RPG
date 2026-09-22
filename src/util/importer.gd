@@ -4,16 +4,23 @@ extends Node
 var anim_importer := Importer.new()
 @export var spritesheet_libs: Array[CharacterSpriteSheetLib] = []
 
+@export var only_do := false
+@export var only_do_names: Array[String] = []
+
+
 func _ready():
 	#get_unique_anim_type_names()
-	make_import_library(true)
+	#make_import_library(true)
 	make_state_machines()
-	make_character_icons()
+	#make_character_icons()
 
 func make_import_library(new_file:= false):
 	var dir_access := DirAccess.open(Importer.ANIM_DIR)
 	for lib in spritesheet_libs:
 		for entry: CharacterSpriteSheetEntry in lib.lib:
+			if only_do and not only_do_names.has(entry.name):
+				continue
+				
 			if new_file:
 				dir_access.remove(entry.name + '.tres')
 			for spritesheet: CharacterSpriteSheet in entry.spritesheet:
@@ -23,6 +30,9 @@ func make_import_library(new_file:= false):
 func make_state_machines():
 	for lib in spritesheet_libs:
 		for entry: CharacterSpriteSheetEntry in lib.lib:
+			if only_do and not only_do_names.has(entry.name):
+				continue
+			
 			var file_path := Importer.ANIM_DIR + entry.name + '.tres'
 			var anim_template_names := []
 			for spritesheet: CharacterSpriteSheet in entry.spritesheet:

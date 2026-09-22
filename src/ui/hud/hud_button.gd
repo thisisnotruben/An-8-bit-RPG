@@ -1,7 +1,6 @@
-extends Button
-class_name HudButton
+class_name HudButton extends Button 
 
-enum Type{ PLAYER, MERCHANT }
+enum Type{ PLAYER, MERCHANT, NPC_TARGET }
 
 const drag_item := preload('uid://bxulpvlxhgm72')
 
@@ -37,7 +36,8 @@ func _drop_data(_at_position: Vector2, data: Variant):
 		_on_set_item(data['item_type'])
 
 func _on_pressed():
-	use()
+	if type != Type.NPC_TARGET:
+		use()
 
 func _on_tween_finished():
 	is_cooling_down = false
@@ -85,14 +85,17 @@ func _on_set_icon(value: Texture):
 
 func _on_set_type(value: Type):
 	type = value
-	if value == Type.MERCHANT:
-		remove_from_group('serializable')
-		pressed.disconnect(_on_pressed)
-	else:
-		if not is_in_group('serializable'):
-			add_to_group('serializable')
-		if not pressed.is_connected(_on_pressed):
-			pressed.connect(_on_pressed)
+	match value:
+		Type.PLAYER:
+			if not is_in_group('serializable'):
+				add_to_group('serializable')
+			if not pressed.is_connected(_on_pressed):
+				pressed.connect(_on_pressed)
+		Type.MERCHANT:
+			remove_from_group('serializable')
+			pressed.disconnect(_on_pressed)
+		Type.NPC_TARGET:
+			remove_from_group('serializable')
 
 func clear():
 	item_type = Item.Type.INVALID

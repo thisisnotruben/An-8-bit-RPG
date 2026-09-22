@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0cdmiiyjhdjd"]
+[gd_scene format=3 uid="uid://d0cdmiiyjhdjd"]
 
 [ext_resource type="Script" uid="uid://bdleug2vch613" path="res://src/ui/game/game.gd" id="1_n8ugx"]
 [ext_resource type="PackedScene" uid="uid://cr2ovoap8nvfh" path="res://src/ui/license/license.tscn" id="2_o3acu"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://chgu5ijacoge" path="res://resource/texture/texture_menu_bg.tres" id="9_ul2n1"]
 [ext_resource type="PackedScene" uid="uid://diatmsxlx2mkb" path="res://src/ui/save_load/save_load.tscn" id="15_iua5y"]
 
-[node name="game" type="Control"]
+[node name="game" type="Control" unique_id=886771541]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -26,42 +26,42 @@ grow_vertical = 2
 script = ExtResource("1_n8ugx")
 start_level_scene_path = "uid://f3o1cwg8v5w5"
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=926809778]
 bus = &"music"
 
-[node name="snd" type="AudioStreamPlayer" parent="."]
+[node name="snd" type="AudioStreamPlayer" parent="." unique_id=1860538802]
 stream = ExtResource("3_5cxrm")
 bus = &"ui"
 
-[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+[node name="snd_nav" type="AudioStreamPlayer" parent="." unique_id=1781874330]
 stream = ExtResource("4_6cxgy")
 bus = &"ui"
 
-[node name="snd_start" type="AudioStreamPlayer" parent="."]
+[node name="snd_start" type="AudioStreamPlayer" parent="." unique_id=213904942]
 stream = ExtResource("4_uu1cu")
 bus = &"ui"
 
-[node name="snd_resume" type="AudioStreamPlayer" parent="."]
+[node name="snd_resume" type="AudioStreamPlayer" parent="." unique_id=757899491]
 stream = ExtResource("4_uu1cu")
 bus = &"ui"
 
-[node name="snd_pause" type="AudioStreamPlayer" parent="."]
+[node name="snd_pause" type="AudioStreamPlayer" parent="." unique_id=891236014]
 stream = ExtResource("5_rp20g")
 bus = &"ui"
 
-[node name="snd_back" type="AudioStreamPlayer" parent="."]
+[node name="snd_back" type="AudioStreamPlayer" parent="." unique_id=1111574284]
 stream = ExtResource("6_igtbi")
 bus = &"ui"
 
-[node name="snd_exit" type="AudioStreamPlayer" parent="."]
+[node name="snd_exit" type="AudioStreamPlayer" parent="." unique_id=603501809]
 stream = ExtResource("7_rgo1i")
 bus = &"ui"
 
-[node name="snd_popup" type="AudioStreamPlayer" parent="."]
+[node name="snd_popup" type="AudioStreamPlayer" parent="." unique_id=341646600]
 stream = ExtResource("7_y5rvc")
 bus = &"ui"
 
-[node name="colorRect" type="ColorRect" parent="."]
+[node name="colorRect" type="ColorRect" parent="." unique_id=1284710937]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="center" type="CenterContainer" parent="."]
+[node name="center" type="CenterContainer" parent="." unique_id=1071478212]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,10 +78,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="panel" type="PanelContainer" parent="center"]
+[node name="panel" type="PanelContainer" parent="center" unique_id=27581961]
 layout_mode = 2
 
-[node name="nine_patch" type="NinePatchRect" parent="center/panel"]
+[node name="nine_patch" type="NinePatchRect" parent="center/panel" unique_id=509667381]
 layout_mode = 2
 texture = ExtResource("9_ul2n1")
 patch_margin_left = 32
@@ -91,22 +91,22 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="margin" type="MarginContainer" parent="center/panel"]
+[node name="margin" type="MarginContainer" parent="center/panel" unique_id=1741801042]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_right = 48
 
-[node name="tabs" type="TabContainer" parent="center/panel/margin"]
+[node name="tabs" type="TabContainer" parent="center/panel/margin" unique_id=1948257492]
 layout_mode = 2
 current_tab = 0
 tabs_visible = false
 
-[node name="main" type="VBoxContainer" parent="center/panel/margin/tabs"]
+[node name="main" type="VBoxContainer" parent="center/panel/margin/tabs" unique_id=1581178517]
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 0
 
-[node name="resume_game" type="Button" parent="center/panel/margin/tabs/main"]
+[node name="resume_game" type="Button" parent="center/panel/margin/tabs/main" unique_id=803169931]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -114,31 +114,31 @@ size_flags_vertical = 4
 focus_neighbor_top = NodePath("../exit")
 text = "Resume"
 
-[node name="start_menu" type="Button" parent="center/panel/margin/tabs/main"]
+[node name="start_menu" type="Button" parent="center/panel/margin/tabs/main" unique_id=1189038373]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Start Menu"
 
-[node name="grid" type="GridContainer" parent="center/panel/margin/tabs/main"]
+[node name="grid" type="GridContainer" parent="center/panel/margin/tabs/main" unique_id=494716019]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 
-[node name="save" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="save" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=739508456]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 theme_type_variation = &"Button_half"
 text = "Save"
 
-[node name="load" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="load" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=1143037092]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 theme_type_variation = &"Button_half"
 text = "Load"
 
-[node name="controls" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="controls" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=1617655195]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -146,7 +146,7 @@ size_flags_vertical = 4
 theme_type_variation = &"Button_half"
 text = "Controls"
 
-[node name="settings" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="settings" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=1484958590]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -154,7 +154,7 @@ size_flags_vertical = 4
 theme_type_variation = &"Button_half"
 text = "Settings"
 
-[node name="license" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="license" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=2044988283]
 visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -163,7 +163,7 @@ size_flags_vertical = 4
 theme_type_variation = &"Button_half"
 text = "License"
 
-[node name="credits" type="Button" parent="center/panel/margin/tabs/main/grid"]
+[node name="credits" type="Button" parent="center/panel/margin/tabs/main/grid" unique_id=86709705]
 visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -172,7 +172,7 @@ size_flags_vertical = 4
 theme_type_variation = &"Button_half"
 text = "Credits"
 
-[node name="exit" type="Button" parent="center/panel/margin/tabs/main"]
+[node name="exit" type="Button" parent="center/panel/margin/tabs/main" unique_id=1973304490]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -180,27 +180,27 @@ size_flags_vertical = 4
 focus_neighbor_bottom = NodePath("../resume_game")
 text = "Exit Game"
 
-[node name="license" parent="center/panel/margin/tabs" instance=ExtResource("2_o3acu")]
+[node name="license" parent="center/panel/margin/tabs" unique_id=573015178 instance=ExtResource("2_o3acu")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="credits" parent="center/panel/margin/tabs" instance=ExtResource("3_o8q35")]
+[node name="credits" parent="center/panel/margin/tabs" unique_id=1435836874 instance=ExtResource("3_o8q35")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="popup" parent="center/panel/margin/tabs" instance=ExtResource("4_t67ik")]
+[node name="popup" parent="center/panel/margin/tabs" unique_id=1150587405 instance=ExtResource("4_t67ik")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="dead" parent="center/panel/margin/tabs" instance=ExtResource("5_o8q35")]
+[node name="dead" parent="center/panel/margin/tabs" unique_id=777576099 instance=ExtResource("5_o8q35")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
-[node name="save_load" parent="center/panel/margin/tabs" instance=ExtResource("15_iua5y")]
+[node name="save_load" parent="center/panel/margin/tabs" unique_id=932146052 instance=ExtResource("15_iua5y")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5

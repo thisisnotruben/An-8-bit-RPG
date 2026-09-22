@@ -3,9 +3,23 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6ga24"]
 [ext_resource type="Resource" uid="uid://dmnoyp8rbp68s" path="res://data/character/angel_of_death.tres" id="2_4jecb"]
 [ext_resource type="AnimationLibrary" uid="uid://cw2pn6d1cg8d6" path="res://resource/character/animation/Angel_of_Death.tres" id="3_aoii3"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dvulup7thqxlm" path="res://resource/character/animation_state_machine/Angel_of_Death_state_machine.tres" id="4_ir0eb"]
+[ext_resource type="Texture2D" uid="uid://cwtf8dpxa5llo" path="res://asset/img/Minifantasy_Monster_Creatures_v1.0/Minifantasy_Monster_Creatures_Assets/Angel_of_Death/AngelOfDeathIdle.png" id="5_1pk4c"]
 
 [node name="angel_of_death" unique_id=845622493 instance=ExtResource("1_6ga24")]
 unit = ExtResource("2_4jecb")
 
 [node name="anim_player" parent="." index="9" unique_id=1820659917]
 libraries/Angel_of_Death = ExtResource("3_aoii3")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_ir0eb")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_1pk4c")
+hframes = 6
+frame = 0

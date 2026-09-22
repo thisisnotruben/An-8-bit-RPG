@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://1f2p5rqh3by1" path="res://src/ui/hud/hud.tscn" id="4_i6nk0"]
 [ext_resource type="AnimationLibrary" uid="uid://csighv7w5cnpl" path="res://resource/character/animation/Human_Town_Guard.tres" id="5_c8x8l"]
 [ext_resource type="PackedScene" uid="uid://d0cdmiiyjhdjd" path="res://src/ui/game/game.tscn" id="5_uhrid"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://dqgaw8ntbuex0" path="res://resource/character/animation_state_machine/Human_Town_Guard_state_machine.tres" id="6_dx0h7"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dpjps6af7dfa5" path="res://resource/character/animation_state_machine/Human_Town_Guard_state_machine.tres" id="6_dx0h7"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="7_2q5ow"]
 [ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="8_t8uts"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="9_ip6mo"]
@@ -16,19 +16,11 @@
 [ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="12_6dgji"]
 [ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="13_q535w"]
 
-[sub_resource type="Resource" id="Resource_tmq3w"]
-script = ExtResource("12_6dgji")
-character_name = "Town Guard"
-npc = false
-tags = Array[String](["human"])
-anim_state_machine = ExtResource("6_dx0h7")
-anim_library = ExtResource("5_c8x8l")
-metadata/_custom_type_script = "uid://osxc61u0jjco"
-
 [sub_resource type="Resource" id="Resource_flsqd"]
 script = ExtResource("12_6dgji")
 character_name = "Town Guard"
 npc = false
+friendly = true
 tags = Array[String](["human"])
 anim_state_machine = ExtResource("6_dx0h7")
 anim_library = ExtResource("5_c8x8l")
@@ -47,38 +39,42 @@ script = ExtResource("1_ln4qy")
 
 [node name="quest_service" parent="." unique_id=1693939661 instance=ExtResource("1_o0gv0")]
 
-[node name="target_service" parent="." unique_id=947630201 node_paths=PackedStringArray("hud") instance=ExtResource("2_ln4qy")]
+[node name="target_service" parent="." unique_id=947630201 node_paths=PackedStringArray("player", "hud") instance=ExtResource("2_ln4qy")]
+player = NodePath("../zone1/object/character/human_town_guard6")
 hud = NodePath("../CanvasLayer/hud")
 
-[node name="map" parent="." unique_id=1719606390 instance=ExtResource("3_t0ygm")]
+[node name="zone1" parent="." unique_id=298162552 instance=ExtResource("3_t0ygm")]
 
-[node name="zombie_giant" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="57" unique_id=400179553]
-velocity = Vector2(5.5140676, -2.4726706)
+[node name="lobster" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="52" unique_id=1339032741]
+velocity = Vector2(-3.9218917, 1.5990644)
 
-[node name="wraith" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="59" unique_id=331032552]
-velocity = Vector2(-49.462452, -52.320797)
+[node name="zombie_giant" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="57" unique_id=363082083]
+velocity = Vector2(5.5395107, -2.5599258)
 
-[node name="wraith2" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="60" unique_id=1481948712]
-velocity = Vector2(54.1743, -47.42515)
+[node name="wraith" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="59" unique_id=331032552]
+velocity = Vector2(-46.71233, -54.79013)
 
-[node name="blood_mage" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="61" unique_id=882973708]
-velocity = Vector2(49.462452, 52.320797)
+[node name="wraith2" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="60" unique_id=521341913]
+velocity = Vector2(55.128616, -46.312363)
 
-[node name="cyclop6" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="81" unique_id=1545606352]
-unit = SubResource("Resource_tmq3w")
+[node name="blood_mage" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="61" unique_id=1073886703]
+velocity = Vector2(8.272588, 71.52315)
 
-[node name="human_town_guard6" parent="map/object/character" parent_id_path=PackedInt32Array(1719606390, 2113963865) index="100" unique_id=67347201]
+[node name="human_town_guard6" parent="zone1/object/character" parent_id_path=PackedInt32Array(298162552, 1599099784) index="100" unique_id=1541546995]
+collision_layer = 6
 unit = SubResource("Resource_flsqd")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="map" unique_id=1931831019]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="zone1" unique_id=1931831019]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_m2qrx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=395904557]
 
-[node name="hud" parent="CanvasLayer" unique_id=2140805097 instance=ExtResource("4_i6nk0")]
+[node name="hud" parent="CanvasLayer" unique_id=2140805097 node_paths=PackedStringArray("player") instance=ExtResource("4_i6nk0")]
+player = NodePath("../../zone1/object/character/human_town_guard6")
 
-[node name="game" parent="CanvasLayer" unique_id=196695040 instance=ExtResource("5_uhrid")]
+[node name="game" parent="CanvasLayer" unique_id=196695040 node_paths=PackedStringArray("player") instance=ExtResource("5_uhrid")]
 visible = false
+player = NodePath("../../zone1/object/character/human_town_guard6")
 
-[editable path="map"]
+[editable path="zone1"]

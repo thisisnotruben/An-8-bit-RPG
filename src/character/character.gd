@@ -23,9 +23,8 @@ class_name Character extends CharacterBody2D
 @onready var dialogue_actionable: DialogueActionable2D = $dialogue_actionable
 @onready var dialogue_state_context: DialogueStateContext = $dialogue_state_context
 
-@export_tool_button('Refresh Builder', 'Callable') var refresh_build = func(): \
-	if unit:
-		unit.init(self)
+@export_tool_button('Refresh Builder', 'Callable') var refresh_build = \
+	func(): if unit: unit.init(self)
 @export var unit: CharacterBuilder:
 	set(value):
 		# NOTICE: comment this out when importing from tiled
@@ -46,6 +45,8 @@ var target: Character = null
 
 var is_inventory_full := func(): return true
 var is_spellbook_full := func(): return true
+
+var focused_dialogue_quest: QuestData
 
 @warning_ignore('unused_signal')
 signal died
@@ -94,6 +95,15 @@ func _on_sight_body_entered(other_npc: Node2D):
 			aggro(other_npc)
 		elif target:
 			other_npc.aggro(target)
+
+func _on_dialogue_actionable_body_exited(body: Node2D) -> void:
+	if unit.npc and focused_dialogue_quest \
+	and is_instance_valid(dialogue_actionable.dialogue_resource) \
+	and is_instance_valid(dialogue_actionable.dialogue_balloon):
+		var character := body as Character
+		if character and not character.unit.npc:
+			DialogueManager.dialogue_ended.emit(dialogue_actionable.dialogue_resource)
+			dialogue_actionable.dialogue_balloon.queue_free()
 
 func inventory_modify(item_type: BaseItem.Type, add: bool) -> bool:
 	var item: Item = ItemDB.get_item(item_type)
@@ -170,10 +180,25 @@ func aggro(_body: Node2D) -> bool:
 func notify_projectile_incoming(projectile: Projectile):
 	behavior.blackboard.set_var(LimboVarLib.INCOMING_PROJECTILE, projectile)
 
-func set_dialogue(dialogue_res: DialogueResource = null, cue_name := '', alias := ''):
+func set_dialogue(dialogue_res: DialogueResource = null, cue_name := '', alias := '', focused_quest: QuestData = null):
 	dialogue_actionable.dialogue_resource = dialogue_res
 	dialogue_actionable.dialogue_cue = cue_name
 	dialogue_state_context.alias = alias
+	focused_dialogue_quest = focused_quest
+	
+	var dialogue_role := CharacterBuilder.CharaterSideRoles.DIALOGUE
+	if dialogue_res:
+		if not unit.character_roles.has(dialogue_role):
+			unit.character_roles.append(dialogue_role)
+	else:
+		unit.character_roles.erase(dialogue_role)
 
 func start_dialogue():
-	dialogue_actionable.action()
+	if not unit.npc or not focused_dialogue_quest:
+		return
+		
+	for body in dialogue_actionable.get_overlapping_bodies():
+		var character := body as Character
+		if character and not character.unit.npc:
+			QuestState.focused_quest = focused_dialogue_quest
+			dialogue_actionable.action()

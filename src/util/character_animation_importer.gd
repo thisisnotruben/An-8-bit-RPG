@@ -119,7 +119,7 @@ func create_state_machine(anim_base_name: String, anim_library_path: String, ani
 			'die':
 				_add_transition(state_machine, anim_name_type, 'idle', 'fsm.state == 0')
 
-	ResourceSaver.save(state_machine, 'res://resource/animation_state_machine/%s_state_machine.tres' \
+	ResourceSaver.save(state_machine, 'res://resource/character/animation_state_machine/%s_state_machine.tres' \
 		% anim_library_path.get_file().get_basename())
 
 func _add_transition(state_machine: AnimationNodeStateMachine, from: String, to: String, expression: String, at_end := false):

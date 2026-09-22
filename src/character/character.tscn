@@ -141,6 +141,7 @@ collision_mask = 21
 
 [node name="cam" type="Camera2D" parent="." unique_id=2013942814]
 enabled = false
+zoom = Vector2(5, 5)
 process_callback = 0
 
 [node name="nav_agent" type="NavigationAgent2D" parent="." unique_id=765749331]
@@ -157,6 +158,9 @@ shape = SubResource("CircleShape2D_2pcmc")
 
 [node name="dialogue_actionable" type="Area2D" parent="." unique_id=797207612]
 position = Vector2(0, -3)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 script = ExtResource("22_y5dg0")
 metadata/_custom_type_script = "uid://cqcur1rm7433g"
 
@@ -180,4 +184,5 @@ texture_normal = SubResource("AtlasTexture_jdd1s")
 [connection signal="animation_finished" from="anim_tree" to="fsm/hurt" method="_on_animation_tree_animation_finished"]
 [connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_velocity_computed"]
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="dialogue_actionable" to="." method="_on_dialogue_actionable_body_exited"]
 [connection signal="pressed" from="select_bttn" to="." method="_on_select_bttn_pressed"]

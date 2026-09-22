@@ -2,10 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_3riwk"]
 [ext_resource type="Resource" uid="uid://b2oc5ot7de6tq" path="res://data/character/shifted.tres" id="2_6unm4"]
-[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Shifted.tres" id="3_lif8b"]
+[ext_resource type="AnimationLibrary" uid="uid://28b607ri8w4x" path="res://resource/character/animation/Shifted.tres" id="3_lif8b"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b6p3213q8o6er" path="res://resource/character/animation_state_machine/Shifted_state_machine.tres" id="4_lif8b"]
+[ext_resource type="Texture2D" uid="uid://cowd5y8lm8qr3" path="res://asset/img/Minifantasy_Nightmare_Creatures_v1.1/Nightmare_Creatures/Shifted/_No_Outline/Idle_No_Outline_.png" id="5_vxopp"]
 
 [node name="shifted" unique_id=845622493 instance=ExtResource("1_3riwk")]
 unit = ExtResource("2_6unm4")
 
 [node name="anim_player" parent="." index="9" unique_id=1820659917]
 libraries/Shifted = ExtResource("3_lif8b")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_lif8b")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_vxopp")
+hframes = 12
+frame = 10

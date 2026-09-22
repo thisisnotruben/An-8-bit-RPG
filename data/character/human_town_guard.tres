@@ -2,7 +2,7 @@
 
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_feum1"]
 [ext_resource type="AnimationLibrary" uid="uid://csighv7w5cnpl" path="res://resource/character/animation/Human_Town_Guard.tres" id="1_xhmeq"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://dqgaw8ntbuex0" path="res://resource/character/animation_state_machine/Human_Town_Guard_state_machine.tres" id="2_6c7nq"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dpjps6af7dfa5" path="res://resource/character/animation_state_machine/Human_Town_Guard_state_machine.tres" id="2_6c7nq"]
 [ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_jhkvw"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_xhmeq"]
 [ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_6c7nq"]
@@ -13,6 +13,7 @@
 [resource]
 script = ExtResource("6_n035v")
 character_name = "Town Guard"
+friendly = true
 tags = Array[String](["human"])
 anim_state_machine = ExtResource("2_6c7nq")
 anim_library = ExtResource("1_xhmeq")

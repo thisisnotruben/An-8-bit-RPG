@@ -42,6 +42,8 @@ var hovered_control: Control = null
 const tabs_master := {'player': 0, 'npc': 1}
 const tabs_npc := {'dialogue': 0, 'trainer': 1, 'merchant': 2}
 
+var dialogue_active := false
+
 
 func _ready():
 	var tab_order := [inventory_icon, trainer_icon, objective_tracker_icon]
@@ -67,6 +69,9 @@ func _ready():
 		inventory.player = player
 		spellbook.player = player
 		trainer.player = player
+		
+	DialogueManager.dialogue_started.connect(func(_r): dialogue_active = true)
+	DialogueManager.dialogue_ended.connect(func(_r): dialogue_active = false)
 
 func _on_set_target(value: Character):
 	if target:
@@ -86,10 +91,12 @@ func _on_set_target(value: Character):
 	if value:
 
 		var show_slot := not value.unit.character_roles.is_empty()
+		var character_name := value.unit.character_name
+		
 		target_slot.visible = show_slot
-		target_status_bar.visible = not value.character_name.is_empty()
-		target_name_label.text = value.character_name if show_slot \
-		else ' '.repeat(target_status_name_padding) + value.character_name
+		target_status_bar.visible = not character_name.is_empty()
+		target_name_label.text = character_name if show_slot \
+			else ' '.repeat(target_status_name_padding) + character_name
 
 		if show_slot:
 			tab_master.current_tab = tabs_master['npc']
@@ -98,7 +105,7 @@ func _on_set_target(value: Character):
 
 			if is_one_role:
 				var npc_view := ''
-				match value.character_roles[0]:
+				match value.unit.character_roles[0]:
 					CharacterBuilder.CharaterSideRoles.MERCHANT:
 						target_slot.item_icon = merchant_icon
 						npc_view = 'merchant'
@@ -110,7 +117,6 @@ func _on_set_target(value: Character):
 						npc_view = 'dialogue'
 				if not npc_view.is_empty():
 					tab_npc.current_tab = tabs_npc[npc_view]
-
 			else:
 				var role_map := { # mapped against 'tab_npc' index
 					CharacterBuilder.CharaterSideRoles.DIALOGUE: 0,
@@ -119,9 +125,13 @@ func _on_set_target(value: Character):
 				}
 				for role in role_map:
 					tab_npc.get_tab_bar().set_tab_hidden(role_map[role],
-						not value.character_roles.has(role))
+						not value.unit.character_roles.has(role))
 				target_slot.item_icon = many_hats_icon
-
+				
+			if value.unit.character_roles.has(CharacterBuilder.CharaterSideRoles.DIALOGUE) \
+			and not dialogue_active:
+				value.start_dialogue()
+			
 		target_mana_ctrl.visible = value.mana.max_value > 0
 		target_ability_ctrl.visible = value.ability.max_value > 0
 
@@ -196,3 +206,7 @@ func _on_interact_panel_visibility_changed():
 			player.set_player_move_hud_menu_pause.emit(false)
 			player.behavior.active = true
 		player.fsm.state = CharacterStates.Type.IDLE
+
+func _on_target_slot_pressed() -> void:
+	if target and not dialogue_active:
+		target.start_dialogue()

@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="CharacterBuilder" format=3 uid="uid://d2bhvasubfo7d"]
 
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_6ebl3"]
-[ext_resource type="AnimationLibrary" path="res://resource/character/animation/Winged.tres" id="1_ly0xd"]
+[ext_resource type="AnimationLibrary" uid="uid://8yipq778rvuj" path="res://resource/character/animation/Winged.tres" id="1_ly0xd"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/character/animation_state_machine/Winged_state_machine.tres" id="2_l84md"]
 [ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_ly0xd"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_l84md"]
 [ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_2csdg"]
@@ -13,5 +14,6 @@
 script = ExtResource("6_fuamx")
 character_name = "Winged"
 tags = Array[String](["spirit"])
+anim_state_machine = ExtResource("2_l84md")
 anim_library = ExtResource("1_ly0xd")
 metadata/_custom_type_script = "uid://osxc61u0jjco"

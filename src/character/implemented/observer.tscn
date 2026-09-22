@@ -3,9 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_6bdeo"]
 [ext_resource type="Resource" uid="uid://br8dno3gw7xsg" path="res://data/character/observer.tres" id="2_givps"]
 [ext_resource type="AnimationLibrary" uid="uid://cv8j0wqtqmxie" path="res://resource/character/animation/Observer.tres" id="3_va0q0"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bl07qq2van02v" path="res://resource/character/animation_state_machine/Observer_state_machine.tres" id="4_2gxwi"]
+[ext_resource type="Texture2D" uid="uid://c7kqx68p0jauv" path="res://asset/img/Minifantasy_Nightmare_Creatures_v1.1/Nightmare_Creatures/Observer/_No_Outline/Idle_No_Outline_.png" id="5_adn45"]
 
 [node name="observer" unique_id=845622493 instance=ExtResource("1_6bdeo")]
 unit = ExtResource("2_givps")
 
 [node name="anim_player" parent="." index="9" unique_id=1820659917]
 libraries/Observer = ExtResource("3_va0q0")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_2gxwi")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_adn45")
+hframes = 18
+frame = 8
+
+[node name="body" parent="." index="12" unique_id=810498800]
+position = Vector2(0, -6)

@@ -3,7 +3,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://detts71argwnj" path="res://resource/character/animation/Dwarven_Marksman.tres" id="1_lwh3p"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="1_x2rwf"]
 [ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="2_4tvqs"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://b8wdo2kbf2lst" path="res://resource/character/animation_state_machine/Dwarven_Marksman_state_machine.tres" id="2_ltoee"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://2kdckmjvdv4q" path="res://resource/character/animation_state_machine/Dwarven_Marksman_state_machine.tres" id="2_ltoee"]
 [ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="3_lwh3p"]
 [ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="4_ltoee"]
 [ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="5_y5h6t"]
@@ -13,6 +13,7 @@
 [resource]
 script = ExtResource("6_k1y1g")
 character_name = "Dwarven Marksman"
+friendly = true
 tags = Array[String](["humanoid"])
 anim_state_machine = ExtResource("2_ltoee")
 anim_library = ExtResource("1_lwh3p")

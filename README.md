@@ -34,19 +34,6 @@ TODO
 		- Minifantasy_Spell_Effects_II_v1.0
 
 ### TODO
-- Giant
-- Huntsman Spider
-- centaur king
-- orc knight
-- lich
-- ancient_troll
-	- img clops x acis for y sort
-- demon_spider
-- dark priest
-- angel of death
-- blood mage
-- zombie giant
-- observer
 
 - Iterate through characters
 	- apply sfx

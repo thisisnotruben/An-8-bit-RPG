@@ -3,9 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_15e8a"]
 [ext_resource type="Resource" uid="uid://cbekxh42mv7i5" path="res://data/character/blood_mage.tres" id="2_upg5u"]
 [ext_resource type="AnimationLibrary" uid="uid://wysxrbjm6wnr" path="res://resource/character/animation/Blood_Mage.tres" id="3_gxfx0"]
+[ext_resource type="AnimationNodeStateMachine" path="res://resource/character/animation_state_machine/Blood_Mage_state_machine.tres" id="4_6y8hw"]
+[ext_resource type="Texture2D" uid="uid://cw11okmra7uco" path="res://asset/img/Minifantasy_True_Heroes_IV_v1.1/Blood_Mage/General_Animations/Idle.png" id="5_crovi"]
 
 [node name="blood_mage" unique_id=845622493 instance=ExtResource("1_15e8a")]
 unit = ExtResource("2_upg5u")
 
 [node name="anim_player" parent="." index="9" unique_id=1820659917]
 libraries/Blood_Mage = ExtResource("3_gxfx0")
+
+[node name="anim_tree" parent="." index="10" unique_id=634827393]
+tree_root = ExtResource("4_6y8hw")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="img" parent="." index="11" unique_id=1054139227]
+texture = ExtResource("5_crovi")
+frame = 3

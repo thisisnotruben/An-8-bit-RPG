@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_4xcfn"]
 [ext_resource type="Resource" uid="uid://b8wqp4u7st3a2" path="res://data/character/lich.tres" id="2_biisd"]
 [ext_resource type="AnimationLibrary" uid="uid://cwh5jemogbgqt" path="res://resource/character/animation/Lich.tres" id="3_ra2dv"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://35luykhdnfxb" path="res://resource/character/animation_state_machine/Lich_state_machine.tres" id="4_acfy8"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dksx85ph48qmm" path="res://resource/character/animation_state_machine/Lich_state_machine.tres" id="4_acfy8"]
+[ext_resource type="Texture2D" uid="uid://l1k3v6e7n1ve" path="res://asset/img/exclusives/Creatures/Lich/Idle.png" id="5_ra2dv"]
 
 [node name="lich" unique_id=845622493 instance=ExtResource("1_4xcfn")]
 unit = ExtResource("2_biisd")
@@ -16,8 +17,11 @@ tree_root = ExtResource("4_acfy8")
 parameters/cast_ice_claws/blend_position = Vector2(0, 0)
 parameters/cast_reanimation/blend_position = Vector2(0, 0)
 parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="img" parent="." index="11" unique_id=1054139227]
-texture = null
-frame = 0
+texture = ExtResource("5_ra2dv")
+offset = Vector2(0, -10)
+hframes = 6
+frame = 3

@@ -16,7 +16,7 @@ func modify(attack: ModifierAttack):
 		if resistances.has(attack.type):
 			pass # TODO
 
-		var amount: int = abs(attack.amount)
+		var amount: int = abs(attack.modifier.current)
 		if not attack.add:
 			amount *= -1
 

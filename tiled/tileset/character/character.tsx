@@ -551,6 +551,9 @@
   <image source="Gargoyle.png" width="32" height="32"/>
  </tile>
  <tile id="129" type="Instance">
+  <properties>
+   <property name="res_path" type="file" value="res://src/character/implemented/giant.tscn"/>
+  </properties>
   <image source="Giant.png" width="32" height="32"/>
  </tile>
  <tile id="130">

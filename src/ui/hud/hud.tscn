@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://1f2p5rqh3by1"]
+[gd_scene format=3 uid="uid://1f2p5rqh3by1"]
 
 [ext_resource type="Script" uid="uid://cy8f1hn7im11u" path="res://src/ui/hud/hud.gd" id="1_jobw0"]
 [ext_resource type="Texture2D" uid="uid://cq3qhh24avnxl" path="res://resource/texture/texture_icon_bag.tres" id="2_1ilyr"]
@@ -52,7 +52,7 @@ region = Rect2(0, 0, 64, 0)
 atlas = ExtResource("9_qtkbr")
 region = Rect2(0, 0, 64, 0)
 
-[node name="hud" type="Control"]
+[node name="hud" type="Control" unique_id=649615058]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,10 +68,10 @@ dialogue_icon = ExtResource("4_v4dvs")
 objective_tracker_icon = ExtResource("4_v4dvs")
 many_hats_icon = ExtResource("6_s8lle")
 
-[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+[node name="snd_nav" type="AudioStreamPlayer" parent="." unique_id=1811614784]
 bus = &"ui"
 
-[node name="bg_margin" type="MarginContainer" parent="."]
+[node name="bg_margin" type="MarginContainer" parent="." unique_id=1419570764]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,17 +79,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vBox" type="VBoxContainer" parent="bg_margin"]
+[node name="vBox" type="VBoxContainer" parent="bg_margin" unique_id=1246046048]
 layout_mode = 2
 alignment = 2
 
-[node name="panel" type="PanelContainer" parent="bg_margin/vBox"]
+[node name="panel" type="PanelContainer" parent="bg_margin/vBox" unique_id=991546538]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
 
-[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/panel"]
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/panel" unique_id=400773989]
 layout_mode = 2
 texture = ExtResource("2_cio14")
 patch_margin_left = 32
@@ -99,32 +99,32 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="content_margin" type="MarginContainer" parent="bg_margin/vBox/panel"]
+[node name="content_margin" type="MarginContainer" parent="bg_margin/vBox/panel" unique_id=1442475032]
 layout_mode = 2
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_right = 48
 
-[node name="master" type="TabContainer" parent="bg_margin/vBox/panel/content_margin"]
+[node name="master" type="TabContainer" parent="bg_margin/vBox/panel/content_margin" unique_id=1542641382]
 layout_mode = 2
 theme_type_variation = &"tabbar_inverted"
 current_tab = 0
 tabs_visible = false
 
-[node name="player" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master"]
+[node name="player" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master" unique_id=1808232578]
 layout_mode = 2
 theme_type_variation = &"tabbar_inverted"
 tab_alignment = 2
 current_tab = 0
 metadata/_tab_index = 0
 
-[node name="inventory" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
+[node name="inventory" parent="bg_margin/vBox/panel/content_margin/master/player" unique_id=595797623 instance=ExtResource("11_4u0hr")]
 layout_mode = 2
 
 [node name="drop" parent="bg_margin/vBox/panel/content_margin/master/player/inventory/vBox_item_detail/action" index="1"]
 focus_neighbor_top = NodePath("../../../../../../../exit_margin/exit")
 focus_neighbor_right = NodePath("../../../../../../../exit_margin/exit")
 
-[node name="spell_book" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("11_4u0hr")]
+[node name="spell_book" parent="bg_margin/vBox/panel/content_margin/master/player" unique_id=969707055 instance=ExtResource("11_4u0hr")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
@@ -136,41 +136,40 @@ text = "Spell Blurb"
 focus_neighbor_top = NodePath("../../../../../../../exit_margin/exit")
 focus_neighbor_right = NodePath("../../../../../../../exit_margin/exit")
 
-[node name="ojective_tracker" parent="bg_margin/vBox/panel/content_margin/master/player" instance=ExtResource("10_5t2k2")]
+[node name="ojective_tracker" parent="bg_margin/vBox/panel/content_margin/master/player" unique_id=132187162 instance=ExtResource("10_5t2k2")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="npc" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master"]
+[node name="npc" type="TabContainer" parent="bg_margin/vBox/panel/content_margin/master" unique_id=1691718914]
 visible = false
 layout_mode = 2
 current_tab = 0
-tabs_visible = false
 metadata/_tab_index = 1
 
-[node name="dialogue" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("9_2406e")]
+[node name="dialogue" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=288700162 instance=ExtResource("9_2406e")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="trainer" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("11_4u0hr")]
+[node name="trainer" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=1919592764 instance=ExtResource("11_4u0hr")]
 visible = false
 layout_mode = 2
 type = 1
 metadata/_tab_index = 1
 
-[node name="merchant" parent="bg_margin/vBox/panel/content_margin/master/npc" instance=ExtResource("11_sa7i1")]
+[node name="merchant" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=1616416002 instance=ExtResource("11_sa7i1")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/panel"]
+[node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/panel" unique_id=1956866233]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_top = -19
 theme_override_constants/margin_right = -4
 
-[node name="exit" type="TextureButton" parent="bg_margin/vBox/panel/exit_margin"]
+[node name="exit" type="TextureButton" parent="bg_margin/vBox/panel/exit_margin" unique_id=2068932669]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -178,12 +177,12 @@ texture_normal = SubResource("AtlasTexture_5t2k2")
 texture_pressed = SubResource("AtlasTexture_sa7i1")
 stretch_mode = 3
 
-[node name="action_bar" type="PanelContainer" parent="bg_margin/vBox"]
+[node name="action_bar" type="PanelContainer" parent="bg_margin/vBox" unique_id=594651224]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/action_bar"]
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/vBox/action_bar" unique_id=421505145]
 layout_mode = 2
 texture = ExtResource("2_cio14")
 patch_margin_left = 32
@@ -193,56 +192,56 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="margin" type="MarginContainer" parent="bg_margin/vBox/action_bar"]
+[node name="margin" type="MarginContainer" parent="bg_margin/vBox/action_bar" unique_id=647804259]
 layout_mode = 2
 theme_override_constants/margin_left = 34
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 108
 theme_override_constants/margin_bottom = 16
 
-[node name="hBox" type="HBoxContainer" parent="bg_margin/vBox/action_bar/margin"]
+[node name="hBox" type="HBoxContainer" parent="bg_margin/vBox/action_bar/margin" unique_id=1230502942]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot1" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=703611978 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="slot2" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot2" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=2027930724 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="slot3" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot3" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=798007806 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="slot4" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot4" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=1730250045 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="slot5" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot5" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=963882634 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="slot6" parent="bg_margin/vBox/action_bar/margin/hBox" groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
+[node name="slot6" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=343994392 groups=["quick_slot"] instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 quick_slot = true
 
-[node name="inventory_spellBook" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="inventory_spellBook" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=465382334 instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 
 [node name="icon" parent="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook" index="1"]
 texture = ExtResource("2_1ilyr")
 
-[node name="menu" parent="bg_margin/vBox/action_bar/margin/hBox" instance=ExtResource("2_cvkdw")]
+[node name="menu" parent="bg_margin/vBox/action_bar/margin/hBox" unique_id=814955751 instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 item_icon = ExtResource("8_0lyew")
@@ -250,14 +249,14 @@ item_icon = ExtResource("8_0lyew")
 [node name="icon" parent="bg_margin/vBox/action_bar/margin/hBox/menu" index="1"]
 texture = ExtResource("8_0lyew")
 
-[node name="target_status_bar" type="PanelContainer" parent="bg_margin"]
+[node name="target_status_bar" type="PanelContainer" parent="bg_margin" unique_id=2133572517]
 visible = false
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="nine_patch" type="NinePatchRect" parent="bg_margin/target_status_bar"]
+[node name="nine_patch" type="NinePatchRect" parent="bg_margin/target_status_bar" unique_id=706186587]
 layout_mode = 2
 texture = ExtResource("2_cio14")
 patch_margin_left = 32
@@ -267,28 +266,28 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="margin" type="MarginContainer" parent="bg_margin/target_status_bar"]
+[node name="margin" type="MarginContainer" parent="bg_margin/target_status_bar" unique_id=1675234855]
 layout_mode = 2
 theme_override_constants/margin_left = 112
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 36
 theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="bg_margin/target_status_bar/margin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="bg_margin/target_status_bar/margin" unique_id=1647105597]
 layout_mode = 2
 
-[node name="slot" parent="bg_margin/target_status_bar/margin/HBoxContainer" instance=ExtResource("2_cvkdw")]
+[node name="slot" parent="bg_margin/target_status_bar/margin/HBoxContainer" unique_id=1540042241 instance=ExtResource("2_cvkdw")]
 layout_mode = 2
 focus_mode = 0
 
 [node name="icon" parent="bg_margin/target_status_bar/margin/HBoxContainer/slot" index="1"]
 texture = ExtResource("6_s8lle")
 
-[node name="label" type="Label" parent="bg_margin/target_status_bar/margin/HBoxContainer"]
+[node name="label" type="Label" parent="bg_margin/target_status_bar/margin/HBoxContainer" unique_id=488445979]
 layout_mode = 2
 text = "Npc Name"
 
-[node name="status_margin" type="MarginContainer" parent="."]
+[node name="status_margin" type="MarginContainer" parent="." unique_id=1230775348]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -302,7 +301,7 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="player_health" type="TextureProgressBar" parent="status_margin"]
+[node name="player_health" type="TextureProgressBar" parent="status_margin" unique_id=1311326166]
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 2
@@ -311,7 +310,7 @@ texture_under = ExtResource("4_ariom")
 texture_progress = SubResource("AtlasTexture_0lyew")
 metadata/_edit_group_ = true
 
-[node name="ability" type="TextureProgressBar" parent="status_margin/player_health"]
+[node name="ability" type="TextureProgressBar" parent="status_margin/player_health" unique_id=1141146800]
 layout_mode = 0
 offset_left = -24.0
 offset_top = -8.0
@@ -322,7 +321,7 @@ value = 100.0
 texture_under = ExtResource("4_076te")
 texture_progress = SubResource("AtlasTexture_v4dvs")
 
-[node name="mana" type="TextureProgressBar" parent="status_margin/player_health"]
+[node name="mana" type="TextureProgressBar" parent="status_margin/player_health" unique_id=807716985]
 layout_mode = 0
 offset_left = 8.0
 offset_top = -36.0
@@ -333,7 +332,7 @@ value = 100.0
 texture_under = ExtResource("4_076te")
 texture_progress = SubResource("AtlasTexture_raafm")
 
-[node name="target_health" type="TextureProgressBar" parent="status_margin"]
+[node name="target_health" type="TextureProgressBar" parent="status_margin" unique_id=584349169]
 visible = false
 layout_mode = 2
 mouse_filter = 2
@@ -342,7 +341,7 @@ texture_under = ExtResource("4_ariom")
 texture_progress = SubResource("AtlasTexture_4u0hr")
 metadata/_edit_group_ = true
 
-[node name="ability" type="TextureProgressBar" parent="status_margin/target_health"]
+[node name="ability" type="TextureProgressBar" parent="status_margin/target_health" unique_id=511753883]
 layout_mode = 0
 offset_left = 92.0
 offset_top = -8.0
@@ -353,7 +352,7 @@ value = 100.0
 texture_under = ExtResource("4_076te")
 texture_progress = SubResource("AtlasTexture_i2hmd")
 
-[node name="mana" type="TextureProgressBar" parent="status_margin/target_health"]
+[node name="mana" type="TextureProgressBar" parent="status_margin/target_health" unique_id=565019993]
 layout_mode = 0
 offset_left = 44.0
 offset_top = -36.0
@@ -385,6 +384,7 @@ texture_progress = SubResource("AtlasTexture_g2kha")
 [connection signal="pressed" from="bg_margin/vBox/panel/exit_margin/exit" to="." method="_on_interact_panel_exit_pressed"]
 [connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/inventory_spellBook" to="." method="_on_inventory_spell_book_pressed"]
 [connection signal="pressed" from="bg_margin/vBox/action_bar/margin/hBox/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="bg_margin/target_status_bar/margin/HBoxContainer/slot" to="." method="_on_target_slot_pressed"]
 
 [editable path="bg_margin/vBox/panel/content_margin/master/player/inventory"]
 [editable path="bg_margin/vBox/panel/content_margin/master/player/spell_book"]

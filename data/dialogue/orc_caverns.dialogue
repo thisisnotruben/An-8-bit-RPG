@@ -1,24 +1,25 @@
 ~ quest_line
-if State.quest_status == "not_started":
-	Town Guard: Our town's very existence is at stake!
-	Town Guard: The orcs have the setup in the caverns west of the town must be defeated!
-	Town Guard: Will you brave adventurer take on this perilous quest?
-	- Accept
-		$> State.quest_status = "active"
-		Town Guard: Thank you brave adventurer, please be hasty!
-	- Decline
-		Town Guard: Who will save our humble town!?
-elif State.quest_status == "active":
-	Town Guard: Please, defeat the orcs to prevent further raids on our humble town!
-elif State.quest_status == "completed":
-	$> State.quest_status = "finished"
-	Town Guard: It is with the deepest gratitude that the citizens of Summerville thank you for your heroic victory over the orcs!
-	Town Guard: Please travel southwest to the tower of Sentintal Lookout, they urgently need your help!
-elif State.quest_status == "finished":
-	Town Guard: [[The mighty orc slayer!|Hail.|I haven't seen any orcs as of lately.]]
+match QuestState.status
+	when "not_started":
+		Town Guard: Our town's very existence is at stake!
+		Town Guard: The orcs have the setup in the caverns west of the town must be defeated!
+		Town Guard: Will you brave adventurer take on this perilous quest?
+		- Accept
+			$> QuestState.status = "active"
+			Town Guard: Thank you brave adventurer, please be hasty!
+		- Decline
+			Town Guard: Who will save our humble town!?
+	when "active":
+		Town Guard: Please, defeat the orcs to prevent further raids on our humble town!
+	when "completed":
+		$> QuestState.status = "finished"
+		Town Guard: It is with the deepest gratitude that the citizens of Summerville thank you for your heroic victory over the orcs!
+		Town Guard: Please travel southwest to the tower of Sentintal Lookout, they urgently need your help!
+	when "finished":
+		Town Guard: [[The mighty orc slayer!|Hail.|I haven't seen any orcs as of lately.]]
 => END
 
 ~ orc_boss
-if State.quest_status == "active":
+if QuestState.status == "active":
 	Orc boss: Another for the pile!
 => END
