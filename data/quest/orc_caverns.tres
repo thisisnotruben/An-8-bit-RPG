@@ -7,29 +7,30 @@
 
 [sub_resource type="Resource" id="Resource_361so"]
 script = ExtResource("1_y08ch")
-speaker_node_path = NodePath("../zone1/object/character/human_town_guard5")
+speaker_node_path = NodePath("../zone1/object/human_town_guard5")
 alias = "Town Guard"
 cue_name = "quest_line"
 metadata/_custom_type_script = "uid://coab2uigp166k"
 
 [sub_resource type="Resource" id="Resource_6ikw5"]
 script = ExtResource("2_jj32v")
+amount = 10
 tag = "orc"
 display_name = "Orc"
-amount = 10
 metadata/_custom_type_script = "uid://tsvv1aj8gnwi"
 
 [sub_resource type="Resource" id="Resource_6bfeg"]
 script = ExtResource("2_jj32v")
+amount = 1
 tag = "orc_boss"
 display_name = "Orc Boss"
-amount = 1
 metadata/_custom_type_script = "uid://tsvv1aj8gnwi"
 
 [resource]
 script = ExtResource("3_rckce")
 quest_name = "Orc Caverns"
+description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius convallis mi, volutpat eleifend erat rhoncus vel. Sed ut nulla condimentum, consectetur sapien et, condimentum ante. Proin consequat metus id posuere dapibus. Sed pulvinar metus ante, eleifend cursus eros placerat vulputate. Curabitur sit amet lorem consequat, efficitur arcu quis, feugiat lectus. Fusce sit amet dui eget tortor faucibus eleifend. Phasellus eleifend sapien non luctus suscipit. Vestibulum tempus velit vel dapibus luctus. Phasellus aliquet purus molestie vulputate hendrerit. Vestibulum eu turpis id nibh egestas lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur vel lorem magna. "
+objectives = Array[ExtResource("2_jj32v")]([SubResource("Resource_6ikw5"), SubResource("Resource_6bfeg")])
 dialogue = ExtResource("1_jj32v")
 dialogue_whose_involved = Array[ExtResource("1_y08ch")]([SubResource("Resource_361so")])
-objectives = Array[ExtResource("2_jj32v")]([SubResource("Resource_6ikw5"), SubResource("Resource_6bfeg")])
 metadata/_custom_type_script = "uid://cyg5giijxf70b"

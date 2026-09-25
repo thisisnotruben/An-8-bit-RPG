@@ -43,6 +43,7 @@ region = Rect2(1360, 208, 6, 8)
 [node name="character" type="CharacterBody2D" unique_id=845622493 groups=["character", "serializable"]]
 collision_layer = 10
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_dmj6x")
 unit = SubResource("Resource_kpnva")
 
@@ -146,7 +147,7 @@ process_callback = 0
 
 [node name="nav_agent" type="NavigationAgent2D" parent="." unique_id=765749331]
 avoidance_enabled = true
-max_speed = 72.0
+max_speed = 32.0
 
 [node name="sight" type="Area2D" parent="." unique_id=923594958]
 collision_layer = 0

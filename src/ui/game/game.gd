@@ -3,7 +3,12 @@ extends Control
 const tabs := {'main': 0, 'license': 1, 'credits': 2,
 'popup': 3, 'dead': 4, 'save_load': 5,}
 
-@export var player: Character = null
+@export var player: Character:
+	set(value):
+		player = value
+		if value:
+			value.died.connect(show_death_screen)
+
 @export_file('*.tscn') var start_level_scene_path := ''
 
 var play_focus_sfx := false
@@ -18,8 +23,6 @@ var hovered_control: Control = null
 
 func _ready():
 	visibility_changed.connect(_on_visibility_changed)
-	if player:
-		player.died.connect(show_death_screen)
 
 func _input(event: InputEvent):
 	if dead:

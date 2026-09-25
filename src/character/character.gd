@@ -90,7 +90,7 @@ func _on_health_changed(current: int, _max: int, old_value: int):
 	behavior.blackboard.set_var(LimboVarLib.HURT, current < old_value)
 
 func _on_sight_body_entered(other_npc: Node2D):
-	if other_npc != self:
+	if other_npc != self and unit.npc:
 		if is_foe(other_npc):
 			aggro(other_npc)
 		elif target:
@@ -161,12 +161,21 @@ func _set_player_input_vars():
 	if Input.get_vector('move_left', 'move_right', 'move_up', 'move_down').length() > 0.0:
 		input_state = 'move'
 	elif Input.is_action_just_pressed('attack'):
-		input_state = 'attack'
+		var mouse_pos := get_global_mouse_position()
+		hit_scan_melee.look_at(mouse_pos)
+		hit_scan_shoot.look_at(mouse_pos)
+		# TODO: will likely have to change this in regards of melee or range
+		if hit_scan_melee.get_collider() or hit_scan_shoot.get_collider():
+			input_state = 'attack'
+		
 	behavior.blackboard.set_var(LimboVarLib.INPUT_STATE, input_state)
 
 func is_foe(_body: Node2D) -> bool:
-	return _body is Character and _body.unit.friendly != unit.friendly \
-	and _body.fsm.state != CharacterStates.Type.DEAD
+	var character := _body as Character
+	return character \
+		and (character.unit.friendly != unit.friendly \
+		or (not character.unit.npc and not unit.friendly)) \
+		and character.fsm.state != CharacterStates.Type.DEAD
 
 func aggro(_body: Node2D) -> bool:
 	if unit.npc and not target and is_foe(_body):

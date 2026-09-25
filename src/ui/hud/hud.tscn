@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://en6rwc615h1w" path="res://resource/texture/texture_icon_scroll.tres" id="4_v4dvs"]
 [ext_resource type="Texture2D" uid="uid://bvnmw61y4i75m" path="res://resource/texture/texture_icon_wizard_staff.tres" id="6_s8lle"]
 [ext_resource type="Texture2D" uid="uid://dqtorkiwoue72" path="res://resource/texture/texture_icon_book_open.tres" id="8_0lyew"]
-[ext_resource type="PackedScene" uid="uid://d3wg72c6hhswn" path="res://src/ui/dialogue/dialogue.tscn" id="9_2406e"]
 [ext_resource type="Texture2D" uid="uid://gjq68tae4qcb" path="res://resource/texture/texture_hud_mana_small.tres" id="9_qtkbr"]
 [ext_resource type="Texture2D" uid="uid://d3oess553edn3" path="res://resource/texture/texture_hud_ability_small.tres" id="9_raafm"]
 [ext_resource type="PackedScene" uid="uid://dhmxl4k6x4iw4" path="res://src/ui/objective_tracker/ojective_tracker.tscn" id="10_5t2k2"]
@@ -147,20 +146,14 @@ layout_mode = 2
 current_tab = 0
 metadata/_tab_index = 1
 
-[node name="dialogue" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=288700162 instance=ExtResource("9_2406e")]
-layout_mode = 2
-metadata/_tab_index = 0
-
 [node name="trainer" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=1919592764 instance=ExtResource("11_4u0hr")]
-visible = false
 layout_mode = 2
 type = 1
-metadata/_tab_index = 1
 
 [node name="merchant" parent="bg_margin/vBox/panel/content_margin/master/npc" unique_id=1616416002 instance=ExtResource("11_sa7i1")]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="exit_margin" type="MarginContainer" parent="bg_margin/vBox/panel" unique_id=1956866233]
 layout_mode = 2
@@ -373,10 +366,6 @@ texture_progress = SubResource("AtlasTexture_g2kha")
 [connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_focused"]
 [connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_entered"]
 [connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/player/ojective_tracker" to="." method="_on_subcontrol_mouse_exited"]
-[connection signal="close_panel" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_inventory_spell_book_pressed"]
-[connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_focused"]
-[connection signal="subcontrol_mouse_entered" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_entered"]
-[connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/npc/dialogue" to="." method="_on_subcontrol_mouse_exited"]
 [connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_focused"]
 [connection signal="subcontrol_mouse_exited" from="bg_margin/vBox/panel/content_margin/master/npc/trainer" to="." method="_on_subcontrol_mouse_exited"]
 [connection signal="subcontrol_focused" from="bg_margin/vBox/panel/content_margin/master/npc/merchant" to="." method="_on_subcontrol_focused"]

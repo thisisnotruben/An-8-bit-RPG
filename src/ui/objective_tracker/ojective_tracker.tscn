@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhmxl4k6x4iw4"]
+[gd_scene format=3 uid="uid://dhmxl4k6x4iw4"]
 
 [ext_resource type="Script" uid="uid://ti3i4mfnkray" path="res://src/ui/objective_tracker/ojective_tracker.gd" id="1_85hut"]
 
-[node name="ojective_tracker" type="Control"]
+[node name="ojective_tracker" type="Control" unique_id=2098693783]
 custom_minimum_size = Vector2(720, 400)
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_85hut")
 
-[node name="tabs" type="TabContainer" parent="."]
+[node name="tabs" type="TabContainer" parent="." unique_id=1481719130]
 custom_minimum_size = Vector2(720, 448)
 layout_mode = 1
 anchors_preset = 11
@@ -30,22 +30,22 @@ mouse_filter = 2
 theme_type_variation = &"tabbar_inverted"
 current_tab = 0
 
-[node name="Active" type="ScrollContainer" parent="tabs"]
+[node name="Active" type="ScrollContainer" parent="tabs" unique_id=1901058552]
 layout_mode = 2
 follow_focus = true
 metadata/_tab_index = 0
 
-[node name="vBox" type="VBoxContainer" parent="tabs/Active"]
+[node name="vBox" type="VBoxContainer" parent="tabs/Active" unique_id=172592546]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="Completed" type="ScrollContainer" parent="tabs"]
+[node name="Finished" type="ScrollContainer" parent="tabs" unique_id=276481225]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="vBox" type="VBoxContainer" parent="tabs/Completed"]
+[node name="vBox" type="VBoxContainer" parent="tabs/Finished" unique_id=1925408043]
 layout_mode = 2
 size_flags_horizontal = 3
 

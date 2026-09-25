@@ -1,11 +1,13 @@
 class_name QuestService extends Node
 
 @export var quests: Array[QuestData] = []
+static var QUESTS: Array[QuestData] = []
 
 func init():
 	# make sure quests are loaded in order
 	quests.sort_custom(func(a: QuestData, b: QuestData):
 			return a.status < b.status)
+	QUESTS = quests
 	
 	for quest: QuestData in quests:
 		if quest.dependent_on_quest \

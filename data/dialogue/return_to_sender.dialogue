@@ -1,17 +1,18 @@
 ~ quest_line
-if State.quest_status == "not_started":
-	Town Merchant: I got a shipment for the Postmaster in Sentintal Lookout.
-	Town Merchant: Brave adventurer, please deliever my goods! I'm but a simple merchant!
-	- Accept
-		Town Merchant: Thank you kind sir.
-	- Decline
-		Town Merchant: But who will deliver my shipment!?
-elif State.quest_status == "active":
-	Town Merchant: Have you delievered my shipment kind sir!?
-elif State.quest_status == "completed":
-	$> State.quest_status = "finished"
-	Postmaster: The Town Merchant from Summerville gave this to you?
-	Postmaster: Now I can finally give these to the Tower Mage!
-elif State.quest_status == "finished":
-	Postmaster: Thank you brave adventurer, you have no idea how long we were waiting on that.
+match QuestState.status
+	when "not_started":
+		Town Merchant: I got a shipment for the Postmaster in Sentintal Lookout.
+		Town Merchant: Brave adventurer, please deliever my goods! I'm but a simple merchant!
+		- Accept
+			Town Merchant: Thank you kind sir.
+		- Decline
+			Town Merchant: But who will deliver my shipment!?
+	when "active":
+		Town Merchant: Have you delievered my shipment kind sir!?
+	when "completed":
+		$> QuestState.status = "finished"
+		Postmaster: The Town Merchant from Summerville gave this to you?
+		Postmaster: Now I can finally give these to the Tower Mage!
+	when "finished":
+		Postmaster: Thank you brave adventurer, you have no idea how long we were waiting on that.
 => END 

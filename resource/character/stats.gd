@@ -34,29 +34,30 @@ var target: Character
 
 func init(_target: Node2D):
 	target = _target
-	if _target is Character:
-		var signal_map: Dictionary[StatModifer, Callable] = {
-			move_speed: _on_speed_changed,
-			health_max: _on_health_max_changed,
-			health_regen_amt: _on_health_regen_changed,
-			mana_max: _on_mana_max_changed,
-			mana_regen_amt: _on_mana_regen_changed,
-			ability_max: _on_ability_max_changed,
-			ability_regen_amt: _on_ability_regen_changed,
-		}
-
-		if not Engine.is_editor_hint():
+	
+	if not Engine.is_editor_hint():
+		if _target is Character:
+			var signal_map: Dictionary[StatModifer, Callable] = {
+				move_speed: _on_speed_changed,
+				health_max: _on_health_max_changed,
+				health_regen_amt: _on_health_regen_changed,
+				mana_max: _on_mana_max_changed,
+				mana_regen_amt: _on_mana_regen_changed,
+				ability_max: _on_ability_max_changed,
+				ability_regen_amt: _on_ability_regen_changed,
+			}
+			
 			signal_map.merge({
 				health_regen_sec: _on_health_regen_sec_changed,
 				mana_regen_sec: _on_mana_regen_sec_changed,
 				ability_regen_sec: _on_ability_regen_sec_changed,
 			})
-
-		for stat in signal_map:
-			if not stat.on_current_changed.is_connected(signal_map[stat]):
-				stat.on_current_changed.connect(signal_map[stat])
-			stat.calculate()
-
+			
+			for stat in signal_map:
+				if not stat.on_current_changed.is_connected(signal_map[stat]):
+					stat.on_current_changed.connect(signal_map[stat])
+				stat.calculate()
+				
 		target.health.current = int(health_max.current)
 		target.mana.current = int(mana_max.current)
 		target.ability.current = int(ability_max.current)

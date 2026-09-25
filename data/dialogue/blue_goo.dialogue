@@ -1,23 +1,24 @@
 ~ quest_line
-if State.quest_status == "not_started":
-	Chef Mignon: I got me an insatiable hunger for the blue!
-	Chef Mignon: I can make them into all sorts of recipies that are just delicious.
-	Chef Mignon: So what are ya doing? Bring some of those jumping blue jellies down south of town.
-	- Accept
-		$> State.quest_status = "active"
-		Chef Mignon: Now get me some jelly!
-	- Decline
-		Chef Mignon: You don't what good food is!
-elif State.quest_status == "active":
-	Chef Mignon: Where is my jelly!?
-elif State.quest_status == "completed":
-	$> State.quest_status = "finished"
-	Chef Mignon: My blue jellies!
-	Chef Mignon: Let me cook this for you in quicky.
-	Chef Mignon: Here you go, a delicious bowl of blue!
-elif State.quest_status == "finished":
-	- Talk
-		Chef Mignon: Come back for some more?
-	- Buy
-		Chef Mignon: I got the just what you need.
+match QuestState.status
+	when "not_started":
+		Chef Mignon: I got me an insatiable hunger for the blue!
+		Chef Mignon: I can make them into all sorts of recipies that are just delicious.
+		Chef Mignon: So what are ya doing? Bring some of those jumping blue jellies down south of town.
+		- Accept
+			$> QuestState.status = "active"
+			Chef Mignon: Now get me some jelly!
+		- Decline
+			Chef Mignon: You don't what good food is!
+	when "active":
+		Chef Mignon: Where is my jelly!?
+	when "completed":
+		$> QuestState.status = "finished"
+		Chef Mignon: My blue jellies!
+		Chef Mignon: Let me cook this for you in quicky.
+		Chef Mignon: Here you go, a delicious bowl of blue!
+	when "finished":
+		- Talk
+			Chef Mignon: Come back for some more?
+		- Buy
+			Chef Mignon: I got the just what you need.
 => END

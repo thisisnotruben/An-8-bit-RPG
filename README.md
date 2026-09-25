@@ -34,7 +34,6 @@ TODO
 		- Minifantasy_Spell_Effects_II_v1.0
 
 ### TODO
-
 - Iterate through characters
 	- apply sfx
 	- make sure animations are correct

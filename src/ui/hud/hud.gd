@@ -3,7 +3,21 @@ class_name HUD extends Control
 var play_focus_sfx := false
 var hovered_control: Control = null
 
-@export var player: Character = null
+@export var player: Character:
+	set(value):
+		player = value
+		if value:
+			value.health.changed.connect(_on_set_player_health)
+			value.mana.changed.connect(_on_set_player_mana)
+			value.ability.changed.connect(_on_set_player_ability)
+			value.inventory_added.connect(inventory.add_item)
+			value.spell_added.connect(spellbook.add_item)
+			value.is_inventory_full = inventory.is_full
+			value.is_spellbook_full = spellbook.is_full
+			inventory.player = value
+			spellbook.player = value
+			trainer.player = value
+		
 @export var target: Character = null : set = _on_set_target
 
 @export var inventory_icon: Texture = null
@@ -50,25 +64,13 @@ func _ready():
 	for i in tab_order.size():
 		tab_player.set_tab_icon(i, tab_order[i])
 		tab_player.set_tab_title(i, '')
-	tab_order = [dialogue_icon, trainer_icon, merchant_icon]
+	tab_order = [trainer_icon, merchant_icon]
 	for i in tab_order.size():
 		tab_npc.set_tab_icon(i, tab_order[i])
 		tab_npc.set_tab_title(i, '')
 
 	target_health_node.visibility_changed.connect(func(): \
 		target_status_bar.visible = target_health_node.visible)
-
-	if player:
-		player.health.changed.connect(_on_set_player_health)
-		player.mana.changed.connect(_on_set_player_mana)
-		player.ability.changed.connect(_on_set_player_ability)
-		player.inventory_added.connect(inventory.add_item)
-		player.spell_added.connect(spellbook.add_item)
-		player.is_inventory_full = inventory.is_full
-		player.is_spellbook_full = spellbook.is_full
-		inventory.player = player
-		spellbook.player = player
-		trainer.player = player
 		
 	DialogueManager.dialogue_started.connect(func(_r): dialogue_active = true)
 	DialogueManager.dialogue_ended.connect(func(_r): dialogue_active = false)
@@ -112,9 +114,6 @@ func _on_set_target(value: Character):
 					CharacterBuilder.CharaterSideRoles.TRAINER:
 						target_slot.item_icon = trainer_icon
 						npc_view = 'trainer'
-					CharacterBuilder.CharaterSideRoles.DIALOGUE:
-						target_slot.item_icon = dialogue_icon
-						npc_view = 'dialogue'
 				if not npc_view.is_empty():
 					tab_npc.current_tab = tabs_npc[npc_view]
 			else:
