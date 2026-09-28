@@ -15,20 +15,18 @@ var _status_rep := {
 
 var status: String:
 	set(value):
-		var _status := QuestData.QuestStatus.NOT_STARTED
 		match value:
 			'finished':
-				_status = QuestData.QuestStatus.FINISHED
+				focused_quest.status = QuestData.QuestStatus.FINISHED
 				made_finished.emit(focused_quest)
 			'active':
-				_status = QuestData.QuestStatus.ACTIVE
+				focused_quest.status = QuestData.QuestStatus.ACTIVE
 				made_active.emit(focused_quest)
 			'completed':
-				_status = QuestData.QuestStatus.COMPLETED
+				focused_quest.status = QuestData.QuestStatus.COMPLETED
 			_:
 				printerr('Wrong value of [%s] when setting quest status in dialogue' % value)
 				
 		status = value
-		focused_quest.status = _status
 	get:
 		return _status_rep[focused_quest.status]

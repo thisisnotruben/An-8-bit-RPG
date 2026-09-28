@@ -14,8 +14,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_85hut")
 
-[node name="tabs" type="TabContainer" parent="." unique_id=1481719130]
-custom_minimum_size = Vector2(720, 448)
+[node name="tabs" type="TabContainer" parent="." unique_id=511189963]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+tabs_visible = false
+
+[node name="active" type="ScrollContainer" parent="tabs" unique_id=601774577]
+layout_mode = 2
+follow_focus = true
+metadata/_tab_index = 0
+
+[node name="vBox" type="VBoxContainer" parent="tabs/active" unique_id=555700858]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="finished" type="ScrollContainer" parent="tabs" unique_id=1699824067]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="vBox" type="VBoxContainer" parent="tabs/finished" unique_id=750894229]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="tab_bttns" type="TabContainer" parent="." unique_id=837277244]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -23,30 +51,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -720.0
 offset_top = -55.0
-offset_bottom = -7.0
+offset_right = -517.0
+offset_bottom = -400.0
 grow_horizontal = 0
 grow_vertical = 2
-mouse_filter = 2
 theme_type_variation = &"tabbar_inverted"
 current_tab = 0
+tab_1/title = "Finished"
 
-[node name="Active" type="ScrollContainer" parent="tabs" unique_id=1901058552]
+[node name="Active" type="Control" parent="tab_bttns" unique_id=163427157]
 layout_mode = 2
-follow_focus = true
 metadata/_tab_index = 0
 
-[node name="vBox" type="VBoxContainer" parent="tabs/Active" unique_id=172592546]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 4
-
-[node name="Finished" type="ScrollContainer" parent="tabs" unique_id=276481225]
+[node name="Finsihed" type="Control" parent="tab_bttns" unique_id=1085949804]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="vBox" type="VBoxContainer" parent="tabs/Finished" unique_id=1925408043]
-layout_mode = 2
-size_flags_horizontal = 3
+metadata/_tab_name = "Finished"
 
 [connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="tab_clicked" from="tab_bttns" to="." method="_on_tabs_tab_clicked"]
