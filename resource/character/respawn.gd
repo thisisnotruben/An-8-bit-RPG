@@ -1,3 +1,4 @@
+@tool
 class_name CharacterRespawn extends Resource
 
 @export var max_sec := 60.0

@@ -43,7 +43,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 
 
 func init(character: Character):
-	if not character.is_node_ready():
+	if not character.is_node_ready() and not Engine.is_editor_hint():
 		await character.ready
 	
 	hit_flags.init(character, friendly, npc)

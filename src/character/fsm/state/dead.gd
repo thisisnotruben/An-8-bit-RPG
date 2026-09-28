@@ -17,9 +17,14 @@ func enter():
 func exit():
 	super.exit()
 	character.body.set_deferred('disabled', false)
+	character.health.reset()
+	character.mana.reset()
+	character.ability.reset()
 	character.health_regen.start()
 	character.mana_regen.start()
 	character.ability_regen.start()
+	character.target = null
+	apply_animation(Vector2.DOWN)
 
 func _on_animation_tree_animation_finished(_anim_name: StringName):
 	if not active or not character.unit.npc:
@@ -33,13 +38,12 @@ func _on_animation_tree_animation_finished(_anim_name: StringName):
 		character.add_sibling(item)
 		item.global_position = character.global_position
 		
-	get_tree().create_tween() \
-		.tween_property(character, 'modulate', Color.TRANSPARENT, 1.0)
+	await get_tree().create_timer(0.5).timeout
+	get_tree().create_tween().tween_property(character, 'modulate', Color.TRANSPARENT, 1.0)
 	get_tree().create_timer(character.unit.respawn.get_respawn_time()) \
 		.timeout.connect(_on_respawn)
 
 func _on_respawn():
-	get_tree().create_tween() \
-		.tween_property(character, 'modulate', Color.WHITE, 1.0)
 	character.global_position = character.unit.respawn.pos
+	get_tree().create_tween().tween_property(character, 'modulate', Color.WHITE, 1.0)
 	change_state.emit(CharacterStates.Type.IDLE)

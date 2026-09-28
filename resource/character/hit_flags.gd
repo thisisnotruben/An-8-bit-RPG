@@ -1,3 +1,4 @@
+@tool
 class_name HitFlags extends Resource
 
 const WORLD_LAYER := 0b00000000_00000000_00000000_00000001

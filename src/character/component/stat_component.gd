@@ -32,3 +32,7 @@ func modify(attack: ModifierAttack, aggressor: Character = null):
 		current = clampi(current + amount, 0, max_value)
 		if prev_current != current:
 			changed.emit(current, max_value, prev_current)
+
+func reset():
+	current = max_value
+	

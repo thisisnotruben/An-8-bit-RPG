@@ -8,7 +8,7 @@ func _set_state(_state_type):
 				return false
 			CharacterState.SwitchType.AT_END \
 			when _curr['state'].switch_type_status == CharacterState.SwitchTypeStatus.ACTIVE:
-					return false
+				return false
 	super._set_state(_state_type)
 	return true
 

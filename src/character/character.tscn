@@ -2,20 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dhwxukmxuqfm8" path="res://src/character/character.gd" id="1_dmj6x"]
 [ext_resource type="Script" uid="uid://bei1wwsixdmk4" path="res://src/character/fsm/fsm_character.gd" id="2_6mb4q"]
-[ext_resource type="Resource" uid="uid://dvkkiqw5dqasq" path="res://resource/character/default/default_gold.tres" id="3_4feda"]
+[ext_resource type="Resource" uid="uid://cvftjkr3g7wkx" path="res://data/character/slime_blue_small.tres" id="2_giy1u"]
 [ext_resource type="Script" uid="uid://bvbgyajrvqql4" path="res://src/character/fsm/state/idle.gd" id="3_k8eue"]
 [ext_resource type="Script" uid="uid://c4fkfl7f2uyuk" path="res://src/character/fsm/state/move.gd" id="4_m366t"]
 [ext_resource type="Script" uid="uid://ccerxkr4dln24" path="res://src/character/fsm/state/dead.gd" id="4_tntuy"]
-[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="4_y5dg0"]
 [ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="5_j7xr0"]
 [ext_resource type="Script" uid="uid://brsaqvqhir8tp" path="res://src/character/fsm/state/melee.gd" id="5_tntuy"]
 [ext_resource type="Script" uid="uid://cirvakft87x8y" path="res://src/character/fsm/state/shoot.gd" id="6_56uj1"]
-[ext_resource type="Resource" uid="uid://bsvw0x3p7x1eq" path="res://resource/character/default/default_respawn.tres" id="7_7aoyf"]
-[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="7_gn7y0"]
-[ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="8_7aoyf"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
-[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
 [ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
+[ext_resource type="AnimationLibrary" uid="uid://5asqsn2vhdup" path="res://resource/character/animation/Blue_Slime.tres" id="15_4feda"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://da2emhbir3hod" path="res://resource/character/animation_state_machine/Blue_Slime_state_machine.tres" id="16_y5dg0"]
+[ext_resource type="Texture2D" uid="uid://bhfp0gs5iog6d" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue _Slime/BlueSlimeIdle.png" id="17_j7xr0"]
 [ext_resource type="PackedScene" uid="uid://c106mtok05tvd" path="res://src/character/component/threat_service.tscn" id="19_j7xr0"]
 [ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="22_y5dg0"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="23_j7xr0"]
@@ -23,11 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://cscse0mnpcree" path="res://src/character/component/stat_component.tscn" id="25_880r3"]
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="96_dnpej"]
-[ext_resource type="Texture2D" uid="uid://cq43xk55y0ftj" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Monsters/Centaur/CentaurIdle.png" id="97_32hfe"]
-
-[sub_resource type="Resource" id="Resource_kpnva"]
-script = ExtResource("7_gn7y0")
-metadata/_custom_type_script = "uid://osxc61u0jjco"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_248u0"]
 
@@ -46,7 +39,7 @@ collision_layer = 10
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_dmj6x")
-unit = SubResource("Resource_kpnva")
+unit = ExtResource("2_giy1u")
 
 [node name="fsm" type="Node" parent="." unique_id=721548796]
 script = ExtResource("2_6mb4q")
@@ -104,17 +97,23 @@ regen_amount = 1.0
 [node name="threat_service" parent="." unique_id=2130039193 instance=ExtResource("19_j7xr0")]
 
 [node name="anim_player" type="AnimationPlayer" parent="." unique_id=1820659917]
+libraries/Blue_Slime = ExtResource("15_4feda")
 
 [node name="anim_tree" type="AnimationTree" parent="." unique_id=634827393]
+tree_root = ExtResource("16_y5dg0")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../anim_player")
+parameters/attack/blend_position = Vector2(0, 0)
+parameters/dmg/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="img" type="Sprite2D" parent="." unique_id=1054139227]
-texture = ExtResource("97_32hfe")
+texture = ExtResource("17_j7xr0")
 offset = Vector2(0, -3)
-hframes = 16
+hframes = 8
 vframes = 4
-frame = 11
+frame = 2
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=810498800]
 position = Vector2(0, -4)

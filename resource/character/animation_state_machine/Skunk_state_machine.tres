@@ -1,126 +1,142 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=27 format=3 uid="uid://cvvqr4jacbflf"]
+[gd_resource type="AnimationNodeStateMachine" format=3]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jnd6n"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ifxyu"]
 animation = &"Skunk/die"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enkkr"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_chcsc"]
 animation = &"Skunk/dmg_down_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k6f8h"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4ihf"]
 animation = &"Skunk/dmg_down_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0f3dm"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xnc5n"]
 animation = &"Skunk/dmg_right_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqow7"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8wa27"]
 animation = &"Skunk/dmg_left_up"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qq46b"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_enkkr")
-blend_point_0/pos = Vector2(0.1, 0.2)
-blend_point_1/node = SubResource("AnimationNodeAnimation_k6f8h")
-blend_point_1/pos = Vector2(-0.2, 0.2)
-blend_point_2/node = SubResource("AnimationNodeAnimation_0f3dm")
-blend_point_2/pos = Vector2(0.1, -0.2)
-blend_point_3/node = SubResource("AnimationNodeAnimation_vqow7")
-blend_point_3/pos = Vector2(-0.2, -0.2)
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2ryc5"]
 blend_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_chcsc")
+blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_s4ihf")
+blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_xnc5n")
+blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_8wa27")
+blend_point_3/pos = Vector2(-0.2, -0.2)
+blend_point_3/name = &"3"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0mkah"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x3m7y"]
 animation = &"Skunk/idle_down_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lvxt8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q6b47"]
 animation = &"Skunk/idle_down_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_slndt"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_no6ri"]
 animation = &"Skunk/idle_right_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bww4t"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbsyj"]
 animation = &"Skunk/idle_left_up"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t8ipq"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_0mkah")
-blend_point_0/pos = Vector2(0.1, 0.2)
-blend_point_1/node = SubResource("AnimationNodeAnimation_lvxt8")
-blend_point_1/pos = Vector2(-0.2, 0.2)
-blend_point_2/node = SubResource("AnimationNodeAnimation_slndt")
-blend_point_2/pos = Vector2(0.1, -0.2)
-blend_point_3/node = SubResource("AnimationNodeAnimation_bww4t")
-blend_point_3/pos = Vector2(-0.2, -0.2)
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_842ip"]
 blend_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_x3m7y")
+blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_q6b47")
+blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_no6ri")
+blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_wbsyj")
+blend_point_3/pos = Vector2(-0.2, -0.2)
+blend_point_3/name = &"3"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g575q"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mfcyo"]
 animation = &"Skunk/walk_down_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_til2a"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y5d3k"]
 animation = &"Skunk/walk_down_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_titpn"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iajvy"]
 animation = &"Skunk/walk_right_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hbjk5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kbiml"]
 animation = &"Skunk/walk_left_up"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fxs2e"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_g575q")
-blend_point_0/pos = Vector2(0.1, 0.2)
-blend_point_1/node = SubResource("AnimationNodeAnimation_til2a")
-blend_point_1/pos = Vector2(-0.2, 0.2)
-blend_point_2/node = SubResource("AnimationNodeAnimation_titpn")
-blend_point_2/pos = Vector2(0.1, -0.2)
-blend_point_3/node = SubResource("AnimationNodeAnimation_hbjk5")
-blend_point_3/pos = Vector2(-0.2, -0.2)
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_u2hlr"]
 blend_mode = 1
+blend_point_0/node = SubResource("AnimationNodeAnimation_mfcyo")
+blend_point_0/pos = Vector2(0.1, 0.2)
+blend_point_0/name = &"0"
+blend_point_1/node = SubResource("AnimationNodeAnimation_y5d3k")
+blend_point_1/pos = Vector2(-0.2, 0.2)
+blend_point_1/name = &"1"
+blend_point_2/node = SubResource("AnimationNodeAnimation_iajvy")
+blend_point_2/pos = Vector2(0.1, -0.2)
+blend_point_2/name = &"2"
+blend_point_3/node = SubResource("AnimationNodeAnimation_kbiml")
+blend_point_3/pos = Vector2(-0.2, -0.2)
+blend_point_3/name = &"3"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fkwx8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4puvo"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_raxyi"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuc0n"]
+advance_mode = 2
+advance_expression = "fsm.state == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kkhy"]
 switch_mode = 2
 advance_mode = 2
 advance_expression = "fsm.state == 0"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r1lns"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vpuex"]
 switch_mode = 2
 advance_mode = 2
 advance_expression = "fsm.state == 1"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gs0ev"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_50xfc"]
 switch_mode = 2
 advance_mode = 2
 advance_expression = "fsm.state == 4"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ouf86"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_72i7w"]
 advance_mode = 2
 advance_expression = "fsm.state == 1"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0ics"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tfmvy"]
 advance_mode = 2
 advance_expression = "fsm.state == 4"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yhrwq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63vt4"]
 advance_mode = 2
 advance_expression = "fsm.state == 6"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wgon4"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rsb6s"]
 advance_mode = 2
 advance_expression = "fsm.state == 0"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r6dfp"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_imsys"]
 advance_mode = 2
 advance_expression = "fsm.state == 4"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qejm6"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wp685"]
 advance_mode = 2
 advance_expression = "fsm.state == 6"
 
 [resource]
-states/die/node = SubResource("AnimationNodeAnimation_jnd6n")
+states/die/node = SubResource("AnimationNodeAnimation_ifxyu")
 states/die/position = Vector2(384, 192)
-states/dmg/node = SubResource("AnimationNodeBlendSpace2D_qq46b")
+states/dmg/node = SubResource("AnimationNodeBlendSpace2D_2ryc5")
 states/dmg/position = Vector2(384, 256)
-states/idle/node = SubResource("AnimationNodeBlendSpace2D_t8ipq")
+states/idle/node = SubResource("AnimationNodeBlendSpace2D_842ip")
 states/idle/position = Vector2(384, 320)
-states/walk/node = SubResource("AnimationNodeBlendSpace2D_fxs2e")
+states/walk/node = SubResource("AnimationNodeBlendSpace2D_u2hlr")
 states/walk/position = Vector2(384, 384)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_fkwx8"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_raxyi"), "dmg", "walk", SubResource("AnimationNodeStateMachineTransition_r1lns"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_gs0ev"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ouf86"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_k0ics"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_yhrwq"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_wgon4"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_r6dfp"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_qejm6")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4puvo"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_tuc0n"), "dmg", "idle", SubResource("AnimationNodeStateMachineTransition_0kkhy"), "dmg", "walk", SubResource("AnimationNodeStateMachineTransition_vpuex"), "dmg", "die", SubResource("AnimationNodeStateMachineTransition_50xfc"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_72i7w"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_tfmvy"), "idle", "dmg", SubResource("AnimationNodeStateMachineTransition_63vt4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_rsb6s"), "walk", "die", SubResource("AnimationNodeStateMachineTransition_imsys"), "walk", "dmg", SubResource("AnimationNodeStateMachineTransition_wp685")]

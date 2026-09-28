@@ -4,22 +4,17 @@
 [ext_resource type="Resource" uid="uid://c7k8qqkitf3c1" path="res://data/character/slime_blue_big.tres" id="2_j3hik"]
 [ext_resource type="AnimationLibrary" uid="uid://ch8d6euv6j324" path="res://resource/character/animation/Blue_Mother_Slime.tres" id="3_s3k8o"]
 [ext_resource type="Texture2D" uid="uid://c8wnsee3xng6n" path="res://asset/img/Minifantasy_Creatures_v3.2_Commercial_Version/Minifantasy_Creatures_Assets/Slimes/Blue_Mother_Slime/BlueMotherSlimeIdle.png" id="4_j3hik"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://bn2amqnfk5bon" path="res://resource/character/animation_state_machine/Blue_Mother_Slime_state_machine.tres" id="4_qpgch"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dj2t27unv3mxu" path="res://resource/character/animation_state_machine/Blue_Mother_Slime_state_machine.tres" id="4_qpgch"]
 
 [node name="Blue_Mother_Slime" unique_id=313345853 instance=ExtResource("1_pbift")]
 unit = ExtResource("2_j3hik")
 
-[node name="anim_player" parent="." index="9" unique_id=1820659917]
+[node name="anim_player" parent="." index="10" unique_id=1820659917]
 libraries/Blue_Mother_Slime = ExtResource("3_s3k8o")
 
-[node name="anim_tree" parent="." index="10" unique_id=634827393]
+[node name="anim_tree" parent="." index="11" unique_id=634827393]
 tree_root = ExtResource("4_qpgch")
-parameters/attack/blend_position = Vector2(0, 0)
-parameters/dmg/blend_position = Vector2(0, 0)
-parameters/idle/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="img" parent="." index="11" unique_id=1054139227]
+[node name="img" parent="." index="12" unique_id=1054139227]
 texture = ExtResource("4_j3hik")
-hframes = 8
-frame = 6
+frame = 1

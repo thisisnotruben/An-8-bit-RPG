@@ -15,3 +15,11 @@ var blackboard := {}
 func init(args := {}) -> IState:
 	character = args['character']
 	return self
+
+func apply_animation(input_dir: Vector2):
+	if input_dir.length() > 0.0:
+		var a_t := 'parameters/%s/blend_position'
+		var anim_direction := input_dir.normalized()
+		['dmg', 'idle', 'walk', 'attack', 'idle_start', 'hurt'].filter(func(s): \
+			return character.anim_tree.get(a_t % s) != null) \
+			.map(func(s): character.anim_tree[a_t % s] = anim_direction)

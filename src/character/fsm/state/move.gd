@@ -68,14 +68,6 @@ func player_move(delta: float):
 	apply_animation(input_dir)
 	direction = Vector2.ZERO
 
-func apply_animation(input_dir: Vector2):
-	if input_dir.length() > 0.0:
-		var a_t := 'parameters/%s/blend_position'
-		var anim_direction := input_dir.normalized()
-		['attack', 'idle', 'idle_start', 'walk', 'hurt'].filter(func(s): \
-			return character.anim_tree.get(a_t % s) != null) \
-			.map(func(s): character.anim_tree[a_t % s] = anim_direction)
-
 func play_snd_move():
 	if active and not character.unit.snd_move.is_empty():
 		snd_move.stream = character.unit.snd_move.pick_random()
