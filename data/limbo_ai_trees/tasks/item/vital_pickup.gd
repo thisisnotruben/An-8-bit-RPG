@@ -14,7 +14,7 @@ func _tick(_delta: float) -> Status:
 	if not is_instance_valid(character):
 		return FAILURE
 
-	var item: ItemVital = ItemDB.get_item( \
+	var item: ItemVital = ItemService.get_item( \
 		blackboard.get_var(LimboVarLib.ITEM_TYPE, BaseItem.Type.INVALID))
 
 	match item.category:

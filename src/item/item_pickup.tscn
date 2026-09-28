@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://q6j1adnve43k" path="res://src/item/item_pickup.gd" id="1_bel5g"]
 [ext_resource type="BehaviorTree" uid="uid://dw1s7i5ek6pwl" path="res://data/limbo_ai_trees/behavior_item_pickup.tres" id="2_dcigh"]
+[ext_resource type="Texture2D" uid="uid://6i1tg1n085d3" path="res://asset/img/exclusives/Icons/8x8px/Creature_Icons/CreatureIcons.png" id="3_dwyyh"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_bel5g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdr1m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etv43"]
+atlas = ExtResource("3_dwyyh")
+region = Rect2(224, 24, 8, 8)
 
 [node name="item_pickup" type="Node2D" unique_id=909160796]
 script = ExtResource("1_bel5g")
@@ -26,6 +31,9 @@ collision_mask = 16
 
 [node name="coll" type="CollisionShape2D" parent="area" unique_id=866466967]
 shape = SubResource("CircleShape2D_bdr1m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=67834161]
+texture = SubResource("AtlasTexture_etv43")
 
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]

@@ -75,12 +75,15 @@ func _ready():
 	DialogueManager.dialogue_started.connect(func(_r): dialogue_active = true)
 	DialogueManager.dialogue_ended.connect(func(_r): dialogue_active = false)
 
+func _on_target_died(_character: Character):
+	_on_set_target(null)
+
 func _on_set_target(value: Character):
 	if target:
 		target.health.changed.disconnect(_on_set_target_health)
 		target.mana.changed.disconnect(_on_set_target_mana)
 		target.ability.changed.disconnect(_on_set_target_ability)
-		target.died.disconnect(_on_set_target)
+		target.died.disconnect(_on_target_died)
 	if target == value or value == null \
 	or value.fsm.state == CharacterStates.Type.DEAD:
 		target = null
@@ -114,6 +117,8 @@ func _on_set_target(value: Character):
 					CharacterBuilder.CharaterSideRoles.TRAINER:
 						target_slot.item_icon = trainer_icon
 						npc_view = 'trainer'
+					CharacterBuilder.CharaterSideRoles.DIALOGUE:
+						target_slot.item_icon = dialogue_icon
 				if not npc_view.is_empty():
 					tab_npc.current_tab = tabs_npc[npc_view]
 			else:
@@ -141,7 +146,7 @@ func _on_set_target(value: Character):
 		value.health.changed.connect(_on_set_target_health)
 		value.mana.changed.connect(_on_set_target_mana)
 		value.ability.changed.connect(_on_set_target_ability)
-		value.died.connect(_on_set_target.bind(null))
+		value.died.connect(_on_target_died)
 
 func _on_set_target_health(value: int, value_max: int, _old: int):
 	_update_status_ui(target_health, value, value_max)

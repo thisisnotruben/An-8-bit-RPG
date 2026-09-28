@@ -3,7 +3,7 @@ extends Node
 signal made_active(quest: QuestData)
 signal made_finished(quest: QuestData)
 
-# placeholder for 'orc_caverns.tres' for testing
+## placeholder for 'orc_caverns.tres' for testing
 var focused_quest: QuestData = preload('uid://btdnqwwx1am2k')
 
 var _status_rep := {

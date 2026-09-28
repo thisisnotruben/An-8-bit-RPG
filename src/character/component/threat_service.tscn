@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c106mtok05tvd"]
+
+[ext_resource type="Script" uid="uid://c818m0mbxwn0c" path="res://src/character/component/threat_service.gd" id="1_ro6vi"]
+
+[node name="threat_service" type="Node" unique_id=2130039193]
+script = ExtResource("1_ro6vi")
+
+[node name="timer" type="Timer" parent="." unique_id=287106852]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

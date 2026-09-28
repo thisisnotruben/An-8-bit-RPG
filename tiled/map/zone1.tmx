@@ -4440,7 +4440,15 @@
    <object id="1333" gid="19147" x="1471.27" y="184.364" width="32" height="32"/>
    <object id="1335" gid="19148" x="1312.18" y="349.091" width="32" height="32"/>
    <object id="1336" gid="19162" x="1345.82" y="232.909" width="32" height="32"/>
-   <object id="1339" gid="19176" x="1498.55" y="425.273" width="32" height="32"/>
+   <object id="1339" gid="19176" x="1498.55" y="425.273" width="32" height="32">
+    <properties>
+     <property name="unit" type="class" propertytype="Character">
+      <properties>
+       <property name="character_name" value="Chef Mignon"/>
+      </properties>
+     </property>
+    </properties>
+   </object>
    <object id="1349" gid="19236" x="1458.54" y="290" width="32" height="32"/>
    <object id="1350" gid="19236" x="1418.18" y="205.818" width="32" height="32"/>
    <object id="1351" gid="19236" x="1243.25" y="202.5" width="32" height="32"/>
@@ -4517,7 +4525,13 @@
    <object id="1556" name="orc_boss" gid="19222" x="719.25" y="120.25" width="32" height="32"/>
    <object id="1558" gid="19241" x="1356.36" y="252.925" width="32" height="32">
     <properties>
-     <property name="npc" type="bool" value="false"/>
+     <property name="unit" type="class" propertytype="Character">
+      <properties>
+       <property name="health_max" type="int" value="40"/>
+       <property name="melee_damage" type="int" value="10"/>
+       <property name="npc" type="bool" value="false"/>
+      </properties>
+     </property>
     </properties>
    </object>
   </objectgroup>

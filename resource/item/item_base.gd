@@ -16,6 +16,7 @@ enum Type {
 	STUN,
 	FIREBALL,
 	CHARGE,
+	BLUE_GOO,
 }
 
 @export var icon: Texture

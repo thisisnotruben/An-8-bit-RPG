@@ -1,110 +1,117 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1o2wwaabw03w"]
+[gd_scene format=3 uid="uid://b1o2wwaabw03w"]
 
 [ext_resource type="Script" uid="uid://31o3de6habg0" path="res://src/ui/hud/hud_item_list.gd" id="1_ibift"]
 [ext_resource type="PackedScene" uid="uid://binehtk3vq6gd" path="res://src/ui/hud/hud_button.tscn" id="1_pqwcr"]
 [ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="2_l26dj"]
 
-[node name="interact_item_list" type="GridContainer"]
+[node name="interact_item_list" type="GridContainer" unique_id=2109607535]
 columns = 2
 script = ExtResource("1_ibift")
 item_scene = ExtResource("2_l26dj")
 metadata/_tab_index = 0
 
-[node name="snd_nav" type="AudioStreamPlayer" parent="."]
+[node name="snd_nav" type="AudioStreamPlayer" parent="." unique_id=2139626162]
 bus = &"ui"
 
-[node name="snd_drop" type="AudioStreamPlayer" parent="."]
+[node name="snd_drop" type="AudioStreamPlayer" parent="." unique_id=1250899901]
 bus = &"ui"
 
-[node name="snd_learn" type="AudioStreamPlayer" parent="."]
+[node name="snd_learn" type="AudioStreamPlayer" parent="." unique_id=471189459]
 bus = &"ui"
 
-[node name="vBox" type="VBoxContainer" parent="."]
+[node name="vBox" type="VBoxContainer" parent="." unique_id=892146225]
 layout_mode = 2
 
-[node name="label" type="Label" parent="vBox"]
+[node name="label" type="Label" parent="vBox" unique_id=983089719]
 layout_mode = 2
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="grid" type="GridContainer" parent="vBox"]
+[node name="grid" type="GridContainer" parent="vBox" unique_id=510423826]
 layout_mode = 2
 columns = 4
 
-[node name="slot1" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot1" parent="vBox/grid" unique_id=310905524 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot2" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot2" parent="vBox/grid" unique_id=888169609 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot3" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot3" parent="vBox/grid" unique_id=1362215156 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot4" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot4" parent="vBox/grid" unique_id=42371073 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot5" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot5" parent="vBox/grid" unique_id=1197051732 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot6" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot6" parent="vBox/grid" unique_id=403347975 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot7" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot7" parent="vBox/grid" unique_id=2126165042 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot8" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot8" parent="vBox/grid" unique_id=748067877 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot9" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot9" parent="vBox/grid" unique_id=1363779493 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot10" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot10" parent="vBox/grid" unique_id=186809820 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot11" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot11" parent="vBox/grid" unique_id=440917307 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot12" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot12" parent="vBox/grid" unique_id=2022918707 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot13" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot13" parent="vBox/grid" unique_id=402569616 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot14" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot14" parent="vBox/grid" unique_id=182147366 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot15" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot15" parent="vBox/grid" unique_id=1952822715 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="slot16" parent="vBox/grid" instance=ExtResource("1_pqwcr")]
+[node name="slot16" parent="vBox/grid" unique_id=2036886868 instance=ExtResource("1_pqwcr")]
 layout_mode = 2
 
-[node name="vBox_item_detail" type="VBoxContainer" parent="."]
+[node name="vBox_item_detail" type="VBoxContainer" parent="." unique_id=1665041257]
 layout_mode = 2
 
-[node name="header" type="HBoxContainer" parent="vBox_item_detail"]
+[node name="header" type="HBoxContainer" parent="vBox_item_detail" unique_id=1446792727]
 layout_mode = 2
 
-[node name="icon" type="TextureRect" parent="vBox_item_detail/header"]
+[node name="margin_icon" type="MarginContainer" parent="vBox_item_detail/header" unique_id=1029547691]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-stretch_mode = 5
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="name" type="Label" parent="vBox_item_detail/header"]
+[node name="icon" type="TextureRect" parent="vBox_item_detail/header/margin_icon" unique_id=2109708285]
+layout_mode = 2
+
+[node name="name" type="Label" parent="vBox_item_detail/header" unique_id=5557855]
 layout_mode = 2
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="description" type="Label" parent="vBox_item_detail"]
+[node name="description" type="Label" parent="vBox_item_detail" unique_id=2077786751]
 layout_mode = 2
 text = "Item Blurb"
 
-[node name="action" type="HBoxContainer" parent="vBox_item_detail"]
+[node name="action" type="HBoxContainer" parent="vBox_item_detail" unique_id=13454068]
 layout_mode = 2
 size_flags_vertical = 10
 alignment = 1
 
-[node name="use" type="Button" parent="vBox_item_detail/action"]
+[node name="use" type="Button" parent="vBox_item_detail/action" unique_id=377676521]
 visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -112,7 +119,7 @@ focus_neighbor_right = NodePath("../drop")
 theme_type_variation = &"Button_half"
 text = "Use"
 
-[node name="drop" type="Button" parent="vBox_item_detail/action"]
+[node name="drop" type="Button" parent="vBox_item_detail/action" unique_id=1772838223]
 visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
@@ -120,7 +127,7 @@ focus_neighbor_left = NodePath("../use")
 theme_type_variation = &"Button_half"
 text = "Drop"
 
-[node name="learn" type="Button" parent="vBox_item_detail/action"]
+[node name="learn" type="Button" parent="vBox_item_detail/action" unique_id=619149953]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 focus_neighbor_left = NodePath("../use")

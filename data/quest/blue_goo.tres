@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://bil8e65lcv05p"]
+
+[ext_resource type="Script" uid="uid://coab2uigp166k" path="res://resource/quest/quest_whose_involved.gd" id="1_10jk0"]
+[ext_resource type="Resource" uid="uid://di7odoi5atvnh" path="res://data/dialogue/blue_goo.dialogue" id="1_buuq6"]
+[ext_resource type="Script" uid="uid://tsvv1aj8gnwi" path="res://resource/quest/quest_objective.gd" id="2_buuq6"]
+[ext_resource type="Script" uid="uid://cyg5giijxf70b" path="res://resource/quest/quest.gd" id="3_uyi5u"]
+[ext_resource type="Resource" uid="uid://bn4w0qax1mwny" path="res://data/item/quest/blue_goo.tres" id="4_uyi5u"]
+
+[sub_resource type="Resource" id="Resource_tjc11"]
+script = ExtResource("1_10jk0")
+speaker_node_path = NodePath("../zone1/object/cooker")
+alias = "Chef Mignon"
+cue_name = "quest_line"
+metadata/_custom_type_script = "uid://coab2uigp166k"
+
+[sub_resource type="Resource" id="Resource_buuq6"]
+script = ExtResource("2_buuq6")
+type = 1
+amount = 5
+item = ExtResource("4_uyi5u")
+metadata/_custom_type_script = "uid://tsvv1aj8gnwi"
+
+[resource]
+script = ExtResource("3_uyi5u")
+id = 1
+quest_name = "Blue Goo"
+description = "Bring Chef Mignon some Blue Jelly dropped off by the Blue Slimes south of Summerville."
+objectives = Array[ExtResource("2_buuq6")]([SubResource("Resource_buuq6")])
+dialogue = ExtResource("1_buuq6")
+dialogue_whose_involved = Array[ExtResource("1_10jk0")]([SubResource("Resource_tjc11")])
+metadata/_custom_type_script = "uid://cyg5giijxf70b"

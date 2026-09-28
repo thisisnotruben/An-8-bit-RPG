@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDropTable" format=3 uid="uid://dxjsybqeo2naa"]
+
+[ext_resource type="Script" uid="uid://6lnj8odd0bs4" path="res://resource/item/item_drop.gd" id="1_tdqdp"]
+[ext_resource type="Script" uid="uid://b5detd0pv4rxi" path="res://resource/item/item_drop_table.gd" id="2_6cnan"]
+[ext_resource type="Script" uid="uid://cltawcmet401f" path="res://data/drop/blue_goo_drop_predicate.gd" id="2_cynbq"]
+[ext_resource type="Resource" uid="uid://bn4w0qax1mwny" path="res://data/item/quest/blue_goo.tres" id="2_ehw4l"]
+
+[sub_resource type="Resource" id="Resource_ehw4l"]
+script = ExtResource("1_tdqdp")
+item = ExtResource("2_ehw4l")
+drop_predicate = ExtResource("2_cynbq")
+metadata/_custom_type_script = "uid://6lnj8odd0bs4"
+
+[resource]
+script = ExtResource("2_6cnan")
+drops = Array[ExtResource("1_tdqdp")]([SubResource("Resource_ehw4l")])
+metadata/_custom_type_script = "uid://b5detd0pv4rxi"

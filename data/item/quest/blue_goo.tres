@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bn4w0qax1mwny"]
+
+[ext_resource type="Texture2D" uid="uid://6i1tg1n085d3" path="res://asset/img/exclusives/Icons/8x8px/Creature_Icons/CreatureIcons.png" id="1_etv43"]
+[ext_resource type="Script" uid="uid://ckuaao1stqyxi" path="res://resource/item/item.gd" id="1_w16fd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etv43"]
+atlas = ExtResource("1_etv43")
+region = Rect2(224, 26, 8, 8)
+
+[resource]
+script = ExtResource("1_w16fd")
+item_name = "Blue Jelly"
+blurb = "A viscous jelly, looks edible."
+can_drop = false
+icon = SubResource("AtlasTexture_etv43")
+type = 4
+category = 7
+metadata/_custom_type_script = "uid://ckuaao1stqyxi"

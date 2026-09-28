@@ -131,7 +131,7 @@ func _on_visibility_changed():
 			tab.current_tab = tabs['main']
 			prev_tab = $center/panel/margin/tabs/main/resume_game
 
-func show_death_screen():
+func show_death_screen(_character: Character):
 	await get_tree().create_timer(2.5).timeout
 	tab.current_tab = tabs['dead']
 	show()

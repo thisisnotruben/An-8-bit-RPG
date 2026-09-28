@@ -14,8 +14,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var stats: CharacterStats = preload('uid://dotidkyrhls6l')
 
 @export_category('Items & Spells')
-@export_group('Npc')
-@export var drops: Dictionary[int, Item.Type] = {} # int [0 - 100 range] (drop percent)
+@export var drops: ItemDropTable
 @export_group('Player')
 @export var spells: Array[Item.Type] = []
 @export var inventory: Array[Item.Type] = []
@@ -24,7 +23,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var npc_behavior: BehaviorTree = preload('uid://bn3ar0pqvknrx')
 @export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
 
-@export_category('Animation') # TODO
+@export_category('Animation')
 @export var anim_state_machine: AnimationNodeStateMachine
 @export var anim_library: AnimationLibrary
 
@@ -43,6 +42,9 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 
 
 func init(character: Character):
+	if not character.is_node_ready():
+		await character.ready
+	
 	hit_flags.init(character, friendly, npc)
 	stats.init(character)
 
@@ -65,6 +67,5 @@ func init(character: Character):
 
 	# Image
 	character.img.offset = img_offset
-	var body: CollisionShape2D = character.get_node('body')
-	body.shape = coll_body
-	body.position = coll_body_offset
+	character.body.shape = coll_body
+	character.body.position = coll_body_offset

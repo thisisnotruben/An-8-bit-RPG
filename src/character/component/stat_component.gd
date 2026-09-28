@@ -8,8 +8,16 @@ class_name StatComponent extends Node
 
 signal changed(_current: int, _max: int, _old_value: int)
 
+## Amount is not the total amount changed, it's clamped by 0 & 'max_value' 
+signal amount_modified(amount: int, aggressor: Character)
 
-func modify(attack: ModifierAttack):
+
+func init(_current: int, _max_value: int) -> StatComponent:
+	current = _current
+	max_value = _max_value
+	return self
+
+func modify(attack: ModifierAttack, aggressor: Character = null):
 	if not immunities.has(attack.type):
 		var prev_current := current
 
@@ -20,6 +28,7 @@ func modify(attack: ModifierAttack):
 		if not attack.add:
 			amount *= -1
 
+		amount_modified.emit(amount, aggressor)
 		current = clampi(current + amount, 0, max_value)
 		if prev_current != current:
 			changed.emit(current, max_value, prev_current)

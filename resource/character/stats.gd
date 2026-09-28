@@ -32,36 +32,41 @@ const MIN_ATTACK_SPEED_COOLDOWN = 0.05
 var target: Character
 
 
-func init(_target: Node2D):
+func init(_target: Character):
 	target = _target
+	if not _target.is_node_ready():
+		await _target.ready
+	if Engine.is_editor_hint():
+		return
 	
-	if not Engine.is_editor_hint():
-		if _target is Character:
-			var signal_map: Dictionary[StatModifer, Callable] = {
-				move_speed: _on_speed_changed,
-				health_max: _on_health_max_changed,
-				health_regen_amt: _on_health_regen_changed,
-				mana_max: _on_mana_max_changed,
-				mana_regen_amt: _on_mana_regen_changed,
-				ability_max: _on_ability_max_changed,
-				ability_regen_amt: _on_ability_regen_changed,
-			}
-			
-			signal_map.merge({
-				health_regen_sec: _on_health_regen_sec_changed,
-				mana_regen_sec: _on_mana_regen_sec_changed,
-				ability_regen_sec: _on_ability_regen_sec_changed,
-			})
-			
-			for stat in signal_map:
-				if not stat.on_current_changed.is_connected(signal_map[stat]):
-					stat.on_current_changed.connect(signal_map[stat])
-				stat.calculate()
-				
-		target.health.current = int(health_max.current)
-		target.mana.current = int(mana_max.current)
-		target.ability.current = int(ability_max.current)
+	var signal_map: Dictionary[StatModifer, Callable] = {
+		move_speed: _on_speed_changed,
+		health_max: _on_health_max_changed,
+		health_regen_amt: _on_health_regen_changed,
+		mana_max: _on_mana_max_changed,
+		mana_regen_amt: _on_mana_regen_changed,
+		ability_max: _on_ability_max_changed,
+		ability_regen_amt: _on_ability_regen_changed,
+	}
+	
+	signal_map.merge({
+		health_regen_sec: _on_health_regen_sec_changed,
+		mana_regen_sec: _on_mana_regen_sec_changed,
+		ability_regen_sec: _on_ability_regen_sec_changed,
+	})
+	
+	for stat in signal_map:
+		if not stat.on_current_changed.is_connected(signal_map[stat]):
+			stat.on_current_changed.connect(signal_map[stat])
+		stat.calculate()
+		
+		var _health_max := int(health_max.current)
+		var _mana_max := int(mana_max.current)
+		var _ability_max := int(ability_max.current)
 
+		target.health.init(_health_max, _health_max)
+		target.mana.init(_mana_max, _mana_max)
+		target.ability.init(_ability_max, _ability_max)
 		melee.init(target.hit_scan_melee)
 		shoot.init(target.hit_scan_shoot)
 

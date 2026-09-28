@@ -1,7 +1,14 @@
 class_name QuestData extends Resource
 
+enum Id {
+	NOT_SET,
+	BLUE_GOO,
+	ORC_CAVERNS,
+}
+
 enum QuestStatus { FINISHED, NOT_STARTED, ACTIVE, COMPLETED }
 
+@export var id := Id.NOT_SET
 @export var quest_name := ''
 @export var dependent_on_quest: QuestData
 
@@ -18,16 +25,3 @@ enum QuestStatus { FINISHED, NOT_STARTED, ACTIVE, COMPLETED }
 @export var reward_gold: int = 0
 
 var status := QuestStatus.NOT_STARTED
-
-
-func enter():
-	pass
-
-func exit():
-	pass
-
-func check(_data: Dictionary):
-	pass
-
-func is_completable() -> bool:
-	return false

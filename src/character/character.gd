@@ -5,6 +5,7 @@ class_name Character extends CharacterBody2D
 @onready var anim_tree: AnimationTree = $anim_tree
 @onready var nav_agent: NavigationAgent2D = $nav_agent
 @onready var img: Sprite2D = $img
+@onready var body: CollisionShape2D = $body
 @onready var snd: AudioStreamPlayer2D = $snd
 @onready var snd_shoot: AudioStreamPlayer2D = $snd_shoot
 @onready var snd_melee: AudioStreamPlayer2D = $snd_melee
@@ -22,26 +23,24 @@ class_name Character extends CharacterBody2D
 @onready var fsm: FsmCharacter = $fsm
 @onready var dialogue_actionable: DialogueActionable2D = $dialogue_actionable
 @onready var dialogue_state_context: DialogueStateContext = $dialogue_state_context
+@onready var threat: ThreatService = $threat_service
 
 @export_tool_button('Refresh Builder', 'Callable') var refresh_build = \
 	func(): if unit: unit.init(self)
 @export var unit: CharacterBuilder:
 	set(value):
-		# NOTICE: comment this out when importing from tiled
-		if not is_node_ready():
-			await ready
-		if value:
-			if Engine.is_editor_hint():
-				unit = value
-			else:
-				unit = value.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
-			value.init(self)
+		if Engine.is_editor_hint():
+			unit = value
 		else:
-			unit = null
+			if not is_node_ready():
+				await ready
+			unit = value.duplicate_deep(Resource.DEEP_DUPLICATE_ALL) if value else null
+		if value:
+			value.init(self)
 		if not Engine.is_editor_hint():
 			behavior.active = value != null
 
-var target: Character = null
+var target: Character
 
 var is_inventory_full := func(): return true
 var is_spellbook_full := func(): return true
@@ -49,7 +48,7 @@ var is_spellbook_full := func(): return true
 var focused_dialogue_quest: QuestData
 
 @warning_ignore('unused_signal')
-signal died
+signal died(from_threat)
 @warning_ignore('unused_signal')
 signal set_player_move_hud_menu_pause(is_hud_panel_visible)
 signal on_selected(character: Character)
@@ -96,17 +95,41 @@ func _on_sight_body_entered(other_npc: Node2D):
 		elif target:
 			other_npc.aggro(target)
 
-func _on_dialogue_actionable_body_exited(body: Node2D) -> void:
+func _on_dialogue_actionable_body_exited(_body: Node2D) -> void:
 	if unit.npc and focused_dialogue_quest \
 	and is_instance_valid(dialogue_actionable.dialogue_resource) \
 	and is_instance_valid(dialogue_actionable.dialogue_balloon):
-		var character := body as Character
+		var character := _body as Character
 		if character and not character.unit.npc:
 			DialogueManager.dialogue_ended.emit(dialogue_actionable.dialogue_resource)
 			dialogue_actionable.dialogue_balloon.queue_free()
 
+func _on_threat_service_on_no_threats() -> void:
+	target = null
+
+func _set_player_input_vars():
+	if not unit or unit.npc:
+		return
+
+	var input_state := 'idle'
+	if Input.get_vector('move_left', 'move_right', 'move_up', 'move_down').length() > 0.0:
+		input_state = 'move'
+	elif Input.is_action_just_pressed('attack'):
+		var mouse_pos := get_global_mouse_position()
+		hit_scan_melee.look_at(mouse_pos)
+		hit_scan_shoot.look_at(mouse_pos)
+		# TODO: will likely have to change this in regards of melee or range
+		if hit_scan_melee.get_collider() or hit_scan_shoot.get_collider():
+			input_state = 'attack'
+		
+	behavior.blackboard.set_var(LimboVarLib.INPUT_STATE, input_state)
+
+func _on_health_amount_notify(amount: int, aggressor: Character):
+	if unit.npc and amount < 0:
+		target = threat.threat_changed(aggressor, amount)
+
 func inventory_modify(item_type: BaseItem.Type, add: bool) -> bool:
-	var item: Item = ItemDB.get_item(item_type)
+	var item: Item = ItemService.get_item(item_type)
 	var result := true
 
 	if item.category == BaseItem.Category.SPELL:
@@ -124,10 +147,11 @@ func inventory_modify(item_type: BaseItem.Type, add: bool) -> bool:
 		result = false
 
 	if result:
+		var payload := {'type': item_type, 'add': add}
 		if item.category == BaseItem.Category.SPELL:
-			spell_added.emit(item_type, add)
+			spell_added.emit(payload)
 		else:
-			inventory_added.emit(item_type, add)
+			inventory_added.emit(payload)
 
 		var item_ability := item as Ability
 		if item_ability and item_ability.passive \
@@ -153,23 +177,6 @@ func spawn_ability_player(ability_item: Ability, ability_target: Character):
 				as CharacterState).blackboard.set(LimboVarLib.ABILITY_PLAYER, ability_player)
 			fsm.state = state_for_ability
 
-func _set_player_input_vars():
-	if not unit or unit.npc:
-		return
-
-	var input_state := 'idle'
-	if Input.get_vector('move_left', 'move_right', 'move_up', 'move_down').length() > 0.0:
-		input_state = 'move'
-	elif Input.is_action_just_pressed('attack'):
-		var mouse_pos := get_global_mouse_position()
-		hit_scan_melee.look_at(mouse_pos)
-		hit_scan_shoot.look_at(mouse_pos)
-		# TODO: will likely have to change this in regards of melee or range
-		if hit_scan_melee.get_collider() or hit_scan_shoot.get_collider():
-			input_state = 'attack'
-		
-	behavior.blackboard.set_var(LimboVarLib.INPUT_STATE, input_state)
-
 func is_foe(_body: Node2D) -> bool:
 	var character := _body as Character
 	return character \
@@ -185,6 +192,10 @@ func aggro(_body: Node2D) -> bool:
 				(other_body as Character).aggro(target)
 		return true
 	return false
+	
+func on_attacked(aggressor: Character, attack: ModifierAttack):
+	threat.add_threat(aggressor)
+	health.modify(attack)
 
 func notify_projectile_incoming(projectile: Projectile):
 	behavior.blackboard.set_var(LimboVarLib.INCOMING_PROJECTILE, projectile)
@@ -206,8 +217,8 @@ func start_dialogue():
 	if not unit.npc or not focused_dialogue_quest:
 		return
 		
-	for body in dialogue_actionable.get_overlapping_bodies():
-		var character := body as Character
+	for _body in dialogue_actionable.get_overlapping_bodies():
+		var character := _body as Character
 		if character and not character.unit.npc:
 			QuestState.focused_quest = focused_dialogue_quest
 			dialogue_actionable.action()

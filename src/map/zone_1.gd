@@ -12,5 +12,6 @@ func _ready() -> void:
 		found_player = true
 		
 		$target_service.player = character
+		$quest_service.init(character)
 		$CanvasLayer/hud.player = character
 		$CanvasLayer/game.player = character

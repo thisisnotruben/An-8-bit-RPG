@@ -1,18 +1,47 @@
+@tool
 class_name HudButton extends Button 
 
-enum Type{ PLAYER, MERCHANT, NPC_TARGET }
-
-const drag_item := preload('uid://bxulpvlxhgm72')
+enum Type{ PLAYER, MERCHANT, NPC_TARGET, }
 
 @onready var label: Label = $margin_label/label
 @onready var color_rect: ColorRect = $margin_color/colorRect
 @onready var anim: AnimationPlayer = $anim
 
 @export var player: Character = null
-@export var item_icon: Texture = null: set = _on_set_icon
 @export var quick_slot := false
-@export var type := Type.PLAYER: set = _on_set_type
-var item_type := Item.Type.INVALID: set = _on_set_item
+
+@export var item_icon: Texture:
+	set(value):
+		item_icon = value
+		$margin_icon/icon.texture = value
+
+@export var type := Type.PLAYER:
+	set(value):
+		type = value
+		match value:
+			Type.PLAYER:
+				if not is_in_group('serializable'):
+					add_to_group('serializable')
+				if not pressed.is_connected(_on_pressed):
+					pressed.connect(_on_pressed)
+			Type.MERCHANT:
+				remove_from_group('serializable')
+				pressed.disconnect(_on_pressed)
+			Type.NPC_TARGET:
+				remove_from_group('serializable')
+
+var item_type := Item.Type.INVALID:
+	set(value):
+		item_type = value
+		if value == Item.Type.INVALID:
+			item_icon = null
+			label.text = ''
+			if is_instance_valid(tween) and tween is Tween:
+				tween.stop()
+				_on_tween_finished()
+		else:
+			item_icon = ItemService.get_item(value).icon
+
 var is_cooling_down := false
 var tween: Tween = null
 
@@ -21,19 +50,18 @@ signal on_cooldown_started(_item_type: Item.Type)
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if quick_slot and item_type != Item.Type.INVALID:
-		set_drag_preview(drag_item.instantiate().init(item_icon))
+		set_drag_preview(preload('uid://bxulpvlxhgm72').instantiate().init(item_icon))
 		return { 'item_type': item_type, 'slot': self, }
-	return { }
+	return {}
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	return quick_slot and data is Dictionary and data.has_all(['item_type', 'slot',])
 
 func _drop_data(_at_position: Vector2, data: Variant):
-	if quick_slot:
-		if item_type != Item.Type.INVALID:
-			data['slot'].clear()
-			data['slot']._on_set_item(item_type)
-		_on_set_item(data['item_type'])
+	var from_slot := data['slot'] as HudButton
+	from_slot.clear()
+	from_slot.item_type = item_type
+	item_type = data['item_type']
 
 func _on_pressed():
 	if type != Type.NPC_TARGET:
@@ -52,18 +80,20 @@ func _on_focus_exited():
 	anim.play('unfocus')
 
 func use():
-	if item_type != Item.Type.INVALID:
-		var item := ItemDB.get_item(item_type)
-		if item.behavior:
-			player.spawn_item_behavior(item.behavior)
-			if item.cooldown > 0.0:
-				_start_tween(item.cooldown)
-				on_cooldown_started.emit(item_type)
+	if item_type == Item.Type.INVALID:
+		return
+		
+	var item := ItemService.get_item(item_type)
+	if item.behavior:
+		player.spawn_item_behavior(item.behavior)
+		if item.cooldown > 0.0:
+			_start_tween(item.cooldown)
+			on_cooldown_started.emit(item_type)
 
 func check_cooldown(value: Item.Type):
 	if type == Type.PLAYER and not is_cooling_down \
 	and item_type != Item.Type.INVALID and item_type == value:
-		var item := ItemDB.get_item(value)
+		var item := ItemService.get_item(value)
 		if item.behavior and item.cooldown > 0.0:
 			_start_tween(item.cooldown)
 
@@ -75,34 +105,8 @@ func _start_tween(tween_time_sec: float):
 	tween.tween_method(set_cooldown_text, tween_time_sec, 0, tween_time_sec)
 	color_rect.show()
 
-func _on_set_item(value: Item.Type):
-	item_type = value
-	if item_type != Item.Type.INVALID:
-		_on_set_icon(ItemDB.get_item(value).icon)
-
-func _on_set_icon(value: Texture):
-	$icon.texture = value
-
-func _on_set_type(value: Type):
-	type = value
-	match value:
-		Type.PLAYER:
-			if not is_in_group('serializable'):
-				add_to_group('serializable')
-			if not pressed.is_connected(_on_pressed):
-				pressed.connect(_on_pressed)
-		Type.MERCHANT:
-			remove_from_group('serializable')
-			pressed.disconnect(_on_pressed)
-		Type.NPC_TARGET:
-			remove_from_group('serializable')
-
 func clear():
 	item_type = Item.Type.INVALID
-	label.text = ''
-	if is_instance_valid(tween) and tween is Tween:
-		tween.stop()
-	_on_tween_finished()
 
 func set_cooldown_text(value: int):
 	label.text = str(value)

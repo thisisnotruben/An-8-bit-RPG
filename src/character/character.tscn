@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="7_gn7y0"]
 [ext_resource type="Resource" uid="uid://dotidkyrhls6l" path="res://resource/character/default/default_stats.tres" id="8_7aoyf"]
 [ext_resource type="Script" uid="uid://b6e251pspi57y" path="res://src/character/fsm/state/hurt.gd" id="10_38jpj"]
-[ext_resource type="PackedScene" uid="uid://dr1an70kj8kym" path="res://src/item/item_pickup.tscn" id="12_fcqus"]
 [ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="14_38jpj"]
 [ext_resource type="PackedScene" uid="uid://1krshwqbaymx" path="res://src/projectile/projectile.tscn" id="14_imcyw"]
+[ext_resource type="PackedScene" uid="uid://c106mtok05tvd" path="res://src/character/component/threat_service.tscn" id="19_j7xr0"]
 [ext_resource type="Script" uid="uid://cqcur1rm7433g" path="res://addons/dialogue_manager/nodes/actionable/dialogue_actionable_2d.gd" id="22_y5dg0"]
 [ext_resource type="Script" uid="uid://cd3222nx3y3k5" path="res://addons/dialogue_manager/nodes/context/dialogue_state_context.gd" id="23_j7xr0"]
 [ext_resource type="PackedScene" uid="uid://dkpcprd1cr4eg" path="res://src/character/component/stat_regen.tscn" id="24_0bjdw"]
@@ -60,7 +60,6 @@ nav_agent = NodePath("../../nav_agent")
 
 [node name="dead" type="Node" parent="fsm" unique_id=1822427354]
 script = ExtResource("4_tntuy")
-item_scene = ExtResource("12_fcqus")
 
 [node name="melee" type="Node" parent="fsm" unique_id=1706596097 node_paths=PackedStringArray("snd")]
 script = ExtResource("5_tntuy")
@@ -100,6 +99,8 @@ stat_component = NodePath("../mana")
 [node name="ability_regen" parent="." unique_id=921332414 node_paths=PackedStringArray("stat_component") instance=ExtResource("24_0bjdw")]
 stat_component = NodePath("../ability")
 regen_amount = 1.0
+
+[node name="threat_service" parent="." unique_id=2130039193 instance=ExtResource("19_j7xr0")]
 
 [node name="anim_player" type="AnimationPlayer" parent="." unique_id=1820659917]
 
@@ -179,6 +180,7 @@ position = Vector2(-3, -8)
 texture_normal = SubResource("AtlasTexture_jdd1s")
 
 [connection signal="changed" from="health" to="." method="_on_health_changed"]
+[connection signal="on_no_threats" from="threat_service" to="." method="_on_threat_service_on_no_threats"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/dead" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/melee" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/shoot" method="_on_animation_tree_animation_finished"]

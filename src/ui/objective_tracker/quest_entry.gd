@@ -1,4 +1,4 @@
-extends FoldableContainer
+class_name QuestUiEntry extends FoldableContainer
 
 @onready var description: RichTextLabel = $margin/scroll/description
 
@@ -8,6 +8,9 @@ var quest_data: QuestData = null
 func init(value: QuestData) -> Control:
 	quest_data = value
 	return self
+
+func _ready() -> void:
+	set_description()
 
 func _on_draw() -> void:
 	set_description()
@@ -20,9 +23,12 @@ func set_description():
 		for objective: QuestObjective in quest_data.objectives:
 			
 			var type := '- Kill'
+			var display_name := objective.display_name
+			
 			match objective.type:
 				QuestObjective.Type.COLLECT:
-					type = 'Collect'
+					type = '- Collect'
+					display_name = objective.item.item_name
 			
 			des_builder.append('%s %d/%d %s\n' \
 				% [type, objective.current, objective.amount, objective.display_name])
