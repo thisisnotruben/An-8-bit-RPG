@@ -66,6 +66,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@export var responses_menu_container: Control
 
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
@@ -137,7 +138,7 @@ func apply_dialogue_line() -> void:
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 
-	responses_menu.hide()
+	responses_menu_container.hide()
 	responses_menu.responses = dialogue_line.responses
 
 	# Show our balloon
@@ -157,7 +158,7 @@ func apply_dialogue_line() -> void:
 		next(dialogue_line.next_id)
 	elif dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
-		responses_menu.show()
+		responses_menu_container.show()
 	elif dialogue_line.time != "":
 		var time: float = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout

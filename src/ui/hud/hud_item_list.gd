@@ -32,7 +32,7 @@ signal subcontrol_mouse_exited
 
 func _ready():
 	var quick_slots := get_tree().get_nodes_in_group('quick_slot')
-	for slot in slots:
+	for slot: HudButton in slots:
 		slot.focus_entered.connect(_on_slot_focus_entered.bind(slot))
 		slot.pressed.connect(_on_slot_focus_entered.bind(slot))
 		if type == Type.PLAYER:
@@ -67,12 +67,7 @@ func _on_draw():
 
 func display(item_type: Item.Type, is_cooling_down: bool):
 	if item_type == Item.Type.INVALID:
-		item_icon.texture = null
-		item_name.text = ''
-		item_blurb.text = ''
-		use_bttn.hide()
-		drop_bttn.hide()
-		learn_bttn.hide()
+		clear()
 	else:
 		var data := ItemService.get_item(item_type)
 		item_icon.texture = data.icon

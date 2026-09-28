@@ -12,6 +12,7 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 
 @export var hit_flags: HitFlags = preload('uid://bdowfnvtuwygf')
 @export var stats: CharacterStats = preload('uid://dotidkyrhls6l')
+@export var respawn: CharacterRespawn = preload('uid://bsvw0x3p7x1eq')
 
 @export_category('Items & Spells')
 @export var drops: ItemDropTable
@@ -47,6 +48,7 @@ func init(character: Character):
 	
 	hit_flags.init(character, friendly, npc)
 	stats.init(character)
+	respawn.init(character.global_position)
 
 	# Npc
 	character.nav_agent.avoidance_enabled = npc

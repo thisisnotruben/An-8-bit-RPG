@@ -41,9 +41,10 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521]
+[node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521 node_paths=PackedStringArray("responses_menu_container")]
 layer = 100
 script = ExtResource("1_36de5")
+responses_menu_container = NodePath("Balloon/margin1")
 
 [node name="Balloon" type="Control" parent="." unique_id=154399927]
 unique_name_in_owner = true
@@ -54,7 +55,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=1302081376]
+[node name="margin0" type="MarginContainer" parent="Balloon" unique_id=1302081376]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -64,12 +65,12 @@ offset_top = -219.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=2145270309]
+[node name="panel_container" type="PanelContainer" parent="Balloon/margin0" unique_id=2145270309]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
 
-[node name="nine_patch" type="NinePatchRect" parent="Balloon/MarginContainer/PanelContainer" unique_id=1533100486]
+[node name="nine_patch" type="NinePatchRect" parent="Balloon/margin0/panel_container" unique_id=1533100486]
 layout_mode = 2
 texture = ExtResource("2_io3ht")
 patch_margin_left = 32
@@ -79,19 +80,19 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=903640783]
+[node name="margin" type="MarginContainer" parent="Balloon/margin0/panel_container" unique_id=903640783]
 layout_mode = 2
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1685890612]
+[node name="hBox" type="HBoxContainer" parent="Balloon/margin0/panel_container/margin" unique_id=1685890612]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1890134056]
+[node name="vBox" type="VBoxContainer" parent="Balloon/margin0/panel_container/margin/hBox" unique_id=1890134056]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1567782692]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/margin0/panel_container/margin/hBox/vBox" unique_id=1567782692]
 unique_name_in_owner = true
 modulate = Color(0.105882354, 0.105882354, 0.105882354, 1)
 layout_mode = 2
@@ -101,45 +102,67 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1301798052 instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/margin0/panel_container/margin/hBox/vBox" unique_id=1301798052 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 
-[node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=418507161]
+[node name="control" type="Control" parent="Balloon/margin0/panel_container/margin/hBox" unique_id=418507161]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=2091292889]
+[node name="Progress" type="Polygon2D" parent="Balloon/margin0/panel_container/margin/hBox/control" unique_id=2091292889]
 unique_name_in_owner = true
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1602634471]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/margin0/panel_container/margin/hBox/control" unique_id=1602634471]
 libraries/ = SubResource("AnimationLibrary_1337t")
 autoplay = &"progress"
 
-[node name="CenterContainer" type="CenterContainer" parent="Balloon" unique_id=1087901387]
+[node name="margin1" type="MarginContainer" parent="Balloon" unique_id=1174987268]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 496
+theme_override_constants/margin_top = 144
+theme_override_constants/margin_right = 496
+theme_override_constants/margin_bottom = 288
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/CenterContainer" unique_id=1801308483 node_paths=PackedStringArray("response_template")]
+[node name="panel_container" type="PanelContainer" parent="Balloon/margin1" unique_id=1597467570]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="nine_patch" type="NinePatchRect" parent="Balloon/margin1/panel_container" unique_id=1492238135]
+layout_mode = 2
+texture = ExtResource("2_io3ht")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="margin" type="MarginContainer" parent="Balloon/margin1/panel_container" unique_id=1824654675]
+layout_mode = 2
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/margin1/panel_container/margin" unique_id=1801308483 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 2
+theme_override_constants/separation = 4
 alignment = 1
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/CenterContainer/ResponsesMenu" unique_id=1446810977]
+[node name="ResponseExample" type="Button" parent="Balloon/margin1/panel_container/margin/ResponsesMenu" unique_id=1446810977]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_type_variation = &"Button_half"
 text = "Accept"
 
@@ -147,4 +170,4 @@ text = "Accept"
 unique_name_in_owner = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="response_selected" from="Balloon/CenterContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="response_selected" from="Balloon/margin1/panel_container/margin/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

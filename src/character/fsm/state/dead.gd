@@ -1,7 +1,5 @@
 extends CharacterState
 
-var item_scene := preload('uid://dr1an70kj8kym')
-
 
 func _init():
 	type = CharacterStates.Type.DEAD
@@ -24,16 +22,24 @@ func exit():
 	character.ability_regen.start()
 
 func _on_animation_tree_animation_finished(_anim_name: StringName):
-	if active and character.unit.npc:
-		# HACK: delayed incase unit casts resurrection
-		get_tree().create_timer(10.0).timeout.connect(_on_delayed_queue_free)
+	if not active or not character.unit.npc:
+		return
+		
+	var item_drop := character.unit.drops.get_drop()
+	if item_drop and item_drop.type != Item.Type.INVALID:
+		
+		var item: ItemPickup = preload('uid://dr1an70kj8kym') \
+			.instantiate().init(item_drop.type)
+		character.add_sibling(item)
+		item.global_position = character.global_position
+		
+	get_tree().create_tween() \
+		.tween_property(character, 'modulate', Color.TRANSPARENT, 1.0)
+	get_tree().create_timer(character.unit.respawn.get_respawn_time()) \
+		.timeout.connect(_on_respawn)
 
-		var item_drop := character.unit.drops.get_drop()
-		if item_drop and item_drop.type != Item.Type.INVALID:
-			var item: ItemPickup = item_scene.instantiate().init(item_drop.type)
-			character.add_sibling(item)
-			item.global_position = character.global_position
-
-func _on_delayed_queue_free():
-	if active:
-		character.queue_free()
+func _on_respawn():
+	get_tree().create_tween() \
+		.tween_property(character, 'modulate', Color.WHITE, 1.0)
+	character.global_position = character.unit.respawn.pos
+	change_state.emit(CharacterStates.Type.IDLE)

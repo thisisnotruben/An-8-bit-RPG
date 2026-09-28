@@ -10,7 +10,7 @@ signal state_changed(_statee)
 
 func init(_states := {}, _state_args := {}) -> Fsm:
 	for _state_type in _states:
-		_states[_state_type].init(_state_args).change_state.connect(_set_state)
+		(_states[_state_type] as IState).init(_state_args).change_state.connect(_set_state)
 	states = _states
 	return self
 
