@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="8" tileheight="8" infinite="0" nextlayerid="127" nextobjectid="1559">
+<map version="1.10" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="8" tileheight="8" infinite="0" nextlayerid="128" nextobjectid="1567">
  <tileset firstgid="1" source="../tileset/Medieval_City_Tileset.tsx"/>
  <tileset firstgid="16561" source="../tileset/Minifantasy_ForgottenPlainsTiles.tsx"/>
  <tileset firstgid="18907" source="../tileset/Minifantasy_ForgottenPlainsProps.tsx"/>
@@ -5258,6 +5258,22 @@
    <object id="1529" gid="45371" x="939.818" y="530.909" width="32" height="32"/>
    <object id="1531" gid="45409" x="868.727" y="364.545" width="32" height="32"/>
    <object id="1532" gid="45367" x="856.682" y="405.636" width="48" height="48"/>
+  </objectgroup>
+  <objectgroup id="127" name="roam">
+   <object id="1559" type="Area" x="1104" y="443">
+    <properties>
+     <property name="collision_mask" value="2"/>
+     <property name="godot_group" value="character_roam_area"/>
+     <property name="is_explicit_characters" type="bool" value="false"/>
+    </properties>
+    <polygon points="0,0 28.5,-38 43,-31.5 42.5,-15.5 74.5,-18.5 102,-13 123.5,-25.5 143,-28.5 157.5,-16.5 162.5,2.5 234,-4 355.5,41 340.5,95.5 304,106.5 246,103 237.5,126.5 155.5,125.5 144,156.5 99,152.5 104.5,117 58,103.5 14.5,125"/>
+   </object>
+   <object id="1565" type="Path" x="1289" y="282.75">
+    <properties>
+     <property name="character_id" type="object" value="1330"/>
+    </properties>
+    <polyline points="0,0 6.5,9.5 18.25,7.75 46.5,-13 65,-12.75 71.25,2.25 81.25,-6.75 105.25,11 114.25,17 113,25 99.75,25.25 99,37.75 110.75,40.75 113,64 99.25,67.25 86.5,75.25 49.75,53.75 87.75,112.25"/>
+   </object>
   </objectgroup>
  </group>
  <group id="126" name="other" visible="0" offsetx="0.181818" offsety="3.81818">

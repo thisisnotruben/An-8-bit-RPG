@@ -9,6 +9,7 @@ var threats := {}
 var last_threat: NodePath
 
 signal on_no_threats
+signal on_first_threat_added
 
 
 func add_threat(aggressor: Character):
@@ -32,6 +33,7 @@ func threat_changed(aggressor: Character, amount: int):
 	
 	if threats.size() == 1:
 		last_threat = aggressor_path
+		on_first_threat_added.emit()
 		return aggressor
 	else:
 		var highest_threat_dmg: int = threats[aggressor_path]['threat_dmg']
@@ -54,9 +56,7 @@ func _on_timer_timeout() -> void:
 			queued_to_remove.append(path)
 		
 	queued_to_remove.map(func(k): threats.erase(k))
-	if threats.is_empty():
-		timer.stop()
-		on_no_threats.emit()
+	clear()
 
 func filter_valid_aggressors():
 	var queued_to_remove := []
@@ -68,3 +68,8 @@ func filter_valid_aggressors():
 			queued_to_remove.append(aggressor_path)
 			
 	queued_to_remove.map(func(k): threats.erase(k))
+
+func clear():
+	threats.clear()
+	timer.stop()
+	on_no_threats.emit()

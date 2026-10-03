@@ -69,7 +69,9 @@ script = ExtResource("10_38jpj")
 
 [node name="behavior" type="BTPlayer" parent="." unique_id=125419236]
 behavior_tree = ExtResource("5_j7xr0")
+active = false
 blackboard_plan = SubResource("BlackboardPlan_248u0")
+monitor_performance = true
 
 [node name="item_behaviors" type="Node" parent="." unique_id=1300632349]
 
@@ -113,9 +115,10 @@ texture = ExtResource("17_j7xr0")
 offset = Vector2(0, -3)
 hframes = 8
 vframes = 4
-frame = 2
+frame = 6
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=810498800]
+visible = false
 position = Vector2(0, -4)
 shape = ExtResource("96_dnpej")
 
@@ -180,6 +183,7 @@ position = Vector2(-3, -8)
 texture_normal = SubResource("AtlasTexture_jdd1s")
 
 [connection signal="changed" from="health" to="." method="_on_health_changed"]
+[connection signal="on_first_threat_added" from="threat_service" to="." method="_on_threat_service_on_first_threat_added"]
 [connection signal="on_no_threats" from="threat_service" to="." method="_on_threat_service_on_no_threats"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/dead" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="anim_tree" to="fsm/melee" method="_on_animation_tree_animation_finished"]

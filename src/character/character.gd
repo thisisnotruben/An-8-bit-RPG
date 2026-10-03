@@ -34,10 +34,15 @@ class_name Character extends CharacterBody2D
 		else:
 			if not is_node_ready():
 				await ready
-			unit = value.duplicate_deep(Resource.DEEP_DUPLICATE_ALL) if value else null
+			unit = value
+			#if value:
+				#unit = value.duplicate()
+				#unit.make_unique()
 		if value:
 			value.init(self)
 		if not Engine.is_editor_hint():
+			# Delay to allow scene setup
+			await get_tree().create_timer(0.25).timeout
 			behavior.active = value != null
 
 var target: Character
@@ -104,7 +109,11 @@ func _on_dialogue_actionable_body_exited(_body: Node2D) -> void:
 			DialogueManager.dialogue_ended.emit(dialogue_actionable.dialogue_resource)
 			dialogue_actionable.dialogue_balloon.queue_free()
 
+func _on_threat_service_on_first_threat_added() -> void:
+	behavior.blackboard.set_var(LimboVarLib.HAS_THREATS, true)
+
 func _on_threat_service_on_no_threats() -> void:
+	behavior.blackboard.set_var(LimboVarLib.HAS_THREATS, false)
 	target = null
 
 func _set_player_input_vars():

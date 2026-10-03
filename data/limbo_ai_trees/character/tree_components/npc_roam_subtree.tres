@@ -1,0 +1,55 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://jqq8glv8536p"]
+
+[ext_resource type="Script" uid="uid://cqyd5jswd0ulh" path="res://data/limbo_ai_trees/tasks/character/can_roam.gd" id="1_h2vfg"]
+[ext_resource type="Script" uid="uid://bjx33ahcsgjei" path="res://data/limbo_ai_trees/tasks/character/has_move_arrived.gd" id="2_8bmim"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="3_hm2wq"]
+[ext_resource type="Script" uid="uid://d00u3dw7dwr4k" path="res://data/limbo_ai_trees/tasks/character/can_move_to.gd" id="4_n27mh"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_h2vfg"]
+var/has_roam_idled_var/name = &"has_roam_idled_var"
+var/has_roam_idled_var/type = 1
+var/has_roam_idled_var/value = false
+var/has_roam_idled_var/hint = 0
+var/has_roam_idled_var/hint_string = ""
+var/has_roam_moved_var/name = &"has_roam_moved_var"
+var/has_roam_moved_var/type = 1
+var/has_roam_moved_var/value = false
+var/has_roam_moved_var/hint = 0
+var/has_roam_moved_var/hint_string = ""
+
+[sub_resource type="BTCondition" id="BTCondition_5ic3s"]
+script = ExtResource("1_h2vfg")
+
+[sub_resource type="BTCondition" id="BTCondition_8bmim"]
+script = ExtResource("4_n27mh")
+pos_type = 0
+
+[sub_resource type="BTAction" id="BTAction_hm2wq"]
+script = ExtResource("3_hm2wq")
+state = 1
+
+[sub_resource type="BTCondition" id="BTCondition_n27mh"]
+script = ExtResource("2_8bmim")
+
+[sub_resource type="BTAction" id="BTAction_5ic3s"]
+script = ExtResource("3_hm2wq")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_ly8em"]
+min_duration = 2.0
+max_duration = 5.0
+
+[sub_resource type="BBVariant" id="BBVariant_8bmim"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTSetVar" id="BTSetVar_hm2wq"]
+variable = &"has_roam_moved_var"
+value = SubResource("BBVariant_8bmim")
+
+[sub_resource type="BTSequence" id="BTSequence_mobb1"]
+children = [SubResource("BTCondition_5ic3s"), SubResource("BTCondition_8bmim"), SubResource("BTAction_hm2wq"), SubResource("BTCondition_n27mh"), SubResource("BTAction_5ic3s"), SubResource("BTRandomWait_ly8em"), SubResource("BTSetVar_hm2wq")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_h2vfg")
+root_task = SubResource("BTSequence_mobb1")

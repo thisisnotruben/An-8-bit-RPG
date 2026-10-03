@@ -1,6 +1,8 @@
 @tool
 class_name CharacterBuilder extends Resource
 
+static var IMPORTING := false
+
 enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 
 @export var character_name := ''
@@ -9,20 +11,19 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var tags: Array[String] = []
 @export var character_roles: Array[CharaterSideRoles] = []
 @export var gold: ModifierAmount = preload('uid://dvkkiqw5dqasq')
-
 @export var hit_flags: HitFlags = preload('uid://bdowfnvtuwygf')
 @export var stats: CharacterStats = preload('uid://dotidkyrhls6l')
-@export var respawn: CharacterRespawn = preload('uid://bsvw0x3p7x1eq')
 
-@export_category('Items & Spells')
+@export_category('Npc')
+@export var npc_behavior: BehaviorTree = preload('uid://bn3ar0pqvknrx')
+@export var respawn: CharacterRespawn = preload('uid://bsvw0x3p7x1eq')
 @export var drops: ItemDropTable
-@export_group('Player')
+@export var roam: IdleRoam = preload('uid://bst00ennl1vy0')
+
+@export_category('Player')
+@export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
 @export var spells: Array[Item.Type] = []
 @export var inventory: Array[Item.Type] = []
-
-@export_category('Behavior')
-@export var npc_behavior: BehaviorTree = preload('uid://bn3ar0pqvknrx')
-@export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
 
 @export_category('Animation')
 @export var anim_state_machine: AnimationNodeStateMachine
@@ -43,13 +44,17 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 
 
 func init(character: Character):
-	if not character.is_node_ready() and not Engine.is_editor_hint():
+	if IMPORTING:
+		return
+	elif not character.is_node_ready() and not Engine.is_editor_hint():
 		await character.ready
 	
 	hit_flags.init(character, friendly, npc)
 	stats.init(character)
 	respawn.init(character.global_position)
-
+	if not Engine.is_editor_hint():
+		roam.init(character)
+		
 	# Npc
 	character.nav_agent.avoidance_enabled = npc
 	(character.get_node('cam') as Camera2D).enabled = not npc
@@ -71,3 +76,11 @@ func init(character: Character):
 	character.img.offset = img_offset
 	character.body.shape = coll_body
 	character.body.position = coll_body_offset
+
+func make_unique():
+	gold = gold.duplicate_deep(DEEP_DUPLICATE_ALL)
+	stats = stats.duplicate_deep(DEEP_DUPLICATE_ALL)
+	respawn = respawn.duplicate_deep(DEEP_DUPLICATE_ALL)
+	if drops:
+		drops = drops.duplicate_deep(DEEP_DUPLICATE_ALL)
+	roam = roam.duplicate_deep(DEEP_DUPLICATE_ALL)
