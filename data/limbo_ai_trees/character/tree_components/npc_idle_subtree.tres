@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="2_03xba"]
 [ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://data/limbo_ai_trees/tasks/character/play_audio.gd" id="2_7i06x"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_0c6sq"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_j7p7m"]
 
 [sub_resource type="BTCondition" id="BTCondition_bb18x"]
 script = ExtResource("1_0c6sq")
@@ -27,5 +27,5 @@ custom_name = "Idle"
 children = [SubResource("BTInvert_j1svj"), SubResource("BTAction_4jmus"), SubResource("BTRandomWait_p08ib"), SubResource("BTAction_4ybl1")]
 
 [resource]
-blackboard_plan = SubResource("BlackboardPlan_0c6sq")
+blackboard_plan = SubResource("BlackboardPlan_j7p7m")
 root_task = SubResource("BTSequence_dqgba")

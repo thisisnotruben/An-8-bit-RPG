@@ -3,41 +3,7 @@
 [ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="1_5ljsl"]
 [ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://data/limbo_ai_trees/tasks/character/play_audio.gd" id="1_7n4oc"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_7n4oc"]
-var/character_var/name = &"character_var"
-var/character_var/type = 24
-var/character_var/hint = 34
-var/character_var/hint_string = "Character"
-var/input_state_var/name = &"input_state_var"
-var/input_state_var/type = 4
-var/input_state_var/value = ""
-var/input_state_var/hint = 0
-var/input_state_var/hint_string = ""
-var/health_var/name = &"health_var"
-var/health_var/type = 2
-var/health_var/value = 0
-var/health_var/hint = 0
-var/health_var/hint_string = ""
-var/hurt_var/name = &"hurt_var"
-var/hurt_var/type = 1
-var/hurt_var/value = false
-var/hurt_var/hint = 0
-var/hurt_var/hint_string = ""
-var/has_threats_var/name = &"has_threats_var"
-var/has_threats_var/type = 1
-var/has_threats_var/value = false
-var/has_threats_var/hint = 0
-var/has_threats_var/hint_string = ""
-var/is_returning_to_roam_var/name = &"is_returning_to_roam_var"
-var/is_returning_to_roam_var/type = 1
-var/is_returning_to_roam_var/value = false
-var/is_returning_to_roam_var/hint = 0
-var/is_returning_to_roam_var/hint_string = ""
-var/has_waited_from_roam_var/name = &"has_waited_from_roam_var"
-var/has_waited_from_roam_var/type = 1
-var/has_waited_from_roam_var/value = false
-var/has_waited_from_roam_var/hint = 0
-var/has_waited_from_roam_var/hint_string = ""
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_kkicn"]
 
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_1pu5h"]
 variable = &"hurt_var"
@@ -68,5 +34,5 @@ custom_name = "Hurt"
 children = [SubResource("BTCooldown_aq5ae"), SubResource("BTSetVar_50uf6"), SubResource("BTAction_avk3q"), SubResource("BTAction_aucgc")]
 
 [resource]
-blackboard_plan = SubResource("BlackboardPlan_7n4oc")
+blackboard_plan = SubResource("BlackboardPlan_kkicn")
 root_task = SubResource("BTSequence_dmsi3")

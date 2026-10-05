@@ -115,10 +115,9 @@ texture = ExtResource("17_j7xr0")
 offset = Vector2(0, -3)
 hframes = 8
 vframes = 4
-frame = 6
+frame = 4
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=810498800]
-visible = false
 position = Vector2(0, -4)
 shape = ExtResource("96_dnpej")
 
@@ -182,6 +181,9 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(-3, -8)
 texture_normal = SubResource("AtlasTexture_jdd1s")
 
+[node name="screen_notifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1861886702]
+
+[connection signal="amount_modified" from="health" to="." method="_on_health_amount_notify"]
 [connection signal="changed" from="health" to="." method="_on_health_changed"]
 [connection signal="on_first_threat_added" from="threat_service" to="." method="_on_threat_service_on_first_threat_added"]
 [connection signal="on_no_threats" from="threat_service" to="." method="_on_threat_service_on_no_threats"]
@@ -193,3 +195,5 @@ texture_normal = SubResource("AtlasTexture_jdd1s")
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
 [connection signal="body_exited" from="dialogue_actionable" to="." method="_on_dialogue_actionable_body_exited"]
 [connection signal="pressed" from="select_bttn" to="." method="_on_select_bttn_pressed"]
+[connection signal="screen_entered" from="screen_notifier" to="." method="_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="screen_notifier" to="." method="_on_screen_notifier_screen_exited"]

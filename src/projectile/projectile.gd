@@ -69,7 +69,7 @@ func _on_timer_timeout():
 func _on_hit_box_body_entered(body: Node2D):
 	if from_character.is_foe(body):
 		on_hit.emit(self, body)
-		(body as Character).health.modify(strategy.damage)
+		(body as Character).on_attacked(from_character, strategy.damage)
 		if not strategy.snd_hit_sfx.is_empty():
 			snd.stream = strategy.snd_hit_sfx.pick_random()
 			snd.play()

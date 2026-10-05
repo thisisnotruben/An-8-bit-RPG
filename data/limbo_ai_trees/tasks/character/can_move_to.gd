@@ -11,8 +11,11 @@ func _generate_name() -> String:
 			LimboUtility.decorate_var(LimboVarLib.CHARACTER)
 		]
 		
-	if pos_type == LimboVarLib.PosType.ROAM:
-		text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.HAS_ROAM_MOVED_VAR)
+	match pos_type:
+		LimboVarLib.PosType.ROAM:
+			text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.HAS_ROAM_MOVED_VAR)
+		LimboVarLib.PosType.ROAM_LAST_POS:
+			text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.IS_RETURN_TO_SPAWN_POS)
 	return text
 
 func _tick(_delta: float) -> Status:
@@ -24,8 +27,11 @@ func _tick(_delta: float) -> Status:
 	match pos_type:
 		LimboVarLib.PosType.TARGET when character.target:
 			pos = character.target.global_position
-		LimboVarLib.PosType.ROAM_LAST_POS:
+			
+		LimboVarLib.PosType.ROAM_LAST_POS \
+		when blackboard.get_var(LimboVarLib.IS_RETURN_TO_SPAWN_POS, false):
 			pos = character.unit.roam.recent_pos
+			
 		LimboVarLib.PosType.ROAM:
 			if blackboard.get_var(LimboVarLib.HAS_ROAM_MOVED_VAR, false):
 				return SUCCESS

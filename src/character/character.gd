@@ -12,6 +12,7 @@ class_name Character extends CharacterBody2D
 @onready var hit_scan_shoot: RayCast2D = $hit_shoot_cast
 @onready var hit_scan_melee: RayCast2D = $hit_melee_cast
 @onready var item_behaviors: Node = $item_behaviors
+@onready var screen_notifier: VisibleOnScreenNotifier2D = $screen_notifier
 
 @onready var behavior: BTPlayer = $behavior
 @onready var health: StatComponent = $health
@@ -42,7 +43,7 @@ class_name Character extends CharacterBody2D
 			value.init(self)
 		if not Engine.is_editor_hint():
 			# Delay to allow scene setup
-			await get_tree().create_timer(0.25).timeout
+			await get_tree().create_timer(1.0).timeout
 			behavior.active = value != null
 
 var target: Character
@@ -72,6 +73,7 @@ func _ready():
 			.filter(func(s): return s is CharacterState and s.enabled) \
 			.map(func(s): fsm_init[s.type] = s)
 		fsm.init(fsm_init, {'character': self})
+		_conserve_performance(not screen_notifier.is_on_screen())
 
 func _physics_process(delta: float):
 	fsm.physics_process(delta)
@@ -115,6 +117,20 @@ func _on_threat_service_on_first_threat_added() -> void:
 func _on_threat_service_on_no_threats() -> void:
 	behavior.blackboard.set_var(LimboVarLib.HAS_THREATS, false)
 	target = null
+
+func _on_screen_notifier_screen_entered() -> void:
+	_conserve_performance(false)
+	
+func _on_screen_notifier_screen_exited() -> void:
+	_conserve_performance(true)
+
+func _conserve_performance(conserve: bool):
+	conserve = not conserve
+	set_physics_process(conserve)
+	set_process_input(conserve)
+	set_process(conserve)
+	#behavior.active = conserve
+	anim_tree.active = conserve
 
 func _set_player_input_vars():
 	if not unit or unit.npc:

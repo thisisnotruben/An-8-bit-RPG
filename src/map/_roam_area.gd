@@ -2,7 +2,8 @@ extends Area2D
 
 
 func _ready() -> void:
-	await get_tree().create_timer(0.25).timeout
+	monitorable = false
+	await get_tree().create_timer(1.0).timeout
 	for body in get_overlapping_bodies():
 		if body is Character:
 			if not body.unit.resource_path.is_empty():

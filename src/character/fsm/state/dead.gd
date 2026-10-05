@@ -30,13 +30,14 @@ func _on_animation_tree_animation_finished(_anim_name: StringName):
 	if not active or not character.unit.npc:
 		return
 		
-	var item_drop := character.unit.drops.get_drop()
-	if item_drop and item_drop.type != Item.Type.INVALID:
-		
-		var item: ItemPickup = preload('uid://dr1an70kj8kym') \
-			.instantiate().init(item_drop.type)
-		character.add_sibling(item)
-		item.global_position = character.global_position
+	if character.unit.drops:
+		var item_drop := character.unit.drops.get_drop()
+		if item_drop and item_drop.type != Item.Type.INVALID:
+			
+			var item: ItemPickup = preload('uid://dr1an70kj8kym') \
+				.instantiate().init(item_drop.type)
+			character.add_sibling(item)
+			item.global_position = character.global_position
 		
 	await get_tree().create_timer(0.5).timeout
 	get_tree().create_tween().tween_property(character, 'modulate', Color.TRANSPARENT, 1.0)

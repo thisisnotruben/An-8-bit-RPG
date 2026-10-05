@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://bvtr4c8q8kc0v" path="res://data/limbo_ai_trees/tasks/character/can_shoot.gd" id="2_ndf6h"]
 [ext_resource type="Script" uid="uid://d00u3dw7dwr4k" path="res://data/limbo_ai_trees/tasks/character/can_move_to.gd" id="3_cdpit"]
 [ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="4_8d5x6"]
+[ext_resource type="Script" uid="uid://ctgvjhbvgl6hb" path="res://data/limbo_ai_trees/tasks/character/reevaluate_target.gd" id="5_8enrm"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_6ytga"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8enrm"]
 
 [sub_resource type="BTCondition" id="BTCondition_e8grk"]
 script = ExtResource("1_lahck")
@@ -22,18 +23,19 @@ children = [SubResource("BTCondition_whfs7")]
 [sub_resource type="BTCondition" id="BTCondition_8enrm"]
 script = ExtResource("3_cdpit")
 
-[sub_resource type="BTTimeLimit" id="BTTimeLimit_s27bt"]
-time_limit = 6.0
-children = [SubResource("BTCondition_8enrm")]
-
 [sub_resource type="BTAction" id="BTAction_u6pfo"]
 script = ExtResource("4_8d5x6")
 state = 1
 
-[sub_resource type="BTSequence" id="BTSequence_72t4l"]
+[sub_resource type="BTWait" id="BTWait_cdpit"]
+
+[sub_resource type="BTAction" id="BTAction_w4voj"]
+script = ExtResource("5_8enrm")
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_cdpit"]
 custom_name = "pursuit"
-children = [SubResource("BTInvert_cm48d"), SubResource("BTInvert_48bck"), SubResource("BTTimeLimit_s27bt"), SubResource("BTAction_u6pfo")]
+children = [SubResource("BTInvert_cm48d"), SubResource("BTInvert_48bck"), SubResource("BTCondition_8enrm"), SubResource("BTAction_u6pfo"), SubResource("BTWait_cdpit"), SubResource("BTAction_w4voj")]
 
 [resource]
-blackboard_plan = SubResource("BlackboardPlan_6ytga")
-root_task = SubResource("BTSequence_72t4l")
+blackboard_plan = SubResource("BlackboardPlan_8enrm")
+root_task = SubResource("BTDynamicSequence_cdpit")

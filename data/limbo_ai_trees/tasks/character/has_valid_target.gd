@@ -11,6 +11,4 @@ func _tick(_delta: float) -> Status:
 	if not is_instance_valid(character):
 		return FAILURE
 
-	if character.is_foe(character.target):
-		return SUCCESS
-	return FAILURE
+	return SUCCESS if character.is_foe(character.target) else FAILURE

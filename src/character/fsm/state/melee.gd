@@ -22,7 +22,7 @@ func enter():
 				ability_player.blackboard.set_var(LimboVarLib.ON_HIT, true)
 				ability_player.enter()
 
-			hit_scan.health.modify(character.unit.stats.melee.damage)
+			hit_scan.on_attacked(character, character.unit.stats.melee.damage)
 			if not character.unit.snd_melee.is_empty():
 				snd.stream = character.unit.snd_melee.pick_random()
 				snd.play()

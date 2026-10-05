@@ -1,0 +1,34 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://cl4sfgiukwgnj"]
+
+[ext_resource type="Script" uid="uid://d00u3dw7dwr4k" path="res://data/limbo_ai_trees/tasks/character/can_move_to.gd" id="1_uihmt"]
+[ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="2_id2fy"]
+[ext_resource type="Script" uid="uid://bjx33ahcsgjei" path="res://data/limbo_ai_trees/tasks/character/has_move_arrived.gd" id="3_lr1ag"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_uihmt"]
+
+[sub_resource type="BTCondition" id="BTCondition_paxx1"]
+script = ExtResource("1_uihmt")
+pos_type = 1
+
+[sub_resource type="BTAction" id="BTAction_pfjyg"]
+script = ExtResource("2_id2fy")
+state = 1
+
+[sub_resource type="BTCondition" id="BTCondition_bv4b3"]
+script = ExtResource("3_lr1ag")
+
+[sub_resource type="BBVariant" id="BBVariant_uihmt"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTSetVar" id="BTSetVar_qv670"]
+variable = &"is_return_to_spawn_pos_var"
+value = SubResource("BBVariant_uihmt")
+
+[sub_resource type="BTSequence" id="BTSequence_fqknx"]
+children = [SubResource("BTCondition_paxx1"), SubResource("BTAction_pfjyg"), SubResource("BTCondition_bv4b3"), SubResource("BTSetVar_qv670")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_uihmt")
+root_task = SubResource("BTSequence_fqknx")

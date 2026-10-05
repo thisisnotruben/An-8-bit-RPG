@@ -13,6 +13,9 @@ signal on_first_threat_added
 
 
 func add_threat(aggressor: Character):
+	if not aggressor:
+		return
+		
 	var aggressor_path := aggressor.get_path()
 	if threats.has(aggressor_path):
 		return
@@ -22,7 +25,10 @@ func add_threat(aggressor: Character):
 	if threats.size() == 1:
 		timer.start(THREAT_DECAY_THRESHOLD)
 
-func threat_changed(aggressor: Character, amount: int):
+func threat_changed(aggressor: Character, amount: int) -> Character:
+	if not aggressor:
+		return null
+	
 	var aggressor_path := aggressor.get_path()
 	if not threats.has(aggressor_path):
 		return null
@@ -35,14 +41,7 @@ func threat_changed(aggressor: Character, amount: int):
 		last_threat = aggressor_path
 		on_first_threat_added.emit()
 		return aggressor
-	else:
-		var highest_threat_dmg: int = threats[aggressor_path]['threat_dmg']
-		filter_valid_aggressors()
-		for path: NodePath in threats:
-			if threats[path]['threat_dmg'] > highest_threat_dmg:
-				aggressor_path = path
-		last_threat = aggressor_path
-		return get_node(aggressor_path) as Character
+	return get_highest_threat()
 
 func _on_timer_timeout() -> void:
 	filter_valid_aggressors()
@@ -68,6 +67,28 @@ func filter_valid_aggressors():
 			queued_to_remove.append(aggressor_path)
 			
 	queued_to_remove.map(func(k): threats.erase(k))
+
+func aggressor_remove(aggressor: Character) -> Character:
+	threats.erase(aggressor.get_path())
+	return get_highest_threat()
+
+func get_highest_threat() -> Character:
+	filter_valid_aggressors()
+	if threats.is_empty():
+		return null
+	
+	var highest_threat_dmg := -1
+	var aggressor_path := NodePath()
+	
+	for path: NodePath in threats:
+		if highest_threat_dmg == -1:
+			highest_threat_dmg = threats[path]['threat_dmg']
+			aggressor_path = path
+		elif threats[path]['threat_dmg'] > highest_threat_dmg:
+			aggressor_path = path
+			
+	last_threat = aggressor_path
+	return get_node_or_null(aggressor_path) as Character
 
 func clear():
 	threats.clear()
