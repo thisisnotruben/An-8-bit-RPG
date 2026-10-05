@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://data/limbo_ai_trees/tasks/character/play_audio.gd" id="1_7n4oc"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_kkicn"]
+var/hurt_var/name = &"hurt_var"
+var/hurt_var/type = 1
+var/hurt_var/value = false
+var/hurt_var/hint = 0
+var/hurt_var/hint_string = ""
 
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_1pu5h"]
 variable = &"hurt_var"
@@ -30,7 +35,6 @@ script = ExtResource("1_7n4oc")
 audio_lib_type = 6
 
 [sub_resource type="BTSequence" id="BTSequence_dmsi3"]
-custom_name = "Hurt"
 children = [SubResource("BTCooldown_aq5ae"), SubResource("BTSetVar_50uf6"), SubResource("BTAction_avk3q"), SubResource("BTAction_aucgc")]
 
 [resource]

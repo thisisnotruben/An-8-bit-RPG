@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dagfuuwoupx8y" path="res://asset/img/Minifantasy_UI _Overhaul_v1.0/_Minifantasy_UI_Overhaul_Assets/Stylized_Minifantasy_UI/Stylized_UI_scaled4x.png" id="95_vsifm"]
 [ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="96_dnpej"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_248u0"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_4feda"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pcmc"]
 radius = 32.0
@@ -70,8 +70,7 @@ script = ExtResource("10_38jpj")
 [node name="behavior" type="BTPlayer" parent="." unique_id=125419236]
 behavior_tree = ExtResource("5_j7xr0")
 active = false
-blackboard_plan = SubResource("BlackboardPlan_248u0")
-monitor_performance = true
+blackboard_plan = SubResource("BlackboardPlan_4feda")
 
 [node name="item_behaviors" type="Node" parent="." unique_id=1300632349]
 
@@ -115,7 +114,7 @@ texture = ExtResource("17_j7xr0")
 offset = Vector2(0, -3)
 hframes = 8
 vframes = 4
-frame = 4
+frame = 1
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=810498800]
 position = Vector2(0, -4)

@@ -16,6 +16,5 @@ func _tick(_delta: float) -> Status:
 		
 	character.target = character.threat.aggressor_remove(character)
 	if not character.target:
-		#blackboard.get_parent().set_var(LimboVarLib.IS_RETURN_TO_SPAWN_POS, true)
 		blackboard.set_var(LimboVarLib.IS_RETURN_TO_SPAWN_POS, true)
 	return SUCCESS

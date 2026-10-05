@@ -5,6 +5,11 @@
 [ext_resource type="Script" uid="uid://bjx33ahcsgjei" path="res://data/limbo_ai_trees/tasks/character/has_move_arrived.gd" id="3_lr1ag"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_uihmt"]
+var/is_return_to_spawn_pos_var/name = &"is_return_to_spawn_pos_var"
+var/is_return_to_spawn_pos_var/type = 1
+var/is_return_to_spawn_pos_var/value = false
+var/is_return_to_spawn_pos_var/hint = 0
+var/is_return_to_spawn_pos_var/hint_string = ""
 
 [sub_resource type="BTCondition" id="BTCondition_paxx1"]
 script = ExtResource("1_uihmt")

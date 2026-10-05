@@ -13,17 +13,18 @@
 [ext_resource type="BehaviorTree" uid="uid://jqq8glv8536p" path="res://data/limbo_ai_trees/character/tree_components/npc_roam_subtree.tres" id="11_rbxel"]
 [ext_resource type="BehaviorTree" uid="uid://cl4sfgiukwgnj" path="res://data/limbo_ai_trees/character/tree_components/npc_return_to_recent_pos.tres" id="12_t4ni3"]
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_v6li5"]
+mapping/hurt_var = &"hurt_var"
+
+[sub_resource type="BTSubtree" id="BTSubtree_t4ni3"]
+subtree = ExtResource("3_skj6g")
+blackboard_plan = SubResource("BlackboardPlan_v6li5")
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_skj6g"]
 
 [sub_resource type="BTSubtree" id="BTSubtree_fq1bd"]
 subtree = ExtResource("2_rbxel")
 blackboard_plan = SubResource("BlackboardPlan_skj6g")
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_v6li5"]
-
-[sub_resource type="BTSubtree" id="BTSubtree_v4fqj"]
-subtree = ExtResource("3_skj6g")
-blackboard_plan = SubResource("BlackboardPlan_v6li5")
 
 [sub_resource type="BTCondition" id="BTCondition_vmj8q"]
 script = ExtResource("5_t4ni3")
@@ -32,6 +33,7 @@ script = ExtResource("5_t4ni3")
 script = ExtResource("6_lx2lo")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_t4ni3"]
+mapping/is_return_to_spawn_pos_var = &"is_return_to_spawn_pos_var"
 
 [sub_resource type="BTSubtree" id="BTSubtree_y4huq"]
 subtree = ExtResource("7_u7h8h")
@@ -60,6 +62,7 @@ custom_name = "Attack"
 children = [SubResource("BTCondition_vmj8q"), SubResource("BTAction_vmj8q"), SubResource("BTSelector_2ko0t")]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_k6g06"]
+mapping/is_return_to_spawn_pos_var = &"is_return_to_spawn_pos_var"
 
 [sub_resource type="BTSubtree" id="BTSubtree_lx2lo"]
 subtree = ExtResource("12_t4ni3")
@@ -78,7 +81,7 @@ subtree = ExtResource("4_v6li5")
 blackboard_plan = SubResource("BlackboardPlan_xna24")
 
 [sub_resource type="BTDynamicSelector" id="BTDynamicSelector_vlo6o"]
-children = [SubResource("BTSubtree_fq1bd"), SubResource("BTSubtree_v4fqj"), SubResource("BTSequence_qkaqj"), SubResource("BTSubtree_lx2lo"), SubResource("BTSubtree_v6li5"), SubResource("BTSubtree_dim4t")]
+children = [SubResource("BTSubtree_t4ni3"), SubResource("BTSubtree_fq1bd"), SubResource("BTSequence_qkaqj"), SubResource("BTSubtree_lx2lo"), SubResource("BTSubtree_v6li5"), SubResource("BTSubtree_dim4t")]
 
 [resource]
 blackboard_plan = ExtResource("1_vlo6o")

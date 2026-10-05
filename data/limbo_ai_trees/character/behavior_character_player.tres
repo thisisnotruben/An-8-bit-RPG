@@ -14,9 +14,11 @@
 subtree = ExtResource("2_ht226")
 blackboard_plan = SubResource("BlackboardPlan_6kkfr")
 
-[sub_resource type="BTSubtree" id="BTSubtree_2vhlx"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_361so"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_ht226"]
 subtree = ExtResource("3_uayrq")
-blackboard_plan = ExtResource("1_361so")
+blackboard_plan = SubResource("BlackboardPlan_361so")
 
 [sub_resource type="BBVariant" id="BBVariant_32cym"]
 type = 4
@@ -98,7 +100,7 @@ custom_name = "attack"
 children = [SubResource("BTCheckVar_iw43q"), SubResource("BTSelector_w7c6f")]
 
 [sub_resource type="BTSelector" id="BTSelector_spe64"]
-children = [SubResource("BTSubtree_ig2lr"), SubResource("BTSubtree_2vhlx"), SubResource("BTSequence_b1h55"), SubResource("BTSequence_xptis"), SubResource("BTSequence_iw43q")]
+children = [SubResource("BTSubtree_ig2lr"), SubResource("BTSubtree_ht226"), SubResource("BTSequence_b1h55"), SubResource("BTSequence_xptis"), SubResource("BTSequence_iw43q")]
 
 [resource]
 blackboard_plan = ExtResource("1_361so")
