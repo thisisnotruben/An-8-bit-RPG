@@ -6,7 +6,7 @@ class_name StatComponent extends Node
 @export var resistances: Array[ModifierAttack.Type] = []
 @export var immunities: Array[ModifierAttack.Type] = []
 
-signal changed(_current: int, _max: int, _old_value: int)
+signal changed(_current: int, _max: int, _old_value: int, aggressor: Character)
 
 ## Amount is not the total amount changed, it's clamped by 0 & 'max_value' 
 signal amount_modified(amount: int, aggressor: Character)
@@ -31,7 +31,7 @@ func modify(attack: ModifierAttack, aggressor: Character = null):
 		amount_modified.emit(amount, aggressor)
 		current = clampi(current + amount, 0, max_value)
 		if prev_current != current:
-			changed.emit(current, max_value, prev_current)
+			changed.emit(current, max_value, prev_current, aggressor)
 
 func reset():
 	current = max_value

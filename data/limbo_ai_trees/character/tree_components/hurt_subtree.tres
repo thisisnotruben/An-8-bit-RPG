@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cswlw43jiecpw" path="res://data/limbo_ai_trees/tasks/character/set_state.gd" id="1_5ljsl"]
 [ext_resource type="Script" uid="uid://dl2l1y68sak08" path="res://data/limbo_ai_trees/tasks/character/play_audio.gd" id="1_7n4oc"]
+[ext_resource type="Script" uid="uid://d00u3dw7dwr4k" path="res://data/limbo_ai_trees/tasks/character/can_move_to.gd" id="3_yb0qx"]
+[ext_resource type="Script" uid="uid://d3cudfseymqs2" path="res://data/limbo_ai_trees/tasks/character/await_state_finished.gd" id="4_fqqod"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_kkicn"]
 var/hurt_var/name = &"hurt_var"
@@ -9,13 +11,62 @@ var/hurt_var/type = 1
 var/hurt_var/value = false
 var/hurt_var/hint = 0
 var/hurt_var/hint_string = ""
+var/is_return_to_spawn_pos_var/name = &"is_return_to_spawn_pos_var"
+var/is_return_to_spawn_pos_var/type = 1
+var/is_return_to_spawn_pos_var/value = false
+var/is_return_to_spawn_pos_var/hint = 0
+var/is_return_to_spawn_pos_var/hint_string = ""
+var/non_aggressive_var/name = &"non_aggressive_var"
+var/non_aggressive_var/type = 1
+var/non_aggressive_var/value = false
+var/non_aggressive_var/hint = 0
+var/non_aggressive_var/hint_string = ""
 
 [sub_resource type="BTCheckTrigger" id="BTCheckTrigger_1pu5h"]
 variable = &"hurt_var"
 
-[sub_resource type="BTCooldown" id="BTCooldown_aq5ae"]
-duration = 1.0
-children = [SubResource("BTCheckTrigger_1pu5h")]
+[sub_resource type="BTAction" id="BTAction_avk3q"]
+script = ExtResource("1_5ljsl")
+state = 6
+
+[sub_resource type="BTAction" id="BTAction_aucgc"]
+script = ExtResource("1_7n4oc")
+audio_lib_type = 6
+
+[sub_resource type="BTCondition" id="BTCondition_uapib"]
+script = ExtResource("4_fqqod")
+state = 6
+
+[sub_resource type="BTCondition" id="BTCondition_fqqod"]
+script = ExtResource("3_yb0qx")
+pos_type = 3
+
+[sub_resource type="BTAction" id="BTAction_yb0qx"]
+script = ExtResource("1_5ljsl")
+state = 1
+
+[sub_resource type="BTWait" id="BTWait_yb0qx"]
+duration = 5.0
+
+[sub_resource type="BBVariant" id="BBVariant_yb0qx"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_fqqod"]
+variable = &"is_return_to_spawn_pos_var"
+value = SubResource("BBVariant_yb0qx")
+
+[sub_resource type="BTSequence" id="BTSequence_yb0qx"]
+children = [SubResource("BTCondition_uapib"), SubResource("BTCondition_fqqod"), SubResource("BTAction_yb0qx"), SubResource("BTWait_yb0qx"), SubResource("BTSetVar_fqqod")]
+
+[sub_resource type="BTFail" id="BTFail_yb0qx"]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_fqqod"]
+children = [SubResource("BTFail_yb0qx")]
+
+[sub_resource type="BTSelector" id="BTSelector_fqqod"]
+children = [SubResource("BTSequence_yb0qx"), SubResource("BTAlwaysSucceed_fqqod")]
 
 [sub_resource type="BBVariant" id="BBVariant_lipyn"]
 type = 1
@@ -26,16 +77,8 @@ resource_name = "false"
 variable = &"hurt_var"
 value = SubResource("BBVariant_lipyn")
 
-[sub_resource type="BTAction" id="BTAction_avk3q"]
-script = ExtResource("1_5ljsl")
-state = 6
-
-[sub_resource type="BTAction" id="BTAction_aucgc"]
-script = ExtResource("1_7n4oc")
-audio_lib_type = 6
-
 [sub_resource type="BTSequence" id="BTSequence_dmsi3"]
-children = [SubResource("BTCooldown_aq5ae"), SubResource("BTSetVar_50uf6"), SubResource("BTAction_avk3q"), SubResource("BTAction_aucgc")]
+children = [SubResource("BTCheckTrigger_1pu5h"), SubResource("BTAction_avk3q"), SubResource("BTAction_aucgc"), SubResource("BTSelector_fqqod"), SubResource("BTSetVar_50uf6")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_kkicn")

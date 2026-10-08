@@ -19,6 +19,23 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var respawn: CharacterRespawn = preload('uid://bsvw0x3p7x1eq')
 @export var drops: ItemDropTable
 @export var roam: IdleRoam = preload('uid://bst00ennl1vy0')
+## if 'non_aggresive', then unit doesn't fight and flees when hit
+@export var non_aggresive := false:
+	set(value):
+		non_aggresive = value
+		pursuit_can_melee_check = not value
+		pursuit_can_shoot_check = not value
+		if not value:
+			custom_melee_bt = null
+			custom_shoot_bt = null
+		
+@export_group('BT tweaks')
+@export var pursuit_can_shoot_check := true
+@export var pursuit_can_melee_check := true
+
+@export var dead_after_bt: BehaviorTree
+@export var custom_shoot_bt: BehaviorTree
+@export var custom_melee_bt: BehaviorTree
 
 @export_category('Player')
 @export var player_behavior: BehaviorTree = preload('uid://bmm4llq2i8kce')
@@ -43,6 +60,9 @@ enum CharaterSideRoles { MERCHANT, TRAINER, DIALOGUE, }
 @export var coll_body_offset := Vector2(0.0, -4.0)
 
 
+func _init():
+	resource_local_to_scene = true
+
 func init(character: Character):
 	if IMPORTING:
 		return
@@ -58,12 +78,15 @@ func init(character: Character):
 	# Npc
 	character.nav_agent.avoidance_enabled = npc
 	(character.get_node('cam') as Camera2D).enabled = not npc
+	
+	# Behavior
 	character.behavior.behavior_tree = npc_behavior if npc else player_behavior
-
 	character.behavior.blackboard.set_var(LimboVarLib.CHARACTER, character)
 	character.behavior.blackboard.set_var(LimboVarLib.HEALTH, character.health.current)
 	character.behavior.blackboard.bind_var_to_property(LimboVarLib.HEALTH, character.health, 'current')
-
+	character.behavior.blackboard.set_var(LimboVarLib.NON_AGGRESSIVE, non_aggresive)
+	_set_custom_behaviors(character)
+	
 	# Animation
 	character.anim_tree.tree_root = anim_state_machine
 	for lib_name in character.anim.get_animation_library_list():
@@ -84,3 +107,28 @@ func make_unique():
 	if drops:
 		drops = drops.duplicate_deep(DEEP_DUPLICATE_ALL)
 	roam = roam.duplicate_deep(DEEP_DUPLICATE_ALL)
+	
+func _set_custom_behaviors(character: Character):
+	var rt := character.behavior.behavior_tree.get_root_task()
+	for i in rt.get_child_count():
+		var task := rt.get_child(i)
+		match task.get_task_name():
+			'dead' when dead_after_bt:
+				var tree := BTSubtree.new()
+				tree.subtree = dead_after_bt
+				task.add_child(tree)
+			'attack' when custom_melee_bt or custom_shoot_bt:
+				for j in task.get_child_count():
+					var logic := task.get_child(j)
+					if logic.get_task_name() == 'logic':
+						for k in logic.get_child_count():
+							
+							var subSubTask := logic.get_child(k) as BTSubtree
+							if not subSubTask:
+								continue
+							
+							match subSubTask.get_task_name():
+								'shoot' when custom_shoot_bt:
+									subSubTask.subtree = custom_shoot_bt
+								'melee' when custom_melee_bt:
+									subSubTask.subtree = custom_melee_bt

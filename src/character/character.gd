@@ -13,6 +13,7 @@ class_name Character extends CharacterBody2D
 @onready var hit_scan_melee: RayCast2D = $hit_melee_cast
 @onready var item_behaviors: Node = $item_behaviors
 @onready var screen_notifier: VisibleOnScreenNotifier2D = $screen_notifier
+@onready var sight: Area2D = $sight
 
 @onready var behavior: BTPlayer = $behavior
 @onready var health: StatComponent = $health
@@ -46,7 +47,9 @@ class_name Character extends CharacterBody2D
 			await get_tree().create_timer(1.0).timeout
 			behavior.active = value != null
 
-var target: Character
+var target: Character:
+	set(value):
+		target = null if unit and unit.non_aggresive else value
 
 var is_inventory_full := func(): return true
 var is_spellbook_full := func(): return true
@@ -92,8 +95,9 @@ func _on_nav_velocity_computed(safe_velocity: Vector2):
 func _on_select_bttn_pressed():
 	on_selected.emit(self)
 
-func _on_health_changed(current: int, _max: int, old_value: int):
+func _on_health_changed(current: int, _max: int, old_value: int, aggresor: Character):
 	behavior.blackboard.set_var(LimboVarLib.HURT, current < old_value)
+	behavior.blackboard.set_var(LimboVarLib.FLEE_AGGRESSOR_POS, aggresor.global_position)
 
 func _on_sight_body_entered(other_npc: Node2D):
 	if other_npc != self and unit.npc:
@@ -144,6 +148,7 @@ func _set_player_input_vars():
 		hit_scan_melee.look_at(mouse_pos)
 		hit_scan_shoot.look_at(mouse_pos)
 		# TODO: will likely have to change this in regards of melee or range
+		# and what the player currently has equipped to attack
 		if hit_scan_melee.get_collider() or hit_scan_shoot.get_collider():
 			input_state = 'attack'
 		
@@ -210,17 +215,31 @@ func is_foe(_body: Node2D) -> bool:
 		and character.fsm.state != CharacterStates.Type.DEAD
 
 func aggro(_body: Node2D) -> bool:
-	if unit.npc and not target and is_foe(_body):
-		target = _body
-		for other_body in $sight.get_overlapping_bodies():
-			if other_body != self and not is_foe(other_body) and not other_body.target:
-				(other_body as Character).aggro(target)
+	var _target := _body as Character
+	if unit.npc and not target and _target and not _target.unit.non_aggresive and is_foe(_target):
+		target = _target
+		sight.get_overlapping_bodies() \
+			.filter(func(b): return b != self and not is_foe(b) and not b.target) \
+			.map(func(b): b.aggro(_target))
 		return true
 	return false
 	
 func on_attacked(aggressor: Character, attack: ModifierAttack):
 	threat.add_threat(aggressor)
-	health.modify(attack)
+	health.modify(attack, aggressor)
+
+func get_flee_pos(aggressor_pos := Vector2.ZERO) -> Vector2:
+	if aggressor_pos.is_zero_approx():
+		return Vector2.ZERO
+		
+	var theta := randf() * 2 * PI
+	var radius := ((sight.get_child(0) as CollisionShape2D).shape as CircleShape2D).radius
+	var flee_pos := global_position + Vector2(cos(theta), sin(theta)) * radius
+	var opp_attack_dir := global_position + aggressor_pos.direction_to(global_position) * radius
+
+	if global_position.direction_to(opp_attack_dir).dot(global_position.direction_to(flee_pos)) >= 0.0:
+		return flee_pos
+	return Vector2.ZERO
 
 func notify_projectile_incoming(projectile: Projectile):
 	behavior.blackboard.set_var(LimboVarLib.INCOMING_PROJECTILE, projectile)

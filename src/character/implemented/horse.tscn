@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dictecdvqt8sv"]
 
 [ext_resource type="PackedScene" uid="uid://batngdfpuvufm" path="res://src/character/character.tscn" id="1_n3y1n"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://5pyd4ae107yd" path="res://resource/character/animation_state_machine/Horse_state_machine.tres" id="2_03da1"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://brbo4d888jf8u" path="res://resource/character/animation_state_machine/Horse_state_machine.tres" id="2_03da1"]
 [ext_resource type="Resource" uid="uid://ck8bfm5cchyua" path="res://data/character/horse.tres" id="2_lbefr"]
 [ext_resource type="Texture2D" uid="uid://bqt3uvlb08lt1" path="res://asset/img/Minifantasy_Wildlife_v1.0/Minifantasy_Wildlife_Assets/Non-Aggressive/Horse/HorseIdle.png" id="3_03da1"]
 [ext_resource type="AnimationLibrary" uid="uid://bq3tqusa456nr" path="res://resource/character/animation/Horse.tres" id="3_et8ka"]
@@ -12,16 +12,13 @@ unit = ExtResource("2_lbefr")
 [node name="melee" parent="fsm" parent_id_path=PackedInt32Array(721548796) index="3" unique_id=1706596097]
 enabled = false
 
-[node name="anim_player" parent="." index="9" unique_id=1820659917]
+[node name="anim_player" parent="." index="10" unique_id=1820659917]
 libraries/Horse = ExtResource("3_et8ka")
 
-[node name="anim_tree" parent="." index="10" unique_id=634827393]
+[node name="anim_tree" parent="." index="11" unique_id=634827393]
 tree_root = ExtResource("2_03da1")
-parameters/dmg/blend_position = Vector2(0, 0)
-parameters/idle/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="img" parent="." index="11" unique_id=1054139227]
+[node name="img" parent="." index="12" unique_id=1054139227]
 texture = ExtResource("3_03da1")
 hframes = 12
 frame = 7

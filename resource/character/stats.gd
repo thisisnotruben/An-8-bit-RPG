@@ -32,6 +32,9 @@ const MIN_ATTACK_SPEED_COOLDOWN = 0.05
 var target: Character
 
 
+func _init():
+	resource_local_to_scene = true
+
 func init(_target: Character):
 	target = _target
 	if not _target.is_node_ready():

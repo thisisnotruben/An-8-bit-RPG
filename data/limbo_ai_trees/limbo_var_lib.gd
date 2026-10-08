@@ -1,6 +1,6 @@
 class_name LimboVarLib extends Resource
 
-enum PosType { ROAM, ROAM_LAST_POS, TARGET, }
+enum PosType { ROAM, ROAM_LAST_POS, TARGET, FLEE, }
 
 const ITEM_TYPE := 'item_type_var'
 const ABILITY := 'ability_var'
@@ -20,3 +20,5 @@ const HAS_THREATS := 'has_threats_var'
 const IS_RETURN_TO_SPAWN_POS := 'is_return_to_spawn_pos_var'
 const HAS_ROAM_MOVED_VAR := 'has_roam_moved_var'
 const HURT := 'hurt_var'
+const NON_AGGRESSIVE := 'non_aggressive_var'
+const FLEE_AGGRESSOR_POS := 'flee_aggressor_pos_var'

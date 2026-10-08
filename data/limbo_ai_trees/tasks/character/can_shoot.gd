@@ -1,6 +1,8 @@
 @tool
 extends BTCondition
 
+@export var in_pursuit := false
+
 
 func _generate_name() -> String:
 	return 'Character can shoot? | uses: [%s]' % \
@@ -10,8 +12,10 @@ func _tick(_delta: float) -> Status:
 	var character: Character = blackboard.get_var(LimboVarLib.CHARACTER)
 	if not is_instance_valid(character):
 		return FAILURE
-
-	if character.fsm.can_shoot() \
-	and character.hit_scan_shoot.get_collider() == character.target:
-		return SUCCESS
-	return FAILURE
+		
+	if in_pursuit and not character.unit.pursuit_can_shoot_check:
+		return SUCCESS # bypasses check
+		
+	return SUCCESS if character.fsm.can_shoot() \
+		and character.hit_scan_shoot.get_collider() == character.target \
+	else FAILURE

@@ -13,9 +13,13 @@ func _set_state(_state_type):
 	return true
 
 func can_melee() -> bool:
-	# TODO: need a better way to figure out what can melee
 	return states.has(CharacterStates.Type.MELEE)
 
 func can_shoot() -> bool:
-	# TODO: need a better way to figure out what can shoot
 	return states.has(CharacterStates.Type.SHOOT)
+
+func get_switch_type() -> CharacterState.SwitchType:
+	return _curr['state'].switch_type
+
+func get_switch_status() -> CharacterState.SwitchTypeStatus:
+	return _curr['state'].switch_type_status

@@ -34,6 +34,11 @@ TODO
 		- Minifantasy_Spell_Effects_II_v1.0
 
 ### TODO
+- have it so you can enable states in the fsm from the character_builder
+	- ex: horse cannot attack, flees when hit
+- have mother slime drop a baby slime on chance it gets killed as a POC for npc spells
+- have the cook sell you food
+
 - Iterate through characters
 	- apply sfx
 	- make sure animations are correct

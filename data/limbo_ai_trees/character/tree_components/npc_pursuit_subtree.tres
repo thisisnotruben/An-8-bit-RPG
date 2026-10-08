@@ -15,12 +15,14 @@ var/is_return_to_spawn_pos_var/hint_string = ""
 
 [sub_resource type="BTCondition" id="BTCondition_e8grk"]
 script = ExtResource("1_lahck")
+in_pursuit = true
 
 [sub_resource type="BTInvert" id="BTInvert_cm48d"]
 children = [SubResource("BTCondition_e8grk")]
 
 [sub_resource type="BTCondition" id="BTCondition_whfs7"]
 script = ExtResource("2_ndf6h")
+in_pursuit = true
 
 [sub_resource type="BTInvert" id="BTInvert_48bck"]
 children = [SubResource("BTCondition_whfs7")]

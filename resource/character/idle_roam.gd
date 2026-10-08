@@ -18,18 +18,21 @@ var _path_follow_idx := 0
 var _reversed := false
 
 
+func _init():
+	resource_local_to_scene = true
+
 func init(character: Character, _node_path := NodePath()) -> IdleRoam:
+	_character = character
+	recent_pos = character.global_position
+	_tree = _character.get_tree()
+	_roam_radius = ((_character.sight.get_child(0) as CollisionShape2D).shape as CircleShape2D).radius
+	
 	if not node_path and _node_path.is_empty():
 		return self
 	elif not _node_path.is_empty():
 		node_path = _node_path
 		
-	_character = character
-	_tree = _character.get_tree()
-	_roam_radius = ((_character.get_node('sight/coll') as CollisionShape2D) \
-		.shape as CircleShape2D).radius
 	node = _character.get_node_or_null(node_path)
-	
 	if not node:
 		printerr('Couldn\'t find node: [%s] for [%s]' % [node_path, _character.get_path()])
 	elif node is Area2D:
@@ -57,19 +60,21 @@ func get_pos() -> Vector2:
 					_reversed = true
 					
 		Type.ROAM:
-			var theta : float = randf() * 2 * PI
+			var theta := randf() * 2 * PI
 			pos = _character.global_position \
 				+ Vector2(cos(theta), sin(theta)) * sqrt(randf()) * _roam_radius
-			
-			var query := PhysicsPointQueryParameters2D.new()
-			query.collide_with_areas = true
-			query.collide_with_bodies = false
-			query.position = pos
-			
-			# Check if still in bounds
-			if _tree.root.get_world_2d().direct_space_state.intersect_point(query) \
-			.filter(func(r): return node == r['collider']).is_empty():
+			if not is_in_bounds(pos):
 				pos = Vector2.ZERO
 				
 	recent_pos = pos
 	return pos
+
+func is_in_bounds(pos: Vector2) -> bool:
+	var query := PhysicsPointQueryParameters2D.new()
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.position = pos
+	
+	return type == Type.ROAM \
+		and not _tree.root.get_world_2d().direct_space_state.intersect_point(query) \
+		.filter(func(r): return node == r['collider']).is_empty()

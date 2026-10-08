@@ -148,7 +148,7 @@ func _on_set_target(value: Character):
 		value.ability.changed.connect(_on_set_target_ability)
 		value.died.connect(_on_target_died)
 
-func _on_set_target_health(value: int, value_max: int, _old: int):
+func _on_set_target_health(value: int, value_max: int, _old: int, _character: Character = null):
 	_update_status_ui(target_health, value, value_max)
 
 func _on_set_target_mana(value: int, value_max: int, _old: int):
@@ -157,7 +157,7 @@ func _on_set_target_mana(value: int, value_max: int, _old: int):
 func _on_set_target_ability(value: int, value_max: int, _old: int):
 	_update_status_ui(target_ability, value, value_max)
 
-func _on_set_player_health(value: int, value_max: int, _old: int):
+func _on_set_player_health(value: int, value_max: int, _old: int, _character: Character = null):
 	_update_status_ui(player_health, value, value_max)
 
 func _on_set_player_mana(value: int, value_max: int, _old: int):

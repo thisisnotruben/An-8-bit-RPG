@@ -15,6 +15,8 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_v6li5"]
 mapping/hurt_var = &"hurt_var"
+mapping/is_return_to_spawn_pos_var = &"is_return_to_spawn_pos_var"
+mapping/non_aggressive_var = &"non_aggressive_var"
 
 [sub_resource type="BTSubtree" id="BTSubtree_t4ni3"]
 subtree = ExtResource("3_skj6g")
@@ -25,6 +27,13 @@ blackboard_plan = SubResource("BlackboardPlan_v6li5")
 [sub_resource type="BTSubtree" id="BTSubtree_fq1bd"]
 subtree = ExtResource("2_rbxel")
 blackboard_plan = SubResource("BlackboardPlan_skj6g")
+custom_name = "dead"
+
+[sub_resource type="BTCheckTrigger" id="BTCheckTrigger_skj6g"]
+variable = &"non_aggressive_var"
+
+[sub_resource type="BTInvert" id="BTInvert_v6li5"]
+children = [SubResource("BTCheckTrigger_skj6g")]
 
 [sub_resource type="BTCondition" id="BTCondition_vmj8q"]
 script = ExtResource("5_t4ni3")
@@ -38,28 +47,32 @@ mapping/is_return_to_spawn_pos_var = &"is_return_to_spawn_pos_var"
 [sub_resource type="BTSubtree" id="BTSubtree_y4huq"]
 subtree = ExtResource("7_u7h8h")
 blackboard_plan = SubResource("BlackboardPlan_t4ni3")
+custom_name = "pursuit"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_lx2lo"]
 
 [sub_resource type="BTSubtree" id="BTSubtree_0ggo3"]
 subtree = ExtResource("8_k6g06")
 blackboard_plan = SubResource("BlackboardPlan_lx2lo")
+custom_name = "melee"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_u7h8h"]
 
 [sub_resource type="BTSubtree" id="BTSubtree_j56gk"]
 subtree = ExtResource("9_lidih")
 blackboard_plan = SubResource("BlackboardPlan_u7h8h")
+custom_name = "shoot"
 
 [sub_resource type="BTAction" id="BTAction_v4fqj"]
 script = ExtResource("10_xna24")
 
 [sub_resource type="BTSelector" id="BTSelector_2ko0t"]
+custom_name = "logic"
 children = [SubResource("BTSubtree_y4huq"), SubResource("BTSubtree_0ggo3"), SubResource("BTSubtree_j56gk"), SubResource("BTAction_v4fqj")]
 
 [sub_resource type="BTSequence" id="BTSequence_qkaqj"]
-custom_name = "Attack"
-children = [SubResource("BTCondition_vmj8q"), SubResource("BTAction_vmj8q"), SubResource("BTSelector_2ko0t")]
+custom_name = "attack"
+children = [SubResource("BTInvert_v6li5"), SubResource("BTCondition_vmj8q"), SubResource("BTAction_vmj8q"), SubResource("BTSelector_2ko0t")]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_k6g06"]
 mapping/is_return_to_spawn_pos_var = &"is_return_to_spawn_pos_var"

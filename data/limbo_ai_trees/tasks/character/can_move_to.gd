@@ -16,6 +16,8 @@ func _generate_name() -> String:
 			text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.HAS_ROAM_MOVED_VAR)
 		LimboVarLib.PosType.ROAM_LAST_POS:
 			text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.IS_RETURN_TO_SPAWN_POS)
+		LimboVarLib.PosType.FLEE:
+			text += ' [%s]' % LimboUtility.decorate_var(LimboVarLib.FLEE_AGGRESSOR_POS)
 	return text
 
 func _tick(_delta: float) -> Status:
@@ -37,6 +39,13 @@ func _tick(_delta: float) -> Status:
 				return SUCCESS
 			pos = character.unit.roam.get_pos()
 			
+		LimboVarLib.PosType.FLEE:
+			var i := 0
+			while i < 50 and pos.is_zero_approx():
+				pos = character.get_flee_pos( \
+					blackboard.get_var(LimboVarLib.FLEE_AGGRESSOR_POS, Vector2.ZERO))
+				i += 1
+			
 	if pos.is_zero_approx():
 		return FAILURE
 		
@@ -44,6 +53,6 @@ func _tick(_delta: float) -> Status:
 	if character.nav_agent.is_target_reachable():
 		if pos_type == LimboVarLib.PosType.ROAM:
 			blackboard.set_var(LimboVarLib.HAS_ROAM_MOVED_VAR, true)
-			
+		
 		return SUCCESS
 	return FAILURE
