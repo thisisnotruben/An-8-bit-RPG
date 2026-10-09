@@ -3,10 +3,13 @@ extends CharacterState
 
 func _init():
 	type = CharacterStates.Type.DEAD
+	switch_type = SwitchType.AT_END
 
 func enter():
 	super.enter()
+	switch_type_status = SwitchTypeStatus.ACTIVE
 	character.body.set_deferred('disabled', true)
+	character.nav_agent.avoidance_enabled = false
 	character.health_regen.stop()
 	character.mana_regen.stop()
 	character.ability_regen.stop()
@@ -17,6 +20,7 @@ func enter():
 func exit():
 	super.exit()
 	character.body.set_deferred('disabled', false)
+	character.nav_agent.avoidance_enabled = true
 	character.health.reset()
 	character.mana.reset()
 	character.ability.reset()
@@ -27,7 +31,10 @@ func exit():
 	apply_animation(Vector2.DOWN)
 
 func _on_animation_tree_animation_finished(_anim_name: StringName):
-	if not active or not character.unit.npc:
+	if not active:
+		return
+	switch_type_status = SwitchTypeStatus.FINISHED
+	if not character.unit.npc:
 		return
 		
 	if character.unit.drops:

@@ -1,6 +1,2224 @@
 [gd_scene format=3 uid="uid://cbdu0v7uaomg3"]
 
 [ext_resource type="PackedScene" uid="uid://duahdlh0x8w3r" path="res://tiled/map/zone1.tmx" id="1_654ca"]
+[ext_resource type="AnimationLibrary" uid="uid://bq3tqusa456nr" path="res://resource/character/animation/Horse.tres" id="2_gd10b"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://brbo4d888jf8u" path="res://resource/character/animation_state_machine/Horse_state_machine.tres" id="3_sjbri"]
+[ext_resource type="Shape2D" uid="uid://ccrqr6kge8p4w" path="res://resource/character/default/default_coll_body.tres" id="4_v6jvy"]
+[ext_resource type="Script" uid="uid://ceqfbg0d2eyn7" path="res://resource/modifier/amount/modifier_amount.gd" id="5_5gupm"]
+[ext_resource type="Resource" uid="uid://bdowfnvtuwygf" path="res://resource/character/default/default_hit_flags.tres" id="6_jod3o"]
+[ext_resource type="BehaviorTree" uid="uid://bn3ar0pqvknrx" path="res://data/limbo_ai_trees/character/behavior_character_default.tres" id="7_dnadg"]
+[ext_resource type="BehaviorTree" uid="uid://bmm4llq2i8kce" path="res://data/limbo_ai_trees/character/behavior_character_player.tres" id="8_nulic"]
+[ext_resource type="Resource" uid="uid://bsvw0x3p7x1eq" path="res://resource/character/default/default_respawn.tres" id="9_exgjg"]
+[ext_resource type="Resource" uid="uid://bst00ennl1vy0" path="res://resource/character/default/default_idle_roam.tres" id="10_jnpdc"]
+[ext_resource type="Script" uid="uid://osxc61u0jjco" path="res://resource/character/character_builder.gd" id="11_uob32"]
+[ext_resource type="Resource" uid="uid://eml2nyacvdlf" path="res://resource/character/default/default_stat_vital.tres" id="12_opi8o"]
+[ext_resource type="Resource" uid="uid://cej4dsuot70pl" path="res://resource/character/default/default_stat_regen_amnt.tres" id="13_7bw8l"]
+[ext_resource type="Resource" uid="uid://t5x8lqvvii74" path="res://resource/character/default/default_stat_vital_regen_sec.tres" id="14_2xcps"]
+[ext_resource type="Resource" uid="uid://dswpholksjmce" path="res://resource/character/default/default_stat_attack_speed.tres" id="15_1jjq4"]
+[ext_resource type="Resource" uid="uid://cvn58to2gmt7e" path="res://resource/character/default/default_stat_melee.tres" id="16_18u3t"]
+[ext_resource type="Resource" uid="uid://dx4fqdca1tv1d" path="res://resource/character/default/default_stat_move_speed.tres" id="17_pj7ph"]
+[ext_resource type="Script" uid="uid://cpw54khlhtg5l" path="res://resource/character/stats.gd" id="18_0qc3o"]
+[ext_resource type="Resource" uid="uid://c6wamfb52kyyj" path="res://resource/character/default/default_stat_shoot.tres" id="19_vcx7h"]
+[ext_resource type="AnimationLibrary" uid="uid://btopxe88kf067" path="res://resource/character/animation/Huntsman_Spider.tres" id="20_6y6lh"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dbyskfge4qpdg" path="res://resource/character/animation_state_machine/Huntsman_Spider_state_machine.tres" id="21_6gp1h"]
+[ext_resource type="AnimationLibrary" uid="uid://bud46ch251mx1" path="res://resource/character/animation/Giant.tres" id="22_3x1w3"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://2i7vwg6xhtga" path="res://resource/character/animation_state_machine/Giant_state_machine.tres" id="23_ukoel"]
+[ext_resource type="AnimationLibrary" uid="uid://dyixa25jeq8u2" path="res://resource/character/animation/Orc_Knight.tres" id="24_16667"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b074bjtv7ww2a" path="res://resource/character/animation_state_machine/Orc_Knight_state_machine.tres" id="25_torpt"]
+[ext_resource type="AnimationLibrary" uid="uid://s5sqnfel81bu" path="res://resource/character/animation/Ancient_Troll.tres" id="26_n0gsi"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dxpoj52hbonno" path="res://resource/character/animation_state_machine/Ancient_Troll_state_machine.tres" id="27_cbjd4"]
+[ext_resource type="AnimationLibrary" uid="uid://cdi3vfaddnjht" path="res://resource/character/animation/Fighter.tres" id="28_4gvoj"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://uogrp47xhupm" path="res://resource/character/animation_state_machine/Fighter_state_machine.tres" id="29_s0scq"]
+[ext_resource type="AnimationLibrary" uid="uid://detts71argwnj" path="res://resource/character/animation/Dwarven_Marksman.tres" id="30_ydjww"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://15p1133jxlmc" path="res://resource/character/animation_state_machine/Dwarven_Marksman_state_machine.tres" id="31_toe47"]
+[ext_resource type="AnimationLibrary" uid="uid://csighv7w5cnpl" path="res://resource/character/animation/Human_Town_Guard.tres" id="32_ppmet"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bmxrhu6lmq7hq" path="res://resource/character/animation_state_machine/Human_Town_Guard_state_machine.tres" id="33_shcxc"]
+[ext_resource type="AnimationLibrary" uid="uid://bvwtjpt33ops3" path="res://resource/character/animation/Carpenter.tres" id="34_isauy"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://c8mthw73rh2mq" path="res://resource/character/animation_state_machine/Carpenter_state_machine.tres" id="35_c3jnb"]
+[ext_resource type="Script" uid="uid://dg4r68t0ubxbw" path="res://resource/character/respawn.gd" id="36_obvb6"]
+[ext_resource type="Script" uid="uid://dheiyo8xxpvwo" path="res://resource/character/idle_roam.gd" id="37_by41e"]
+[ext_resource type="Script" uid="uid://cwpxy0f2j4icl" path="res://resource/modifier/amount/modifer_amount_abstract.gd" id="38_hvmad"]
+[ext_resource type="Script" uid="uid://by30of4e8c7jk" path="res://resource/modifier/stat/stat_modifier.gd" id="39_247ft"]
+[ext_resource type="Script" uid="uid://cc6eujasjiyms" path="res://resource/modifier/charge/modifier_attack.gd" id="40_1m7px"]
+[ext_resource type="Script" uid="uid://cqcoedlomhoec" path="res://resource/character/attack_stats.gd" id="41_jdxrk"]
+[ext_resource type="AnimationLibrary" uid="uid://c77f88a4xu2vv" path="res://resource/character/animation/Squirrel.tres" id="42_qkwvq"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bhtth32fui7vh" path="res://resource/character/animation_state_machine/Squirrel_state_machine.tres" id="43_ggwo0"]
+[ext_resource type="AnimationLibrary" uid="uid://b07ocom16a1jc" path="res://resource/character/animation/Tailor.tres" id="44_1boqu"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://fvxlfcyb0kwk" path="res://resource/character/animation_state_machine/Tailor_state_machine.tres" id="45_jochj"]
+[ext_resource type="AnimationLibrary" uid="uid://xq7hdp5jpflu" path="res://resource/character/animation/Alchemist.tres" id="46_pga7k"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://og6xjclyb2ih" path="res://resource/character/animation_state_machine/Alchemist_state_machine.tres" id="47_vtq1h"]
+[ext_resource type="AnimationLibrary" uid="uid://dsh3b08mqft2n" path="res://resource/character/animation/Cooker.tres" id="48_yentx"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dfemlp7csovx5" path="res://resource/character/animation_state_machine/Cooker_state_machine.tres" id="49_oume2"]
+[ext_resource type="AnimationLibrary" uid="uid://bikvo3g2vx8ks" path="res://resource/character/animation/Farmer.tres" id="50_l7v40"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://c0v62rwrqh4n5" path="res://resource/character/animation_state_machine/Farmer_state_machine.tres" id="51_ibcs6"]
+[ext_resource type="AnimationLibrary" uid="uid://drv22ppkblrdg" path="res://resource/character/animation/Dog.tres" id="52_qfg4b"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cths5kxdgdfjl" path="res://resource/character/animation_state_machine/Dog_state_machine.tres" id="53_jkpol"]
+[ext_resource type="AnimationLibrary" uid="uid://ch8d6euv6j324" path="res://resource/character/animation/Blue_Mother_Slime.tres" id="54_5t7rg"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dj2t27unv3mxu" path="res://resource/character/animation_state_machine/Blue_Mother_Slime_state_machine.tres" id="55_e5yjh"]
+[ext_resource type="BehaviorTree" uid="uid://ce0fx4a7e3hfr" path="res://data/limbo_ai_trees/character/implemented/blue_goo_mother_die.tres" id="56_fp6l5"]
+[ext_resource type="Resource" uid="uid://dxjsybqeo2naa" path="res://data/drop/blue_goo_drop_table.tres" id="57_nfbfu"]
+[ext_resource type="AnimationLibrary" uid="uid://5asqsn2vhdup" path="res://resource/character/animation/Blue_Slime.tres" id="58_0bhcd"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://da2emhbir3hod" path="res://resource/character/animation_state_machine/Blue_Slime_state_machine.tres" id="59_7r8xg"]
+[ext_resource type="AnimationLibrary" uid="uid://dk22u1sbktg6k" path="res://resource/character/animation/Demon_Spider.tres" id="60_ebksy"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://boesvegp81p3a" path="res://resource/character/animation_state_machine/Demon_Spider_state_machine.tres" id="61_ngnnf"]
+[ext_resource type="AnimationLibrary" uid="uid://cv8j0wqtqmxie" path="res://resource/character/animation/Observer.tres" id="62_soujy"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://gdl6hpubl7ck" path="res://resource/character/animation_state_machine/Observer_state_machine.tres" id="63_672dr"]
+[ext_resource type="AnimationLibrary" uid="uid://d3b6b2q3qggcr" path="res://resource/character/animation/Armored_Warrior.tres" id="64_d7rev"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://81lu2v3fibmi" path="res://resource/character/animation_state_machine/Armored_Warrior_state_machine.tres" id="65_2nj3r"]
+[ext_resource type="AnimationLibrary" uid="uid://cvrhmrn67eeih" path="res://resource/character/animation/Lobster.tres" id="66_gyfdw"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://00tdej7vtbcl" path="res://resource/character/animation_state_machine/Lobster_state_machine.tres" id="67_lylvy"]
+[ext_resource type="AnimationLibrary" uid="uid://28b607ri8w4x" path="res://resource/character/animation/Shifted.tres" id="68_pakml"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://13bu5exvjl7l" path="res://resource/character/animation_state_machine/Shifted_state_machine.tres" id="69_ema0v"]
+[ext_resource type="AnimationLibrary" uid="uid://8yipq778rvuj" path="res://resource/character/animation/Winged.tres" id="70_thsxi"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bjll4ohmj2yta" path="res://resource/character/animation_state_machine/Winged_state_machine.tres" id="71_yg3if"]
+[ext_resource type="AnimationLibrary" uid="uid://cwdq3kw5erugb" path="res://resource/character/animation/Dark_Priest.tres" id="72_70e4m"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cbp26lyqjd3xa" path="res://resource/character/animation_state_machine/Dark_Priest_state_machine.tres" id="73_iijg8"]
+[ext_resource type="AnimationLibrary" uid="uid://bpj72umknfmwj" path="res://resource/character/animation/Zombie_Giant.tres" id="74_fcwb5"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dom82ktp8p7vy" path="res://resource/character/animation_state_machine/Zombie_Giant_state_machine.tres" id="75_1uxcm"]
+[ext_resource type="AnimationLibrary" uid="uid://cu0adrnhg7d0l" path="res://resource/character/animation/Wraith.tres" id="76_ki00x"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://c0nxyjhx2m552" path="res://resource/character/animation_state_machine/Wraith_state_machine.tres" id="77_kmrlj"]
+[ext_resource type="AnimationLibrary" uid="uid://wysxrbjm6wnr" path="res://resource/character/animation/Blood_Mage.tres" id="78_65vt6"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dsuk8p2won0qc" path="res://resource/character/animation_state_machine/Blood_Mage_state_machine.tres" id="79_rk5sd"]
+[ext_resource type="AnimationLibrary" uid="uid://tpt582ydl7v1" path="res://resource/character/animation/Undead_Knight.tres" id="80_veqtp"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bax40efd3x4xi" path="res://resource/character/animation_state_machine/Undead_Knight_state_machine.tres" id="81_1ca4r"]
+[ext_resource type="AnimationLibrary" uid="uid://c4ueuj4h6ek4y" path="res://resource/character/animation/Diablo.tres" id="82_ta6s2"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cewrs1p1by3v1" path="res://resource/character/animation_state_machine/Diablo_state_machine.tres" id="83_yjhy7"]
+[ext_resource type="AnimationLibrary" uid="uid://cwh5jemogbgqt" path="res://resource/character/animation/Lich.tres" id="84_cvc1s"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b1orq7vjo5q01" path="res://resource/character/animation_state_machine/Lich_state_machine.tres" id="85_jhql3"]
+[ext_resource type="AnimationLibrary" uid="uid://cw2pn6d1cg8d6" path="res://resource/character/animation/Angel_of_Death.tres" id="86_jr7oc"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b03dc18rabgu4" path="res://resource/character/animation_state_machine/Angel_of_Death_state_machine.tres" id="87_dq6rx"]
+[ext_resource type="AnimationLibrary" uid="uid://1tka0pjlx8om" path="res://resource/character/animation/Cyclop.tres" id="88_j8npg"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://3xko0qyes6iv" path="res://resource/character/animation_state_machine/Cyclop_state_machine.tres" id="89_mnad3"]
+[ext_resource type="AnimationLibrary" uid="uid://dkmgrh3asysvp" path="res://resource/character/animation/Centaur_King.tres" id="90_8dajs"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bu3jqnhjbfuh" path="res://resource/character/animation_state_machine/Centaur_King_state_machine.tres" id="91_14b7b"]
+[ext_resource type="AnimationLibrary" uid="uid://b7oy6u5i1fpwv" path="res://resource/character/animation/Giant_Spider.tres" id="92_43pqk"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bplfrrxb7ku7a" path="res://resource/character/animation_state_machine/Giant_Spider_state_machine.tres" id="93_qtses"]
+[ext_resource type="AnimationLibrary" uid="uid://cwydpci6onpuy" path="res://resource/character/animation/Wise_Orc.tres" id="94_xkble"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cutsuxgdrol1k" path="res://resource/character/animation_state_machine/Wise_Orc_state_machine.tres" id="95_ajakn"]
+
+[sub_resource type="Resource" id="Resource_gd10b"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_sjbri"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_v6jvy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Horse"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_gd10b")
+stats = SubResource("Resource_sjbri")
+non_aggresive = true
+pursuit_can_shoot_check = false
+pursuit_can_melee_check = false
+anim_state_machine = ExtResource("3_sjbri")
+anim_library = ExtResource("2_gd10b")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_5gupm"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jod3o"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_dnadg"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Horse"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_5gupm")
+stats = SubResource("Resource_jod3o")
+non_aggresive = true
+pursuit_can_shoot_check = false
+pursuit_can_melee_check = false
+anim_state_machine = ExtResource("3_sjbri")
+anim_library = ExtResource("2_gd10b")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_nulic"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_exgjg"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_jnpdc"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_nulic")
+stats = SubResource("Resource_exgjg")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_uob32"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_opi8o"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_7bw8l"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_uob32")
+stats = SubResource("Resource_opi8o")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_2xcps"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_1jjq4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_18u3t"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_2xcps")
+stats = SubResource("Resource_1jjq4")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_pj7ph"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_0qc3o"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_vcx7h"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_pj7ph")
+stats = SubResource("Resource_0qc3o")
+anim_state_machine = ExtResource("23_ukoel")
+anim_library = ExtResource("22_3x1w3")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_6y6lh"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_6gp1h"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_3x1w3"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_6y6lh")
+stats = SubResource("Resource_6gp1h")
+anim_state_machine = ExtResource("23_ukoel")
+anim_library = ExtResource("22_3x1w3")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ukoel"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_16667"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_torpt"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_ukoel")
+stats = SubResource("Resource_16667")
+anim_state_machine = ExtResource("23_ukoel")
+anim_library = ExtResource("22_3x1w3")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_n0gsi"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_cbjd4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_4gvoj"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Orc Knight"
+tags = Array[String](["orc", "humanoid"])
+gold = SubResource("Resource_n0gsi")
+stats = SubResource("Resource_cbjd4")
+anim_state_machine = ExtResource("25_torpt")
+anim_library = ExtResource("24_16667")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_s0scq"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ydjww"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_toe47"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Orc Knight"
+tags = Array[String](["orc", "humanoid"])
+gold = SubResource("Resource_s0scq")
+stats = SubResource("Resource_ydjww")
+anim_state_machine = ExtResource("25_torpt")
+anim_library = ExtResource("24_16667")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ppmet"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_shcxc"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_isauy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_ppmet")
+stats = SubResource("Resource_shcxc")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_c3jnb"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_obvb6"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_by41e"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Ancient Troll"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_c3jnb")
+stats = SubResource("Resource_obvb6")
+anim_state_machine = ExtResource("27_cbjd4")
+anim_library = ExtResource("26_n0gsi")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_hvmad"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_247ft"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_1m7px"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_hvmad")
+stats = SubResource("Resource_247ft")
+anim_state_machine = ExtResource("23_ukoel")
+anim_library = ExtResource("22_3x1w3")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_jdxrk"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_qkwvq"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ggwo0"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Dwarven Fighter"
+friendly = true
+gold = SubResource("Resource_jdxrk")
+stats = SubResource("Resource_qkwvq")
+anim_state_machine = ExtResource("29_s0scq")
+anim_library = ExtResource("28_4gvoj")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_1boqu"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jochj"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_pga7k"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Dwarven Marksman"
+friendly = true
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_1boqu")
+stats = SubResource("Resource_jochj")
+anim_state_machine = ExtResource("31_toe47")
+anim_library = ExtResource("30_ydjww")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_vtq1h"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_yentx"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_oume2"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Dwarven Marksman"
+friendly = true
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_vtq1h")
+stats = SubResource("Resource_yentx")
+anim_state_machine = ExtResource("31_toe47")
+anim_library = ExtResource("30_ydjww")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_l7v40"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ibcs6"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_qfg4b"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_l7v40")
+stats = SubResource("Resource_ibcs6")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_jkpol"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_5t7rg"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_e5yjh"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_jkpol")
+stats = SubResource("Resource_5t7rg")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_fp6l5"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jpr5h"]
+script = ExtResource("36_obvb6")
+pos = Vector2(1263.75, 293.5)
+metadata/_custom_type_script = "uid://dg4r68t0ubxbw"
+
+[sub_resource type="Resource" id="Resource_0sxxu"]
+script = ExtResource("37_by41e")
+node_path = NodePath("../roam/Path")
+metadata/_custom_type_script = "uid://dheiyo8xxpvwo"
+
+[sub_resource type="Resource" id="Resource_q3736"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 5.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_6afwv"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_q3736")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_fvy5k"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ma1a5"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_fvy5k")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_nexyn"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 10.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_hiih2"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_nexyn")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_c7hm2"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jb2dv"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_c7hm2")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_tcbew"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_rib5l"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_tcbew")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_gbejp"]
+script = ExtResource("40_1m7px")
+modifier = SubResource("Resource_rib5l")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_tos0d"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_gbejp")
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_nmsbw"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 32.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_v7o82"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_nmsbw")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_waa3w"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_txurj"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_waa3w")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_th120"]
+script = ExtResource("40_1m7px")
+type = 1
+modifier = SubResource("Resource_txurj")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_448yo"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_th120")
+attack_range = 64.0
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_nfbfu"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+move_speed = SubResource("Resource_v7o82")
+health_max = SubResource("Resource_6afwv")
+health_regen_sec = SubResource("Resource_hiih2")
+health_regen_amt = SubResource("Resource_ma1a5")
+mana_max = SubResource("Resource_6afwv")
+mana_regen_sec = SubResource("Resource_hiih2")
+mana_regen_amt = SubResource("Resource_ma1a5")
+ability_max = SubResource("Resource_6afwv")
+ability_regen_sec = SubResource("Resource_hiih2")
+ability_regen_amt = SubResource("Resource_ma1a5")
+attack_speed_cooldown = SubResource("Resource_jb2dv")
+melee = SubResource("Resource_tos0d")
+shoot = SubResource("Resource_448yo")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_0bhcd"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Peasent"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_fp6l5")
+stats = SubResource("Resource_nfbfu")
+respawn = SubResource("Resource_jpr5h")
+roam = SubResource("Resource_0sxxu")
+anim_state_machine = ExtResource("35_c3jnb")
+anim_library = ExtResource("34_isauy")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_7r8xg"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ebksy"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ngnnf"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Squirrel"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_7r8xg")
+stats = SubResource("Resource_ebksy")
+non_aggresive = true
+pursuit_can_shoot_check = false
+pursuit_can_melee_check = false
+anim_state_machine = ExtResource("43_ggwo0")
+anim_library = ExtResource("42_qkwvq")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_soujy"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_672dr"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_d7rev"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Squirrel"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_soujy")
+stats = SubResource("Resource_672dr")
+non_aggresive = true
+pursuit_can_shoot_check = false
+pursuit_can_melee_check = false
+anim_state_machine = ExtResource("43_ggwo0")
+anim_library = ExtResource("42_qkwvq")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_2nj3r"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_gyfdw"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_lylvy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Peasent"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_2nj3r")
+stats = SubResource("Resource_gyfdw")
+anim_state_machine = ExtResource("45_jochj")
+anim_library = ExtResource("44_1boqu")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_pakml"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ema0v"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_thsxi"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Peasent"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_pakml")
+stats = SubResource("Resource_ema0v")
+anim_state_machine = ExtResource("47_vtq1h")
+anim_library = ExtResource("46_pga7k")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_yg3if"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_nnty4"]
+script = ExtResource("36_obvb6")
+pos = Vector2(1498.55, 425.273)
+metadata/_custom_type_script = "uid://dg4r68t0ubxbw"
+
+[sub_resource type="Resource" id="Resource_u7xll"]
+script = ExtResource("37_by41e")
+metadata/_custom_type_script = "uid://dheiyo8xxpvwo"
+
+[sub_resource type="Resource" id="Resource_tm6vd"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 5.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jpm7i"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_tm6vd")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_jsfey"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_51j37"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_jsfey")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_yx4td"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 10.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_205tc"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_yx4td")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_hl6yj"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_bskei"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_hl6yj")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_tup28"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_37h5s"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_tup28")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_5uw47"]
+script = ExtResource("40_1m7px")
+modifier = SubResource("Resource_37h5s")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_br807"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_5uw47")
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_1h5yh"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 32.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_o1xp5"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_1h5yh")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_t1ydn"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_0h5ka"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_t1ydn")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_mqtfa"]
+script = ExtResource("40_1m7px")
+type = 1
+modifier = SubResource("Resource_0h5ka")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_bympo"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_mqtfa")
+attack_range = 64.0
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_70e4m"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+move_speed = SubResource("Resource_o1xp5")
+health_max = SubResource("Resource_jpm7i")
+health_regen_sec = SubResource("Resource_205tc")
+health_regen_amt = SubResource("Resource_51j37")
+mana_max = SubResource("Resource_jpm7i")
+mana_regen_sec = SubResource("Resource_205tc")
+mana_regen_amt = SubResource("Resource_51j37")
+ability_max = SubResource("Resource_jpm7i")
+ability_regen_sec = SubResource("Resource_205tc")
+ability_regen_amt = SubResource("Resource_51j37")
+attack_speed_cooldown = SubResource("Resource_bskei")
+melee = SubResource("Resource_br807")
+shoot = SubResource("Resource_bympo")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_iijg8"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Chef Mignon"
+friendly = true
+gold = SubResource("Resource_yg3if")
+stats = SubResource("Resource_70e4m")
+respawn = SubResource("Resource_nnty4")
+roam = SubResource("Resource_u7xll")
+anim_state_machine = ExtResource("49_oume2")
+anim_library = ExtResource("48_yentx")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_fcwb5"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_1uxcm"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ki00x"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Farmer"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_fcwb5")
+stats = SubResource("Resource_1uxcm")
+anim_state_machine = ExtResource("51_ibcs6")
+anim_library = ExtResource("50_l7v40")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_kmrlj"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_65vt6"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_rk5sd"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Farmer"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_kmrlj")
+stats = SubResource("Resource_65vt6")
+anim_state_machine = ExtResource("51_ibcs6")
+anim_library = ExtResource("50_l7v40")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_veqtp"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_1ca4r"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ta6s2"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Farmer"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_veqtp")
+stats = SubResource("Resource_1ca4r")
+anim_state_machine = ExtResource("51_ibcs6")
+anim_library = ExtResource("50_l7v40")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_yjhy7"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_cvc1s"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_jhql3"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_yjhy7")
+stats = SubResource("Resource_cvc1s")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_jr7oc"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_dq6rx"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_j8npg"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_jr7oc")
+stats = SubResource("Resource_dq6rx")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_mnad3"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_8dajs"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_14b7b"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Dog"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_mnad3")
+stats = SubResource("Resource_8dajs")
+anim_state_machine = ExtResource("53_jkpol")
+anim_library = ExtResource("52_qfg4b")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_43pqk"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_qtses"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_xkble"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Horse"
+friendly = true
+tags = Array[String](["beast"])
+gold = SubResource("Resource_43pqk")
+stats = SubResource("Resource_qtses")
+non_aggresive = true
+pursuit_can_shoot_check = false
+pursuit_can_melee_check = false
+anim_state_machine = ExtResource("3_sjbri")
+anim_library = ExtResource("2_gd10b")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ajakn"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_xpwvq"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_btuvo"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Farmer"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_ajakn")
+stats = SubResource("Resource_xpwvq")
+anim_state_machine = ExtResource("51_ibcs6")
+anim_library = ExtResource("50_l7v40")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_8w4dl"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_xgsku"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_4bbml"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Big Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_8w4dl")
+stats = SubResource("Resource_xgsku")
+drops = ExtResource("57_nfbfu")
+dead_after_bt = ExtResource("56_fp6l5")
+anim_state_machine = ExtResource("55_e5yjh")
+anim_library = ExtResource("54_5t7rg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_plwgn"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_jvgrg"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_cuu0f"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Big Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_plwgn")
+stats = SubResource("Resource_jvgrg")
+drops = ExtResource("57_nfbfu")
+dead_after_bt = ExtResource("56_fp6l5")
+anim_state_machine = ExtResource("55_e5yjh")
+anim_library = ExtResource("54_5t7rg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_deg2l"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_gacae"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_wokdy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blue Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_deg2l")
+stats = SubResource("Resource_gacae")
+drops = ExtResource("57_nfbfu")
+anim_state_machine = ExtResource("59_7r8xg")
+anim_library = ExtResource("58_0bhcd")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_bf3uv"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_cwww3"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_n53o0"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Big Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_bf3uv")
+stats = SubResource("Resource_cwww3")
+drops = ExtResource("57_nfbfu")
+dead_after_bt = ExtResource("56_fp6l5")
+anim_state_machine = ExtResource("55_e5yjh")
+anim_library = ExtResource("54_5t7rg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_c018i"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_41j3l"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_q5wo8"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blue Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_c018i")
+stats = SubResource("Resource_41j3l")
+drops = ExtResource("57_nfbfu")
+anim_state_machine = ExtResource("59_7r8xg")
+anim_library = ExtResource("58_0bhcd")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_6vu0x"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_l55c2"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ufk8o"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blue Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_6vu0x")
+stats = SubResource("Resource_l55c2")
+drops = ExtResource("57_nfbfu")
+anim_state_machine = ExtResource("59_7r8xg")
+anim_library = ExtResource("58_0bhcd")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_3gnwr"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_nap2n"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_gdgs1"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blue Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_3gnwr")
+stats = SubResource("Resource_nap2n")
+drops = ExtResource("57_nfbfu")
+anim_state_machine = ExtResource("59_7r8xg")
+anim_library = ExtResource("58_0bhcd")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_6urpb"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_7bv80"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ljs3p"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blue Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_6urpb")
+stats = SubResource("Resource_7bv80")
+drops = ExtResource("57_nfbfu")
+anim_state_machine = ExtResource("59_7r8xg")
+anim_library = ExtResource("58_0bhcd")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_6pjy4"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ty42p"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_a8dl1"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_6pjy4")
+stats = SubResource("Resource_ty42p")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_hysx7"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_xmybd"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_rocse"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_hysx7")
+stats = SubResource("Resource_xmybd")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_kt81t"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ojeeb"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ix7pg"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Huntsman Spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_kt81t")
+stats = SubResource("Resource_ojeeb")
+anim_state_machine = ExtResource("21_6gp1h")
+anim_library = ExtResource("20_6y6lh")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_8anka"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_u1w4t"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_s65i5"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Demon Spider"
+gold = SubResource("Resource_8anka")
+stats = SubResource("Resource_u1w4t")
+anim_state_machine = ExtResource("61_ngnnf")
+anim_library = ExtResource("60_ebksy")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_60s4q"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_in6yj"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_3xqts"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Observer"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_60s4q")
+stats = SubResource("Resource_in6yj")
+anim_state_machine = ExtResource("63_672dr")
+anim_library = ExtResource("62_soujy")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ai7ep"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_wryr1"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_6pb20"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Armored Warrior"
+gold = SubResource("Resource_ai7ep")
+stats = SubResource("Resource_wryr1")
+anim_state_machine = ExtResource("65_2nj3r")
+anim_library = ExtResource("64_d7rev")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_j38e3"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_6q86b"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_aeplt"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Armored Warrior"
+gold = SubResource("Resource_j38e3")
+stats = SubResource("Resource_6q86b")
+anim_state_machine = ExtResource("65_2nj3r")
+anim_library = ExtResource("64_d7rev")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ucnao"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_oc3vk"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_por0p"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Lobster"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_ucnao")
+stats = SubResource("Resource_oc3vk")
+anim_state_machine = ExtResource("67_lylvy")
+anim_library = ExtResource("66_gyfdw")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_18k1t"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_hutoo"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ok7px"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Shifted"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_18k1t")
+stats = SubResource("Resource_hutoo")
+anim_state_machine = ExtResource("69_ema0v")
+anim_library = ExtResource("68_pakml")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_xxvmk"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_siqk2"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_gofjn"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Shifted"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_xxvmk")
+stats = SubResource("Resource_siqk2")
+anim_state_machine = ExtResource("69_ema0v")
+anim_library = ExtResource("68_pakml")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_at3xw"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_u7mj8"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_81bnu"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Winged"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_at3xw")
+stats = SubResource("Resource_u7mj8")
+anim_state_machine = ExtResource("71_yg3if")
+anim_library = ExtResource("70_thsxi")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_u65fm"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_omogp"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_dq7dy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "dark Priest"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_u65fm")
+stats = SubResource("Resource_omogp")
+anim_state_machine = ExtResource("73_iijg8")
+anim_library = ExtResource("72_70e4m")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_dr18f"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_64ckc"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_746jy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Zombie Giant"
+tags = Array[String](["humanoid", "undead"])
+gold = SubResource("Resource_dr18f")
+stats = SubResource("Resource_64ckc")
+anim_state_machine = ExtResource("75_1uxcm")
+anim_library = ExtResource("74_fcwb5")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_x527m"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_iviv4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_h0sta"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Zombie Giant"
+tags = Array[String](["humanoid", "undead"])
+gold = SubResource("Resource_x527m")
+stats = SubResource("Resource_iviv4")
+anim_state_machine = ExtResource("75_1uxcm")
+anim_library = ExtResource("74_fcwb5")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_47ajg"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_y1ah6"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_nvmrc"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Wraith"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_47ajg")
+stats = SubResource("Resource_y1ah6")
+anim_state_machine = ExtResource("77_kmrlj")
+anim_library = ExtResource("76_ki00x")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_4x86p"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_kpq5k"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_0ioli"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Wraith"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_4x86p")
+stats = SubResource("Resource_kpq5k")
+anim_state_machine = ExtResource("77_kmrlj")
+anim_library = ExtResource("76_ki00x")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_27pno"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_vey67"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_8p3fa"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Blood Mage"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_27pno")
+stats = SubResource("Resource_vey67")
+anim_state_machine = ExtResource("79_rk5sd")
+anim_library = ExtResource("78_65vt6")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_28tit"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_0ovol"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_k4goo"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Shifted"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_28tit")
+stats = SubResource("Resource_0ovol")
+anim_state_machine = ExtResource("69_ema0v")
+anim_library = ExtResource("68_pakml")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_c2qps"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ef0bq"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_ouhyu"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Undead Knight"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_c2qps")
+stats = SubResource("Resource_ef0bq")
+anim_state_machine = ExtResource("81_1ca4r")
+anim_library = ExtResource("80_veqtp")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_j33b0"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_edlg0"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_j4p5i"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Undead Knight"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_j33b0")
+stats = SubResource("Resource_edlg0")
+anim_state_machine = ExtResource("81_1ca4r")
+anim_library = ExtResource("80_veqtp")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_h33gh"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_vrsjy"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_qeagm"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Diablo"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_h33gh")
+stats = SubResource("Resource_vrsjy")
+anim_state_machine = ExtResource("83_yjhy7")
+anim_library = ExtResource("82_ta6s2")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_4g4wr"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_cp6lb"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_3gmmk"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Observer"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_4g4wr")
+stats = SubResource("Resource_cp6lb")
+anim_state_machine = ExtResource("63_672dr")
+anim_library = ExtResource("62_soujy")
+img_offset = Vector2(0, -5)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_fiwjt"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_pdj5s"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_2v3i4"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Lich"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_fiwjt")
+stats = SubResource("Resource_pdj5s")
+anim_state_machine = ExtResource("85_jhql3")
+anim_library = ExtResource("84_cvc1s")
+img_offset = Vector2(0, -10)
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_iwnoi"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ahf8f"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_gtkol"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Angel of Death"
+tags = Array[String](["spirit"])
+gold = SubResource("Resource_iwnoi")
+stats = SubResource("Resource_ahf8f")
+anim_state_machine = ExtResource("87_dq6rx")
+anim_library = ExtResource("86_jr7oc")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ftaam"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_l73sc"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_8mggr"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Big Slime"
+tags = Array[String](["blue_slime"])
+gold = SubResource("Resource_ftaam")
+stats = SubResource("Resource_l73sc")
+drops = ExtResource("57_nfbfu")
+dead_after_bt = ExtResource("56_fp6l5")
+anim_state_machine = ExtResource("55_e5yjh")
+anim_library = ExtResource("54_5t7rg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_p0so3"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_rmmrv"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_4ar0x"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_p0so3")
+stats = SubResource("Resource_rmmrv")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_7231w"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_w7tpd"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_vyyhh"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_7231w")
+stats = SubResource("Resource_w7tpd")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_2kem2"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_ok2am"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_cnfg3"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_2kem2")
+stats = SubResource("Resource_ok2am")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_u77gh"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_5utbo"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_nn50w"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_u77gh")
+stats = SubResource("Resource_5utbo")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_v8e4c"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_fvks8"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_bdecg"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_v8e4c")
+stats = SubResource("Resource_fvks8")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_b1h1a"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_cdt3a"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_jx8j5"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_b1h1a")
+stats = SubResource("Resource_cdt3a")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_1my7b"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_du3pf"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_mbb4f"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Centaur King"
+gold = SubResource("Resource_1my7b")
+stats = SubResource("Resource_du3pf")
+anim_state_machine = ExtResource("91_14b7b")
+anim_library = ExtResource("90_8dajs")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_bv333"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_qclaa"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_85bhy"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Centaur King"
+gold = SubResource("Resource_bv333")
+stats = SubResource("Resource_qclaa")
+anim_state_machine = ExtResource("91_14b7b")
+anim_library = ExtResource("90_8dajs")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_11lr7"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_pu1g1"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_elqgi"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Cyclop"
+tags = Array[String](["humanoid"])
+gold = SubResource("Resource_11lr7")
+stats = SubResource("Resource_pu1g1")
+anim_state_machine = ExtResource("89_mnad3")
+anim_library = ExtResource("88_j8npg")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_58av2"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_4u2l4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_xg3fk"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_58av2")
+stats = SubResource("Resource_4u2l4")
+anim_state_machine = ExtResource("93_qtses")
+anim_library = ExtResource("92_43pqk")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_uavgf"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_4yvm4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_1u3ar"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_uavgf")
+stats = SubResource("Resource_4yvm4")
+anim_state_machine = ExtResource("93_qtses")
+anim_library = ExtResource("92_43pqk")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_pluuj"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_02qs8"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_y5yob"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_pluuj")
+stats = SubResource("Resource_02qs8")
+anim_state_machine = ExtResource("93_qtses")
+anim_library = ExtResource("92_43pqk")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_yi16c"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_d0fs4"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_chcev"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Giant spider"
+tags = Array[String](["insect"])
+gold = SubResource("Resource_yi16c")
+stats = SubResource("Resource_d0fs4")
+anim_state_machine = ExtResource("93_qtses")
+anim_library = ExtResource("92_43pqk")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_lwb7o"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_2gsak"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_lslew"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_lwb7o")
+stats = SubResource("Resource_2gsak")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_ldev3"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_0r3e0"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_n3wqf"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Orc Boss"
+tags = Array[String](["orc_boss", "orc"])
+gold = SubResource("Resource_ldev3")
+stats = SubResource("Resource_0r3e0")
+anim_state_machine = ExtResource("95_ajakn")
+anim_library = ExtResource("94_xkble")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
+
+[sub_resource type="Resource" id="Resource_f6fop"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_4y2g7"]
+script = ExtResource("36_obvb6")
+pos = Vector2(1319, 426)
+metadata/_custom_type_script = "uid://dg4r68t0ubxbw"
+
+[sub_resource type="Resource" id="Resource_olbej"]
+script = ExtResource("37_by41e")
+metadata/_custom_type_script = "uid://dheiyo8xxpvwo"
+
+[sub_resource type="Resource" id="Resource_kp5ea"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 40.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_pgygf"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_kp5ea")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_u721e"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_qpruc"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_u721e")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_brn38"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 10.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_dss5c"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_brn38")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_nfy3c"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_xiid6"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_nfy3c")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_kd7v8"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 10.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_fqoyd"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_kd7v8")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_vkfrf"]
+script = ExtResource("40_1m7px")
+modifier = SubResource("Resource_fqoyd")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_612gs"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_vkfrf")
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_6c6qd"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 32.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_721o7"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_6c6qd")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_qkcrl"]
+resource_local_to_scene = true
+script = ExtResource("5_5gupm")
+_amount = 1.0
+metadata/_custom_type_script = "uid://ceqfbg0d2eyn7"
+
+[sub_resource type="Resource" id="Resource_2lelr"]
+script = ExtResource("39_247ft")
+base = SubResource("Resource_qkcrl")
+metadata/_custom_type_script = "uid://by30of4e8c7jk"
+
+[sub_resource type="Resource" id="Resource_uupjx"]
+script = ExtResource("40_1m7px")
+type = 1
+modifier = SubResource("Resource_2lelr")
+metadata/_custom_type_script = "uid://cc6eujasjiyms"
+
+[sub_resource type="Resource" id="Resource_a4gi7"]
+script = ExtResource("41_jdxrk")
+damage = SubResource("Resource_uupjx")
+attack_range = 64.0
+metadata/_custom_type_script = "uid://cqcoedlomhoec"
+
+[sub_resource type="Resource" id="Resource_uojfn"]
+resource_local_to_scene = true
+script = ExtResource("18_0qc3o")
+move_speed = SubResource("Resource_721o7")
+health_max = SubResource("Resource_pgygf")
+health_regen_sec = SubResource("Resource_dss5c")
+health_regen_amt = SubResource("Resource_qpruc")
+mana_max = SubResource("Resource_pgygf")
+mana_regen_sec = SubResource("Resource_dss5c")
+mana_regen_amt = SubResource("Resource_qpruc")
+ability_max = SubResource("Resource_pgygf")
+ability_regen_sec = SubResource("Resource_dss5c")
+ability_regen_amt = SubResource("Resource_qpruc")
+attack_speed_cooldown = SubResource("Resource_xiid6")
+melee = SubResource("Resource_612gs")
+shoot = SubResource("Resource_a4gi7")
+metadata/_custom_type_script = "uid://cpw54khlhtg5l"
+
+[sub_resource type="Resource" id="Resource_jr4oh"]
+resource_local_to_scene = true
+script = ExtResource("11_uob32")
+character_name = "Town Guard"
+npc = false
+friendly = true
+tags = Array[String](["human"])
+gold = SubResource("Resource_f6fop")
+stats = SubResource("Resource_uojfn")
+respawn = SubResource("Resource_4y2g7")
+roam = SubResource("Resource_olbej")
+anim_state_machine = ExtResource("33_shcxc")
+anim_library = ExtResource("32_ppmet")
+metadata/_custom_type_script = "uid://osxc61u0jjco"
 
 [node name="zone1" unique_id=2023251059 instance=ExtResource("1_654ca")]
 
@@ -9,78 +2227,270 @@ monitorable = false
 
 [node name="horse" parent="object" parent_id_path=PackedInt32Array(1236640492) index="1" unique_id=1405833425]
 collision_layer = 6
+unit = SubResource("Resource_v6jvy")
 
 [node name="horse2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="2" unique_id=452424686]
 collision_layer = 6
+unit = SubResource("Resource_dnadg")
+
+[node name="huntsman_spider" parent="object" parent_id_path=PackedInt32Array(1236640492) index="3" unique_id=845622493]
+unit = SubResource("Resource_jnpdc")
+
+[node name="huntsman_spider2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="4" unique_id=848437005]
+unit = SubResource("Resource_7bw8l")
+
+[node name="huntsman_spider3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="5" unique_id=1039475047]
+unit = SubResource("Resource_18u3t")
+
+[node name="giant" parent="object" parent_id_path=PackedInt32Array(1236640492) index="6" unique_id=40040415]
+unit = SubResource("Resource_vcx7h")
+
+[node name="giant2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="7" unique_id=1084648137]
+unit = SubResource("Resource_3x1w3")
+
+[node name="giant3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="8" unique_id=531487602]
+unit = SubResource("Resource_torpt")
+
+[node name="orc_knight" parent="object" parent_id_path=PackedInt32Array(1236640492) index="9" unique_id=171195187]
+unit = SubResource("Resource_4gvoj")
+
+[node name="orc_knight2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="10" unique_id=512272889]
+unit = SubResource("Resource_toe47")
+
+[node name="huntsman_spider4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="11" unique_id=1347094805]
+unit = SubResource("Resource_isauy")
+
+[node name="ancient_troll" parent="object" parent_id_path=PackedInt32Array(1236640492) index="12" unique_id=841422047]
+unit = SubResource("Resource_by41e")
+
+[node name="giant4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="13" unique_id=1284656861]
+unit = SubResource("Resource_1m7px")
 
 [node name="fighter" parent="object" parent_id_path=PackedInt32Array(1236640492) index="16" unique_id=841986313]
 collision_layer = 6
+unit = SubResource("Resource_ggwo0")
 
 [node name="dwarven_marksman" parent="object" parent_id_path=PackedInt32Array(1236640492) index="17" unique_id=1218028227]
 collision_layer = 6
+unit = SubResource("Resource_pga7k")
 
 [node name="dwarven_marksman2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="18" unique_id=1724961646]
 collision_layer = 6
+unit = SubResource("Resource_oume2")
 
 [node name="human_town_guard" parent="object" parent_id_path=PackedInt32Array(1236640492) index="19" unique_id=994808835]
 collision_layer = 6
+unit = SubResource("Resource_qfg4b")
 
 [node name="human_town_guard2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="20" unique_id=1654831439]
 collision_layer = 6
+unit = SubResource("Resource_e5yjh")
 
 [node name="carpenter" parent="object" parent_id_path=PackedInt32Array(1236640492) index="21" unique_id=1504871040]
 collision_layer = 6
+unit = SubResource("Resource_0bhcd")
 
 [node name="squirrel" parent="object" parent_id_path=PackedInt32Array(1236640492) index="22" unique_id=1934848144]
 collision_layer = 6
+unit = SubResource("Resource_ngnnf")
 
 [node name="squirrel2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="23" unique_id=1148676688]
 collision_layer = 6
+unit = SubResource("Resource_d7rev")
 
 [node name="tailor" parent="object" parent_id_path=PackedInt32Array(1236640492) index="24" unique_id=52620051]
 collision_layer = 6
+unit = SubResource("Resource_lylvy")
 
 [node name="alchemist" parent="object" parent_id_path=PackedInt32Array(1236640492) index="25" unique_id=340361423]
 collision_layer = 6
+unit = SubResource("Resource_thsxi")
 
 [node name="cooker" parent="object" parent_id_path=PackedInt32Array(1236640492) index="26" unique_id=1628156168]
 collision_layer = 6
+unit = SubResource("Resource_iijg8")
 
 [node name="farmer" parent="object" parent_id_path=PackedInt32Array(1236640492) index="27" unique_id=690109855]
 collision_layer = 6
+unit = SubResource("Resource_ki00x")
 
 [node name="farmer2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="28" unique_id=893015355]
 collision_layer = 6
+unit = SubResource("Resource_rk5sd")
 
 [node name="farmer3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="29" unique_id=1461483659]
 collision_layer = 6
+unit = SubResource("Resource_ta6s2")
 
 [node name="human_town_guard3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="30" unique_id=2057213559]
 collision_layer = 6
+unit = SubResource("Resource_jhql3")
 
 [node name="human_town_guard4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="31" unique_id=1651028708]
 collision_layer = 6
+unit = SubResource("Resource_j8npg")
 
 [node name="dog" parent="object" parent_id_path=PackedInt32Array(1236640492) index="32" unique_id=625797068]
 collision_layer = 6
+unit = SubResource("Resource_14b7b")
 
 [node name="horse3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="33" unique_id=839493441]
 collision_layer = 6
+unit = SubResource("Resource_xkble")
 
 [node name="farmer4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="34" unique_id=1158079975]
 collision_layer = 6
+unit = SubResource("Resource_btuvo")
+
+[node name="blue_mother_slime" parent="object" parent_id_path=PackedInt32Array(1236640492) index="35" unique_id=313345853]
+unit = SubResource("Resource_4bbml")
+
+[node name="blue_mother_slime2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="36" unique_id=1650638180]
+unit = SubResource("Resource_cuu0f")
+
+[node name="blue_slime" parent="object" parent_id_path=PackedInt32Array(1236640492) index="37" unique_id=652933829]
+unit = SubResource("Resource_wokdy")
+
+[node name="blue_mother_slime3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="38" unique_id=1524485875]
+unit = SubResource("Resource_n53o0")
+
+[node name="blue_slime2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="39" unique_id=1514066692]
+unit = SubResource("Resource_q5wo8")
+
+[node name="blue_slime3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="40" unique_id=1895226263]
+unit = SubResource("Resource_ufk8o")
+
+[node name="blue_slime4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="41" unique_id=34106413]
+unit = SubResource("Resource_gdgs1")
+
+[node name="blue_slime5" parent="object" parent_id_path=PackedInt32Array(1236640492) index="42" unique_id=1714271478]
+unit = SubResource("Resource_ljs3p")
+
+[node name="huntsman_spider5" parent="object" parent_id_path=PackedInt32Array(1236640492) index="43" unique_id=1971556313]
+unit = SubResource("Resource_a8dl1")
+
+[node name="huntsman_spider6" parent="object" parent_id_path=PackedInt32Array(1236640492) index="44" unique_id=1789288971]
+unit = SubResource("Resource_rocse")
+
+[node name="huntsman_spider7" parent="object" parent_id_path=PackedInt32Array(1236640492) index="45" unique_id=993151301]
+unit = SubResource("Resource_ix7pg")
+
+[node name="demon_spider" parent="object" parent_id_path=PackedInt32Array(1236640492) index="49" unique_id=2005478548]
+unit = SubResource("Resource_s65i5")
+
+[node name="observer" parent="object" parent_id_path=PackedInt32Array(1236640492) index="50" unique_id=2061227139]
+unit = SubResource("Resource_3xqts")
+
+[node name="armored_warrior" parent="object" parent_id_path=PackedInt32Array(1236640492) index="51" unique_id=799076327]
+unit = SubResource("Resource_6pb20")
+
+[node name="armored_warrior2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="52" unique_id=906499492]
+unit = SubResource("Resource_aeplt")
+
+[node name="lobster" parent="object" parent_id_path=PackedInt32Array(1236640492) index="53" unique_id=580366895]
+unit = SubResource("Resource_por0p")
+
+[node name="shifted" parent="object" parent_id_path=PackedInt32Array(1236640492) index="54" unique_id=371881216]
+unit = SubResource("Resource_ok7px")
+
+[node name="shifted2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="55" unique_id=1792441275]
+unit = SubResource("Resource_gofjn")
+
+[node name="winged" parent="object" parent_id_path=PackedInt32Array(1236640492) index="56" unique_id=991662956]
+unit = SubResource("Resource_81bnu")
+
+[node name="dark_priest" parent="object" parent_id_path=PackedInt32Array(1236640492) index="57" unique_id=353535427]
+unit = SubResource("Resource_dq7dy")
+
+[node name="zombie_giant" parent="object" parent_id_path=PackedInt32Array(1236640492) index="58" unique_id=1176967454]
+unit = SubResource("Resource_746jy")
+
+[node name="zombie_giant2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="59" unique_id=875399842]
+unit = SubResource("Resource_h0sta")
 
 [node name="wraith" parent="object" parent_id_path=PackedInt32Array(1236640492) index="60" unique_id=331032552]
-velocity = Vector2(-22.083036, -23.159004)
+velocity = Vector2(-22.08344, -23.158617)
+unit = SubResource("Resource_nvmrc")
 
 [node name="wraith2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="61" unique_id=684860232]
-velocity = Vector2(24.977201, -20.003487)
+velocity = Vector2(24.977222, -20.003454)
+unit = SubResource("Resource_0ioli")
 
 [node name="blood_mage" parent="object" parent_id_path=PackedInt32Array(1236640492) index="62" unique_id=308954916]
-velocity = Vector2(22.083036, 23.159004)
+velocity = Vector2(22.08344, 23.158617)
+unit = SubResource("Resource_8p3fa")
+
+[node name="shifted3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="63" unique_id=1043880913]
+unit = SubResource("Resource_k4goo")
+
+[node name="undead_knight" parent="object" parent_id_path=PackedInt32Array(1236640492) index="64" unique_id=408803511]
+unit = SubResource("Resource_ouhyu")
+
+[node name="undead_knight2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="65" unique_id=521025982]
+unit = SubResource("Resource_j4p5i")
+
+[node name="diablo" parent="object" parent_id_path=PackedInt32Array(1236640492) index="66" unique_id=1932503743]
+unit = SubResource("Resource_qeagm")
+
+[node name="observer2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="67" unique_id=1910097049]
+unit = SubResource("Resource_3gmmk")
+
+[node name="lich" parent="object" parent_id_path=PackedInt32Array(1236640492) index="68" unique_id=933304178]
+unit = SubResource("Resource_2v3i4")
+
+[node name="angel_of_death" parent="object" parent_id_path=PackedInt32Array(1236640492) index="69" unique_id=534560648]
+unit = SubResource("Resource_gtkol")
+
+[node name="blue_mother_slime4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="70" unique_id=134928961]
+unit = SubResource("Resource_8mggr")
+
+[node name="cyclop" parent="object" parent_id_path=PackedInt32Array(1236640492) index="76" unique_id=2019774510]
+unit = SubResource("Resource_4ar0x")
+
+[node name="cyclop2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="77" unique_id=1268248783]
+unit = SubResource("Resource_vyyhh")
+
+[node name="cyclop3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="78" unique_id=2077159121]
+unit = SubResource("Resource_cnfg3")
+
+[node name="cyclop4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="80" unique_id=1129321876]
+unit = SubResource("Resource_nn50w")
+
+[node name="cyclop5" parent="object" parent_id_path=PackedInt32Array(1236640492) index="81" unique_id=110977453]
+unit = SubResource("Resource_bdecg")
+
+[node name="cyclop6" parent="object" parent_id_path=PackedInt32Array(1236640492) index="82" unique_id=138852471]
+unit = SubResource("Resource_jx8j5")
+
+[node name="centaur_king" parent="object" parent_id_path=PackedInt32Array(1236640492) index="86" unique_id=1912252866]
+unit = SubResource("Resource_mbb4f")
+
+[node name="centaur_king2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="87" unique_id=1801340498]
+unit = SubResource("Resource_85bhy")
+
+[node name="cyclop7" parent="object" parent_id_path=PackedInt32Array(1236640492) index="88" unique_id=1917712438]
+unit = SubResource("Resource_elqgi")
+
+[node name="giant_spider" parent="object" parent_id_path=PackedInt32Array(1236640492) index="89" unique_id=403544842]
+unit = SubResource("Resource_xg3fk")
+
+[node name="giant_spider2" parent="object" parent_id_path=PackedInt32Array(1236640492) index="90" unique_id=2096418342]
+unit = SubResource("Resource_1u3ar")
+
+[node name="giant_spider3" parent="object" parent_id_path=PackedInt32Array(1236640492) index="91" unique_id=1210292595]
+unit = SubResource("Resource_y5yob")
+
+[node name="giant_spider4" parent="object" parent_id_path=PackedInt32Array(1236640492) index="92" unique_id=388674166]
+unit = SubResource("Resource_chcev")
 
 [node name="human_town_guard5" parent="object" parent_id_path=PackedInt32Array(1236640492) index="99" unique_id=557770055]
 collision_layer = 6
+unit = SubResource("Resource_lslew")
+
+[node name="orc_boss" parent="object" parent_id_path=PackedInt32Array(1236640492) index="100" unique_id=1998461227]
+unit = SubResource("Resource_n3wqf")
 
 [node name="human_town_guard6" parent="object" parent_id_path=PackedInt32Array(1236640492) index="101" unique_id=1940660111]
+position = Vector2(1319, 426)
 collision_layer = 22
+unit = SubResource("Resource_jr4oh")

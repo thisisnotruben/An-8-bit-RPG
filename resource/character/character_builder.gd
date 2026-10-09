@@ -80,12 +80,12 @@ func init(character: Character):
 	(character.get_node('cam') as Camera2D).enabled = not npc
 	
 	# Behavior
+	_set_custom_behaviors()
 	character.behavior.behavior_tree = npc_behavior if npc else player_behavior
 	character.behavior.blackboard.set_var(LimboVarLib.CHARACTER, character)
 	character.behavior.blackboard.set_var(LimboVarLib.HEALTH, character.health.current)
 	character.behavior.blackboard.bind_var_to_property(LimboVarLib.HEALTH, character.health, 'current')
 	character.behavior.blackboard.set_var(LimboVarLib.NON_AGGRESSIVE, non_aggresive)
-	_set_custom_behaviors(character)
 	
 	# Animation
 	character.anim_tree.tree_root = anim_state_machine
@@ -108,27 +108,26 @@ func make_unique():
 		drops = drops.duplicate_deep(DEEP_DUPLICATE_ALL)
 	roam = roam.duplicate_deep(DEEP_DUPLICATE_ALL)
 	
-func _set_custom_behaviors(character: Character):
-	var rt := character.behavior.behavior_tree.get_root_task()
-	for i in rt.get_child_count():
-		var task := rt.get_child(i)
-		match task.get_task_name():
-			'dead' when dead_after_bt:
-				var tree := BTSubtree.new()
-				tree.subtree = dead_after_bt
-				task.add_child(tree)
-			'attack' when custom_melee_bt or custom_shoot_bt:
-				for j in task.get_child_count():
-					var logic := task.get_child(j)
-					if logic.get_task_name() == 'logic':
-						for k in logic.get_child_count():
-							
-							var subSubTask := logic.get_child(k) as BTSubtree
-							if not subSubTask:
-								continue
-							
-							match subSubTask.get_task_name():
-								'shoot' when custom_shoot_bt:
-									subSubTask.subtree = custom_shoot_bt
-								'melee' when custom_melee_bt:
-									subSubTask.subtree = custom_melee_bt
+func _set_custom_behaviors():
+	if not (dead_after_bt or custom_melee_bt or custom_shoot_bt):
+		return
+		
+	npc_behavior = npc_behavior.clone()
+	var rt := npc_behavior.get_root_task()
+	
+	if dead_after_bt:
+		var dead_tree := (rt.get_child(0) as BTSubtree)
+		dead_tree.subtree = dead_tree.subtree.clone()
+		var dead_rt := dead_tree.subtree.get_root_task()
+		(dead_rt.get_child(dead_rt.get_child_count() - 1) as BTSubtree) \
+			.subtree = dead_after_bt
+			
+	var attack_logic_tree := rt.get_child(1).get_child(1).get_child(1).get_child(3)
+	for i in attack_logic_tree.get_child_count():
+		var task := attack_logic_tree.get_child(i) as BTSubtree
+		if task:
+			match task.get_task_name():
+				'shoot' when custom_shoot_bt:
+					task.subtree = custom_shoot_bt
+				'melee' when custom_melee_bt:
+					task.subtree = custom_melee_bt

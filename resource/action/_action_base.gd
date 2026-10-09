@@ -1,2 +1,1 @@
-extends Resource
-class_name ActionContructor
+class_name ActionContructor extends Resource

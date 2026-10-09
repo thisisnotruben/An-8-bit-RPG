@@ -23,10 +23,31 @@ state = 4
 script = ExtResource("1_vtk5p")
 audio_lib_type = 4
 
-[sub_resource type="BTSequence" id="BTSequence_3shns"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_46286"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8fchk"]
+
+[sub_resource type="BTFail" id="BTFail_tjc11"]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_46286"]
+children = [SubResource("BTFail_tjc11")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_tjc11"]
+description = "Placeholder"
+blackboard_plan = SubResource("BlackboardPlan_8fchk")
+root_task = SubResource("BTAlwaysSucceed_46286")
+resource_local_to_scene = true
+
+[sub_resource type="BTSubtree" id="BTSubtree_tjc11"]
+subtree = SubResource("BehaviorTree_tjc11")
+blackboard_plan = SubResource("BlackboardPlan_46286")
+custom_name = "dead_after_effect"
+resource_local_to_scene = true
+
+[sub_resource type="BTSequence" id="BTSequence_tjc11"]
 custom_name = "Dead"
-children = [SubResource("BTCheckVar_u11nt"), SubResource("BTAction_swh00"), SubResource("BTAction_komxf")]
+children = [SubResource("BTCheckVar_u11nt"), SubResource("BTAction_swh00"), SubResource("BTAction_komxf"), SubResource("BTSubtree_tjc11")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_tjc11")
-root_task = SubResource("BTSequence_3shns")
+root_task = SubResource("BTSequence_tjc11")

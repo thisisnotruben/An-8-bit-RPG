@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0nmdbo1fso22"]
+[gd_scene format=3 uid="uid://c0nmdbo1fso22"]
 
 [ext_resource type="Script" uid="uid://baexivmwkieup" path="res://src/item/ability_player.gd" id="1_b4vot"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_dku5o"]
 
-[node name="ability_player" type="Node"]
+[node name="ability_player" type="Node" unique_id=1914627994]
 script = ExtResource("1_b4vot")
 
-[node name="player" type="BTPlayer" parent="."]
+[node name="player" type="BTPlayer" parent="." unique_id=1386393737]
 active = false
 blackboard_plan = SubResource("BlackboardPlan_dku5o")

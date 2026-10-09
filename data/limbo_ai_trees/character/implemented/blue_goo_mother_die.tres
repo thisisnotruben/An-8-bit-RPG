@@ -1,0 +1,34 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://ce0fx4a7e3hfr"]
+
+[ext_resource type="Script" uid="uid://d3cudfseymqs2" path="res://data/limbo_ai_trees/tasks/character/await_state_finished.gd" id="1_3lpwp"]
+[ext_resource type="Script" uid="uid://bh4swdtlbr1s8" path="res://data/limbo_ai_trees/tasks/summon.gd" id="1_jqilc"]
+[ext_resource type="PackedScene" uid="uid://c8207lbq8tngc" path="res://src/character/implemented/blue_slime.tscn" id="2_3lpwp"]
+[ext_resource type="Script" uid="uid://d2wyntj1gww4u" path="res://resource/action/summon.gd" id="3_ew6ot"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_n80vm"]
+
+[sub_resource type="BTCondition" id="BTCondition_ew6ot"]
+script = ExtResource("1_3lpwp")
+state = 4
+
+[sub_resource type="Resource" id="Resource_b023d"]
+script = ExtResource("3_ew6ot")
+node_scene = ExtResource("2_3lpwp")
+metadata/_custom_type_script = "uid://d2wyntj1gww4u"
+
+[sub_resource type="BTAction" id="BTAction_jspv2"]
+script = ExtResource("1_jqilc")
+strategy = SubResource("Resource_b023d")
+
+[sub_resource type="BTProbability" id="BTProbability_jqilc"]
+children = [SubResource("BTAction_jspv2")]
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_jqilc"]
+children = [SubResource("BTProbability_jqilc")]
+
+[sub_resource type="BTSequence" id="BTSequence_3lpwp"]
+children = [SubResource("BTCondition_ew6ot"), SubResource("BTRunLimit_jqilc")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_n80vm")
+root_task = SubResource("BTSequence_3lpwp")

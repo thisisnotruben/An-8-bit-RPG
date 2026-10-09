@@ -134,7 +134,7 @@ func _conserve_performance(conserve: bool):
 	set_process_input(conserve)
 	set_process(conserve)
 	#behavior.active = conserve
-	anim_tree.active = conserve
+	#anim_tree.active = conserve
 
 func _set_player_input_vars():
 	if not unit or unit.npc:
@@ -199,9 +199,9 @@ func spawn_ability_player(ability_item: Ability, ability_target: Character):
 		Ability.TargetType.USER, Ability.TargetType.NONE:
 			ability_player.enter()
 		Ability.TargetType.TARGET:
-			var state_for_ability := CharacterStates.Type.MELEE
-			if ability_item.projectile_strategy:
-				state_for_ability = CharacterStates.Type.SHOOT
+			var state_for_ability := CharacterStates.Type.SHOOT \
+				if ability_item.projectile_strategy \
+				else CharacterStates.Type.MELEE
 
 			(fsm.states[state_for_ability] \
 				as CharacterState).blackboard.set(LimboVarLib.ABILITY_PLAYER, ability_player)
